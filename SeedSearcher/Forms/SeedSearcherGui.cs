@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -511,6 +512,8 @@ namespace SeedSearcherGui.Forms
             }
             if (setIVs[4] == -1)
             {
+                RB_2nd.Checked = true;
+                RB_3rd.Visible = true;
                 return null; // not enough information to proceed
             }
             RB_2nd.Visible = true;
@@ -1002,6 +1005,7 @@ namespace SeedSearcherGui.Forms
             BT_Search.Enabled = true;
             BT_Search.Text = "Search";
             // 結果が見つからなかったらエラー
+            SystemSounds.Asterisk.Play();
             if (searcher.Result.Count == 0)
             {
                 MessageBox.Show("No Seed found. Please increase IV Deviation and run the tool again.");
