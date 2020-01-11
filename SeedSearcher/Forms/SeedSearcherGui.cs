@@ -974,6 +974,7 @@ namespace SeedSearcherGui.Forms
 
         async void SearchImpl(SeedSearcher searcher)
         {
+            bool[] enabled = { GB_41.Enabled, GB_42.Enabled, GB_43.Enabled, GB_51.Enabled, GB_61.Enabled };
             GB_41.Enabled = false;
             GB_42.Enabled = false;
             GB_43.Enabled = false;
@@ -1004,6 +1005,12 @@ namespace SeedSearcherGui.Forms
             if (searcher.Result.Count == 0)
             {
                 MessageBox.Show("No Seed found. Please increase IV Deviation and run the tool again.");
+                //unlock for editing
+                GB_41.Enabled = enabled[0];
+                GB_42.Enabled = enabled[1];
+                GB_43.Enabled = enabled[2];
+                GB_51.Enabled = enabled[3];
+                GB_61.Enabled = enabled[4];
             }
             else
             {
@@ -1122,6 +1129,7 @@ namespace SeedSearcherGui.Forms
         private void BT_newsearch_Click(object sender, EventArgs e)
         {
             BT_Table.Enabled = false;
+            GB_41.Enabled = true;
             GB_42.Enabled = false;
             GB_43.Enabled = false;
             GB_51.Enabled = false;
