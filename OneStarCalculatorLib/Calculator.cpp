@@ -404,8 +404,5 @@ _u64 Search(_u64 ivs)
 
 unsigned int TestSeed(_u64 seed) {
 	XoroshiroState xoroshiro;
-	if (TestXoroshiroSeed(seed, xoroshiro)) {
-		return 1;
-	}
-	return 0;
+	return TestXoroshiroSeed(seed, xoroshiro);
 }
