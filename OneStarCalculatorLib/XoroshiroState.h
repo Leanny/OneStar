@@ -1,6 +1,6 @@
 #pragma once
 #include "Type.h"
-
+#include "Const.h"
 inline _u64 RotateLeft(_u64 value, int amount)
 {
 	return  (value << amount) | (value >> (64 - amount));
@@ -14,7 +14,7 @@ struct XoroshiroState
 	void SetSeed(_u64 seed)
 	{
 		m_S0 = seed;
-		m_S1 = 0x82a2b175229d6a5bull;
+		m_S1 = Const::c_XoroshiroConst;
 	}
 
 	void Copy(XoroshiroState* src)

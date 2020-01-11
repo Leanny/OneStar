@@ -1,5 +1,6 @@
-#pragma once
+﻿#pragma once
 #include "Type.h"
+#include "XoroshiroState.h"
 
 inline _u64 GetSignature(_u64 value)
 {
@@ -17,10 +18,11 @@ struct PokemonData
 	int ability;
 	int nature;
 	int characteristic;
+	int fixedIV;
 	bool isNoGender;
 	bool isEnableDream;
 
-	bool IsCharacterized(int index) // H A B "S" C D
+	inline bool IsCharacterized(int index) // H A B "S" C D
 	{
 		switch (index)
 		{
@@ -34,3 +36,103 @@ struct PokemonData
 		}
 	}
 };
+
+
+
+inline bool TestPkmn(XoroshiroState xoroshiro, PokemonData pkmn) {
+	unsigned int ec = -1;
+	do {
+		ec = xoroshiro.Next(0xFFFFFFFFu);
+	} while (ec == 0xFFFFFFFFu);
+
+	if (pkmn.characteristic > -1) {
+		int characteristic = ec % 6;
+		for (int i = 0; i < 6; ++i)
+		{
+			if (pkmn.IsCharacterized((characteristic + i) % 6))
+			{
+				characteristic = (characteristic + i) % 6;
+				break;
+			}
+		}
+		if (characteristic != pkmn.characteristic)
+		{
+			return false;
+		}
+	}
+
+	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
+	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
+
+	int ivs[6] = { -1, -1, -1, -1, -1, -1 };
+	int fixedCount = 0;
+	do {
+		int fixedIndex = 0;
+		do {
+			fixedIndex = xoroshiro.Next(7); // V箇所
+		} while (fixedIndex >= 6);
+
+		if (ivs[fixedIndex] == -1)
+		{
+			ivs[fixedIndex] = 31;
+			++fixedCount;
+		}
+	} while (fixedCount < pkmn.fixedIV);
+
+	// 個体値
+	bool isPassed = true;
+	for (int i = 0; i < 6; ++i)
+	{
+		if (ivs[i] == 31)
+		{
+			if (pkmn.ivs[i] != 31)
+			{
+				isPassed = false;
+				break;
+			}
+		}
+		else if (pkmn.ivs[i] != xoroshiro.Next(0x1F))
+		{
+			isPassed = false;
+			break;
+		}
+	}
+	if (!isPassed)
+	{
+		return false;
+	}
+
+	// 特性
+	int ability = 0;
+	if (pkmn.isEnableDream)
+	{
+		do {
+			ability = xoroshiro.Next(3);
+		} while (ability >= 3);
+	}
+	else
+	{
+		ability = xoroshiro.Next(1);
+	}
+	if ((pkmn.ability >= 0 && pkmn.ability != ability) || (pkmn.ability == -1 && ability >= 2))
+	{
+		return false;
+	}
+
+	// 性別値
+	if (!pkmn.isNoGender)
+	{
+		int gender = 0;
+		do {
+			gender = xoroshiro.Next(0xFF);
+		} while (gender >= 253);
+	}
+
+	// 性格
+	int nature = 0;
+	do {
+		nature = xoroshiro.Next(0x1F);
+	} while (nature >= 25);
+
+	return nature == pkmn.nature;
+}

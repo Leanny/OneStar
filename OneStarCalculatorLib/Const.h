@@ -1,15 +1,15 @@
-#pragma once
+ï»¿#pragma once
 #include "Type.h"
 
 namespace Const
 {
 	const _u64 c_XoroshiroConst = 0x82a2b175229d6a5bull;
 
-	// ƒƒ‚FV‰ÓŠ 3bit index 61~63, 125~127
-	//       ŒÂ‘Ì’l 5bit index 59~63, 123~127
-	//       “Á« 1bit index 63, 127
+	// ãƒ¡ãƒ¢ï¼šVç®‡æ‰€ 3bit index 61~63, 125~127
+	//       å€‹ä½“å€¤ 5bit index 59~63, 123~127
+	//       ç‰¹æ€§ 1bit index 63, 127
 
-	// xoroshiro1‰ñ•ª‚Ì•ÏŠ·s—ñ(128x128‚È‚Ì‚Å64bit~256ŒÂ)
+	// xoroshiro1å›åˆ†ã®å¤‰æ›è¡Œåˆ—(128x128ãªã®ã§64bitÃ—256å€‹)
 	const _u64 c_N[] = {
 		67108864ull,
 		67108864ull,

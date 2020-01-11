@@ -1,78 +1,90 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include "Util.h"
 #include "SixivCalculator.h"
 #include "Const.h"
 #include "XoroshiroState.h"
 #include "Data.h"
 
-// ŒŸõğŒİ’è
+// æ¤œç´¢æ¡ä»¶è¨­å®š
 static PokemonData l_First;
 static PokemonData l_Second;
 static PokemonData l_Third;
+static PokemonData l_Fourth;
 
 static int g_FixedIvs;
 static int g_Ivs[6];
-static int g_SecondIvCount;
+static int g_LSB;
 
 static int g_IvOffset;
 
 //#define LENGTH (60)
 
-void SetSixFirstCondition(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6, int ability, int nature, int characteristic, bool isNoGender, bool isEnableDream)
+void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool isNoGender, bool isEnableDream)
 {
-	l_First.ivs[0] = iv1;
-	l_First.ivs[1] = iv2;
-	l_First.ivs[2] = iv3;
-	l_First.ivs[3] = iv4;
-	l_First.ivs[4] = iv5;
-	l_First.ivs[5] = iv6;
+	l_First.ivs[0] = iv0;
+	l_First.ivs[1] = iv1;
+	l_First.ivs[2] = iv2;
+	l_First.ivs[3] = iv3;
+	l_First.ivs[4] = iv4;
+	l_First.ivs[5] = iv5;
 	l_First.ability = ability;
 	l_First.nature = nature;
 	l_First.characteristic = characteristic;
 	l_First.isNoGender = isNoGender;
 	l_First.isEnableDream = isEnableDream;
+	l_First.fixedIV = fixedIV;
 }
 
-void SetSixSecondCondition(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6, int ability, int nature, int characteristic, bool isNoGender, bool isEnableDream)
+void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool isNoGender, bool isEnableDream)
 {
-	l_Second.ivs[0] = iv1;
-	l_Second.ivs[1] = iv2;
-	l_Second.ivs[2] = iv3;
-	l_Second.ivs[3] = iv4;
-	l_Second.ivs[4] = iv5;
-	l_Second.ivs[5] = iv6;
+	l_Second.ivs[0] = iv0;
+	l_Second.ivs[1] = iv1;
+	l_Second.ivs[2] = iv2;
+	l_Second.ivs[3] = iv3;
+	l_Second.ivs[4] = iv4;
+	l_Second.ivs[5] = iv5;
 	l_Second.ability = ability;
 	l_Second.nature = nature;
 	l_Second.characteristic = characteristic;
 	l_Second.isNoGender = isNoGender;
 	l_Second.isEnableDream = isEnableDream;
-	g_SecondIvCount = 0;
-	for (int i = 0; i < 6; ++i)
-	{
-		if (l_Second.ivs[i] == 31)
-		{
-			++g_SecondIvCount;
-		}
-	}
-	if(g_SecondIvCount > 4)
-	{
-		g_SecondIvCount = 4;
-	}
+	l_Second.fixedIV = fixedIV;
 }
 
-void SetSixThirdCondition(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6, int ability, int nature, int characteristic, bool isNoGender, bool isEnableDream)
+void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool isNoGender, bool isEnableDream)
 {
-	l_Third.ivs[0] = iv1;
-	l_Third.ivs[1] = iv2;
-	l_Third.ivs[2] = iv3;
-	l_Third.ivs[3] = iv4;
-	l_Third.ivs[4] = iv5;
-	l_Third.ivs[5] = iv6;
+	l_Third.ivs[0] = iv0;
+	l_Third.ivs[1] = iv1;
+	l_Third.ivs[2] = iv2;
+	l_Third.ivs[3] = iv3;
+	l_Third.ivs[4] = iv4;
+	l_Third.ivs[5] = iv5;
 	l_Third.ability = ability;
 	l_Third.nature = nature;
 	l_Third.characteristic = characteristic;
 	l_Third.isNoGender = isNoGender;
 	l_Third.isEnableDream = isEnableDream;
+	l_Third.fixedIV = fixedIV;
+}
+
+void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool isNoGender, bool isEnableDream)
+{
+	l_Fourth.ivs[0] = iv0;
+	l_Fourth.ivs[1] = iv1;
+	l_Fourth.ivs[2] = iv2;
+	l_Fourth.ivs[3] = iv3;
+	l_Fourth.ivs[4] = iv4;
+	l_Fourth.ivs[5] = iv5;
+	l_Fourth.ability = ability;
+	l_Fourth.nature = nature;
+	l_Fourth.characteristic = characteristic;
+	l_Fourth.isNoGender = isNoGender;
+	l_Fourth.isEnableDream = isEnableDream;
+	l_Fourth.fixedIV = fixedIV;
+}
+
+void SetSixLSB(int lsb) {
+	g_LSB = lsb;
 }
 
 void SetTargetCondition6(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6)
@@ -102,28 +114,28 @@ void PrepareSix(int ivOffset)
 
 	g_IvOffset = ivOffset;
 
-	// g—p‚·‚és—ñ’l‚ğƒZƒbƒg
-	// g—p‚·‚é’è”ƒxƒNƒgƒ‹‚ğƒZƒbƒg
+	// ä½¿ç”¨ã™ã‚‹è¡Œåˆ—å€¤ã‚’ã‚»ãƒƒãƒˆ
+	// ä½¿ç”¨ã™ã‚‹å®šæ•°ãƒ™ã‚¯ãƒˆãƒ«ã‚’ã‚»ãƒƒãƒˆ
 
 	g_ConstantTermVector = 0;
 
-	// r[(11 - FixedIvs) + offset]‚©‚çr[(11 - FixedIvs) + FixedIvs - 1 + offset]‚Ü‚Åg‚¤
+	// r[(11 - FixedIvs) + offset]ã‹ã‚‰r[(11 - FixedIvs) + FixedIvs - 1 + offset]ã¾ã§ä½¿ã†
 
-	// •ÏŠ·s—ñ‚ğŒvZ
-	InitializeTransformationMatrix(); // r[1]‚ª“¾‚ç‚ê‚é•ÏŠ·s—ñ‚ªƒZƒbƒg‚³‚ê‚é
-	for(int i = 0; i <= 9 - g_FixedIvs + ivOffset; ++i)
+	// å¤‰æ›è¡Œåˆ—ã‚’è¨ˆç®—
+	InitializeTransformationMatrix(); // r[1]ãŒå¾—ã‚‰ã‚Œã‚‹å¤‰æ›è¡Œåˆ—ãŒã‚»ãƒƒãƒˆã•ã‚Œã‚‹
+	for (int i = 0; i <= 9 - g_FixedIvs + ivOffset; ++i)
 	{
-		ProceedTransformationMatrix(); // r[2 + i]‚ª“¾‚ç‚ê‚é
+		ProceedTransformationMatrix(); // r[2 + i]ãŒå¾—ã‚‰ã‚Œã‚‹
 	}
 
-	for(int a = 0; a < g_FixedIvs; ++a)
+	for (int a = 0; a < g_FixedIvs; ++a)
 	{
-		for(int i = 0; i < 10; ++i)
+		for (int i = 0; i < 10; ++i)
 		{
 			int index = 59 + (i / 5) * 64 + (i % 5);
 			int bit = a * 10 + i;
 			g_InputMatrix[bit] = GetMatrixMultiplier(index);
-			if(GetMatrixConst(index) != 0)
+			if (GetMatrixConst(index) != 0)
 			{
 				g_ConstantTermVector |= (1ull << (length - 1 - bit));
 			}
@@ -131,11 +143,133 @@ void PrepareSix(int ivOffset)
 		ProceedTransformationMatrix();
 	}
 
-	// sŠî–{•ÏŒ`‚Å‹‚ß‚é
+	// è¡ŒåŸºæœ¬å¤‰å½¢ã§æ±‚ã‚ã‚‹
 	CalculateInverseMatrix(length);
 
-	// –‘Oƒf[ƒ^‚ğŒvZ
+	// äº‹å‰ãƒ‡ãƒ¼ã‚¿ã‚’è¨ˆç®—
 	CalculateCoefficientData(length);
+}
+
+inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
+	if (g_LSB != -1 && g_LSB != (seed & 1)) {
+		return 100;
+	}
+	// ã“ã“ã‹ã‚‰çµã‚Šè¾¼ã¿
+	xoroshiro.SetSeed(seed);
+	// EC
+	unsigned int ec = -1;
+	do {
+		ec = xoroshiro.Next(0xFFFFFFFFu);
+	} while (ec == 0xFFFFFFFFu);
+
+	// 1åŒ¹ç›®å€‹æ€§
+	if (l_First.characteristic > -1) {
+		int characteristic = ec % 6;
+		if (characteristic != l_First.characteristic)
+		{
+			return 1;
+		}
+	}
+
+	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
+	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
+	// 1åŒ¹ç›®
+	{
+		int ivs[6] = { -1, -1, -1, -1, -1, -1 };
+		int fixedCount = 0;
+		int offset = -l_First.fixedIV;
+		do {
+			int fixedIndex = 0;
+			do {
+				fixedIndex = xoroshiro.Next(7); // Vç®‡æ‰€
+				++offset;
+			} while (fixedIndex >= 6);
+
+			if (ivs[fixedIndex] == -1)
+			{
+				ivs[fixedIndex] = 31;
+				++fixedCount;
+			}
+		} while (fixedCount < l_First.fixedIV);
+
+		// rerollå›æ•°
+		if (offset != g_IvOffset)
+		{
+			return 3;
+		}
+
+		// å€‹ä½“å€¤
+		for (int i = 0; i < 6; ++i)
+		{
+			if (ivs[i] == 31)
+			{
+				if (l_First.ivs[i] != 31)
+				{
+					return 4;
+				}
+			}
+			else if (l_First.ivs[i] != xoroshiro.Next(0x1F))
+			{
+				return 50;
+			}
+		}
+
+		// ç‰¹æ€§
+		int ability = 0;
+		if (l_First.isEnableDream)
+		{
+			do {
+				ability = xoroshiro.Next(3);
+			} while (ability >= 3);
+		}
+		else
+		{
+			ability = xoroshiro.Next(1);
+		}
+		if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
+		{
+			return 5;
+		}
+
+		// æ€§åˆ¥å€¤
+		if (!l_First.isNoGender)
+		{
+			int gender = 0;
+			do {
+				gender = xoroshiro.Next(0xFF); // æ€§åˆ¥å€¤
+			} while (gender >= 253);
+		}
+
+		int nature = 6;
+		do {
+			nature = xoroshiro.Next(0x1F); // æ€§æ ¼
+		} while (nature >= 25);
+
+		if (nature != l_First.nature)
+		{
+			return 7;
+		}
+	}
+
+	xoroshiro.SetSeed(seed);
+	if (!TestPkmn(xoroshiro, l_Second)) {
+		return 8;
+	}
+
+	// 2åŒ¹ç›®
+	_u64 nextSeed = seed + Const::c_XoroshiroConst;
+	xoroshiro.SetSeed(nextSeed);
+	if (!TestPkmn(xoroshiro, l_Third)) {
+		return 9;
+	}
+
+	// 3åŒ¹ç›®
+	nextSeed = seed + Const::c_XoroshiroConst + Const::c_XoroshiroConst;
+	xoroshiro.SetSeed(nextSeed);
+	if (!TestPkmn(xoroshiro, l_Fourth)) {
+		return 10;
+	}
+	return 11;
 }
 
 _u64 SearchSix(_u64 ivs)
@@ -143,13 +277,12 @@ _u64 SearchSix(_u64 ivs)
 	const int length = g_FixedIvs * 10;
 
 	XoroshiroState xoroshiro;
-	XoroshiroState oshiroTemp;
 
 	_u64 target = 0;
 
-	if(g_FixedIvs == 6)
+	if (g_FixedIvs == 6)
 	{
-		// ‰ºˆÊ30bit = ŒÂ‘Ì’l
+		// ä¸‹ä½30bit = å€‹ä½“å€¤
 		target |= (ivs & 0x3E000000ul) << 30; // iv0_0
 		target |= (ivs & 0x1F00000ul) << 25; // iv1_0
 		target |= (ivs & 0xF8000ul) << 20; // iv2_0
@@ -157,7 +290,7 @@ _u64 SearchSix(_u64 ivs)
 		target |= (ivs & 0x3E0ul) << 10; // iv4_0
 		target |= (ivs & 0x1Ful) << 5; // iv5_0
 
-		// ‰B‚³‚ê‚½’l‚ğ„’è
+		// éš ã•ã‚ŒãŸå€¤ã‚’æ¨å®š
 		target |= ((32ul + g_Ivs[0] - ((ivs & 0x3E000000ul) >> 25)) & 0x1F) << 50;
 		target |= ((32ul + g_Ivs[1] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 40;
 		target |= ((32ul + g_Ivs[2] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
@@ -165,16 +298,16 @@ _u64 SearchSix(_u64 ivs)
 		target |= ((32ul + g_Ivs[4] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
 		target |= ((32ul + g_Ivs[5] - (ivs & 0x1Ful)) & 0x1F);
 	}
-	else if(g_FixedIvs == 5)
+	else if (g_FixedIvs == 5)
 	{
-		// ‰ºˆÊ25bit = ŒÂ‘Ì’l
+		// ä¸‹ä½25bit = å€‹ä½“å€¤
 		target |= (ivs & 0x1F00000ul) << 25; // iv0_0
 		target |= (ivs & 0xF8000ul) << 20; // iv1_0
 		target |= (ivs & 0x7C00ul) << 15; // iv2_0
 		target |= (ivs & 0x3E0ul) << 10; // iv3_0
 		target |= (ivs & 0x1Ful) << 5; // iv4_0
 
-		// ‰B‚³‚ê‚½’l‚ğ„’è
+		// éš ã•ã‚ŒãŸå€¤ã‚’æ¨å®š
 		target |= ((32ul + g_Ivs[0] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 40;
 		target |= ((32ul + g_Ivs[1] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
 		target |= ((32ul + g_Ivs[2] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
@@ -185,12 +318,11 @@ _u64 SearchSix(_u64 ivs)
 	{
 		return 0;
 	}
-
-	// targetƒxƒNƒgƒ‹“ü—ÍŠ®—¹
+	// targetãƒ™ã‚¯ãƒˆãƒ«å…¥åŠ›å®Œäº†
 
 	target ^= g_ConstantTermVector;
 
-	// 60bit‘¤‚ÌŒvZŒ‹‰ÊƒLƒƒƒbƒVƒ…
+	// 60bitå´ã®è¨ˆç®—çµæœã‚­ãƒ£ãƒƒã‚·ãƒ¥
 	_u64 processedTarget = 0;
 	int offset = 0;
 	for (int i = 0; i < length; ++i)
@@ -202,63 +334,42 @@ _u64 SearchSix(_u64 ivs)
 		processedTarget |= (GetSignature(g_AnswerFlag[i] & target) << (63 - (i + offset)));
 	}
 
-	// ‰ºˆÊ‚ğŒˆ‚ß‚é
+	// ä¸‹ä½ã‚’æ±ºã‚ã‚‹
 	_u64 max = ((1 << (64 - length)) - 1);
 	for (_u64 search = 0; search <= max; ++search)
 	{
 		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
-
-		// ‚±‚±‚©‚çi‚è‚İ
+		if (g_LSB != -1 && g_LSB != (seed & 1)) {
+			continue;
+		}
+		// ã“ã“ã‹ã‚‰çµã‚Šè¾¼ã¿
 		xoroshiro.SetSeed(seed);
-
 		// EC
-		unsigned int ec = xoroshiro.Next(0xFFFFFFFFu);
-		// 1•C–ÚŒÂ«
-		{
+		unsigned int ec = -1;
+		do {
+			ec = xoroshiro.Next(0xFFFFFFFFu);
+		} while (ec == 0xFFFFFFFFu);
+
+		// 1åŒ¹ç›®å€‹æ€§
+		if(l_First.characteristic > -1) {
 			int characteristic = ec % 6;
-			for (int i = 0; i < 6; ++i)
-			{
-				if (l_First.IsCharacterized((characteristic + i) % 6))
-				{
-					characteristic = (characteristic + i) % 6;
-					break;
-				}
-			}
 			if (characteristic != l_First.characteristic)
 			{
 				continue;
 			}
 		}
-		// 2•C–ÚŒÂ«
-		{
-			int characteristic = ec % 6;
-			for (int i = 0; i < 6; ++i)
-			{
-				if (l_Second.IsCharacterized((characteristic + i) % 6))
-				{
-					characteristic = (characteristic + i) % 6;
-					break;
-				}
-			}
-			if (characteristic != l_Second.characteristic)
-			{
-				continue;
-			}
-		}
 
-		xoroshiro.Next(); // OTID
-		xoroshiro.Next(); // PID
-		oshiroTemp.Copy(&xoroshiro); // ó‘Ô‚ğ•Û‘¶
-
-		// 1•C–Ú
+		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
+		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
+		// 1åŒ¹ç›®
 		{
 			int ivs[6] = { -1, -1, -1, -1, -1, -1 };
 			int fixedCount = 0;
-			int offset = -(8 - g_FixedIvs);
+			int offset = -l_First.fixedIV;
 			do {
 				int fixedIndex = 0;
 				do {
-					fixedIndex = xoroshiro.Next(7); // V‰ÓŠ
+					fixedIndex = xoroshiro.Next(7); // Vç®‡æ‰€
 					++offset;
 				} while (fixedIndex >= 6);
 
@@ -267,15 +378,15 @@ _u64 SearchSix(_u64 ivs)
 					ivs[fixedIndex] = 31;
 					++fixedCount;
 				}
-			} while (fixedCount < (8 - g_FixedIvs));
+			} while (fixedCount < l_First.fixedIV);
 
-			// reroll‰ñ”
+			// rerollå›æ•°
 			if (offset != g_IvOffset)
 			{
 				continue;
 			}
 
-			// ŒÂ‘Ì’l
+			// å€‹ä½“å€¤
 			bool isPassed = true;
 			for (int i = 0; i < 6; ++i)
 			{
@@ -298,7 +409,7 @@ _u64 SearchSix(_u64 ivs)
 				continue;
 			}
 
-			// “Á«
+			// ç‰¹æ€§
 			int ability = 0;
 			if (l_First.isEnableDream)
 			{
@@ -307,7 +418,7 @@ _u64 SearchSix(_u64 ivs)
 				} while (ability >= 3);
 			}
 			else
-			{			
+			{
 				ability = xoroshiro.Next(1);
 			}
 			if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
@@ -315,18 +426,18 @@ _u64 SearchSix(_u64 ivs)
 				continue;
 			}
 
-			// «•Ê’l
+			// æ€§åˆ¥å€¤
 			if (!l_First.isNoGender)
 			{
 				int gender = 0;
 				do {
-					gender = xoroshiro.Next(0xFF); // «•Ê’l
+					gender = xoroshiro.Next(0xFF); // æ€§åˆ¥å€¤
 				} while (gender >= 253);
 			}
 
 			int nature = 0;
 			do {
-				nature = xoroshiro.Next(0x1F); // «Ši
+				nature = xoroshiro.Next(0x1F); // æ€§æ ¼
 			} while (nature >= 25);
 
 			if (nature != l_First.nature)
@@ -335,195 +446,31 @@ _u64 SearchSix(_u64 ivs)
 			}
 		}
 
-		{
-			xoroshiro.Copy(&oshiroTemp); // ‚Â‚Ã‚«‚©‚ç
-
-			int ivs[6] = { -1, -1, -1, -1, -1, -1 };
-			int fixedCount = 0;
-			do {
-				int fixedIndex = 0;
-				do {
-					fixedIndex = xoroshiro.Next(7); // V‰ÓŠ
-				} while (fixedIndex >= 6);
-
-				if (ivs[fixedIndex] == -1)
-				{
-					ivs[fixedIndex] = 31;
-					++fixedCount;
-				}
-			} while (fixedCount < g_SecondIvCount);
-
-			// ŒÂ‘Ì’l
-			bool isPassed = true;
-			for (int i = 0; i < 6; ++i)
-			{
-				if (ivs[i] == 31)
-				{
-					if (l_Second.ivs[i] != 31)
-					{
-						isPassed = false;
-						break;
-					}
-				}
-				else if (l_Second.ivs[i] != xoroshiro.Next(0x1F))
-				{
-					isPassed = false;
-					break;
-				}
-			}
-			if (!isPassed)
-			{
-				continue;
-			}
-
-			// “Á«
-			int ability = 0;
-			if (l_Second.isEnableDream)
-			{
-				do {
-					ability = xoroshiro.Next(3);
-				} while (ability >= 3);
-			}
-			else
-			{
-				ability = xoroshiro.Next(1);
-			}
-			if ((l_Second.ability >= 0 && l_Second.ability != ability) || (l_Second.ability == -1 && ability >= 2))
-			{
-				continue;
-			}
-
-			// «•Ê’l
-			if (!l_Second.isNoGender)
-			{ 
-				int gender = 0;
-				do {
-					gender = xoroshiro.Next(0xFF); // «•Ê’l
-				} while (gender >= 253);
-			}
-
-			// «Ši
-			int nature = 0;
-			do {
-				nature = xoroshiro.Next(0x1F); // «Ši
-			} while (nature >= 25);
-
-			if (nature != l_Second.nature)
-			{
-				continue;
-			}
+		xoroshiro.SetSeed(seed);
+		if (!TestPkmn(xoroshiro, l_Second)) {
+			continue;
 		}
 
-		// 2•C–Ú
-		_u64 nextSeed = seed + 0x82a2b175229d6a5bull;
-		xoroshiro.SetSeed(nextSeed);
-
-		// EC
-		ec = xoroshiro.Next(0xFFFFFFFFu);
-		// 3•C–ÚŒÂ«
-		{
-			int characteristic = ec % 6;
-			for (int i = 0; i < 6; ++i)
-			{
-				if (l_Third.IsCharacterized((characteristic + i) % 6))
-				{
-					characteristic = (characteristic + i) % 6;
-					break;
-				}
-			}
-			if (characteristic != l_Third.characteristic)
-			{
-				continue;
-			}
+		// 2åŒ¹ç›®
+		_u64 newseed = seed + Const::c_XoroshiroConst;
+		xoroshiro.SetSeed(newseed);
+		if (!TestPkmn(xoroshiro, l_Third)) {
+			continue;
 		}
 
-		xoroshiro.Next(); // OTID
-		xoroshiro.Next(); // PID
-		oshiroTemp.Copy(&xoroshiro); // ó‘Ô‚ğ•Û‘¶
-		{
-			// V”2`4
-			for (int vCount = 2; vCount <= 4; ++vCount)
-			{
-				xoroshiro.Copy(&oshiroTemp); // ‚Â‚Ã‚«‚©‚ç
-
-				int ivs[6] = { -1, -1, -1, -1, -1, -1 };
-				int fixedCount = 0;
-				do {
-					int fixedIndex = 0;
-					do {
-						fixedIndex = xoroshiro.Next(7); // V‰ÓŠ
-					} while (fixedIndex >= 6);
-
-					if (ivs[fixedIndex] == -1)
-					{
-						ivs[fixedIndex] = 31;
-						++fixedCount;
-					}
-				} while (fixedCount < vCount);
-
-				// ŒÂ‘Ì’l
-				bool isPassed = true;
-				for (int i = 0; i < 6; ++i)
-				{
-					if (ivs[i] == 31)
-					{
-						if (l_Third.ivs[i] != 31)
-						{
-							isPassed = false;
-							break;
-						}
-					}
-					else if (l_Third.ivs[i] != xoroshiro.Next(0x1F))
-					{
-						isPassed = false;
-						break;
-					}
-				}
-				if (!isPassed)
-				{
-					continue;
-				}
-
-				// “Á«
-				int ability = 0;
-				if (l_Third.isEnableDream)
-				{
-					do {
-						ability = xoroshiro.Next(3);
-					} while (ability >= 3);
-				}
-				else
-				{
-					ability = xoroshiro.Next(1);
-				}
-				if ((l_Third.ability >= 0 && l_Third.ability != ability) || (l_Third.ability == -1 && ability >= 2))
-				{
-					continue;
-				}
-
-				// «•Ê’l
-				if (!l_Third.isNoGender)
-				{
-					int gender = 0;
-					do {
-						gender = xoroshiro.Next(0xFF);
-					} while (gender >= 253);
-				}
-
-				// «Ši
-				int nature = 0;
-				do {
-					nature = xoroshiro.Next(0x1F);
-				} while (nature >= 25);
-
-				if (nature != l_Third.nature)
-				{
-					continue;
-				}
-
-				return seed;
-			}
+		// 3åŒ¹ç›®
+		newseed += Const::c_XoroshiroConst;
+		xoroshiro.SetSeed(newseed);
+		if (!TestPkmn(xoroshiro, l_Fourth)) {
+			continue;
 		}
+
+		return seed;
 	}
 	return 0;
+}
+
+unsigned int TestSixSeed(_u64 seed) {
+	XoroshiroState xoroshiro;
+	return TestXoroshiroSixSeed(seed, xoroshiro);
 }
