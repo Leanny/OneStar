@@ -1146,6 +1146,19 @@ namespace SeedSearcherGui.Forms
             {
                 nud.Value = 0;
             }
+            foreach(var cb in CB_Species)
+            {
+                cb.SelectedIndex = 0;
+            }
+            foreach (var cb in CB_Characteristic)
+            {
+                cb.SelectedIndex = 0;
+            }
+            foreach (var cb in CB_Nature)
+            {
+                cb.SelectedIndex = 0;
+            }
+            SeedResult.Text = "";
         }
 
         private void BT_Table_Click(object sender, EventArgs e)
