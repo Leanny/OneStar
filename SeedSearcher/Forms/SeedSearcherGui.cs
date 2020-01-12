@@ -588,7 +588,7 @@ namespace SeedSearcherGui
             }
         }
 
-        private void SearchOneIV(int flawlessIdx)
+        private SeedSearcher SearchOneIV(int flawlessIdx)
         {
             int[] iv1 = { -1, -1, -1, -1, -1, -1 };
             int[] iv2 = { -1, -1, -1, -1, -1, -1 };
@@ -656,7 +656,7 @@ namespace SeedSearcherGui
                     var result = Util.Prompt(MessageBoxButtons.YesNo, "Entered characteristics seem to be wrong. This might increase the search time. Do you want to start the search anyway?");
                     if (result == DialogResult.No)
                     {
-                        return;
+                        return null;
                     }
                 }
                 characteristics1 = -1;
@@ -682,10 +682,20 @@ namespace SeedSearcherGui
             SeedSearcher.SetNextCondition(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, noGender2, HA2);
             SeedSearcher.SetThirdCondition(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, noGender3, HA3);
             SeedSearcher.SetLSB(LSB);
-            SearchImpl(searcher);
+            return searcher;
         }
 
         private void BT_Search_Click(object sender, EventArgs e)
+        {
+            SeedSearcher searcher = CheckInput();
+            if(searcher != null)
+            {
+                SearchImpl(searcher);
+            }
+            
+        }
+
+        private SeedSearcher CheckInput()
         {
             int[] iv1 = { -1, -1, -1, -1, -1, -1 }; // 1 low IV
             int[] iv2 = { -1, -1, -1, -1, -1, -1 }; // 1 mid IV
@@ -697,10 +707,10 @@ namespace SeedSearcherGui
             int flawless3 = 0;
             int flawless4 = 0;
             int flawless5 = 0;
-            RaidTemplate pkmn1 = null; 
+            RaidTemplate pkmn1 = null;
             RaidTemplate pkmn2 = null;
-            RaidTemplate pkmn3 = null; 
-            RaidTemplate pkmn4 = null; 
+            RaidTemplate pkmn3 = null;
+            RaidTemplate pkmn4 = null;
             RaidTemplate pkmn5 = null;
 
             int ability1 = -1;
@@ -827,76 +837,75 @@ namespace SeedSearcherGui
                     flawless5++;
                 }
             }
-            if(GB_41.Enabled && flawless1 < fixedIV1)
+            if (GB_41.Enabled && flawless1 < fixedIV1)
             {
                 MessageBox.Show("Invalid IV for Pokémon 1.");
-                return;
+                return null;
             }
             if (GB_42.Enabled && flawless2 < fixedIV2)
             {
                 MessageBox.Show("Invalid IV for Pokémon 2.");
-                return;
+                return null;
             }
             if (GB_43.Enabled && flawless3 < fixedIV3)
             {
                 MessageBox.Show("Invalid IV for Pokémon 3.");
-                return;
+                return null;
             }
             if (GB_51.Enabled && flawless4 < fixedIV4)
             {
                 MessageBox.Show("Invalid IV for Pokémon 4.");
-                return;
+                return null;
             }
             if (GB_51.Enabled && flawless5 < fixedIV5)
             {
                 MessageBox.Show("Invalid IV for Pokémon 5.");
-                return;
+                return null;
             }
 
             // sanity check characteristics
             if (characteristics1 >= 0 && iv1[iv_order[characteristics1]] != 31)
             {
                 MessageBox.Show("Invalid Characteristic for Pokémon 1.");
-                return;
+                return null;
             }
             if (characteristics2 >= 0 && iv2[iv_order[characteristics2]] != 31)
             {
                 MessageBox.Show("Invalid Characteristic for Pokémon 2.");
-                return;
+                return null;
             }
             if (characteristics3 >= 0 && iv3[iv_order[characteristics3]] != 31)
             {
                 MessageBox.Show("Invalid Characteristic for Pokémon 3.");
-                return;
+                return null;
             }
             if (characteristics4 >= 0 && iv4[iv_order[characteristics4]] != 31)
             {
                 MessageBox.Show("Invalid Characteristic for Pokémon 4.");
-                return;
+                return null;
             }
             if (characteristics5 >= 0 && iv5[iv_order[characteristics5]] != 31)
             {
                 MessageBox.Show("Invalid Characteristic for Pokémon 5.");
-                return;
+                return null;
             }
             int[] fixedIV = { -1, -1, -1, -1, -1 };
             int[] consecutiveIVs = CheckIVs(ref fixedIV);
-            
+
             if (pkmn1.FlawlessIVs == 1)
             {
-                if(fixedIV[0] == -1)
+                if (fixedIV[0] == -1)
                 {
                     MessageBox.Show("Invalid IV for Pokémon 1.");
-                    return;
+                    return null;
                 }
-                SearchOneIV(fixedIV[0]);
-                return;
+                return SearchOneIV(fixedIV[0]);
             }
 
-            if(consecutiveIVs[4] == -1)
+            if (consecutiveIVs[4] == -1)
             {
                 MessageBox.Show("Invalid IVs for first Pokémon. Use \"Check IVs\" option to check your IVs.");
-                return;
+                return null;
             }
             // 2+ search
             // calculate seed LSB
@@ -949,14 +958,15 @@ namespace SeedSearcherGui
             {
                 LSB = 1 - candidates[0] & 1;
                 characteristics1 = (candidates[0] + 4) % 6;
-            } else
+            }
+            else
             {
-                if(candidates.Count == 0) 
+                if (candidates.Count == 0)
                 {
                     var result = Util.Prompt(MessageBoxButtons.YesNo, "Entered characteristics seem to be wrong. This might increase the search time. Do you want to start the search anyway?");
-                    if(result == DialogResult.No)
+                    if (result == DialogResult.No)
                     {
-                        return;
+                        return null;
                     }
                 }
                 characteristics1 = -1;
@@ -964,9 +974,11 @@ namespace SeedSearcherGui
 
             SeedSearcher searcher = new SeedSearcher(consecutiveIVs[5] == -1 ? SeedSearcher.Mode.Star35_5 : SeedSearcher.Mode.Star35_6);
             SeedSearcher.SetSixFirstCondition(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, noGender1, HA1);
-            if(GB_42.Enabled) { 
+            if (GB_42.Enabled)
+            {
                 SeedSearcher.SetSixSecondCondition(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, noGender2, HA2);
-            } else
+            }
+            else
             {
                 SeedSearcher.SetSixSecondCondition(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, noGender3, HA3);
             }
@@ -977,15 +989,14 @@ namespace SeedSearcherGui
 
             if (consecutiveIVs[5] == -1)
             {
-                
+
                 SeedSearcher.SetTargetCondition5(consecutiveIVs[0], consecutiveIVs[1], consecutiveIVs[2], consecutiveIVs[3], consecutiveIVs[4]);
             }
             else
             {
                 SeedSearcher.SetTargetCondition6(consecutiveIVs[0], consecutiveIVs[1], consecutiveIVs[2], consecutiveIVs[3], consecutiveIVs[4], consecutiveIVs[5]);
             }
-
-            SearchImpl(searcher);
+            return searcher;
         }
 
         async void SearchImpl(SeedSearcher searcher)
@@ -1188,6 +1199,46 @@ namespace SeedSearcherGui
         {
             var f = new Results(SeedResult.Text, CB_Den, CB_Species4.Items, GameStrings);
             f.Show();
+        }
+
+        private void checkSeedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SeedSearcher searcher = CheckInput();
+            if (searcher != null)
+            {
+                string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Seed you want to check.", "Enter Seed", "0");
+                ulong seed = 0;
+                try
+                {
+                    seed = ulong.Parse(UserAnswer, System.Globalization.NumberStyles.HexNumber);
+                }
+                catch (System.FormatException ex)
+                {
+                    Util.Prompt(MessageBoxButtons.OK, "Invalid Seed Number");
+                }
+                var res = searcher.TestInputSeed(seed);
+                switch(res)
+                {
+                    case 0:
+                        Util.Prompt(MessageBoxButtons.OK, "Characteristics do not match.");
+                        return;
+                    case 1:
+                        Util.Prompt(MessageBoxButtons.OK, "First Pokémon (Day4) does not match");
+                        return;
+                    case 2:
+                        Util.Prompt(MessageBoxButtons.OK, "Second Pokémon (Day4) does not match");
+                        return;
+                    case 3:
+                        Util.Prompt(MessageBoxButtons.OK, "Third Pokémon (Day5) does not match");
+                        return;
+                    case 4:
+                        Util.Prompt(MessageBoxButtons.OK, "Fourth Pokémon (Day6) does not match");
+                        return;
+                    case 5:
+                        Util.Prompt(MessageBoxButtons.OK, "Seed matches.");
+                        return;
+                }
+            }
         }
     }
 }

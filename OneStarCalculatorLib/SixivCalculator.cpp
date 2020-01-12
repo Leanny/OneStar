@@ -152,7 +152,7 @@ void PrepareSix(int ivOffset)
 
 inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	if (g_LSB != -1 && g_LSB != (seed & 1)) {
-		return 100;
+		return 0;
 	}
 	// ここから絞り込み
 	xoroshiro.SetSeed(seed);
@@ -195,7 +195,7 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 		// reroll回数
 		if (offset != g_IvOffset)
 		{
-			return 3;
+			return 1;
 		}
 
 		// 個体値
@@ -205,12 +205,12 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 			{
 				if (l_First.ivs[i] != 31)
 				{
-					return 4;
+					return 1;
 				}
 			}
 			else if (l_First.ivs[i] != xoroshiro.Next(0x1F))
 			{
-				return 50;
+				return 1;
 			}
 		}
 
@@ -228,7 +228,7 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 		}
 		if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
 		{
-			return 5;
+			return 1;
 		}
 
 		// 性別値
@@ -247,29 +247,29 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 
 		if (nature != l_First.nature)
 		{
-			return 7;
+			return 1;
 		}
 	}
 
 	xoroshiro.SetSeed(seed);
 	if (!TestPkmn(xoroshiro, l_Second)) {
-		return 8;
+		return 2;
 	}
 
 	// 2匹目
 	_u64 nextSeed = seed + Const::c_XoroshiroConst;
 	xoroshiro.SetSeed(nextSeed);
 	if (!TestPkmn(xoroshiro, l_Third)) {
-		return 9;
+		return 3;
 	}
 
 	// 3匹目
 	nextSeed = seed + Const::c_XoroshiroConst + Const::c_XoroshiroConst;
 	xoroshiro.SetSeed(nextSeed);
 	if (!TestPkmn(xoroshiro, l_Fourth)) {
-		return 10;
+		return 4;
 	}
-	return 11;
+	return 5;
 }
 
 _u64 SearchSix(_u64 ivs)

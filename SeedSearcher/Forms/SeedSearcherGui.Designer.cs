@@ -165,6 +165,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.日本語ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -2015,7 +2016,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
-            this.日本語ToolStripMenuItem});
+            this.日本語ToolStripMenuItem,
+            this.checkSeedToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1103, 28);
@@ -2035,6 +2037,13 @@
             this.日本語ToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
             this.日本語ToolStripMenuItem.Text = "日本語";
             this.日本語ToolStripMenuItem.Click += new System.EventHandler(this.NihongoToolStripMenuItem_Click);
+            // 
+            // checkSeedToolStripMenuItem
+            // 
+            this.checkSeedToolStripMenuItem.Name = "checkSeedToolStripMenuItem";
+            this.checkSeedToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
+            this.checkSeedToolStripMenuItem.Text = "Check Seed";
+            this.checkSeedToolStripMenuItem.Click += new System.EventHandler(this.checkSeedToolStripMenuItem_Click);
             // 
             // SeedSearcherGui
             // 
@@ -2253,6 +2262,7 @@
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 日本語ToolStripMenuItem;
         private System.Windows.Forms.Button BT_Table;
+        private System.Windows.Forms.ToolStripMenuItem checkSeedToolStripMenuItem;
     }
 }
 

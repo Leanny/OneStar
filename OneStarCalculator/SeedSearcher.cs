@@ -78,14 +78,42 @@ namespace OneStarCalculator
 		static extern uint TestSixSeed(ulong seed);
 
 		static readonly ulong shift = 0x7817eba09827c0eful;
+		static readonly ulong frontshift = 0xFFFFFFFFFFFFFFFFul - shift + 1;
 
+
+		public uint TestInputSeed(ulong seed)
+		{
+			uint max = 0;
+			for(int i=0; i < 10; i++)
+			{
+				Prepare(i);
+				uint tmp;
+				if (m_Mode == Mode.Star12)
+				{
+					tmp = TestSeed(seed);
+				}
+				else
+				{
+					tmp = TestSixSeed(seed + frontshift);
+				}
+				if(tmp > max)
+				{
+					max = tmp;
+				}
+				if(tmp == 5)
+				{
+					return 5;
+				}
+			}
+			return max;
+		}
 		public void Calculate(int minRerolls, int maxRerolls, Label updateLbl)
 		{
 			Result.Clear();
 
 			if (m_Mode == Mode.Star12)
 			{
-				if(TestSeed(0) != 7)
+				if(TestSeed(0) != 5)
 				{
 					// 探索範囲
 					int searchLower = 0;
@@ -118,7 +146,7 @@ namespace OneStarCalculator
 			}
 			else
 			{
-				if (TestSixSeed(0) != 11)
+				if (TestSixSeed(0) != 5)
 				{
 					// 探索範囲
 					int searchLower = 0;
