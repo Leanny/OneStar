@@ -30,9 +30,9 @@ namespace SeedSearcherGui
             InitializeComponent();
             CB_Game.SelectedIndex = 0;
             CB_Rarity.SelectedIndex = 0;
-            CB_Species = new ComboBox[] { CB_Species1, CB_Species2 , CB_Species3 , CB_Species4 , CB_Species5 };
-            NUD_Stats = new NumericUpDown[] { HP1, ATK1, DEF1, SPA1, SPD1, SPE1, HP2, ATK2, DEF2, SPA2, SPD2, SPE2, 
-                                              HP3, ATK3, DEF3, SPA3, SPD3, SPE3, HP4, ATK4, DEF4, SPA4, SPD4, SPE4, 
+            CB_Species = new ComboBox[] { CB_Species1, CB_Species2, CB_Species3, CB_Species4, CB_Species5 };
+            NUD_Stats = new NumericUpDown[] { HP1, ATK1, DEF1, SPA1, SPD1, SPE1, HP2, ATK2, DEF2, SPA2, SPD2, SPE2,
+                                              HP3, ATK3, DEF3, SPA3, SPD3, SPE3, HP4, ATK4, DEF4, SPA4, SPD4, SPE4,
                                               HP5, ATK5, DEF5, SPA5, SPD5, SPE5};
             CB_Nature = new ComboBox[] { CB_Nature1, CB_Nature2, CB_Nature3, CB_Nature4, CB_Nature5 };
             CB_Characteristic = new ComboBox[] { CB_Characteristic1, CB_Characteristic2, CB_Characteristic3, CB_Characteristic4, CB_Characteristic5 };
@@ -47,7 +47,7 @@ namespace SeedSearcherGui
             LBLAO.Text = "";
 
 
-            foreach(var field in CB_Nature)
+            foreach (var field in CB_Nature)
             {
                 field.SelectedIndex = 0;
             }
@@ -58,10 +58,11 @@ namespace SeedSearcherGui
             BT_Table.Enabled = false;
             doneLoading = true;
             CB_Den.SelectedIndex = 1;
-            if(Properties.Settings.Default.Language == 0)
+            if (Properties.Settings.Default.Language == 0)
             {
                 NihongoToolStripMenuItem_Click(null, null);
-            } else
+            }
+            else
             {
                 englishToolStripMenuItem_Click(null, null);
             }
@@ -70,11 +71,11 @@ namespace SeedSearcherGui
         private void PopulateLanguage(int l)
         {
             GameStrings = GameInfo.GetStrings(l);
-            foreach(var cb in CB_Nature)
+            foreach (var cb in CB_Nature)
             {
                 int old_idx = cb.SelectedIndex;
                 cb.Items.Clear();
-                for(int i=0; i < GameStrings.natures.Length; i++)
+                for (int i = 0; i < GameStrings.natures.Length; i++)
                 {
                     cb.Items.Add(new ComboboxItem(GameStrings.natures[i], i));
                 }
@@ -85,7 +86,8 @@ namespace SeedSearcherGui
                 int old_idx = cb.SelectedIndex;
                 cb.Items.Clear();
                 cb.Items.Add(Properties.strings.Unknown);
-                for(int i=1; i < GameStrings.characteristics.Length; i+=5) {
+                for (int i = 1; i < GameStrings.characteristics.Length; i += 5)
+                {
                     cb.Items.Add(GameStrings.characteristics[i]);
                 }
                 cb.SelectedIndex = old_idx;
@@ -134,7 +136,7 @@ namespace SeedSearcherGui
 
             CB_Den.SelectedIndex = old_den_idx;
 
-            for(int i=0; i < CB_Species.Length; i++)
+            for (int i = 0; i < CB_Species.Length; i++)
             {
                 CB_Species[i].SelectedIndex = species_idx[i];
             }
@@ -142,7 +144,7 @@ namespace SeedSearcherGui
             LBL_Rarity.Text = Properties.strings.Rarity;
             LBL_Den.Text = Properties.strings.Den;
             LBL_Game.Text = Properties.strings.Game;
-            foreach(var lbl in new Label[]{ LBL_Ability1, LBL_Ability2, LBL_Ability3, LBL_Ability4, LBL_Ability5 })
+            foreach (var lbl in new Label[] { LBL_Ability1, LBL_Ability2, LBL_Ability3, LBL_Ability4, LBL_Ability5 })
             {
                 lbl.Text = Properties.strings.Ability;
             }
@@ -201,31 +203,41 @@ namespace SeedSearcherGui
         private void CB_Den_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!doneLoading) return;
-            foreach(ComboBox cb in CB_Species)
+            foreach (ComboBox cb in CB_Species)
             {
                 cb.Items.Clear();
             }
             RaidTemplateTable toUse = GetTableToUse();
             for (int stars = 0; stars < 5; stars++)
+            {
+                foreach (var entry in toUse.Entries)
                 {
-                    foreach (var entry in toUse.Entries)
+                    // skip problematic ones 
+                    var abilities = PersonalTable.SWSH.GetAbilities(entry.Species, entry.AltForm);
+                    // either all abilities are the same or it only has exactly 1 ability
+                    if ((entry.Ability == 4 && abilities[0] == abilities[1] && abilities[0] == abilities[2]) || entry.Ability < 3)
                     {
-                        if(entry.Probabilities[stars] > 0) { 
-                            ComboboxItem item = new ComboboxItem($"{GameStrings.Species[entry.Species]} {stars + 1}\u2605 ", entry);
-                            for (int spidx=0; spidx < CB_Species.Length; spidx++)
+                        continue;
+                    }
+                    if (entry.Probabilities[stars] > 0)
+                    {
+                        ComboboxItem item = new ComboboxItem($"{GameStrings.Species[entry.Species]} {stars + 1}\u2605 ", entry);
+                        for (int spidx = 0; spidx < CB_Species.Length; spidx++)
+                        {
+                            if (spidx > 2 || spidx == 0 && entry.FlawlessIVs <= 3)
                             {
-                                if(spidx > 2 || spidx == 0 && entry.FlawlessIVs <= 3) { 
-                                    ComboBox cb = CB_Species[spidx];
-                                    cb.Items.Add(item);
-                                } 
+                                ComboBox cb = CB_Species[spidx];
+                                cb.Items.Add(item);
                             }
                         }
                     }
                 }
+            }
 
             foreach (ComboBox cb in CB_Species)
             {
-                if(cb.Items.Count > 0) { 
+                if (cb.Items.Count > 0)
+                {
                     cb.SelectedIndex = 0;
                 }
             }
@@ -283,7 +295,7 @@ namespace SeedSearcherGui
             int[] iv1 = { 0, 0, 0, 0, 0, 0 };
             int minIV = (int)((RaidTemplate)((ComboboxItem)CB_Species[0].SelectedItem).Value).FlawlessIVs;
             int[] fixedIV = { minIV, minIV + 1, minIV + 2 };
-            int[] setIVs = { -1, -1, -1, -1, -1, -1, -1, -1};
+            int[] setIVs = { -1, -1, -1, -1, -1, -1, -1, -1 };
             int idx1 = 0;
             int idx2 = 0;
             int flawless = 0;
@@ -346,7 +358,8 @@ namespace SeedSearcherGui
                     GB_43.Enabled = false;
                     LB_Response.Text = "OK!";
                     return setIVs; // we have more than enough information
-                } else
+                }
+                else
                 {
                     RB_2nd.Visible = false;
                     RB_2nd.Checked = false;
@@ -400,7 +413,8 @@ namespace SeedSearcherGui
             GB_43.Text = String.Format(Properties.strings.Day4Follow, fixedIV[2]);
             int[] iv2 = GetNextIVs(ref fixedIVs, setIVs, fixedIV[1]);
             int unsetIV = 0;
-            if(!RB_2nd.Visible || RB_2nd.Checked) { 
+            if (!RB_2nd.Visible || RB_2nd.Checked)
+            {
                 for (int i = 0; i < 6; i++)
                 {
                     if (iv2[i] != -1)
@@ -429,7 +443,7 @@ namespace SeedSearcherGui
                     GB_42.Enabled = true;
                     PopulateSpeciesCB(CB_Species[1], entries);
                 }
-                if(RB_2nd.Visible && RB_2nd.Checked)
+                if (RB_2nd.Visible && RB_2nd.Checked)
                 {
                     if (setIVs[4] != -1)
                     {
@@ -533,9 +547,10 @@ namespace SeedSearcherGui
             int[] iv = { -1, -1, -1, -1, -1, -1 };
             int ividx = 0;
             int setividx = 0;
-            foreach(int idx in fixedIVs)
+            foreach (int idx in fixedIVs)
             {
-                if (idx >= 0) { 
+                if (idx >= 0)
+                {
                     iv[idx] = 31;
                     ividx++;
                 }
@@ -549,7 +564,7 @@ namespace SeedSearcherGui
                     fixedIVs[ividx++] = tmp;
                 }
             }
-            for(int i=0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (iv[i] == -1 && setividx < setIVs.Length)
                 {
@@ -582,7 +597,7 @@ namespace SeedSearcherGui
 
         private void shiftCandidates(ref List<int> candidates)
         {
-            for(int i=0; i < candidates.Count; i++)
+            for (int i = 0; i < candidates.Count; i++)
             {
                 candidates[i] = (candidates[i] + 1) % 6;
             }
@@ -649,7 +664,8 @@ namespace SeedSearcherGui
             {
                 LSB = 1 - (candidates[0] & 1);
                 characteristics1 = candidates[0];
-            } else
+            }
+            else
             {
                 if (candidates.Count == 0)
                 {
@@ -661,7 +677,7 @@ namespace SeedSearcherGui
                 }
                 characteristics1 = -1;
             }
-            int nature1 = (int) ((ComboboxItem) CB_Nature1.SelectedItem).Value;
+            int nature1 = (int)((ComboboxItem)CB_Nature1.SelectedItem).Value;
             int nature2 = (int)((ComboboxItem)CB_Nature4.SelectedItem).Value;
             int nature3 = (int)((ComboboxItem)CB_Nature5.SelectedItem).Value;
 
@@ -688,11 +704,11 @@ namespace SeedSearcherGui
         private void BT_Search_Click(object sender, EventArgs e)
         {
             SeedSearcher searcher = CheckInput();
-            if(searcher != null)
+            if (searcher != null)
             {
                 SearchImpl(searcher);
             }
-            
+
         }
 
         private SeedSearcher CheckInput()
@@ -1012,8 +1028,8 @@ namespace SeedSearcherGui
             GB_Left.Enabled = false;
             BT_newsearch.Enabled = false;
             SeedResult.Text = "";
-            int minRerolls = (int) NUD_IVMin.Value;
-            int maxRerolls = (int) NUD_IVMax.Value;
+            int minRerolls = (int)NUD_IVMin.Value;
+            int maxRerolls = (int)NUD_IVMax.Value;
             BT_Search.Enabled = false;
             BT_Search.Text = "Searching...";
             // 時間計測
@@ -1022,7 +1038,7 @@ namespace SeedSearcherGui
 
             await Task.Run(() =>
             {
-               searcher.Calculate(minRerolls, maxRerolls, LBL_IVDev);
+                searcher.Calculate(minRerolls, maxRerolls, LBL_IVDev);
             });
 
             stopWatch.Stop();
@@ -1101,7 +1117,7 @@ namespace SeedSearcherGui
         {
             abilityBox.Items.Clear();
             abilityBox.Items.Add(Properties.strings.AbilityNormal);
-            if(a < 3)
+            if (a < 3)
             {
                 int ability = abilities[a];
                 var name = GameStrings.Ability[ability] + AbilitySuffix[a];
@@ -1132,7 +1148,8 @@ namespace SeedSearcherGui
 
         private void RB_3rd_CheckedChanged(object sender, EventArgs e)
         {
-            if(RB_3rd.Checked) { 
+            if (RB_3rd.Checked)
+            {
                 RB_2nd.Checked = false;
                 RB_3rd.Checked = true;
             }
@@ -1141,7 +1158,7 @@ namespace SeedSearcherGui
 
         private void NUD_IVMin_ValueChanged(object sender, EventArgs e)
         {
-            if(NUD_IVMax.Value < NUD_IVMin.Value)
+            if (NUD_IVMax.Value < NUD_IVMin.Value)
             {
                 NUD_IVMax.Value = NUD_IVMin.Value;
             }
@@ -1154,7 +1171,7 @@ namespace SeedSearcherGui
             {
                 NUD_IVMin.Value = NUD_IVMax.Value;
             }
-            NUD_IVMin.Maximum= NUD_IVMax.Value;
+            NUD_IVMin.Maximum = NUD_IVMax.Value;
         }
 
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1186,13 +1203,14 @@ namespace SeedSearcherGui
             RB_2nd.Visible = false;
             RB_3rd.Visible = false;
             RB_3rd.Checked = false;
-            foreach(var nud in NUD_Stats)
+            foreach (var nud in NUD_Stats)
             {
                 nud.Value = 0;
             }
-            foreach(var cb in CB_Species)
+            foreach (var cb in CB_Species)
             {
-                if(cb.Items.Count > 0) { 
+                if (cb.Items.Count > 0)
+                {
                     cb.SelectedIndex = 0;
                 }
             }
@@ -1229,7 +1247,7 @@ namespace SeedSearcherGui
                     Util.Prompt(MessageBoxButtons.OK, "Invalid Seed Number");
                 }
                 var res = searcher.TestInputSeed(seed);
-                switch(res)
+                switch (res)
                 {
                     case 0:
                         Util.Prompt(MessageBoxButtons.OK, "Characteristics do not match.");
@@ -1263,7 +1281,8 @@ namespace SeedSearcherGui
 
         private void HP2_ValueChanged(object sender, EventArgs e)
         {
-            if(!dontChange) { 
+            if (!dontChange)
+            {
                 RB_2nd.Checked = true;
             }
         }
