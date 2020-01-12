@@ -12,7 +12,7 @@ namespace SeedSearcherGui
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SeedSearcherGui.Forms.SeedSearcherGui());
+            Application.Run(new SeedSearcherGui());
         }
     }
 }
