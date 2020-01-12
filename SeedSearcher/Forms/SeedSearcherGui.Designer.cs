@@ -1,4 +1,4 @@
-﻿namespace SeedSearcherGui.Forms
+﻿namespace SeedSearcherGui
 {
     partial class SeedSearcherGui
     {

@@ -3,14 +3,9 @@ using PKHeX_Raid_Plugin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SeedSearcherGui.Forms
+namespace SeedSearcherGui
 {
     public partial class Results : Form
     {
@@ -228,7 +223,7 @@ namespace SeedSearcherGui.Forms
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            var result = Prompt(MessageBoxButtons.YesNo, "This might take a long time. Are you sure you want to start the search?");
+            var result = Util.Prompt(MessageBoxButtons.YesNo, "This might take a long time. Are you sure you want to start the search?");
             if (result != DialogResult.Yes)
                 return;
 
@@ -251,12 +246,6 @@ namespace SeedSearcherGui.Forms
                 break;
             }
             ((ISupportInitialize)raidContent).EndInit();
-        }
-        internal static DialogResult Prompt(MessageBoxButtons btn, params string[] lines)
-        {
-            System.Media.SystemSounds.Question.Play();
-            string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
-            return MessageBox.Show(msg, "Prompt", btn, MessageBoxIcon.Asterisk);
         }
     }
 }

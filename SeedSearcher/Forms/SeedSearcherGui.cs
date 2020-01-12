@@ -12,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SeedSearcherGui.Forms
+namespace SeedSearcherGui
 {
     public partial class SeedSearcherGui : Form
     {
@@ -946,6 +946,10 @@ namespace SeedSearcherGui.Forms
                 characteristics1 = (candidates[0] + 4) % 6;
             } else
             {
+                if(candidates.Count == 0) 
+                {
+                    
+                }
                 characteristics1 = -1;
             }
 
