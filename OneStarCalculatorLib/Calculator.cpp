@@ -309,14 +309,6 @@ _u64 Search(_u64 ivs)
 		} while (ec == 0xFFFFFFFFu);
 		if (l_First.characteristic > -1) {
 			int characteristic = ec % 6;
-			for (int i = 0; i < 6; ++i)
-			{
-				if (l_First.IsCharacterized((characteristic + i) % 6))
-				{
-					characteristic = (characteristic + i) % 6;
-					break;
-				}
-			}
 			if (characteristic != l_First.characteristic)
 			{
 				continue;

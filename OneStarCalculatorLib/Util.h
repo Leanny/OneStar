@@ -40,27 +40,7 @@ struct PokemonData
 
 
 inline bool TestPkmn(XoroshiroState xoroshiro, PokemonData pkmn) {
-	unsigned int ec = -1;
-	do {
-		ec = xoroshiro.Next(0xFFFFFFFFu);
-	} while (ec == 0xFFFFFFFFu);
-
-	if (pkmn.characteristic > -1) {
-		int characteristic = ec % 6;
-		for (int i = 0; i < 6; ++i)
-		{
-			if (pkmn.IsCharacterized((characteristic + i) % 6))
-			{
-				characteristic = (characteristic + i) % 6;
-				break;
-			}
-		}
-		if (characteristic != pkmn.characteristic)
-		{
-			return false;
-		}
-	}
-
+	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // EC
 	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
 	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
 
