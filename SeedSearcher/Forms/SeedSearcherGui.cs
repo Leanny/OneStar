@@ -320,10 +320,17 @@ namespace SeedSearcherGui
             }
             if (!GB_42.Enabled && flawless > fixedIV[0])
             {
-                LB_Response.Text = "Not enough info.";
-                GB_42.Enabled = true;
-                PopulateSpeciesCB(CB_Species[1], GetEntriesWithIV(fixedIV[1]));
-                return null;
+                if(flawless == 1) { 
+                    LB_Response.Text = "Not enough info.";
+                    GB_42.Enabled = true;
+                    PopulateSpeciesCB(CB_Species[1], GetEntriesWithIV(fixedIV[1]));
+                    return null;
+                } else
+                {
+                    LB_Response.Text = "Please use a different Pokémon.";
+                    return null;
+
+                }
             }
             if (flawless < fixedIV[0])
             {
