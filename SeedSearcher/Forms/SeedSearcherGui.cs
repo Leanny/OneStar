@@ -652,6 +652,7 @@ namespace SeedSearcherGui
             if (candidates.Count == 1)
             {
                 LSB = 1 - (candidates[0] & 1);
+                characteristics1 = candidates[0];
             } else
             {
                 if (candidates.Count == 0)
