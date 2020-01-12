@@ -24,6 +24,7 @@ namespace SeedSearcherGui
         private bool doneLoading = false;
         private readonly NumericUpDown[] NUD_Stats;
         private GameStrings GameStrings = GameInfo.Strings;
+        private bool dontChange = false;
         public SeedSearcherGui()
         {
             InitializeComponent();
@@ -525,7 +526,9 @@ namespace SeedSearcherGui
         private void BT_IVCheck(object sender, EventArgs e)
         {
             int[] res = { -1, -1, -1, -1, -1 };
+            dontChange = true;
             CheckIVs(ref res);
+            dontChange = false;
         }
 
         private int[] GetNextIVs(ref int[] fixedIVs, int[] setIVs, int fixedIVNum)
@@ -890,8 +893,9 @@ namespace SeedSearcherGui
                 return null;
             }
             int[] fixedIV = { -1, -1, -1, -1, -1 };
+            dontChange = true;
             int[] consecutiveIVs = CheckIVs(ref fixedIV);
-
+            dontChange = false;
             if (pkmn1.FlawlessIVs == 1)
             {
                 if (fixedIV[0] == -1)
@@ -1007,6 +1011,7 @@ namespace SeedSearcherGui
             GB_43.Enabled = false;
             GB_51.Enabled = false;
             GB_61.Enabled = false;
+            MenuBar.Enabled = false;
             GB_Left.Enabled = false;
             BT_newsearch.Enabled = false;
             SeedResult.Text = "";
@@ -1039,6 +1044,7 @@ namespace SeedSearcherGui
                 GB_43.Enabled = enabled[2];
                 GB_51.Enabled = enabled[3];
                 GB_61.Enabled = enabled[4];
+                MenuBar.Enabled = true;
             }
             else
             {
@@ -1058,11 +1064,19 @@ namespace SeedSearcherGui
 
         private void CB_Species2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!dontChange)
+            {
+                RB_2nd.Checked = true;
+            }
             Adjust_Ability(CB_Species2, CB_Ability2);
         }
 
         private void CB_Species3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!dontChange)
+            {
+                RB_3rd.Checked = true;
+            }
             Adjust_Ability(CB_Species3, CB_Ability3);
         }
 
@@ -1166,6 +1180,7 @@ namespace SeedSearcherGui
         {
             BT_Table.Enabled = false;
             GB_41.Enabled = true;
+            MenuBar.Enabled = true;
             GB_42.Enabled = false;
             GB_43.Enabled = false;
             GB_51.Enabled = false;
@@ -1238,6 +1253,21 @@ namespace SeedSearcherGui
                         Util.Prompt(MessageBoxButtons.OK, "Seed matches.");
                         return;
                 }
+            }
+        }
+
+        private void HP3_ValueChanged(object sender, EventArgs e)
+        {
+            if (!dontChange)
+            {
+                RB_3rd.Checked = true;
+            }
+        }
+
+        private void HP2_ValueChanged(object sender, EventArgs e)
+        {
+            if(!dontChange) { 
+                RB_2nd.Checked = true;
             }
         }
     }

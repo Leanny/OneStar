@@ -162,7 +162,7 @@
             this.LBL_IVDev = new System.Windows.Forms.Label();
             this.LBL_Time = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.MenuBar = new System.Windows.Forms.MenuStrip();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.日本語ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -207,7 +207,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DEF5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ATK5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HP5)).BeginInit();
-            this.menuStrip1.SuspendLayout();
+            this.MenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // GB_Left
@@ -490,6 +490,7 @@
             this.CB_Characteristic3.Name = "CB_Characteristic3";
             this.CB_Characteristic3.Size = new System.Drawing.Size(121, 24);
             this.CB_Characteristic3.TabIndex = 48;
+            this.CB_Characteristic3.SelectedIndexChanged += new System.EventHandler(this.HP3_ValueChanged);
             // 
             // LBL_Characteristic3
             // 
@@ -512,6 +513,7 @@
             this.SPE3.Name = "SPE3";
             this.SPE3.Size = new System.Drawing.Size(43, 22);
             this.SPE3.TabIndex = 45;
+            this.SPE3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.SPE3.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // SPD3
@@ -526,6 +528,7 @@
             this.SPD3.Name = "SPD3";
             this.SPD3.Size = new System.Drawing.Size(43, 22);
             this.SPD3.TabIndex = 44;
+            this.SPD3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.SPD3.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // SPA3
@@ -540,6 +543,7 @@
             this.SPA3.Name = "SPA3";
             this.SPA3.Size = new System.Drawing.Size(43, 22);
             this.SPA3.TabIndex = 43;
+            this.SPA3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.SPA3.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // DEF3
@@ -554,6 +558,7 @@
             this.DEF3.Name = "DEF3";
             this.DEF3.Size = new System.Drawing.Size(43, 22);
             this.DEF3.TabIndex = 42;
+            this.DEF3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.DEF3.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // ATK3
@@ -568,6 +573,7 @@
             this.ATK3.Name = "ATK3";
             this.ATK3.Size = new System.Drawing.Size(43, 22);
             this.ATK3.TabIndex = 41;
+            this.ATK3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.ATK3.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // HP3
@@ -582,6 +588,7 @@
             this.HP3.Name = "HP3";
             this.HP3.Size = new System.Drawing.Size(43, 22);
             this.HP3.TabIndex = 40;
+            this.HP3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.HP3.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // LBL_SPE3
@@ -648,6 +655,7 @@
             this.CB_Ability3.Name = "CB_Ability3";
             this.CB_Ability3.Size = new System.Drawing.Size(121, 24);
             this.CB_Ability3.TabIndex = 47;
+            this.CB_Ability3.SelectedIndexChanged += new System.EventHandler(this.HP3_ValueChanged);
             // 
             // CB_Nature3
             // 
@@ -685,6 +693,7 @@
             this.CB_Nature3.Size = new System.Drawing.Size(121, 24);
             this.CB_Nature3.Sorted = true;
             this.CB_Nature3.TabIndex = 46;
+            this.CB_Nature3.SelectedIndexChanged += new System.EventHandler(this.HP3_ValueChanged);
             // 
             // LBL_Ability3
             // 
@@ -780,6 +789,7 @@
             this.CB_Characteristic2.Name = "CB_Characteristic2";
             this.CB_Characteristic2.Size = new System.Drawing.Size(121, 24);
             this.CB_Characteristic2.TabIndex = 10;
+            this.CB_Characteristic2.SelectedIndexChanged += new System.EventHandler(this.HP2_ValueChanged);
             // 
             // LBL_Characteristic2
             // 
@@ -802,6 +812,7 @@
             this.SPE2.Name = "SPE2";
             this.SPE2.Size = new System.Drawing.Size(43, 22);
             this.SPE2.TabIndex = 7;
+            this.SPE2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.SPE2.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // SPD2
@@ -816,6 +827,7 @@
             this.SPD2.Name = "SPD2";
             this.SPD2.Size = new System.Drawing.Size(43, 22);
             this.SPD2.TabIndex = 6;
+            this.SPD2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.SPD2.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // SPA2
@@ -830,6 +842,7 @@
             this.SPA2.Name = "SPA2";
             this.SPA2.Size = new System.Drawing.Size(43, 22);
             this.SPA2.TabIndex = 5;
+            this.SPA2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.SPA2.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // DEF2
@@ -844,6 +857,7 @@
             this.DEF2.Name = "DEF2";
             this.DEF2.Size = new System.Drawing.Size(43, 22);
             this.DEF2.TabIndex = 4;
+            this.DEF2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.DEF2.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // ATK2
@@ -858,6 +872,7 @@
             this.ATK2.Name = "ATK2";
             this.ATK2.Size = new System.Drawing.Size(43, 22);
             this.ATK2.TabIndex = 3;
+            this.ATK2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.ATK2.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // HP2
@@ -872,6 +887,7 @@
             this.HP2.Name = "HP2";
             this.HP2.Size = new System.Drawing.Size(43, 22);
             this.HP2.TabIndex = 2;
+            this.HP2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.HP2.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // LBL_SPE2
@@ -938,6 +954,7 @@
             this.CB_Ability2.Name = "CB_Ability2";
             this.CB_Ability2.Size = new System.Drawing.Size(121, 24);
             this.CB_Ability2.TabIndex = 9;
+            this.CB_Ability2.SelectedIndexChanged += new System.EventHandler(this.HP2_ValueChanged);
             // 
             // CB_Nature2
             // 
@@ -975,6 +992,7 @@
             this.CB_Nature2.Size = new System.Drawing.Size(121, 24);
             this.CB_Nature2.Sorted = true;
             this.CB_Nature2.TabIndex = 8;
+            this.CB_Nature2.SelectedIndexChanged += new System.EventHandler(this.HP2_ValueChanged);
             // 
             // LBL_Ability2
             // 
@@ -2011,18 +2029,18 @@
             this.label57.TabIndex = 10;
             this.label57.Text = "Calculation Time:";
             // 
-            // menuStrip1
+            // MenuBar
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuBar.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.MenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
             this.日本語ToolStripMenuItem,
             this.checkSeedToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1103, 28);
-            this.menuStrip1.TabIndex = 11;
-            this.menuStrip1.Text = "menuStrip1";
+            this.MenuBar.Location = new System.Drawing.Point(0, 0);
+            this.MenuBar.Name = "MenuBar";
+            this.MenuBar.Size = new System.Drawing.Size(1103, 28);
+            this.MenuBar.TabIndex = 11;
+            this.MenuBar.Text = "menuStrip1";
             // 
             // englishToolStripMenuItem
             // 
@@ -2055,7 +2073,7 @@
             this.Controls.Add(this.LBL_IVDev);
             this.Controls.Add(this.label53);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.MenuBar);
             this.Controls.Add(this.GB_61);
             this.Controls.Add(this.GB_Controls);
             this.Controls.Add(this.GB_51);
@@ -2116,8 +2134,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DEF5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ATK5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HP5)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.MenuBar.ResumeLayout(false);
+            this.MenuBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2258,7 +2276,7 @@
         private System.Windows.Forms.Label LBL_Time;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip MenuBar;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 日本語ToolStripMenuItem;
         private System.Windows.Forms.Button BT_Table;
