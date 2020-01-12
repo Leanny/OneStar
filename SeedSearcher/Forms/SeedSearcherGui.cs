@@ -201,24 +201,17 @@ namespace SeedSearcherGui
             {
                 cb.Items.Clear();
             }
+            RaidTemplateTable toUse;
             if (CB_Den.SelectedIndex == 0)
             {
-                var tables = _raidTables.SwordNestsEvent;
-                RaidTemplateTable toUse = Array.Find(tables, table => table.TableID == NestLocations.EventHash);
-                int len = toUse.Entries.Length / 5;
-                for (int i = 0; i < 5; i++)
-                {
-                    ComboboxItem item = new ComboboxItem($"{i+1}\u2605 Raid", toUse.Entries[i * len]);
-                    foreach (ComboBox cb in CB_Species)
-                    {
-                        cb.Items.Add(item);
-                    }
-                }
+                var tables = CB_Game.SelectedIndex == 0 ? _raidTables.SwordNestsEvent : _raidTables.ShieldNestsEvent;
+                toUse = Array.Find(tables, table => table.TableID == NestLocations.EventHash);
             }
             else
             {
-                RaidTemplateTable toUse = GetTableToUse();
-                for (int stars = 0; stars < 5; stars++)
+                toUse = GetTableToUse();
+            }
+            for (int stars = 0; stars < 5; stars++)
                 {
                     foreach (var entry in toUse.Entries)
                     {
@@ -234,7 +227,7 @@ namespace SeedSearcherGui
                         }
                     }
                 }
-            }
+
             foreach (ComboBox cb in CB_Species)
             {
                 if(cb.Items.Count > 0) { 
@@ -1083,6 +1076,14 @@ namespace SeedSearcherGui
         {
             abilityBox.Items.Clear();
             abilityBox.Items.Add(Properties.strings.AbilityNormal);
+            if(a < 3)
+            {
+                int ability = abilities[a];
+                var name = GameStrings.Ability[ability] + AbilitySuffix[a];
+                var ab = new ComboboxItem(name, ability);
+                abilityBox.Items.Add(ab);
+                return;
+            }
             for (var i = 0; i < abilities.Length; i++)
             {
                 int ability = abilities[i];
