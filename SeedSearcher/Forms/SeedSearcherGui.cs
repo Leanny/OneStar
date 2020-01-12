@@ -73,7 +73,10 @@ namespace SeedSearcherGui
             {
                 int old_idx = cb.SelectedIndex;
                 cb.Items.Clear();
-                cb.Items.AddRange(GameStrings.natures);
+                for(int i=0; i < GameStrings.natures.Length; i++)
+                {
+                    cb.Items.Add(new ComboboxItem(GameStrings.natures[i], i));
+                }
                 cb.SelectedIndex = old_idx;
             }
             foreach (var cb in CB_Characteristic)
@@ -658,9 +661,9 @@ namespace SeedSearcherGui
                 }
                 characteristics1 = -1;
             }
-            int nature1 = CB_Nature1.SelectedIndex;
-            int nature2 = CB_Nature4.SelectedIndex;
-            int nature3 = CB_Nature5.SelectedIndex;
+            int nature1 = (int) ((ComboboxItem) CB_Nature1.SelectedItem).Value;
+            int nature2 = (int)((ComboboxItem)CB_Nature4.SelectedItem).Value;
+            int nature3 = (int)((ComboboxItem)CB_Nature5.SelectedItem).Value;
 
             int Gender1 = PersonalTable.SWSH[pkmn1.Species].Gender;
             int Gender2 = PersonalTable.SWSH[pkmn2.Species].Gender;
@@ -742,7 +745,7 @@ namespace SeedSearcherGui
                 ability1 = CB_Ability1.SelectedIndex - 1;
                 characteristics1 = CB_Characteristic1.SelectedIndex - 1;
                 fixedIV1 = pkmn1.FlawlessIVs;
-                nature1 = CB_Nature1.SelectedIndex;
+                nature1 = (int)((ComboboxItem)CB_Nature1.SelectedItem).Value;
                 int Gender = PersonalTable.SWSH[pkmn1.Species].Gender;
                 noGender1 = Gender == 0 || Gender > 253;
                 HA1 = pkmn1.Ability == 4;
@@ -754,7 +757,7 @@ namespace SeedSearcherGui
                 ability2 = CB_Ability2.SelectedIndex - 1;
                 characteristics2 = CB_Characteristic2.SelectedIndex - 1;
                 fixedIV2 = pkmn2.FlawlessIVs;
-                nature2 = CB_Nature2.SelectedIndex;
+                nature2 = (int)((ComboboxItem)CB_Nature2.SelectedItem).Value;
                 int Gender = PersonalTable.SWSH[pkmn2.Species].Gender;
                 noGender2 = Gender == 0 || Gender > 253;
                 HA2 = pkmn2.Ability == 4;
@@ -766,7 +769,7 @@ namespace SeedSearcherGui
                 ability3 = CB_Ability3.SelectedIndex - 1;
                 characteristics3 = CB_Characteristic3.SelectedIndex - 1;
                 fixedIV3 = pkmn3.FlawlessIVs;
-                nature3 = CB_Nature3.SelectedIndex;
+                nature3 = (int)((ComboboxItem)CB_Nature3.SelectedItem).Value;
                 int Gender = PersonalTable.SWSH[pkmn3.Species].Gender;
                 noGender3 = Gender == 0 || Gender > 253;
                 HA3 = pkmn3.Ability == 4;
@@ -778,7 +781,7 @@ namespace SeedSearcherGui
                 ability4 = CB_Ability4.SelectedIndex - 1;
                 characteristics4 = CB_Characteristic4.SelectedIndex - 1;
                 fixedIV4 = pkmn4.FlawlessIVs;
-                nature4 = CB_Nature4.SelectedIndex;
+                nature4 = (int)((ComboboxItem)CB_Nature4.SelectedItem).Value;
                 int Gender = PersonalTable.SWSH[pkmn4.Species].Gender;
                 noGender4 = Gender == 0 || Gender > 253;
                 HA4 = pkmn4.Ability == 4;
@@ -790,7 +793,7 @@ namespace SeedSearcherGui
                 ability5 = CB_Ability5.SelectedIndex - 1;
                 characteristics5 = CB_Characteristic5.SelectedIndex - 1;
                 fixedIV5 = pkmn5.FlawlessIVs;
-                nature5 = CB_Nature5.SelectedIndex;
+                nature5 = (int)((ComboboxItem)CB_Nature5.SelectedItem).Value;
                 int Gender = PersonalTable.SWSH[pkmn5.Species].Gender;
                 noGender5 = Gender == 0 || Gender > 253;
                 HA5 = pkmn5.Ability == 4;

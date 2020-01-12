@@ -653,35 +653,36 @@
             this.CB_Nature3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Nature3.FormattingEnabled = true;
             this.CB_Nature3.Items.AddRange(new object[] {
-            "Hardy",
-            "Lonely",
-            "Brave",
             "Adamant",
-            "Naughty",
-            "Bold",
-            "Docile",
-            "Relaxed",
-            "Impish",
-            "Lax",
-            "Timid",
-            "Hasty",
-            "Serious",
-            "Jolly",
-            "Naive",
-            "Modest",
-            "Mild",
-            "Quiet",
             "Bashful",
-            "Rash",
+            "Bold",
+            "Brave",
             "Calm",
-            "Gentle",
-            "Sassy",
             "Careful",
-            "Quirky"});
+            "Docile",
+            "Gentle",
+            "Hardy",
+            "Hasty",
+            "Impish",
+            "Jolly",
+            "Lax",
+            "Lonely",
+            "Mild",
+            "Modest",
+            "Naive",
+            "Naughty",
+            "Quiet",
+            "Quirky",
+            "Rash",
+            "Relaxed",
+            "Sassy",
+            "Serious",
+            "Timid"});
             this.CB_Nature3.Location = new System.Drawing.Point(124, 68);
             this.CB_Nature3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Nature3.Name = "CB_Nature3";
             this.CB_Nature3.Size = new System.Drawing.Size(121, 24);
+            this.CB_Nature3.Sorted = true;
             this.CB_Nature3.TabIndex = 46;
             // 
             // LBL_Ability3
@@ -942,35 +943,36 @@
             this.CB_Nature2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Nature2.FormattingEnabled = true;
             this.CB_Nature2.Items.AddRange(new object[] {
-            "Hardy",
-            "Lonely",
-            "Brave",
             "Adamant",
-            "Naughty",
-            "Bold",
-            "Docile",
-            "Relaxed",
-            "Impish",
-            "Lax",
-            "Timid",
-            "Hasty",
-            "Serious",
-            "Jolly",
-            "Naive",
-            "Modest",
-            "Mild",
-            "Quiet",
             "Bashful",
-            "Rash",
+            "Bold",
+            "Brave",
             "Calm",
-            "Gentle",
-            "Sassy",
             "Careful",
-            "Quirky"});
+            "Docile",
+            "Gentle",
+            "Hardy",
+            "Hasty",
+            "Impish",
+            "Jolly",
+            "Lax",
+            "Lonely",
+            "Mild",
+            "Modest",
+            "Naive",
+            "Naughty",
+            "Quiet",
+            "Quirky",
+            "Rash",
+            "Relaxed",
+            "Sassy",
+            "Serious",
+            "Timid"});
             this.CB_Nature2.Location = new System.Drawing.Point(124, 68);
             this.CB_Nature2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Nature2.Name = "CB_Nature2";
             this.CB_Nature2.Size = new System.Drawing.Size(121, 24);
+            this.CB_Nature2.Sorted = true;
             this.CB_Nature2.TabIndex = 8;
             // 
             // LBL_Ability2
@@ -1240,35 +1242,36 @@
             this.CB_Nature1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Nature1.FormattingEnabled = true;
             this.CB_Nature1.Items.AddRange(new object[] {
-            "Hardy",
-            "Lonely",
-            "Brave",
             "Adamant",
-            "Naughty",
-            "Bold",
-            "Docile",
-            "Relaxed",
-            "Impish",
-            "Lax",
-            "Timid",
-            "Hasty",
-            "Serious",
-            "Jolly",
-            "Naive",
-            "Modest",
-            "Mild",
-            "Quiet",
             "Bashful",
-            "Rash",
+            "Bold",
+            "Brave",
             "Calm",
-            "Gentle",
-            "Sassy",
             "Careful",
-            "Quirky"});
+            "Docile",
+            "Gentle",
+            "Hardy",
+            "Hasty",
+            "Impish",
+            "Jolly",
+            "Lax",
+            "Lonely",
+            "Mild",
+            "Modest",
+            "Naive",
+            "Naughty",
+            "Quiet",
+            "Quirky",
+            "Rash",
+            "Relaxed",
+            "Sassy",
+            "Serious",
+            "Timid"});
             this.CB_Nature1.Location = new System.Drawing.Point(124, 68);
             this.CB_Nature1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Nature1.Name = "CB_Nature1";
             this.CB_Nature1.Size = new System.Drawing.Size(121, 24);
+            this.CB_Nature1.Sorted = true;
             this.CB_Nature1.TabIndex = 11;
             // 
             // LBL_Ability1
@@ -1517,35 +1520,36 @@
             this.CB_Nature4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Nature4.FormattingEnabled = true;
             this.CB_Nature4.Items.AddRange(new object[] {
-            "Hardy",
-            "Lonely",
-            "Brave",
             "Adamant",
-            "Naughty",
-            "Bold",
-            "Docile",
-            "Relaxed",
-            "Impish",
-            "Lax",
-            "Timid",
-            "Hasty",
-            "Serious",
-            "Jolly",
-            "Naive",
-            "Modest",
-            "Mild",
-            "Quiet",
             "Bashful",
-            "Rash",
+            "Bold",
+            "Brave",
             "Calm",
-            "Gentle",
-            "Sassy",
             "Careful",
-            "Quirky"});
+            "Docile",
+            "Gentle",
+            "Hardy",
+            "Hasty",
+            "Impish",
+            "Jolly",
+            "Lax",
+            "Lonely",
+            "Mild",
+            "Modest",
+            "Naive",
+            "Naughty",
+            "Quiet",
+            "Quirky",
+            "Rash",
+            "Relaxed",
+            "Sassy",
+            "Serious",
+            "Timid"});
             this.CB_Nature4.Location = new System.Drawing.Point(124, 98);
             this.CB_Nature4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Nature4.Name = "CB_Nature4";
             this.CB_Nature4.Size = new System.Drawing.Size(121, 24);
+            this.CB_Nature4.Sorted = true;
             this.CB_Nature4.TabIndex = 46;
             // 
             // LBL_Ability4
@@ -1891,35 +1895,36 @@
             this.CB_Nature5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Nature5.FormattingEnabled = true;
             this.CB_Nature5.Items.AddRange(new object[] {
-            "Hardy",
-            "Lonely",
-            "Brave",
             "Adamant",
-            "Naughty",
-            "Bold",
-            "Docile",
-            "Relaxed",
-            "Impish",
-            "Lax",
-            "Timid",
-            "Hasty",
-            "Serious",
-            "Jolly",
-            "Naive",
-            "Modest",
-            "Mild",
-            "Quiet",
             "Bashful",
-            "Rash",
+            "Bold",
+            "Brave",
             "Calm",
-            "Gentle",
-            "Sassy",
             "Careful",
-            "Quirky"});
+            "Docile",
+            "Gentle",
+            "Hardy",
+            "Hasty",
+            "Impish",
+            "Jolly",
+            "Lax",
+            "Lonely",
+            "Mild",
+            "Modest",
+            "Naive",
+            "Naughty",
+            "Quiet",
+            "Quirky",
+            "Rash",
+            "Relaxed",
+            "Sassy",
+            "Serious",
+            "Timid"});
             this.CB_Nature5.Location = new System.Drawing.Point(124, 68);
             this.CB_Nature5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CB_Nature5.Name = "CB_Nature5";
             this.CB_Nature5.Size = new System.Drawing.Size(121, 24);
+            this.CB_Nature5.Sorted = true;
             this.CB_Nature5.TabIndex = 46;
             // 
             // LBL_Ability5
