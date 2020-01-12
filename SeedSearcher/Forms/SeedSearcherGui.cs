@@ -842,27 +842,27 @@ namespace SeedSearcherGui
             }
             if (GB_41.Enabled && flawless1 < fixedIV1)
             {
-                MessageBox.Show("Invalid IV for Pokémon 1.");
+                MessageBox.Show("Invalid IV for Pokémon 1 (Day 4).");
                 return null;
             }
             if (GB_42.Enabled && flawless2 < fixedIV2)
             {
-                MessageBox.Show("Invalid IV for Pokémon 2.");
+                MessageBox.Show("Invalid IV for Pokémon 2 (Day 4).");
                 return null;
             }
             if (GB_43.Enabled && flawless3 < fixedIV3)
             {
-                MessageBox.Show("Invalid IV for Pokémon 3.");
+                MessageBox.Show("Invalid IV for Pokémon 3 (Day 4).");
                 return null;
             }
             if (GB_51.Enabled && flawless4 < fixedIV4)
             {
-                MessageBox.Show("Invalid IV for Pokémon 4.");
+                MessageBox.Show("Invalid IV for Pokémon 4 (Day 5).");
                 return null;
             }
             if (GB_51.Enabled && flawless5 < fixedIV5)
             {
-                MessageBox.Show("Invalid IV for Pokémon 5.");
+                MessageBox.Show("Invalid IV for Pokémon 5 (Day 6).");
                 return null;
             }
 
