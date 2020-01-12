@@ -654,6 +654,14 @@ namespace SeedSearcherGui
                 LSB = 1 - (candidates[0] & 1);
             } else
             {
+                if (candidates.Count == 0)
+                {
+                    var result = Util.Prompt(MessageBoxButtons.YesNo, "Entered characteristics seem to be wrong. This might increase the search time. Do you want to start the search anyway?");
+                    if (result == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
                 characteristics1 = -1;
             }
             int nature1 = CB_Nature1.SelectedIndex;
@@ -948,7 +956,11 @@ namespace SeedSearcherGui
             {
                 if(candidates.Count == 0) 
                 {
-                    
+                    var result = Util.Prompt(MessageBoxButtons.YesNo, "Entered characteristics seem to be wrong. This might increase the search time. Do you want to start the search anyway?");
+                    if(result == DialogResult.No)
+                    {
+                        return;
+                    }
                 }
                 characteristics1 = -1;
             }
@@ -1152,7 +1164,9 @@ namespace SeedSearcherGui
             }
             foreach(var cb in CB_Species)
             {
-                cb.SelectedIndex = 0;
+                if(cb.Items.Count > 0) { 
+                    cb.SelectedIndex = 0;
+                }
             }
             foreach (var cb in CB_Characteristic)
             {
