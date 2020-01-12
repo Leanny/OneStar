@@ -276,7 +276,7 @@ namespace SeedSearcherGui
                 {
                     if (entry.Probabilities[stars] > 0)
                     {
-                        ComboboxItem item = new ComboboxItem($"{stars + 1}\u2605 {s.Species[entry.Species]}", entry);
+                        ComboboxItem item = new ComboboxItem($"{s.Species[entry.Species]} {stars + 1}\u2605", entry);
                         species.Items.Add(item);
                     }
                 }
