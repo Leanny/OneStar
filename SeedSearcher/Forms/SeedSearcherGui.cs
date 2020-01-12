@@ -221,7 +221,12 @@ namespace SeedSearcherGui
                     }
                     if (entry.Probabilities[stars] > 0)
                     {
-                        ComboboxItem item = new ComboboxItem($"{GameStrings.Species[entry.Species]} {stars + 1}\u2605 ", entry);
+                        string gmax = "";
+                        if (entry.IsGigantamax)
+                        {
+                            gmax = "(G-Max) ";
+                        }
+                        ComboboxItem item = new ComboboxItem($"{GameStrings.Species[entry.Species]} {gmax}{stars + 1}\u2605 ", entry);
                         for (int spidx = 0; spidx < CB_Species.Length; spidx++)
                         {
                             if (spidx > 2 || spidx == 0 && entry.FlawlessIVs <= 3)
@@ -275,14 +280,18 @@ namespace SeedSearcherGui
         private void PopulateSpeciesCB(ComboBox species, RaidTemplate[] entries)
         {
             species.Items.Clear();
-            var s = GameInfo.Strings;
             for (int stars = 0; stars < 5; stars++)
             {
                 foreach (var entry in entries)
                 {
                     if (entry.Probabilities[stars] > 0)
                     {
-                        ComboboxItem item = new ComboboxItem($"{s.Species[entry.Species]} {stars + 1}\u2605", entry);
+                        string gmax = "";
+                        if(entry.IsGigantamax)
+                        {
+                            gmax = "(G-Max)";
+                        }
+                        ComboboxItem item = new ComboboxItem($"{GameStrings.Species[entry.Species]} {gmax} {stars + 1}\u2605", entry);
                         species.Items.Add(item);
                     }
                 }
