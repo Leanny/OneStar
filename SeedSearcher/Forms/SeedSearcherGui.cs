@@ -205,16 +205,7 @@ namespace SeedSearcherGui
             {
                 cb.Items.Clear();
             }
-            RaidTemplateTable toUse;
-            if (CB_Den.SelectedIndex == 0)
-            {
-                var tables = CB_Game.SelectedIndex == 0 ? _raidTables.SwordNestsEvent : _raidTables.ShieldNestsEvent;
-                toUse = Array.Find(tables, table => table.TableID == NestLocations.EventHash);
-            }
-            else
-            {
-                toUse = GetTableToUse();
-            }
+            RaidTemplateTable toUse = GetTableToUse();
             for (int stars = 0; stars < 5; stars++)
                 {
                     foreach (var entry in toUse.Entries)
@@ -250,9 +241,15 @@ namespace SeedSearcherGui
         {
             int idx = CB_Den.SelectedIndex - 1;
             if (idx >= 16) idx++;
+            RaidTemplateTable[] tables;
+            if (idx == -1)
+            {
+                tables = CB_Game.SelectedIndex == 0 ? _raidTables.SwordNestsEvent : _raidTables.ShieldNestsEvent;
+                return Array.Find(tables, table => table.TableID == NestLocations.EventHash);
+            }
             var detail = NestLocations.Nests[idx];
             DenMap.BackgroundImage = GetNestMap(detail.MapX, detail.MapY);
-            var tables = CB_Game.SelectedIndex == 0 ? _raidTables.SwordNests : _raidTables.ShieldNests;
+            tables = CB_Game.SelectedIndex == 0 ? _raidTables.SwordNests : _raidTables.ShieldNests;
             if (CB_Rarity.SelectedIndex == 0)
             {
                 return Array.Find(tables, table => table.TableID == detail.CommonHash);
