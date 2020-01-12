@@ -1,15 +1,15 @@
-﻿using PKHeX_Raid_Plugin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
-namespace SeedSearcherGui.Util
+namespace SeedSearcherGui
 {
-    static class Util
+    public static class Util
     {
-
+        static internal DialogResult Prompt(MessageBoxButtons btn, params string[] lines)
+        {
+            System.Media.SystemSounds.Question.Play();
+            string msg = string.Join(Environment.NewLine + Environment.NewLine, lines);
+            return MessageBox.Show(msg, "Prompt", btn, MessageBoxIcon.Asterisk);
+        }
     }
 }
