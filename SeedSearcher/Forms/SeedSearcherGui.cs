@@ -93,25 +93,25 @@ namespace SeedSearcherGui
 
             int old_den_idx = CB_Den.SelectedIndex;
             CB_Den.Items.Clear();
-            var entries = new string[]{ Properties.strings.Event, Properties.strings.Rolling1, Properties.strings.Rolling2, Properties.strings.Rolling3, Properties.strings.Rolling4, 
-                Properties.strings.Rolling5, Properties.strings.Rolling6, Properties.strings.Rolling7, Properties.strings.Rolling8, Properties.strings.Rolling9, 
-                Properties.strings.Dappled1, Properties.strings.Dappled2, Properties.strings.Dappled3, Properties.strings.Dappled4, Properties.strings.Dappled5, 
-                Properties.strings.Watchtower1, Properties.strings.Watchtower2, Properties.strings.East1, Properties.strings.East2, Properties.strings.East3, 
-                Properties.strings.East4, Properties.strings.West1, Properties.strings.West2, Properties.strings.West3, Properties.strings.West4, Properties.strings.West5, 
+            var entries = new string[]{ Properties.strings.Event, Properties.strings.Rolling1, Properties.strings.Rolling2, Properties.strings.Rolling3, Properties.strings.Rolling4,
+                Properties.strings.Rolling5, Properties.strings.Rolling6, Properties.strings.Rolling7, Properties.strings.Rolling8, Properties.strings.Rolling9,
+                Properties.strings.Dappled1, Properties.strings.Dappled2, Properties.strings.Dappled3, Properties.strings.Dappled4, Properties.strings.Dappled5,
+                Properties.strings.Watchtower1, Properties.strings.Watchtower2, Properties.strings.East1, Properties.strings.East2, Properties.strings.East3,
+                Properties.strings.East4, Properties.strings.West1, Properties.strings.West2, Properties.strings.West3, Properties.strings.West4, Properties.strings.West5,
                 Properties.strings.West6, Properties.strings.Axew1, Properties.strings.South1, Properties.strings.South2, Properties.strings.South3, Properties.strings.South4,
-                Properties.strings.South5, Properties.strings.Giant1, Properties.strings.Giant2, Properties.strings.Giant3, Properties.strings.Giant4, Properties.strings.Giant5, 
-                Properties.strings.North1, Properties.strings.North2, Properties.strings.North3, Properties.strings.North4, Properties.strings.North5, Properties.strings.East5, 
-                Properties.strings.North6, Properties.strings.Motostoke1, Properties.strings.Motostoke2, Properties.strings.Motostoke3, Properties.strings.Motostoke4, 
+                Properties.strings.South5, Properties.strings.Giant1, Properties.strings.Giant2, Properties.strings.Giant3, Properties.strings.Giant4, Properties.strings.Giant5,
+                Properties.strings.North1, Properties.strings.North2, Properties.strings.North3, Properties.strings.North4, Properties.strings.North5, Properties.strings.East5,
+                Properties.strings.North6, Properties.strings.Motostoke1, Properties.strings.Motostoke2, Properties.strings.Motostoke3, Properties.strings.Motostoke4,
                 Properties.strings.Bridge1, Properties.strings.Bridge2, Properties.strings.Bridge3, Properties.strings.Bridge4, Properties.strings.Bridge5, Properties.strings.Bridge6,
-                Properties.strings.Bridge7, Properties.strings.Bridge8, Properties.strings.Bridge9, Properties.strings.Stony1, Properties.strings.Stony2, Properties.strings.Stony3, 
-                Properties.strings.Stony4, Properties.strings.Stony5, Properties.strings.Stony6, Properties.strings.Stony7, Properties.strings.Stony8, Properties.strings.Stony9, 
+                Properties.strings.Bridge7, Properties.strings.Bridge8, Properties.strings.Bridge9, Properties.strings.Stony1, Properties.strings.Stony2, Properties.strings.Stony3,
+                Properties.strings.Stony4, Properties.strings.Stony5, Properties.strings.Stony6, Properties.strings.Stony7, Properties.strings.Stony8, Properties.strings.Stony9,
                 Properties.strings.Stony0, Properties.strings.Stony1, Properties.strings.Stony2, Properties.strings.Dusty1, Properties.strings.Dusty2, Properties.strings.Dusty3,
-                Properties.strings.Dusty4, Properties.strings.Dusty5, Properties.strings.Dusty6, Properties.strings.Dusty7, Properties.strings.Dusty8, Properties.strings.Giant1,
-                Properties.strings.Dusty9, Properties.strings.Giant2, Properties.strings.Giant3, Properties.strings.Giant4, Properties.strings.Giant5, Properties.strings.Hammerlocke1,
-                Properties.strings.Hammerlocke2, Properties.strings.Hammerlocke3, Properties.strings.Hammerlocke4, Properties.strings.Hammerlocke5, Properties.strings.Hammerlocke6, 
-                Properties.strings.Hammerlocke7, Properties.strings.Giant1, Properties.strings.Giant2, Properties.strings.Giant3, Properties.strings.Giant4, Properties.strings.Giant5,
+                Properties.strings.Dusty4, Properties.strings.Dusty5, Properties.strings.Dusty6, Properties.strings.Dusty7, Properties.strings.Dusty8, Properties.strings.Giant11,
+                Properties.strings.Dusty9, Properties.strings.Giant21, Properties.strings.Giant31, Properties.strings.Giant41, Properties.strings.Giant51, Properties.strings.Hammerlocke1,
+                Properties.strings.Hammerlocke2, Properties.strings.Hammerlocke3, Properties.strings.Hammerlocke4, Properties.strings.Hammerlocke5, Properties.strings.Hammerlocke6,
+                Properties.strings.Hammerlocke7, Properties.strings.Giant12, Properties.strings.Giant22, Properties.strings.Giant32, Properties.strings.Giant42, Properties.strings.Giant52,
                 Properties.strings.Lake1, Properties.strings.Lake2, Properties.strings.Lake3, Properties.strings.Lake4};
-            
+
             for (int i = 0; i < entries.Length; i++)
             {
                 int idx = i > 16 ? i + 1 : i;
