@@ -411,6 +411,7 @@ namespace SeedSearcherGui
                 LB_Response.Text = Properties.strings._1ivok;
                 GB_51.Enabled = true;
                 GB_61.Enabled = true;
+                checkSeedToolStripMenuItem.Enabled = true;
                 return setIVs;
             }
             RaidTemplate[] entries = GetEntriesWithIV(fixedIV[1]);

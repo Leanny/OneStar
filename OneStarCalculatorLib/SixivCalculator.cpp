@@ -155,6 +155,7 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, int rolls, XoroshiroState& x
 		return 0;
 	}
 	// ここから絞り込み
+	XoroshiroState tmp;
 	xoroshiro.SetSeed(seed);
 	// EC
 	unsigned int ec = -1;
@@ -205,7 +206,7 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, int rolls, XoroshiroState& x
 			{
 				if (l_First.ivs[i] != 31)
 				{
-					return 1;
+					return 103;
 				}
 			}
 			else if (l_First.ivs[i] != xoroshiro.Next(0x1F))
@@ -216,38 +217,95 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, int rolls, XoroshiroState& x
 
 		// 特性
 		int ability = 0;
-		if (l_First.isEnableDream)
-		{
+		if (l_First.ability == -2) {
+			tmp.Copy(&xoroshiro);
+			// normal
+			int ability = 0;
+			if (l_First.isEnableDream)
+			{
+				do {
+					ability = xoroshiro.Next(3);
+				} while (ability >= 3);
+			}
+			else
+			{
+				ability = xoroshiro.Next(1);
+			}
+
+			// 性別値
+			if (!l_First.isNoGender)
+			{
+				int gender = 0;
+				do {
+					gender = xoroshiro.Next(0xFF); // 性別値
+				} while (gender >= 253);
+			}
+
+			int nature = 0;
 			do {
-				ability = xoroshiro.Next(3);
-			} while (ability >= 3);
-		}
-		else
-		{
-			ability = xoroshiro.Next(1);
-		}
-		if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
-		{
-			return 1;
-		}
+				nature = xoroshiro.Next(0x1F); // 性格
+			} while (nature >= 25);
 
-		// 性別値
-		if (!l_First.isNoGender)
-		{
-			int gender = 0;
+			if (nature != l_First.nature)
+			{
+				// does not work
+				xoroshiro.Copy(&tmp);
+				// ignore ability
+				// 性別値
+				if (!l_First.isNoGender)
+				{
+					int gender = 0;
+					do {
+						gender = xoroshiro.Next(0xFF); // 性別値
+					} while (gender >= 253);
+				}
+
+				int nature = 0;
+				do {
+					nature = xoroshiro.Next(0x1F); // 性格
+				} while (nature >= 25);
+
+				if (nature != l_First.nature)
+				{
+					// both do not yield results
+					return 1;
+				}
+			}
+		}
+		else {
+			if (l_First.isEnableDream)
+			{
+				do {
+					ability = xoroshiro.Next(3);
+				} while (ability >= 3);
+			}
+			else
+			{
+				ability = xoroshiro.Next(1);
+			}
+			if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
+			{
+				return 1;
+			}
+
+			// 性別値
+			if (!l_First.isNoGender)
+			{
+				int gender = 0;
+				do {
+					gender = xoroshiro.Next(0xFF); // 性別値
+				} while (gender >= 253);
+			}
+
+			int nature = 6;
 			do {
-				gender = xoroshiro.Next(0xFF); // 性別値
-			} while (gender >= 253);
-		}
+				nature = xoroshiro.Next(0x1F); // 性格
+			} while (nature >= 25);
 
-		int nature = 6;
-		do {
-			nature = xoroshiro.Next(0x1F); // 性格
-		} while (nature >= 25);
-
-		if (nature != l_First.nature)
-		{
-			return 1;
+			if (nature != l_First.nature)
+			{
+				return 1;
+			}
 		}
 	}
 
@@ -277,6 +335,7 @@ _u64 SearchSix(_u64 ivs)
 	const int length = g_FixedIvs * 10;
 
 	XoroshiroState xoroshiro;
+	XoroshiroState tmp;
 
 	_u64 target = 0;
 
@@ -408,41 +467,100 @@ _u64 SearchSix(_u64 ivs)
 			{
 				continue;
 			}
+			if (l_First.ability == -2) {
+				tmp.Copy(&xoroshiro);
+				// normal
+				int ability = 0;
+				if (l_First.isEnableDream)
+				{
+					do {
+						ability = xoroshiro.Next(3);
+					} while (ability >= 3);
+				}
+				else
+				{
+					ability = xoroshiro.Next(1);
+				}
+				if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
+				{
+					return 10;
+				}
 
-			// 特性
-			int ability = 0;
-			if (l_First.isEnableDream)
-			{
+				// 性別値
+				if (!l_First.isNoGender)
+				{
+					int gender = 0;
+					do {
+						gender = xoroshiro.Next(0xFF); // 性別値
+					} while (gender >= 253);
+				}
+
+				int nature = 0;
 				do {
-					ability = xoroshiro.Next(3);
-				} while (ability >= 3);
-			}
-			else
-			{
-				ability = xoroshiro.Next(1);
-			}
-			if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
-			{
-				continue;
-			}
+					nature = xoroshiro.Next(0x1F); // 性格
+				} while (nature >= 25);
 
-			// 性別値
-			if (!l_First.isNoGender)
-			{
-				int gender = 0;
+				if (nature != l_First.nature)
+				{
+					// does not work
+					xoroshiro.Copy(&tmp);
+					// ignore ability
+					// 性別値
+					if (!l_First.isNoGender)
+					{
+						int gender = 0;
+						do {
+							gender = xoroshiro.Next(0xFF); // 性別値
+						} while (gender >= 253);
+					}
+
+					int nature = 0;
+					do {
+						nature = xoroshiro.Next(0x1F); // 性格
+					} while (nature >= 25);
+
+					if (nature != l_First.nature)
+					{
+						// both do not yield results
+						continue;
+					}
+				}
+			} else {
+				// 特性
+				int ability = 0;
+				if (l_First.isEnableDream)
+				{
+					do {
+						ability = xoroshiro.Next(3);
+					} while (ability >= 3);
+				}
+				else
+				{
+					ability = xoroshiro.Next(1);
+				}
+				if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
+				{
+					continue;
+				}
+
+				// 性別値
+				if (!l_First.isNoGender)
+				{
+					int gender = 0;
+					do {
+						gender = xoroshiro.Next(0xFF); // 性別値
+					} while (gender >= 253);
+				}
+
+				int nature = 0;
 				do {
-					gender = xoroshiro.Next(0xFF); // 性別値
-				} while (gender >= 253);
-			}
+					nature = xoroshiro.Next(0x1F); // 性格
+				} while (nature >= 25);
 
-			int nature = 0;
-			do {
-				nature = xoroshiro.Next(0x1F); // 性格
-			} while (nature >= 25);
-
-			if (nature != l_First.nature)
-			{
-				continue;
+				if (nature != l_First.nature)
+				{
+					continue;
+				}
 			}
 		}
 
