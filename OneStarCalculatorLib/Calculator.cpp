@@ -146,7 +146,7 @@ void Prepare(int rerolls)
 	CalculateCoefficientData(length);
 }
 
-inline bool TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
+inline bool TestXoroshiroSeed(_u64 seed, int rolls, XoroshiroState& xoroshiro) {
 	if (g_LSB != -1 && (seed & 1) != g_LSB) {
 		return 0;
 	}
@@ -179,7 +179,7 @@ inline bool TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	for (offset = 0; xoroshiro.Next(7) >= 6; offset++); // V箇所
 
 	// reroll回数
-	if (offset != g_Rerolls)
+	if (offset != rolls)
 	{
 		return 1;
 	}
@@ -395,7 +395,7 @@ _u64 Search(_u64 ivs)
 	return 0;
 }
 
-unsigned int TestSeed(_u64 seed) {
+unsigned int TestSeed(_u64 seed, int rolls) {
 	XoroshiroState xoroshiro;
-	return TestXoroshiroSeed(seed, xoroshiro);
+	return TestXoroshiroSeed(seed, rolls, xoroshiro);
 }

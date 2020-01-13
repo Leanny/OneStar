@@ -44,7 +44,7 @@ namespace OneStarCalculator
 		static extern ulong Search(ulong ivs);
 
 		[DllImport("OneStarCalculatorLib.dll")]
-		static extern uint TestSeed(ulong seed);
+		static extern uint TestSeed(ulong seed, int rolls);
 
 		// ★3～5検索
 		[DllImport("OneStarCalculatorLib.dll")]
@@ -75,7 +75,7 @@ namespace OneStarCalculator
 		static extern ulong SearchSix(ulong ivs);
 
 		[DllImport("OneStarCalculatorLib.dll")]
-		static extern uint TestSixSeed(ulong seed);
+		static extern uint TestSixSeed(ulong seed, int rolls);
 
 		static readonly ulong shift = 0x7817eba09827c0eful;
 		static readonly ulong frontshift = 0xFFFFFFFFFFFFFFFFul - shift + 1;
@@ -86,15 +86,14 @@ namespace OneStarCalculator
 			uint max = 0;
 			for(int i=0; i < 10; i++)
 			{
-				Prepare(i);
 				uint tmp;
 				if (m_Mode == Mode.Star12)
 				{
-					tmp = TestSeed(seed);
+					tmp = TestSeed(seed, i);
 				}
 				else
 				{
-					tmp = TestSixSeed(seed + frontshift);
+					tmp = TestSixSeed(seed + frontshift, i);
 				}
 				if(tmp > max)
 				{
@@ -113,7 +112,7 @@ namespace OneStarCalculator
 
 			if (m_Mode == Mode.Star12)
 			{
-				if(TestSeed(0) != 5)
+				if(TestSeed(0, 2) != 5)
 				{
 					// 探索範囲
 					int searchLower = 0;
@@ -144,14 +143,13 @@ namespace OneStarCalculator
 					Result.Add(0);
 				}
 			}
-			else
-			{
-				if (TestSixSeed(0) != 5)
+			else {
+				// 探索範囲
+				int searchLower = 0;
+				int searchUpper = (m_Mode == Mode.Star35_5 ? 0x1FFFFFF : 0x3FFFFFFF);
+				for (int i = minRerolls; i <= maxRerolls; ++i)
 				{
-					// 探索範囲
-					int searchLower = 0;
-					int searchUpper = (m_Mode == Mode.Star35_5 ? 0x1FFFFFF : 0x3FFFFFFF);
-					for (int i = minRerolls; i <= maxRerolls; ++i)
+					if (TestSixSeed(0, i) != 5)
 					{
 						updateLbl.Text = i.ToString();
 						// C++ライブラリ側の事前計算
@@ -162,7 +160,7 @@ namespace OneStarCalculator
 							ulong result = SearchSix((ulong)ivs);
 							if (result != 0)
 							{
-								Result.Add(result+shift);
+								Result.Add(result + shift);
 								state.Stop();
 							}
 						});
@@ -171,9 +169,11 @@ namespace OneStarCalculator
 							break;
 						}
 					}
-				} else
-				{
-					Result.Add(shift);
+					else
+					{
+						Result.Add(shift);
+						break;
+					}
 				}
 			}
 		}

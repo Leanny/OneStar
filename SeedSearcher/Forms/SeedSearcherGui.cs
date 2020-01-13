@@ -25,6 +25,9 @@ namespace SeedSearcherGui
         private readonly NumericUpDown[] NUD_Stats;
         private GameStrings GameStrings = GameInfo.Strings;
         private bool dontChange = false;
+        private static readonly int UNDEFINED_ABILITY = -2;
+        private static readonly int NORMAL_ABILITY = -1;
+
         public SeedSearcherGui()
         {
             InitializeComponent();
@@ -215,13 +218,6 @@ namespace SeedSearcherGui
             {
                 foreach (var entry in toUse.Entries)
                 {
-                    // skip problematic ones 
-                    var abilities = PersonalTable.SWSH.GetAbilities(entry.Species, entry.AltForm);
-                    // either all abilities are the same or it only has exactly 1 ability
-                    if ((entry.Ability == 4 && abilities[0] == abilities[1] && abilities[0] == abilities[2]) || entry.Ability < 3)
-                    {
-                        continue;
-                    }
                     if (entry.Probabilities[stars] > 0)
                     {
                         string gmax = "";
@@ -376,6 +372,7 @@ namespace SeedSearcherGui
                     GB_42.Enabled = true;
                     GB_43.Enabled = false;
                     LB_Response.Text = "OK!";
+                    checkSeedToolStripMenuItem.Enabled = true;
                     return setIVs; // we have more than enough information
                 }
                 else
@@ -473,6 +470,7 @@ namespace SeedSearcherGui
                         GB_42.Enabled = true;
                         GB_43.Enabled = false;
                         LB_Response.Text = "OK!";
+                        checkSeedToolStripMenuItem.Enabled = true;
                         return setIVs; // we have enough information
                     }
                     else
@@ -550,6 +548,7 @@ namespace SeedSearcherGui
             GB_42.Enabled = false;
             GB_43.Enabled = true;
             LB_Response.Text = "OK!";
+            checkSeedToolStripMenuItem.Enabled = true;
             return setIVs; // we have enough information
         }
 
@@ -641,9 +640,9 @@ namespace SeedSearcherGui
                 iv3[i] = (int)NUD_Stats[i + 6 * 4].Value;
             }
 
-            int ability1 = CB_Ability1.SelectedIndex - 1;
-            int ability2 = CB_Ability4.SelectedIndex - 1;
-            int ability3 = CB_Ability5.SelectedIndex - 1;
+            int ability1 = (int)((ComboboxItem)CB_Ability1.SelectedItem).Value; ;
+            int ability2 = (int)((ComboboxItem)CB_Ability4.SelectedItem).Value; ;
+            int ability3 = (int)((ComboboxItem)CB_Ability5.SelectedItem).Value; ;
 
             int characteristics1 = CB_Characteristic1.SelectedIndex - 1;
             int characteristics2 = CB_Characteristic4.SelectedIndex - 1;
@@ -708,9 +707,9 @@ namespace SeedSearcherGui
             bool noGender2 = Gender2 == 0 || Gender2 > 253;
             bool noGender3 = Gender3 == 0 || Gender3 > 253;
 
-            bool HA1 = pkmn1.Ability == 4;
-            bool HA2 = pkmn2.Ability == 4;
-            bool HA3 = pkmn3.Ability == 4;
+            bool HA1 = pkmn1.Ability == 4 || pkmn1.Ability == 2;
+            bool HA2 = pkmn2.Ability == 4 || pkmn1.Ability == 2;
+            bool HA3 = pkmn3.Ability == 4 || pkmn1.Ability == 2;
 
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star12);
             SeedSearcher.SetFirstCondition(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, flawlessIdx, ability1, nature1, characteristics1, noGender1, HA1);
@@ -787,61 +786,61 @@ namespace SeedSearcherGui
             if (GB_41.Enabled)
             {
                 pkmn1 = (RaidTemplate)((ComboboxItem)CB_Species[0].SelectedItem).Value;
-                ability1 = CB_Ability1.SelectedIndex - 1;
+                ability1 = (int)((ComboboxItem)CB_Ability1.SelectedItem).Value;
                 characteristics1 = CB_Characteristic1.SelectedIndex - 1;
                 fixedIV1 = pkmn1.FlawlessIVs;
                 nature1 = (int)((ComboboxItem)CB_Nature1.SelectedItem).Value;
                 int Gender = PersonalTable.SWSH[pkmn1.Species].Gender;
                 noGender1 = Gender == 0 || Gender > 253;
-                HA1 = pkmn1.Ability == 4;
+                HA1 = pkmn1.Ability == 4 || pkmn1.Ability == 2;
             }
 
             if (GB_42.Enabled)
             {
                 pkmn2 = (RaidTemplate)((ComboboxItem)CB_Species[1].SelectedItem).Value;
-                ability2 = CB_Ability2.SelectedIndex - 1;
+                ability2 = (int)((ComboboxItem)CB_Ability2.SelectedItem).Value;
                 characteristics2 = CB_Characteristic2.SelectedIndex - 1;
                 fixedIV2 = pkmn2.FlawlessIVs;
                 nature2 = (int)((ComboboxItem)CB_Nature2.SelectedItem).Value;
                 int Gender = PersonalTable.SWSH[pkmn2.Species].Gender;
                 noGender2 = Gender == 0 || Gender > 253;
-                HA2 = pkmn2.Ability == 4;
+                HA2 = pkmn2.Ability == 4 || pkmn2.Ability == 2;
             }
 
             if (GB_43.Enabled)
             {
                 pkmn3 = (RaidTemplate)((ComboboxItem)CB_Species[2].SelectedItem).Value;
-                ability3 = CB_Ability3.SelectedIndex - 1;
+                ability3 = (int)((ComboboxItem)CB_Ability3.SelectedItem).Value;
                 characteristics3 = CB_Characteristic3.SelectedIndex - 1;
                 fixedIV3 = pkmn3.FlawlessIVs;
                 nature3 = (int)((ComboboxItem)CB_Nature3.SelectedItem).Value;
                 int Gender = PersonalTable.SWSH[pkmn3.Species].Gender;
                 noGender3 = Gender == 0 || Gender > 253;
-                HA3 = pkmn3.Ability == 4;
+                HA3 = pkmn3.Ability == 4 || pkmn3.Ability == 2;
             }
 
             if (GB_51.Enabled)
             {
                 pkmn4 = (RaidTemplate)((ComboboxItem)CB_Species[3].SelectedItem).Value;
-                ability4 = CB_Ability4.SelectedIndex - 1;
+                ability4 = (int)((ComboboxItem)CB_Ability4.SelectedItem).Value;
                 characteristics4 = CB_Characteristic4.SelectedIndex - 1;
                 fixedIV4 = pkmn4.FlawlessIVs;
                 nature4 = (int)((ComboboxItem)CB_Nature4.SelectedItem).Value;
                 int Gender = PersonalTable.SWSH[pkmn4.Species].Gender;
                 noGender4 = Gender == 0 || Gender > 253;
-                HA4 = pkmn4.Ability == 4;
+                HA4 = pkmn4.Ability == 4 || pkmn4.Ability == 2;
             }
 
             if (GB_61.Enabled)
             {
                 pkmn5 = (RaidTemplate)((ComboboxItem)CB_Species[4].SelectedItem).Value;
-                ability5 = CB_Ability5.SelectedIndex - 1;
+                ability5 = (int)((ComboboxItem)CB_Ability5.SelectedItem).Value;
                 characteristics5 = CB_Characteristic5.SelectedIndex - 1;
                 fixedIV5 = pkmn5.FlawlessIVs;
                 nature5 = (int)((ComboboxItem)CB_Nature5.SelectedItem).Value;
                 int Gender = PersonalTable.SWSH[pkmn5.Species].Gender;
                 noGender5 = Gender == 0 || Gender > 253;
-                HA5 = pkmn5.Ability == 4;
+                HA5 = pkmn5.Ability == 4 || pkmn5.Ability == 2;
             }
 
             for (int i = 0; i < 6; i++)
@@ -1135,24 +1134,48 @@ namespace SeedSearcherGui
         private void PopulateAbilityList(int[] abilities, int a, ComboBox abilityBox)
         {
             abilityBox.Items.Clear();
-            abilityBox.Items.Add(Properties.strings.AbilityNormal);
+
+            // case 1: only one ability
             if (a < 3)
             {
                 int ability = abilities[a];
-                var name = GameStrings.Ability[ability] + AbilitySuffix[a];
-                var ab = new ComboboxItem(name, ability);
+                var name = GameStrings.Ability[ability];
+                var ab = new ComboboxItem(name, UNDEFINED_ABILITY);
                 abilityBox.Items.Add(ab);
-                return;
-            }
-            for (var i = 0; i < abilities.Length; i++)
+            } else
             {
-                int ability = abilities[i];
-                if (a == 3 && abilityBox.Items.Count == 3)
-                    break;
+                if((a == 3 && abilities[0] == abilities[1]) ||
+                    (a == 4 && abilities[0] == abilities[1] && abilities[0] == abilities[2]))
+                {
+                    // one ability only
+                    int ability = abilities[0];
+                    var name = GameStrings.Ability[ability];
+                    var ab = new ComboboxItem(name, NORMAL_ABILITY);
+                    abilityBox.Items.Add(ab);
+                } else
+                {
+                    if(abilities[0] == abilities[1])
+                    {
+                        int ability = abilities[0];
+                        var name = GameStrings.Ability[ability];
+                        var ab = new ComboboxItem(name, NORMAL_ABILITY);
+                        abilityBox.Items.Add(ab);
+                    } else
+                    {
+                        for (var i = 0; i < 2; i++)
+                        {
+                            int ability = abilities[i];
+                            var name = GameStrings.Ability[ability] + AbilitySuffix[i];
+                            var ab = new ComboboxItem(name, i);
+                            abilityBox.Items.Add(ab);
+                        }
+                    }
+                    int hiddenability = abilities[2];
+                    var haname = GameStrings.Ability[hiddenability] + AbilitySuffix[2];
+                    var haab = new ComboboxItem(haname, 2);
+                    abilityBox.Items.Add(haab);
+                }
 
-                var name = GameStrings.Ability[ability] + AbilitySuffix[i];
-                var ab = new ComboboxItem(name, ability);
-                abilityBox.Items.Add(ab);
             }
         }
 
@@ -1211,6 +1234,7 @@ namespace SeedSearcherGui
 
         private void BT_newsearch_Click(object sender, EventArgs e)
         {
+            checkSeedToolStripMenuItem.Enabled = false;
             GB_Left.Enabled = true;
             BT_Table.Enabled = false;
             GB_41.Enabled = true;

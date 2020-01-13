@@ -2059,6 +2059,7 @@
             // 
             // checkSeedToolStripMenuItem
             // 
+            this.checkSeedToolStripMenuItem.Enabled = false;
             this.checkSeedToolStripMenuItem.Name = "checkSeedToolStripMenuItem";
             this.checkSeedToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
             this.checkSeedToolStripMenuItem.Text = "Check Seed";
