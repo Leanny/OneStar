@@ -138,7 +138,10 @@ namespace SeedSearcherGui
 
             for (int i = 0; i < CB_Species.Length; i++)
             {
-                CB_Species[i].SelectedIndex = species_idx[i];
+                if(CB_Species[i].Items.Count > 0) 
+                { 
+                    CB_Species[i].SelectedIndex = species_idx[i];
+                }
             }
 
             LBL_Rarity.Text = Properties.strings.Rarity;
@@ -327,7 +330,7 @@ namespace SeedSearcherGui
                     return null;
                 } else
                 {
-                    LB_Response.Text = "Please use a different Pokémon.";
+                    LB_Response.Text = "Please use a\ndifferent Pokémon.";
                     return null;
 
                 }
@@ -1208,6 +1211,7 @@ namespace SeedSearcherGui
 
         private void BT_newsearch_Click(object sender, EventArgs e)
         {
+            GB_Left.Enabled = true;
             BT_Table.Enabled = false;
             GB_41.Enabled = true;
             MenuBar.Enabled = true;
