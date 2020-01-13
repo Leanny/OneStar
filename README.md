@@ -18,8 +18,8 @@ Here, you start by advancing by 3 days. Then you need to catch a Pokémon with l
 Repeat the process, but catch any Pokémon from 1 days later and from 2 days later than the previous step, and enter the information.
 
 ## Step 3 - Calculate
-Click Caclulate. This can take a long time, depending on the power of your PC. When a result is found, it will be printed in the textbox.
+Click "Start Search". This can take a long time, depending on the power of your PC. When a result is found, it will be printed in the textbox.
 
 # Credits
-[Rusted Coil](https://github.com/rusted-coil/OneStar) and [Pattirudon](https://github.com/pattirudon/xoroshiro-inverse) - Providing the base for my tool and figuring out most of the Math.
-[Kaphotics](https://github.com/kwsch/PKHeX) - Providing PKHeX Core, a lib I used for language strings and getting all information for specific Pokémon.
+* [Rusted Coil](https://github.com/rusted-coil/OneStar) and [Pattirudon](https://github.com/pattirudon/xoroshiro-inverse) - Providing the base for my tool and figuring out most of the Math.
+* [Kaphotics](https://github.com/kwsch/PKHeX) - Providing PKHeX Core, a lib I used for language strings and getting all information for specific Pokémon.
