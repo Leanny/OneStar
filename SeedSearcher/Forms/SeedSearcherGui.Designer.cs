@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeedSearcherGui));
             this.GB_Left = new System.Windows.Forms.GroupBox();
             this.CB_Rarity = new System.Windows.Forms.ComboBox();
             this.LBL_Rarity = new System.Windows.Forms.Label();
@@ -2079,6 +2080,7 @@
             this.Controls.Add(this.GB_51);
             this.Controls.Add(this.GB_PKMN1);
             this.Controls.Add(this.GB_Left);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1121, 817);
             this.MinimizeBox = false;
