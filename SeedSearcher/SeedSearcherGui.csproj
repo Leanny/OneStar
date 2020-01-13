@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>BT132.ico</ApplicationIcon>
+    <ApplicationIcon>alcremie3.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -112,7 +112,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BT132.ico" />
+    <Content Include="alcremie3.ico" />
     <Content Include="deps\PKHeX_Raid_Plugin.dll" />
     <None Include="Resources\map.png" />
   </ItemGroup>
