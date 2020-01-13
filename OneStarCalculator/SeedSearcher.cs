@@ -151,7 +151,7 @@ namespace OneStarCalculator
 					// 探索範囲
 					int searchLower = 0;
 					int searchUpper = (m_Mode == Mode.Star35_5 ? 0x1FFFFFF : 0x3FFFFFFF);
-					for (int i = 0; i <= maxRerolls; ++i)
+					for (int i = minRerolls; i <= maxRerolls; ++i)
 					{
 						updateLbl.Text = i.ToString();
 						// C++ライブラリ側の事前計算
