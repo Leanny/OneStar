@@ -429,6 +429,17 @@ namespace SeedSearcherGui
             GB_42.Text = String.Format(Properties.strings.Day4Follow, fixedIV[1]);
             GB_43.Text = String.Format(Properties.strings.Day4Follow, fixedIV[2]);
             int[] iv2 = GetNextIVs(ref fixedIVs, setIVs, fixedIV[1]);
+            if(fixedIVs[fixedIV[0]] == -1)
+            {
+                RB_2nd.Visible = false;
+                RB_3rd.Visible = false;
+                GB_42.Enabled = false;
+                GB_43.Enabled = false;
+                GB_51.Enabled = false;
+                GB_61.Enabled = false;
+                LB_Response.Text = "NOK!";
+                return setIVs; // we have more than enough information
+            }
             int unsetIV = 0;
             if (!RB_2nd.Visible || RB_2nd.Checked)
             {
@@ -1331,5 +1342,6 @@ namespace SeedSearcherGui
                 RB_2nd.Checked = true;
             }
         }
+
     }
 }
