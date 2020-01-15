@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System;
 
 namespace OneStarCalculator
 {
@@ -44,7 +43,7 @@ namespace OneStarCalculator
 		static extern ulong Search(ulong ivs);
 
 		[DllImport("OneStarCalculatorLib.dll")]
-		static extern uint TestSeed(ulong seed, int rolls);
+		static extern uint TestSeed(ulong seed);
 
 		// ★3～5検索
 		[DllImport("OneStarCalculatorLib.dll")]
@@ -75,7 +74,7 @@ namespace OneStarCalculator
 		static extern ulong SearchSix(ulong ivs);
 
 		[DllImport("OneStarCalculatorLib.dll")]
-		static extern uint TestSixSeed(ulong seed, int rolls);
+		static extern uint TestSixSeed(ulong seed);
 
 		static readonly ulong shift = 0x7817eba09827c0eful;
 		static readonly ulong frontshift = 0xFFFFFFFFFFFFFFFFul - shift + 1;
@@ -83,36 +82,22 @@ namespace OneStarCalculator
 
 		public uint TestInputSeed(ulong seed)
 		{
-			uint max = 0;
-			for(int i=0; i < 10; i++)
+			if (m_Mode == Mode.Star12)
 			{
-				uint tmp;
-				if (m_Mode == Mode.Star12)
-				{
-					tmp = TestSeed(seed, i);
-				}
-				else
-				{
-					tmp = TestSixSeed(seed + frontshift, i);
-				}
-				if(tmp > max)
-				{
-					max = tmp;
-				}
-				if(tmp == 5)
-				{
-					return 5;
-				}
+				return TestSeed(seed);
 			}
-			return max;
+			else
+			{
+				return TestSixSeed(seed + frontshift);
+			}
 		}
+
 		public void Calculate(int minRerolls, int maxRerolls, Label updateLbl)
 		{
 			Result.Clear();
-
 			if (m_Mode == Mode.Star12)
 			{
-				if(TestSeed(0, 2) != 5)
+				if(TestSeed(0) != 5)
 				{
 					// 探索範囲
 					int searchLower = 0;
@@ -124,13 +109,12 @@ namespace OneStarCalculator
 						// C++ライブラリ側の事前計算
 						Prepare(i);
 						// 中断あり
-						Parallel.For(searchLower, searchUpper, (ivs, state) =>
+						Parallel.For(searchLower, searchUpper, ivs=>
 						{
 							ulong result = Search((ulong)ivs);
 							if (result != 0)
 							{
 								Result.Add(result);
-								state.Stop();
 							}
 						});
 						if (Result.Count > 0)
@@ -147,17 +131,18 @@ namespace OneStarCalculator
 				// 探索範囲
 				int searchLower = 0;
 				int searchUpper = (m_Mode == Mode.Star35_5 ? 0x1FFFFFF : 0x3FFFFFFF);
-				for (int i = minRerolls; i <= maxRerolls; ++i)
+				if (TestSixSeed(0) != 5)
 				{
-					if (TestSixSeed(0, i) != 5)
+					for (int i = minRerolls; i <= maxRerolls; ++i)
 					{
+
 						updateLbl.Text = i.ToString();
 						// C++ライブラリ側の事前計算
 						PrepareSix(i);
 						// 並列探索
 						Parallel.For(searchLower, searchUpper, (ivs, state) =>
 						{
-							ulong result = SearchSix((ulong)ivs);
+							ulong result = SearchSix((ulong) ivs);
 							if (result != 0)
 							{
 								Result.Add(result + shift);
@@ -169,11 +154,11 @@ namespace OneStarCalculator
 							break;
 						}
 					}
-					else
-					{
-						Result.Add(shift);
-						break;
-					}
+				}
+				else
+				{
+					Result.Add(shift);
+					break;
 				}
 			}
 		}

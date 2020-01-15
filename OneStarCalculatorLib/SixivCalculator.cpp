@@ -150,7 +150,7 @@ void PrepareSix(int ivOffset)
 	CalculateCoefficientData(length);
 }
 
-inline unsigned int TestXoroshiroSixSeed(_u64 seed, int rolls, XoroshiroState& xoroshiro) {
+inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	if (g_LSB != -1 && g_LSB != (seed & 1)) {
 		return 0;
 	}
@@ -192,12 +192,6 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, int rolls, XoroshiroState& x
 				++fixedCount;
 			}
 		} while (fixedCount < l_First.fixedIV);
-
-		// reroll回数
-		if (offset != rolls)
-		{
-			return 1;
-		}
 
 		// 個体値
 		for (int i = 0; i < 6; ++i)
@@ -588,7 +582,7 @@ _u64 SearchSix(_u64 ivs)
 	return 0;
 }
 
-unsigned int TestSixSeed(_u64 seed, int rolls) {
+unsigned int TestSixSeed(_u64 seed) {
 	XoroshiroState xoroshiro;
-	return TestXoroshiroSixSeed(seed, rolls, xoroshiro);
+	return TestXoroshiroSixSeed(seed, xoroshiro);
 }
