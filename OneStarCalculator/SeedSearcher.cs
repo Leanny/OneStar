@@ -158,7 +158,6 @@ namespace OneStarCalculator
 				else
 				{
 					Result.Add(shift);
-					break;
 				}
 			}
 		}
