@@ -108,6 +108,15 @@ void SetTargetCondition5(int iv1, int iv2, int iv3, int iv4, int iv5)
 	g_Ivs[4] = iv5;
 }
 
+void SetTargetCondition4(int iv1, int iv2, int iv3, int iv4)
+{
+	g_FixedIvs = 4;
+	g_Ivs[0] = iv1;
+	g_Ivs[1] = iv2;
+	g_Ivs[2] = iv3;
+	g_Ivs[3] = iv4;
+}
+
 void PrepareSix(int ivOffset)
 {
 	const int length = g_FixedIvs * 10;
@@ -366,6 +375,20 @@ _u64 SearchSix(_u64 ivs)
 		target |= ((32ul + g_Ivs[2] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
 		target |= ((32ul + g_Ivs[3] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
 		target |= ((32ul + g_Ivs[4] - (ivs & 0x1Ful)) & 0x1F);
+	}
+	else if (g_FixedIvs == 4)
+	{
+		// 下位25bit = 個体値
+		target |= (ivs & 0xF8000ul) << 20; // iv0_0
+		target |= (ivs & 0x7C00ul) << 15; // iv1_0
+		target |= (ivs & 0x3E0ul) << 10; // iv2_0
+		target |= (ivs & 0x1Ful) << 5; // iv3_0
+
+		// 隠された値を推定
+		target |= ((32ul + g_Ivs[0] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
+		target |= ((32ul + g_Ivs[1] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
+		target |= ((32ul + g_Ivs[2] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
+		target |= ((32ul + g_Ivs[3] - (ivs & 0x1Ful)) & 0x1F);
 	}
 	else
 	{

@@ -1,17 +1,19 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OneStarCalculator
 {
 	public class SeedSearcher
 	{
+
 		// モード
 		public enum Mode {
 			Star12,
+			Star35_4,
 			Star35_5,
-			Star35_6
+			Star35_6,
 		};
 		Mode m_Mode;
 
@@ -21,7 +23,7 @@ namespace OneStarCalculator
 		}
 
 		// 結果
-		public List<ulong> Result { get; } = new List<ulong>();
+		static public List<ulong> Result { get; } = new List<ulong>();
 
 		// ★1～2検索
 		[DllImport("OneStarCalculatorLib.dll")]
@@ -68,6 +70,9 @@ namespace OneStarCalculator
 		public static extern void SetTargetCondition5(int iv0, int iv1, int iv2, int iv3, int iv4);
 
 		[DllImport("OneStarCalculatorLib.dll")]
+		public static extern void SetTargetCondition4(int iv0, int iv1, int iv2, int iv3);
+
+		[DllImport("OneStarCalculatorLib.dll")]
 		public static extern void SetSixLSB(int bit);
 
 		[DllImport("OneStarCalculatorLib.dll")]
@@ -92,9 +97,8 @@ namespace OneStarCalculator
 			}
 		}
 
-		public void Calculate(int minRerolls, int maxRerolls, Label updateLbl)
+		public void Calculate(int minRerolls, int maxRerolls, ToolStripStatusLabel updateLbl)
 		{
-			Result.Clear();
 			if (m_Mode == Mode.Star12)
 			{
 				if(TestSeed(0) != 5)
@@ -130,7 +134,7 @@ namespace OneStarCalculator
 			else {
 				// 探索範囲
 				int searchLower = 0;
-				int searchUpper = (m_Mode == Mode.Star35_5 ? 0x1FFFFFF : 0x3FFFFFFF);
+				int searchUpper = m_Mode == Mode.Star35_5 ? 0x1FFFFFF : m_Mode == Mode.Star35_6 ? 0x3FFFFFFF : 0xFFFFF;
 				if (TestSixSeed(0) != 5)
 				{
 					for (int i = minRerolls; i <= maxRerolls; ++i)

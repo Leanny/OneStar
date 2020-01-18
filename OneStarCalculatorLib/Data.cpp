@@ -11,8 +11,8 @@ _u64 g_AnswerFlag[64];
 int g_FreeBit[64];
 int g_FreeId[64];
 
-_u64 g_CoefficientData[0x4000];
-_u64 g_SearchPattern[0x4000];
+_u64 g_CoefficientData[0x1000000];
+_u64 g_SearchPattern[0x1000000];
 
 _u64 l_Temp[256];
 
@@ -160,8 +160,8 @@ void CalculateInverseMatrix(int length)
 void CalculateCoefficientData(int length)
 {
 	// データを作る
-	unsigned short max = ((1 << (64 - length)) - 1);
-	for (unsigned short search = 0; search <= max; ++search)
+	unsigned int max = ((1 << (64 - length)) - 1);
+	for (unsigned int search = 0; search <= max; ++search)
 	{
 		g_CoefficientData[search] = 0;
 		g_SearchPattern[search] = 0;
