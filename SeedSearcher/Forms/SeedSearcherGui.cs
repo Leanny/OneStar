@@ -31,6 +31,7 @@ namespace SeedSearcherGui
         public SeedSearcherGui()
         {
             InitializeComponent();
+            dontChange = true;
             CB_Game.SelectedIndex = 0;
             CB_Rarity.SelectedIndex = 0;
             CB_Species = new ComboBox[] { CB_Species1, CB_Species2, CB_Species3, CB_Species4, CB_Species5 };
@@ -69,10 +70,12 @@ namespace SeedSearcherGui
             {
                 englishToolStripMenuItem_Click(null, null);
             }
+            dontChange = false;
         }
 
         private void PopulateLanguage(int l)
         {
+            dontChange = true;
             GameStrings = GameInfo.GetStrings(l);
             foreach (var cb in CB_Nature)
             {
@@ -195,6 +198,7 @@ namespace SeedSearcherGui
             GB_PKMN1.Text = Properties.strings.Day4;
             GB_51.Text = Properties.strings.Day5;
             GB_61.Text = Properties.strings.Day6;
+            dontChange = false;
         }
 
         private static Bitmap GetNestMap(int x, int y)
@@ -209,42 +213,29 @@ namespace SeedSearcherGui
         private void CB_Den_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!doneLoading) return;
-            foreach (ComboBox cb in CB_Species)
+            int idx = CB_Den.SelectedIndex - 1;
+            int nestIdx;
+            if (idx == -1)
             {
-                cb.Items.Clear();
+                nestIdx = -1;
             }
-            RaidTemplateTable toUse = GetTableToUse();
-            for (int stars = 0; stars < 5; stars++)
+            else
             {
-                foreach (var entry in toUse.Entries)
-                {
-                    if (entry.Probabilities[stars] > 0)
-                    {
-                        string gmax = "";
-                        if (entry.IsGigantamax)
-                        {
-                            gmax = "(G-Max) ";
-                        }
-                        ComboboxItem item = new ComboboxItem($"{GameStrings.Species[entry.Species]} {gmax}{stars + 1}\u2605 ", entry);
-                        for (int spidx = 0; spidx < CB_Species.Length; spidx++)
-                        {
-                            if (spidx > 2 || spidx == 0 && entry.FlawlessIVs <= 3)
-                            {
-                                ComboBox cb = CB_Species[spidx];
-                                cb.Items.Add(item);
-                            }
-                        }
-                    }
-                }
-            }
+                if (idx >= 16) idx++;
+                RaidTemplateTable[] tables = CB_Game.SelectedIndex == 0 ? _raidTables.SwordNests : _raidTables.ShieldNests;
+                var detail = NestLocations.Nests[idx];
+                DenMap.BackgroundImage = GetNestMap(detail.MapX, detail.MapY);
 
-            foreach (ComboBox cb in CB_Species)
-            {
-                if (cb.Items.Count > 0)
+                if (CB_Rarity.SelectedIndex == 0)
                 {
-                    cb.SelectedIndex = 0;
+                    nestIdx = Array.FindIndex(tables, table => table.TableID == detail.CommonHash);
+                }
+                else
+                {
+                    nestIdx = Array.FindIndex(tables, table => table.TableID == detail.RareHash);
                 }
             }
+            CB_Nest.SelectedIndex = nestIdx + 1;
         }
 
         private RaidTemplate[] GetEntriesWithIV(int num)
@@ -255,25 +246,15 @@ namespace SeedSearcherGui
 
         private RaidTemplateTable GetTableToUse()
         {
-            int idx = CB_Den.SelectedIndex - 1;
-            if (idx >= 16) idx++;
+            int idx = CB_Nest.SelectedIndex - 1;
             RaidTemplateTable[] tables;
             if (idx == -1)
             {
                 tables = CB_Game.SelectedIndex == 0 ? _raidTables.SwordNestsEvent : _raidTables.ShieldNestsEvent;
-                return Array.Find(tables, table => table.TableID == NestLocations.EventHash);
+                return tables[0];
             }
-            var detail = NestLocations.Nests[idx];
-            DenMap.BackgroundImage = GetNestMap(detail.MapX, detail.MapY);
             tables = CB_Game.SelectedIndex == 0 ? _raidTables.SwordNests : _raidTables.ShieldNests;
-            if (CB_Rarity.SelectedIndex == 0)
-            {
-                return Array.Find(tables, table => table.TableID == detail.CommonHash);
-            }
-            else
-            {
-                return Array.Find(tables, table => table.TableID == detail.RareHash);
-            }
+            return tables[idx];
         }
 
         private void PopulateSpeciesCB(ComboBox species, RaidTemplate[] entries)
@@ -298,6 +279,25 @@ namespace SeedSearcherGui
             species.SelectedIndex = 0;
         }
 
+        private static void ChangeGroupBoxColor(GroupBox gb, Color col)
+        {
+            if (col == Color.White) return;
+            List<Color> lstColour = new List<Color>();
+            foreach (Control c in gb.Controls)
+                lstColour.Add(c.ForeColor);
+
+            gb.ForeColor = col;
+
+            int index = 0;
+            foreach (Control c in gb.Controls)
+            {
+                c.ForeColor = lstColour[index];
+                index++;
+            }
+        }
+
+        static Color[] colors = new Color[]{ Color.White, Color.White, Color.White, Color.White, Color.Orange, Color.Blue, Color.Green, Color.White, Color.White, Color.White };
+
         private int[] CheckIVs(ref int[] fixedIVs)
         {
             int[] iv1 = { 0, 0, 0, 0, 0, 0 };
@@ -309,6 +309,8 @@ namespace SeedSearcherGui
             int flawless = 0;
             LB_Response.Text = "";
             LBLAO.Text = "";
+            int set2 = 0;
+            int set3 = 0;
             for (int i = 0; i < 6; i++)
             {
                 iv1[i] = (int)NUD_Stats[i].Value;
@@ -326,7 +328,7 @@ namespace SeedSearcherGui
                     return null;
                 } else
                 {
-                    LB_Response.Text = "Please use a\ndifferent Pokémon.";
+                    LB_Response.Text = "Please use a different Pokémon.";
                     return null;
 
                 }
@@ -339,7 +341,7 @@ namespace SeedSearcherGui
                 GB_43.Enabled = false;
                 GB_51.Enabled = false;
                 GB_61.Enabled = false;
-                LB_Response.Text = "Invalid IVs.";
+                LB_Response.Text = "Too many IVs are at 31. Please use a different Pokémon.";
                 return null;
             }
             if (GB_42.Enabled && flawless > fixedIV[0])
@@ -362,7 +364,7 @@ namespace SeedSearcherGui
                         }
                     }
                 }
-                if (setIVs[4] != -1)
+                if (setIVs[3] != -1)
                 {
                     RB_2nd.Visible = false;
                     RB_2nd.Checked = true;
@@ -379,6 +381,7 @@ namespace SeedSearcherGui
                 {
                     RB_2nd.Visible = false;
                     RB_2nd.Checked = false;
+                    RB_3rd.Checked = false;
                     RB_3rd.Visible = false;
                     GB_42.Enabled = false;
                     GB_43.Enabled = false;
@@ -415,93 +418,108 @@ namespace SeedSearcherGui
                 return setIVs;
             }
             RaidTemplate[] entries = GetEntriesWithIV(fixedIV[1]);
-            if (entries.Length == 0)
-            {
-                RB_2nd.Visible = false;
-                RB_3rd.Visible = false;
-                GB_42.Enabled = false;
-                GB_43.Enabled = false;
-                GB_51.Enabled = false;
-                GB_61.Enabled = false;
-                LB_Response.Text = "NOK!";
-                return null;
-            }
-            GB_42.Text = String.Format(Properties.strings.Day4Follow, fixedIV[1]);
-            GB_43.Text = String.Format(Properties.strings.Day4Follow, fixedIV[2]);
             int[] iv2 = GetNextIVs(ref fixedIVs, setIVs, fixedIV[1]);
-            if(fixedIVs[fixedIV[0]] == -1)
-            {
-                RB_2nd.Visible = false;
-                RB_3rd.Visible = false;
-                GB_42.Enabled = false;
-                GB_43.Enabled = false;
-                GB_51.Enabled = false;
-                GB_61.Enabled = false;
-                LB_Response.Text = "NOK!";
-                return setIVs; // we have more than enough information
-            }
             int unsetIV = 0;
-            if (!RB_2nd.Visible || RB_2nd.Checked)
+            bool settwo = entries.Length > 0;
+            if (entries.Length > 0)
             {
-                for (int i = 0; i < 6; i++)
+                if (fixedIVs[fixedIV[0]] == -1)
                 {
-                    if (iv2[i] != -1)
-                    {
-                        if (!GB_42.Enabled)
-                        {
-                            NUD_Stats[i + 6].Value = iv2[i];
-                        }
-                    }
-                    else
-                    {
-                        if (GB_42.Enabled)
-                        {
-                            setIVs[idx2++] = (int)NUD_Stats[i + 6].Value;
-                        }
-                        unsetIV++;
-                    }
-                }
-                if (!GB_42.Enabled && unsetIV > 0)
-                {
-                    RB_2nd.Visible = true;
+                    RB_2nd.Visible = false;
                     RB_3rd.Visible = false;
+                    RB_2nd.Checked = false;
+                    RB_3rd.Checked = false;
+                    GB_42.Enabled = false;
                     GB_43.Enabled = false;
                     GB_51.Enabled = false;
                     GB_61.Enabled = false;
-                    GB_42.Enabled = true;
-                    PopulateSpeciesCB(CB_Species[1], entries);
+                    LB_Response.Text = "NOK!";
+                    return setIVs; // we cannot get more information
                 }
-                if (RB_2nd.Visible && RB_2nd.Checked)
+                if (!RB_2nd.Visible || RB_2nd.Checked)
                 {
-                    if (setIVs[4] != -1)
+                    for (int i = 0; i < 6; i++)
+                    {
+                        if (iv2[i] != -1)
+                        {
+                            if (!GB_42.Enabled)
+                            {
+                                NUD_Stats[i + 6].Value = iv2[i];
+                            }
+                        }
+                        else
+                        {
+                            if (GB_42.Enabled)
+                            {
+                                setIVs[idx2++] = (int)NUD_Stats[i + 6].Value;
+                            } else
+                            {
+                                NUD_Stats[i + 6].BackColor = Color.Red;
+                            }
+                            unsetIV++;
+                        }
+                    }
+
+                    GB_42.Text = String.Format(Properties.strings.Day4Follow, fixedIV[1], idx2 + unsetIV);
+                    ChangeGroupBoxColor(GB_42, colors[idx2 + unsetIV]);
+                    set2 = idx2 + unsetIV;
+                    if (!GB_42.Enabled)
                     {
                         RB_2nd.Visible = true;
-                        RB_3rd.Visible = true;
-                        GB_51.Enabled = true;
-                        GB_61.Enabled = true;
-                        GB_42.Enabled = true;
-                        GB_43.Enabled = false;
-                        LB_Response.Text = "OK!";
-                        checkSeedToolStripMenuItem.Enabled = true;
-                        return setIVs; // we have enough information
-                    }
-                    else
-                    {
-                        RB_2nd.Visible = false;
                         RB_3rd.Visible = false;
-                        GB_42.Enabled = false;
                         GB_43.Enabled = false;
                         GB_51.Enabled = false;
                         GB_61.Enabled = false;
-                        LB_Response.Text = "NOK!";
-                        return setIVs; // we have more than enough information
+                        GB_42.Enabled = true;
+                        PopulateSpeciesCB(CB_Species[1], entries);
+                    }
+                    if (RB_2nd.Visible && RB_2nd.Checked)
+                    {
+                        if (setIVs[3] != -1)
+                        {
+                            RB_2nd.Visible = true;
+                            RB_3rd.Visible = true;
+                            GB_51.Enabled = true;
+                            GB_61.Enabled = true;
+                            GB_42.Enabled = true;
+                            GB_43.Enabled = false;
+                            LB_Response.Text = "OK!";
+                            checkSeedToolStripMenuItem.Enabled = true;
+                            return setIVs; // we have enough information
+                        }
+                        else
+                        {
+                            RB_2nd.Visible = false;
+                            RB_3rd.Visible = false;
+                            RB_2nd.Checked = false;
+                            RB_3rd.Checked = false;
+                            GB_42.Enabled = false;
+                            GB_43.Enabled = false;
+                            GB_51.Enabled = false;
+                            GB_61.Enabled = false;
+                            LB_Response.Text = "NOK!";
+                            return setIVs; // we have more than enough information
+                        }
                     }
                 }
             }
+
             entries = GetEntriesWithIV(fixedIV[2]);
             if (entries.Length == 0)
             {
-                return null;
+                if(!settwo)
+                {
+                    RB_2nd.Visible = false;
+                    RB_3rd.Visible = false;
+                    RB_2nd.Checked = false;
+                    RB_3rd.Checked = false;
+                    GB_42.Enabled = false;
+                    GB_43.Enabled = false;
+                    GB_51.Enabled = false;
+                    GB_61.Enabled = false;
+                    LB_Response.Text = "NOK!";
+                }
+                return setIVs;
             }
             int[] iv3 = GetNextIVs(ref fixedIVs, setIVs, fixedIV[2]);
             int unsetIV2 = 0;
@@ -520,10 +538,34 @@ namespace SeedSearcherGui
                     {
                         setIVs[idx2++] = (int)NUD_Stats[i + 6 * 2].Value;
                     }
+                    else
+                    {
+                        NUD_Stats[i + 6 * 2].BackColor = Color.Red;
+                    }
                     unsetIV2++;
                 }
             }
-            if (!GB_43.Enabled && unsetIV2 > 0)
+            if(6 - fixedIV[2] < unsetIV2)
+            {
+                if(settwo)
+                {
+                    RB_2nd.Visible = false;
+                    RB_3rd.Visible = false;
+                    RB_2nd.Checked = false;
+                    RB_3rd.Checked = false;
+                    GB_42.Enabled = false;
+                    GB_43.Enabled = false;
+                    GB_51.Enabled = false;
+                    GB_61.Enabled = false;
+                    LB_Response.Text = "NOK!";
+                    return null;
+                }
+                return setIVs;
+            }
+            GB_43.Text = String.Format(Properties.strings.Day4Follow, fixedIV[2], idx2 + unsetIV2);
+            ChangeGroupBoxColor(GB_43, colors[idx2 + unsetIV2]);
+            set3 = idx2 + unsetIV2;
+            if (!GB_43.Enabled)
             {
                 GB_43.Enabled = true;
                 PopulateSpeciesCB(CB_Species[2], entries);
@@ -531,10 +573,12 @@ namespace SeedSearcherGui
             // cannot obtain new info
             if (unsetIV == unsetIV2)
             {
-                if (unsetIV == 0)
+                if (unsetIV == 0 && setIVs[3] == -1)
                 {
                     RB_2nd.Visible = false;
                     RB_3rd.Visible = false;
+                    RB_2nd.Checked = false;
+                    RB_3rd.Checked = false;
                     GB_42.Enabled = false;
                     GB_43.Enabled = false;
                     GB_51.Enabled = false;
@@ -545,21 +589,36 @@ namespace SeedSearcherGui
                 LBLAO.Text = "OR";
                 RB_2nd.Visible = true;
                 RB_3rd.Visible = true;
-                RB_2nd.Checked = true;
             }
-            if (setIVs[4] == -1)
+            if (setIVs[4] == -1 && !RB_3rd.Checked)
             {
+                if(settwo) { 
+                LBLAO.Text = "OR";
+                GB_42.Enabled = true;
+                }
+                GB_43.Enabled = true;
                 RB_2nd.Checked = true;
                 RB_3rd.Visible = true;
+                if (settwo && set2 >= set3)
+                {
+                    RB_2nd.Checked = true;
+                }
+                else
+                {
+                    RB_3rd.Checked = true;
+                }
                 return null; // not enough information to proceed
             }
-            RB_2nd.Visible = true;
+            if (settwo)
+            {
+                LB_Response.Text = "OK!";
+                RB_2nd.Visible = true;
+            }
             RB_3rd.Visible = true;
             GB_51.Enabled = true;
             GB_61.Enabled = true;
             GB_42.Enabled = false;
             GB_43.Enabled = true;
-            LB_Response.Text = "OK!";
             checkSeedToolStripMenuItem.Enabled = true;
             return setIVs; // we have enough information
         }
@@ -949,7 +1008,7 @@ namespace SeedSearcherGui
                 return SearchOneIV(fixedIV[0]);
             }
 
-            if (consecutiveIVs[4] == -1)
+            if (consecutiveIVs[3] == -1)
             {
                 MessageBox.Show("Invalid IVs for first Pokémon. Use \"Check IVs\" option to check your IVs.");
                 return null;
@@ -1019,7 +1078,7 @@ namespace SeedSearcherGui
                 characteristics1 = -1;
             }
 
-            SeedSearcher searcher = new SeedSearcher(consecutiveIVs[5] == -1 ? SeedSearcher.Mode.Star35_5 : SeedSearcher.Mode.Star35_6);
+            SeedSearcher searcher = new SeedSearcher(consecutiveIVs[4] == -1 ? SeedSearcher.Mode.Star35_4 : consecutiveIVs[5] == -1 ? SeedSearcher.Mode.Star35_5 : SeedSearcher.Mode.Star35_6);
             SeedSearcher.SetSixFirstCondition(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, noGender1, HA1);
             if (GB_42.Enabled)
             {
@@ -1034,7 +1093,11 @@ namespace SeedSearcherGui
             SeedSearcher.SetSixFourthCondition(iv5[0], iv5[1], iv5[2], iv5[3], iv5[4], iv5[5], pkmn5.FlawlessIVs, ability5, nature5, characteristics5, noGender5, HA5);
             SeedSearcher.SetSixLSB(LSB);
 
-            if (consecutiveIVs[5] == -1)
+            if (consecutiveIVs[4] == -1)
+            {
+                SeedSearcher.SetTargetCondition4(consecutiveIVs[0], consecutiveIVs[1], consecutiveIVs[2], consecutiveIVs[3]);
+            }
+            else if (consecutiveIVs[5] == -1)
             {
 
                 SeedSearcher.SetTargetCondition5(consecutiveIVs[0], consecutiveIVs[1], consecutiveIVs[2], consecutiveIVs[3], consecutiveIVs[4]);
@@ -1046,7 +1109,7 @@ namespace SeedSearcherGui
             return searcher;
         }
 
-        async void SearchImpl(SeedSearcher searcher)
+        async void SearchImpl(SeedSearcher searcher, int[] target = null)
         {
             bool[] enabled = { GB_41.Enabled, GB_42.Enabled, GB_43.Enabled, GB_51.Enabled, GB_61.Enabled };
             GB_41.Enabled = false;
@@ -1068,7 +1131,7 @@ namespace SeedSearcherGui
 
             await Task.Run(() =>
             {
-                searcher.Calculate(minRerolls, maxRerolls, LBL_IVDev);
+                searcher.Calculate(minRerolls, maxRerolls, target, LBL_IVDev, PB_Deviation);
             });
 
             stopWatch.Stop();
@@ -1078,7 +1141,7 @@ namespace SeedSearcherGui
             BT_Search.Text = "Search";
             // 結果が見つからなかったらエラー
             SystemSounds.Asterisk.Play();
-            if (searcher.Result.Count == 0)
+            if (SeedSearcher.Result.Count == 0)
             {
                 MessageBox.Show("No Seed found. Please increase IV Deviation and run the tool again.");
                 //unlock for editing
@@ -1091,9 +1154,9 @@ namespace SeedSearcherGui
             }
             else
             {
-                for (int i = 0; i < searcher.Result.Count; ++i)
+                for (int i = 0; i < SeedSearcher.Result.Count; ++i)
                 {
-                    SeedResult.Text += $"{searcher.Result[i]:X}\n";
+                    SeedResult.Text += $"{SeedSearcher.Result[i]:X}\n";
                 }
                 BT_Table.Enabled = true;
             }
@@ -1262,6 +1325,7 @@ namespace SeedSearcherGui
             foreach (var nud in NUD_Stats)
             {
                 nud.Value = 0;
+                nud.BackColor = Color.White;
             }
             foreach (var cb in CB_Species)
             {
@@ -1331,6 +1395,10 @@ namespace SeedSearcherGui
         {
             if (!dontChange)
             {
+                if(sender is NumericUpDown) { 
+                    var s = (NumericUpDown)sender;
+                    s.BackColor = Color.White;
+                }
                 RB_3rd.Checked = true;
             }
         }
@@ -1339,9 +1407,59 @@ namespace SeedSearcherGui
         {
             if (!dontChange)
             {
+                if (sender is NumericUpDown)
+                {
+                    var s = (NumericUpDown)sender;
+                    s.BackColor = Color.White;
+                }
                 RB_2nd.Checked = true;
             }
         }
 
+        private void CB_Nest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateMons();
+        }
+
+        private void PopulateMons()
+        {
+            if (!doneLoading) return;
+            foreach (ComboBox cb in CB_Species)
+            {
+                cb.Items.Clear();
+            }
+            RaidTemplateTable toUse = GetTableToUse();
+            for (int stars = 0; stars < 5; stars++)
+            {
+                foreach (var entry in toUse.Entries)
+                {
+                    if (entry.Probabilities[stars] > 0)
+                    {
+                        string gmax = "";
+                        if (entry.IsGigantamax)
+                        {
+                            gmax = "(G-Max) ";
+                        }
+                        ComboboxItem item = new ComboboxItem($"{GameStrings.Species[entry.Species]} {gmax}{stars + 1}\u2605 ", entry);
+                        for (int spidx = 0; spidx < CB_Species.Length; spidx++)
+                        {
+                            if (spidx > 2 || spidx == 0 && entry.FlawlessIVs <= 3)
+                            {
+                                ComboBox cb = CB_Species[spidx];
+                                cb.Items.Add(item);
+                            }
+                        }
+                    }
+                }
+            }
+
+            foreach (ComboBox cb in CB_Species)
+            {
+                if (cb.Items.Count > 0)
+                {
+                    cb.SelectedIndex = 0;
+                }
+            }
+        }
     }
 }
