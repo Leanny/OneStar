@@ -15,7 +15,7 @@ static int g_Ivs[6];
 static int g_LSB;
 
 static int g_IvOffset;
-static const _u64 M = 0x2aaaaaab;
+static const _u64 M = 0xaaaaaaab;
 
 //#define LENGTH (60)
 
@@ -112,7 +112,7 @@ void PrepareSix(int ivOffset)
 
 	// 変換行列を計算
 	InitializeTransformationMatrix(); // r[1]が得られる変換行列がセットされる
-	for (int i = 0; i <= 3 + ivOffset; ++i)
+	for (int i = 0; i <= 1 + l_First.fixedIV + ivOffset; ++i)
 	{
 		ProceedTransformationMatrix(); // r[2 + i]が得られる
 	}
@@ -140,7 +140,7 @@ void PrepareSix(int ivOffset)
 }
 
 inline unsigned int mod(_u64 n) {
-	_u64 q = (M * n) >> 32;
+	_u64 q = (M * n) >> 34;
 	return n - q * 6;
 }
 
