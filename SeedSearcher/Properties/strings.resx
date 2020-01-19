@@ -184,7 +184,7 @@
     <value>1-3IV</value>
   </data>
   <data name="Day4Follow" xml:space="preserve">
-    <value>{0}IV</value>
+    <value>{0}IV {1}/6</value>
   </data>
   <data name="Day5" xml:space="preserve">
     <value>Pokémon Info Day 5</value>

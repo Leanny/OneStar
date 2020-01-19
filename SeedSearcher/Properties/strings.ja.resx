@@ -184,7 +184,7 @@
     <value>1V～3V</value>
   </data>
   <data name="Day4Follow" xml:space="preserve">
-    <value>{0}Vから検索</value>
+    <value>{0}V {1}/6</value>
   </data>
   <data name="Day5" xml:space="preserve">
     <value>5匹目</value>

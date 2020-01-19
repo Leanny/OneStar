@@ -259,7 +259,7 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0}IV ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die {0}IV {1}/6 ähnelt.
         /// </summary>
         internal static string Day4Follow {
             get {
