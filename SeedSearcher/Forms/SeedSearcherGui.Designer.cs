@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeedSearcherGui));
             this.GB_Left = new System.Windows.Forms.GroupBox();
+            this.CB_Nest = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.CB_Rarity = new System.Windows.Forms.ComboBox();
             this.LBL_Rarity = new System.Windows.Forms.Label();
             this.CB_Game = new System.Windows.Forms.ComboBox();
@@ -38,6 +40,7 @@
             this.LBL_Den = new System.Windows.Forms.Label();
             this.DenMap = new System.Windows.Forms.PictureBox();
             this.GB_PKMN1 = new System.Windows.Forms.GroupBox();
+            this.LB_Response = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
             this.LBLAO = new System.Windows.Forms.Label();
             this.GB_43 = new System.Windows.Forms.GroupBox();
@@ -85,7 +88,6 @@
             this.CB_Species2 = new System.Windows.Forms.ComboBox();
             this.LBL_PKMN2 = new System.Windows.Forms.Label();
             this.GB_41 = new System.Windows.Forms.GroupBox();
-            this.LB_Response = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.CB_Characteristic1 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic1 = new System.Windows.Forms.Label();
@@ -159,14 +161,16 @@
             this.CB_Species5 = new System.Windows.Forms.ComboBox();
             this.LBL_PKMN5 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.label53 = new System.Windows.Forms.Label();
-            this.LBL_IVDev = new System.Windows.Forms.Label();
-            this.LBL_Time = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LBL_IVDev = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LBL_Time = new System.Windows.Forms.ToolStripStatusLabel();
             this.MenuBar = new System.Windows.Forms.MenuStrip();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.日本語ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.PB_Deviation = new System.Windows.Forms.ToolStripProgressBar();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -208,11 +212,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.DEF5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ATK5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HP5)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.MenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // GB_Left
             // 
+            this.GB_Left.Controls.Add(this.CB_Nest);
+            this.GB_Left.Controls.Add(this.label1);
             this.GB_Left.Controls.Add(this.CB_Rarity);
             this.GB_Left.Controls.Add(this.LBL_Rarity);
             this.GB_Left.Controls.Add(this.CB_Game);
@@ -222,10 +229,127 @@
             this.GB_Left.Controls.Add(this.DenMap);
             this.GB_Left.Location = new System.Drawing.Point(12, 32);
             this.GB_Left.Name = "GB_Left";
-            this.GB_Left.Size = new System.Drawing.Size(267, 706);
+            this.GB_Left.Size = new System.Drawing.Size(267, 722);
             this.GB_Left.TabIndex = 0;
             this.GB_Left.TabStop = false;
             this.GB_Left.Text = "Configuration";
+            // 
+            // CB_Nest
+            // 
+            this.CB_Nest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Nest.FormattingEnabled = true;
+            this.CB_Nest.Items.AddRange(new object[] {
+            "Event Nest",
+            "Nest 1",
+            "Nest 2",
+            "Nest 3",
+            "Nest 4",
+            "Nest 5",
+            "Nest 6",
+            "Nest 7",
+            "Nest 8",
+            "Nest 9",
+            "Nest 10",
+            "Nest 11",
+            "Nest 12",
+            "Nest 13",
+            "Nest 14",
+            "Nest 15",
+            "Nest 16",
+            "Nest 17",
+            "Nest 18",
+            "Nest 19",
+            "Nest 20",
+            "Nest 21",
+            "Nest 22",
+            "Nest 23",
+            "Nest 24",
+            "Nest 25",
+            "Nest 26",
+            "Nest 27",
+            "Nest 28",
+            "Nest 29",
+            "Nest 30",
+            "Nest 31",
+            "Nest 32",
+            "Nest 33",
+            "Nest 34",
+            "Nest 35",
+            "Nest 36",
+            "Nest 37",
+            "Nest 38",
+            "Nest 39",
+            "Nest 40",
+            "Nest 41",
+            "Nest 42",
+            "Nest 43",
+            "Nest 44",
+            "Nest 45",
+            "Nest 46",
+            "Nest 47",
+            "Nest 48",
+            "Nest 49",
+            "Nest 50",
+            "Nest 51",
+            "Nest 52",
+            "Nest 53",
+            "Nest 54",
+            "Nest 55",
+            "Nest 56",
+            "Nest 57",
+            "Nest 58",
+            "Nest 59",
+            "Nest 60",
+            "Nest 61",
+            "Nest 62",
+            "Nest 63",
+            "Nest 64",
+            "Nest 65",
+            "Nest 66",
+            "Nest 67",
+            "Nest 68",
+            "Nest 69",
+            "Nest 70",
+            "Nest 71",
+            "Nest 72",
+            "Nest 73",
+            "Nest 74",
+            "Nest 75",
+            "Nest 76",
+            "Nest 77",
+            "Nest 78",
+            "Nest 79",
+            "Nest 80",
+            "Nest 81",
+            "Nest 82",
+            "Nest 83",
+            "Nest 84",
+            "Nest 85",
+            "Nest 86",
+            "Nest 87",
+            "Nest 88",
+            "Nest 89",
+            "Nest 90",
+            "Nest 91",
+            "Nest 92",
+            "Nest 93",
+            "Nest 94",
+            "Nest 95",
+            "Nest 96"});
+            this.CB_Nest.Location = new System.Drawing.Point(74, 89);
+            this.CB_Nest.Name = "CB_Nest";
+            this.CB_Nest.Size = new System.Drawing.Size(183, 24);
+            this.CB_Nest.TabIndex = 3;
+            this.CB_Nest.SelectedIndexChanged += new System.EventHandler(this.CB_Nest_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 92);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 17);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Nest";
             // 
             // CB_Rarity
             // 
@@ -234,16 +358,16 @@
             this.CB_Rarity.Items.AddRange(new object[] {
             "Common",
             "Rare"});
-            this.CB_Rarity.Location = new System.Drawing.Point(74, 94);
+            this.CB_Rarity.Location = new System.Drawing.Point(74, 58);
             this.CB_Rarity.Name = "CB_Rarity";
             this.CB_Rarity.Size = new System.Drawing.Size(183, 24);
-            this.CB_Rarity.TabIndex = 3;
+            this.CB_Rarity.TabIndex = 2;
             this.CB_Rarity.SelectedIndexChanged += new System.EventHandler(this.CB_Den_SelectedIndexChanged);
             // 
             // LBL_Rarity
             // 
             this.LBL_Rarity.AutoSize = true;
-            this.LBL_Rarity.Location = new System.Drawing.Point(6, 98);
+            this.LBL_Rarity.Location = new System.Drawing.Point(6, 61);
             this.LBL_Rarity.Name = "LBL_Rarity";
             this.LBL_Rarity.Size = new System.Drawing.Size(45, 17);
             this.LBL_Rarity.TabIndex = 26;
@@ -256,16 +380,16 @@
             this.CB_Game.Items.AddRange(new object[] {
             "Sword",
             "Shield"});
-            this.CB_Game.Location = new System.Drawing.Point(74, 62);
+            this.CB_Game.Location = new System.Drawing.Point(74, 119);
             this.CB_Game.Name = "CB_Game";
             this.CB_Game.Size = new System.Drawing.Size(183, 24);
-            this.CB_Game.TabIndex = 2;
-            this.CB_Game.SelectedIndexChanged += new System.EventHandler(this.CB_Den_SelectedIndexChanged);
+            this.CB_Game.TabIndex = 4;
+            this.CB_Game.SelectedIndexChanged += new System.EventHandler(this.CB_Nest_SelectedIndexChanged);
             // 
             // LBL_Game
             // 
             this.LBL_Game.AutoSize = true;
-            this.LBL_Game.Location = new System.Drawing.Point(6, 64);
+            this.LBL_Game.Location = new System.Drawing.Point(6, 123);
             this.LBL_Game.Name = "LBL_Game";
             this.LBL_Game.Size = new System.Drawing.Size(46, 17);
             this.LBL_Game.TabIndex = 1;
@@ -396,7 +520,7 @@
             // 
             this.DenMap.BackgroundImage = global::SeedSearcherGui.Properties.Resources.map;
             this.DenMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.DenMap.Location = new System.Drawing.Point(6, 127);
+            this.DenMap.Location = new System.Drawing.Point(6, 145);
             this.DenMap.Name = "DenMap";
             this.DenMap.Size = new System.Drawing.Size(251, 575);
             this.DenMap.TabIndex = 0;
@@ -404,6 +528,7 @@
             // 
             // GB_PKMN1
             // 
+            this.GB_PKMN1.Controls.Add(this.LB_Response);
             this.GB_PKMN1.Controls.Add(this.label58);
             this.GB_PKMN1.Controls.Add(this.LBLAO);
             this.GB_PKMN1.Controls.Add(this.GB_43);
@@ -415,6 +540,15 @@
             this.GB_PKMN1.TabIndex = 1;
             this.GB_PKMN1.TabStop = false;
             this.GB_PKMN1.Text = "Pokémon Info Day 4";
+            // 
+            // LB_Response
+            // 
+            this.LB_Response.AutoSize = true;
+            this.LB_Response.Location = new System.Drawing.Point(6, 258);
+            this.LB_Response.Name = "LB_Response";
+            this.LB_Response.Size = new System.Drawing.Size(53, 17);
+            this.LB_Response.TabIndex = 49;
+            this.LB_Response.Text = "$RESP";
             // 
             // label58
             // 
@@ -467,7 +601,7 @@
             // RB_3rd
             // 
             this.RB_3rd.AutoSize = true;
-            this.RB_3rd.Location = new System.Drawing.Point(34, 0);
+            this.RB_3rd.Location = new System.Drawing.Point(67, 0);
             this.RB_3rd.Name = "RB_3rd";
             this.RB_3rd.Size = new System.Drawing.Size(17, 16);
             this.RB_3rd.TabIndex = 50;
@@ -766,7 +900,7 @@
             // RB_2nd
             // 
             this.RB_2nd.AutoSize = true;
-            this.RB_2nd.Location = new System.Drawing.Point(34, 0);
+            this.RB_2nd.Location = new System.Drawing.Point(67, 0);
             this.RB_2nd.Name = "RB_2nd";
             this.RB_2nd.Size = new System.Drawing.Size(17, 16);
             this.RB_2nd.TabIndex = 40;
@@ -1034,7 +1168,6 @@
             // 
             // GB_41
             // 
-            this.GB_41.Controls.Add(this.LB_Response);
             this.GB_41.Controls.Add(this.button1);
             this.GB_41.Controls.Add(this.CB_Characteristic1);
             this.GB_41.Controls.Add(this.LBL_Characteristic1);
@@ -1062,15 +1195,6 @@
             this.GB_41.TabIndex = 0;
             this.GB_41.TabStop = false;
             this.GB_41.Text = "1st";
-            // 
-            // LB_Response
-            // 
-            this.LB_Response.AutoSize = true;
-            this.LB_Response.Location = new System.Drawing.Point(262, 184);
-            this.LB_Response.Name = "LB_Response";
-            this.LB_Response.Size = new System.Drawing.Size(53, 17);
-            this.LB_Response.TabIndex = 49;
-            this.LB_Response.Text = "$RESP";
             // 
             // button1
             // 
@@ -1987,48 +2111,43 @@
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 748);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.LBL_IVDev,
+            this.toolStripStatusLabel2,
+            this.LBL_Time,
+            this.toolStripStatusLabel3,
+            this.PB_Deviation});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 761);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(1103, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1103, 26);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // label53
+            // toolStripStatusLabel1
             // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(7, 752);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(138, 17);
-            this.label53.TabIndex = 7;
-            this.label53.Text = "Current IV Deviation:";
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(145, 20);
+            this.toolStripStatusLabel1.Text = "Current IV Deviation:";
             // 
             // LBL_IVDev
             // 
-            this.LBL_IVDev.AutoSize = true;
-            this.LBL_IVDev.Location = new System.Drawing.Point(141, 752);
             this.LBL_IVDev.Name = "LBL_IVDev";
-            this.LBL_IVDev.Size = new System.Drawing.Size(16, 17);
-            this.LBL_IVDev.TabIndex = 8;
+            this.LBL_IVDev.Size = new System.Drawing.Size(17, 20);
             this.LBL_IVDev.Text = "0";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(123, 20);
+            this.toolStripStatusLabel2.Text = "Calculation Time:";
             // 
             // LBL_Time
             // 
-            this.LBL_Time.AutoSize = true;
-            this.LBL_Time.Location = new System.Drawing.Point(307, 752);
             this.LBL_Time.Name = "LBL_Time";
-            this.LBL_Time.Size = new System.Drawing.Size(38, 17);
-            this.LBL_Time.TabIndex = 9;
+            this.LBL_Time.Size = new System.Drawing.Size(40, 20);
             this.LBL_Time.Text = "0 ms";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(192, 752);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(116, 17);
-            this.label57.TabIndex = 10;
-            this.label57.Text = "Calculation Time:";
             // 
             // MenuBar
             // 
@@ -2065,15 +2184,24 @@
             this.checkSeedToolStripMenuItem.Text = "Check Seed";
             this.checkSeedToolStripMenuItem.Click += new System.EventHandler(this.checkSeedToolStripMenuItem_Click);
             // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(136, 20);
+            this.toolStripStatusLabel3.Text = "Deviation Progress:";
+            // 
+            // PB_Deviation
+            // 
+            this.PB_Deviation.Maximum = 1024;
+            this.PB_Deviation.Name = "PB_Deviation";
+            this.PB_Deviation.Size = new System.Drawing.Size(100, 18);
+            this.PB_Deviation.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            // 
             // SeedSearcherGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 770);
-            this.Controls.Add(this.label57);
-            this.Controls.Add(this.LBL_Time);
-            this.Controls.Add(this.LBL_IVDev);
-            this.Controls.Add(this.label53);
+            this.ClientSize = new System.Drawing.Size(1103, 787);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.MenuBar);
             this.Controls.Add(this.GB_61);
@@ -2083,9 +2211,9 @@
             this.Controls.Add(this.GB_Left);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1121, 817);
+            this.MaximumSize = new System.Drawing.Size(1121, 834);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1121, 817);
+            this.MinimumSize = new System.Drawing.Size(1121, 834);
             this.Name = "SeedSearcherGui";
             this.Text = "Seed Searcher";
             this.GB_Left.ResumeLayout(false);
@@ -2137,6 +2265,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DEF5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ATK5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HP5)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.MenuBar.ResumeLayout(false);
             this.MenuBar.PerformLayout();
             this.ResumeLayout(false);
@@ -2266,8 +2396,6 @@
         private System.Windows.Forms.ComboBox CB_Rarity;
         private System.Windows.Forms.Label LBL_Rarity;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.Label LBL_IVDev;
         private System.Windows.Forms.Label LBLAO;
         private System.Windows.Forms.RadioButton RB_3rd;
         private System.Windows.Forms.RadioButton RB_2nd;
@@ -2276,14 +2404,20 @@
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.NumericUpDown NUD_IVMax;
         private System.Windows.Forms.NumericUpDown NUD_IVMin;
-        private System.Windows.Forms.Label LBL_Time;
-        private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.MenuStrip MenuBar;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 日本語ToolStripMenuItem;
         private System.Windows.Forms.Button BT_Table;
         private System.Windows.Forms.ToolStripMenuItem checkSeedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel LBL_IVDev;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel LBL_Time;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox CB_Nest;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripProgressBar PB_Deviation;
     }
 }
 

@@ -32,6 +32,7 @@ namespace SeedSearcherGui
         {
             InitializeComponent();
             dontChange = true;
+            doneLoading = false;
             CB_Game.SelectedIndex = 0;
             CB_Rarity.SelectedIndex = 0;
             CB_Species = new ComboBox[] { CB_Species1, CB_Species2, CB_Species3, CB_Species4, CB_Species5 };
@@ -49,7 +50,7 @@ namespace SeedSearcherGui
 
             LB_Response.Text = "";
             LBLAO.Text = "";
-
+            doneLoading = true;
 
             foreach (var field in CB_Nature)
             {
@@ -60,7 +61,6 @@ namespace SeedSearcherGui
                 field.SelectedIndex = 0;
             }
             BT_Table.Enabled = false;
-            doneLoading = true;
             CB_Den.SelectedIndex = 1;
             if (Properties.Settings.Default.Language == 0)
             {
@@ -71,6 +71,8 @@ namespace SeedSearcherGui
                 englishToolStripMenuItem_Click(null, null);
             }
             dontChange = false;
+
+
         }
 
         private void PopulateLanguage(int l)
@@ -301,7 +303,7 @@ namespace SeedSearcherGui
         private int[] CheckIVs(ref int[] fixedIVs)
         {
             int[] iv1 = { 0, 0, 0, 0, 0, 0 };
-            int minIV = (int)((RaidTemplate)((ComboboxItem)CB_Species[0].SelectedItem).Value).FlawlessIVs;
+            int minIV = ((RaidTemplate)((ComboboxItem)CB_Species[0].SelectedItem).Value).FlawlessIVs;
             int[] fixedIV = { minIV, minIV + 1, minIV + 2 };
             int[] setIVs = { -1, -1, -1, -1, -1, -1, -1, -1 };
             int idx1 = 0;
@@ -311,6 +313,13 @@ namespace SeedSearcherGui
             LBLAO.Text = "";
             int set2 = 0;
             int set3 = 0;
+            // ensure good color
+            foreach (var nud in NUD_Stats)
+            {
+                nud.BackColor = Color.White;
+                nud.Enabled = true;
+            }
+
             for (int i = 0; i < 6; i++)
             {
                 iv1[i] = (int)NUD_Stats[i].Value;
@@ -374,6 +383,7 @@ namespace SeedSearcherGui
                     GB_42.Enabled = true;
                     GB_43.Enabled = false;
                     LB_Response.Text = "OK!";
+                    GB_PKMN1.Enabled = false;
                     checkSeedToolStripMenuItem.Enabled = true;
                     return setIVs; // we have more than enough information
                 }
@@ -421,6 +431,7 @@ namespace SeedSearcherGui
             int[] iv2 = GetNextIVs(ref fixedIVs, setIVs, fixedIV[1]);
             int unsetIV = 0;
             bool settwo = entries.Length > 0;
+            int lateAdd = 0;
             if (entries.Length > 0)
             {
                 if (fixedIVs[fixedIV[0]] == -1)
@@ -436,6 +447,7 @@ namespace SeedSearcherGui
                     LB_Response.Text = "NOK!";
                     return setIVs; // we cannot get more information
                 }
+
                 if (!RB_2nd.Visible || RB_2nd.Checked)
                 {
                     for (int i = 0; i < 6; i++)
@@ -446,12 +458,14 @@ namespace SeedSearcherGui
                             {
                                 NUD_Stats[i + 6].Value = iv2[i];
                             }
+                            NUD_Stats[i + 6].Enabled = false;
                         }
                         else
                         {
                             if (GB_42.Enabled)
                             {
                                 setIVs[idx2++] = (int)NUD_Stats[i + 6].Value;
+                                lateAdd++;
                             } else
                             {
                                 NUD_Stats[i + 6].BackColor = Color.Red;
@@ -460,10 +474,10 @@ namespace SeedSearcherGui
                         }
                     }
 
-                    GB_42.Text = String.Format(Properties.strings.Day4Follow, fixedIV[1], idx2 + unsetIV);
-                    ChangeGroupBoxColor(GB_42, colors[idx2 + unsetIV]);
+                    GB_42.Text = String.Format(Properties.strings.Day4Follow, fixedIV[1], idx2 + unsetIV - lateAdd);
+                    ChangeGroupBoxColor(GB_42, colors[idx2 + unsetIV - lateAdd]);
                     set2 = idx2 + unsetIV;
-                    if (!GB_42.Enabled)
+                    if (!GB_42.Enabled && lateAdd == 0)
                     {
                         RB_2nd.Visible = true;
                         RB_3rd.Visible = false;
@@ -484,6 +498,7 @@ namespace SeedSearcherGui
                             GB_42.Enabled = true;
                             GB_43.Enabled = false;
                             LB_Response.Text = "OK!";
+                            GB_PKMN1.Enabled = false;
                             checkSeedToolStripMenuItem.Enabled = true;
                             return setIVs; // we have enough information
                         }
@@ -498,7 +513,7 @@ namespace SeedSearcherGui
                             GB_51.Enabled = false;
                             GB_61.Enabled = false;
                             LB_Response.Text = "NOK!";
-                            return setIVs; // we have more than enough information
+                            return null; // we have more than enough information
                         }
                     }
                 }
@@ -523,6 +538,7 @@ namespace SeedSearcherGui
             }
             int[] iv3 = GetNextIVs(ref fixedIVs, setIVs, fixedIV[2]);
             int unsetIV2 = 0;
+            lateAdd = 0;
             for (int i = 0; i < 6; i++)
             {
                 if (iv3[i] != -1)
@@ -530,6 +546,7 @@ namespace SeedSearcherGui
                     if (!GB_43.Enabled)
                     {
                         NUD_Stats[i + 6 * 2].Value = iv3[i];
+                        NUD_Stats[i + 6 * 2].Enabled = false;
                     }
                 }
                 else
@@ -537,6 +554,7 @@ namespace SeedSearcherGui
                     if (GB_43.Enabled)
                     {
                         setIVs[idx2++] = (int)NUD_Stats[i + 6 * 2].Value;
+                        lateAdd++;
                     }
                     else
                     {
@@ -547,7 +565,7 @@ namespace SeedSearcherGui
             }
             if(6 - fixedIV[2] < unsetIV2)
             {
-                if(settwo)
+                if(!settwo)
                 {
                     RB_2nd.Visible = false;
                     RB_3rd.Visible = false;
@@ -562,10 +580,10 @@ namespace SeedSearcherGui
                 }
                 return setIVs;
             }
-            GB_43.Text = String.Format(Properties.strings.Day4Follow, fixedIV[2], idx2 + unsetIV2);
-            ChangeGroupBoxColor(GB_43, colors[idx2 + unsetIV2]);
+            GB_43.Text = String.Format(Properties.strings.Day4Follow, fixedIV[2], idx2 + unsetIV2 - lateAdd);
+            ChangeGroupBoxColor(GB_43, colors[idx2 + unsetIV2 - lateAdd]);
             set3 = idx2 + unsetIV2;
-            if (!GB_43.Enabled)
+            if (!GB_43.Enabled && lateAdd == 0)
             {
                 GB_43.Enabled = true;
                 PopulateSpeciesCB(CB_Species[2], entries);
@@ -612,6 +630,7 @@ namespace SeedSearcherGui
             if (settwo)
             {
                 LB_Response.Text = "OK!";
+                GB_PKMN1.Enabled = false;
                 RB_2nd.Visible = true;
             }
             RB_3rd.Visible = true;
@@ -795,9 +814,12 @@ namespace SeedSearcherGui
             SeedSearcher searcher = CheckInput();
             if (searcher != null)
             {
-                SearchImpl(searcher);
+                int[] fixedIV = { -1, -1, -1, -1, -1 };
+                dontChange = true;
+                int[] consecutiveIVs = CheckIVs(ref fixedIV);
+                dontChange = false;
+                SearchImpl(searcher, consecutiveIVs);
             }
-
         }
 
         private SeedSearcher CheckInput()
@@ -853,6 +875,7 @@ namespace SeedSearcherGui
             bool HA3 = false;
             bool HA4 = false;
             bool HA5 = false;
+            GB_PKMN1.Enabled = true;
 
             if (GB_41.Enabled)
             {
@@ -900,6 +923,9 @@ namespace SeedSearcherGui
                 int Gender = PersonalTable.SWSH[pkmn4.Species].Gender;
                 noGender4 = Gender == 0 || Gender > 253;
                 HA4 = pkmn4.Ability == 4 || pkmn4.Ability == 2;
+            } else
+            {
+                return null;
             }
 
             if (GB_61.Enabled)
@@ -912,6 +938,10 @@ namespace SeedSearcherGui
                 int Gender = PersonalTable.SWSH[pkmn5.Species].Gender;
                 noGender5 = Gender == 0 || Gender > 253;
                 HA5 = pkmn5.Ability == 4 || pkmn5.Ability == 2;
+            }
+            else
+            {
+                return null;
             }
 
             for (int i = 0; i < 6; i++)
@@ -997,6 +1027,7 @@ namespace SeedSearcherGui
             int[] fixedIV = { -1, -1, -1, -1, -1 };
             dontChange = true;
             int[] consecutiveIVs = CheckIVs(ref fixedIV);
+            GB_PKMN1.Enabled = true;
             dontChange = false;
             if (pkmn1.FlawlessIVs == 1)
             {
@@ -1092,20 +1123,6 @@ namespace SeedSearcherGui
             SeedSearcher.SetSixThirdCondition(iv4[0], iv4[1], iv4[2], iv4[3], iv4[4], iv4[5], pkmn4.FlawlessIVs, ability4, nature4, characteristics4, noGender4, HA4);
             SeedSearcher.SetSixFourthCondition(iv5[0], iv5[1], iv5[2], iv5[3], iv5[4], iv5[5], pkmn5.FlawlessIVs, ability5, nature5, characteristics5, noGender5, HA5);
             SeedSearcher.SetSixLSB(LSB);
-
-            if (consecutiveIVs[4] == -1)
-            {
-                SeedSearcher.SetTargetCondition4(consecutiveIVs[0], consecutiveIVs[1], consecutiveIVs[2], consecutiveIVs[3]);
-            }
-            else if (consecutiveIVs[5] == -1)
-            {
-
-                SeedSearcher.SetTargetCondition5(consecutiveIVs[0], consecutiveIVs[1], consecutiveIVs[2], consecutiveIVs[3], consecutiveIVs[4]);
-            }
-            else
-            {
-                SeedSearcher.SetTargetCondition6(consecutiveIVs[0], consecutiveIVs[1], consecutiveIVs[2], consecutiveIVs[3], consecutiveIVs[4], consecutiveIVs[5]);
-            }
             return searcher;
         }
 
@@ -1307,14 +1324,16 @@ namespace SeedSearcherGui
             PopulateLanguage(0);
         }
 
-        private void BT_newsearch_Click(object sender, EventArgs e)
+        private void RefreshUI()
         {
+            if (!doneLoading) return;
             checkSeedToolStripMenuItem.Enabled = false;
             GB_Left.Enabled = true;
             BT_Table.Enabled = false;
             GB_41.Enabled = true;
             MenuBar.Enabled = true;
             GB_42.Enabled = false;
+            GB_PKMN1.Enabled = true;
             GB_43.Enabled = false;
             GB_51.Enabled = false;
             GB_61.Enabled = false;
@@ -1326,6 +1345,7 @@ namespace SeedSearcherGui
             {
                 nud.Value = 0;
                 nud.BackColor = Color.White;
+                nud.Enabled = true;
             }
             foreach (var cb in CB_Species)
             {
@@ -1343,6 +1363,16 @@ namespace SeedSearcherGui
                 cb.SelectedIndex = 0;
             }
             SeedResult.Text = "";
+        }
+
+        private void BT_newsearch_Click(object sender, EventArgs e)
+        {
+            var result = Util.Prompt(MessageBoxButtons.YesNo, "Do you really want to start a new search?");
+            if (result == DialogResult.No)
+            {
+                return;
+            }
+            RefreshUI();
         }
 
         private void BT_Table_Click(object sender, EventArgs e)
@@ -1418,6 +1448,7 @@ namespace SeedSearcherGui
 
         private void CB_Nest_SelectedIndexChanged(object sender, EventArgs e)
         {
+            RefreshUI();
             PopulateMons();
         }
 
