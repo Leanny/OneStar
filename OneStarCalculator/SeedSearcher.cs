@@ -97,8 +97,10 @@ namespace OneStarCalculator
 			}
 		}
 
-		public void Calculate(int minRerolls, int maxRerolls, ToolStripStatusLabel updateLbl)
+		public void Calculate(int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl, ToolStripProgressBar PB_Deviation)
 		{
+			Result.Clear();
+			PB_Deviation.Value = 0;
 			if (m_Mode == Mode.Star12)
 			{
 				if(TestSeed(0) != 5)
@@ -113,12 +115,13 @@ namespace OneStarCalculator
 						// C++ライブラリ側の事前計算
 						Prepare(i);
 						// 中断あり
-						Parallel.For(searchLower, searchUpper, ivs=>
+						Parallel.For(searchLower, searchUpper, (ivs, state)=>
 						{
 							ulong result = Search((ulong)ivs);
 							if (result != 0)
 							{
 								Result.Add(result);
+								state.Stop();
 							}
 						});
 						if (Result.Count > 0)
@@ -134,28 +137,63 @@ namespace OneStarCalculator
 			else {
 				// 探索範囲
 				int searchLower = 0;
-				int searchUpper = m_Mode == Mode.Star35_5 ? 0x1FFFFFF : m_Mode == Mode.Star35_6 ? 0x3FFFFFFF : 0xFFFFF;
+				int searchUpper = 0x3FFFFFFF;
 				if (TestSixSeed(0) != 5)
 				{
+					int limit1 = 0;
+					int limit2 = 0;
+					bool update1 = false;
+					bool update2 = false;
+					if(target[4] == -1)
+					{
+						update1 = true;
+						update2 = true;
+						limit1 = 31;
+						limit2 = 31;
+					} else if(target[5] == -1)
+					{
+						update1 = true;
+						limit1 = 31;
+					}
+					PB_Deviation.Maximum = (limit1 + 1) * (limit2 + 1);
 					for (int i = minRerolls; i <= maxRerolls; ++i)
 					{
-
-						updateLbl.Text = i.ToString();
-						// C++ライブラリ側の事前計算
+						PB_Deviation.Value = 0;
+						SetTargetCondition6(target[0], target[1], target[2], target[3], target[4], target[5]);
 						PrepareSix(i);
-						// 並列探索
-						Parallel.For(searchLower, searchUpper, (ivs, state) =>
+						for (int l1 = 0; l1 <= limit1; l1++)
 						{
-							ulong result = SearchSix((ulong) ivs);
-							if (result != 0)
+							if(update1)
 							{
-								Result.Add(result + shift);
-								state.Stop();
+								target[5] = l1;
 							}
-						});
-						if (Result.Count > 0)
-						{
-							break;
+							for (int l2 = 0; l2 <= limit2; l2++)
+							{
+								if (update2)
+								{
+									target[4] = l2;
+								}
+								
+								SetTargetCondition6(target[0], target[1], target[2], target[3], target[4], target[5]);
+								updateLbl.Text = i.ToString();
+								// C++ライブラリ側の事前計算
+								
+								// 並列探索
+								Parallel.For(searchLower, searchUpper, (ivs, state) =>
+								{
+									ulong result = SearchSix((ulong)ivs);
+									if (result != 0)
+									{
+										Result.Add(result + shift);
+										state.Stop();
+									}
+								});
+								PB_Deviation.Value += 1;
+								if (Result.Count > 0)
+								{
+									return;
+								}
+							}
 						}
 					}
 				}

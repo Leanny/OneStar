@@ -11,11 +11,11 @@ static PokemonData l_Second;
 static PokemonData l_Third;
 static PokemonData l_Fourth;
 
-static int g_FixedIvs;
 static int g_Ivs[6];
 static int g_LSB;
 
 static int g_IvOffset;
+static const _u64 M = 0x2aaaaaab;
 
 //#define LENGTH (60)
 
@@ -89,7 +89,6 @@ void SetSixLSB(int lsb) {
 
 void SetTargetCondition6(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6)
 {
-	g_FixedIvs = 6;
 	g_Ivs[0] = iv1;
 	g_Ivs[1] = iv2;
 	g_Ivs[2] = iv3;
@@ -98,28 +97,9 @@ void SetTargetCondition6(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6)
 	g_Ivs[5] = iv6;
 }
 
-void SetTargetCondition5(int iv1, int iv2, int iv3, int iv4, int iv5)
-{
-	g_FixedIvs = 5;
-	g_Ivs[0] = iv1;
-	g_Ivs[1] = iv2;
-	g_Ivs[2] = iv3;
-	g_Ivs[3] = iv4;
-	g_Ivs[4] = iv5;
-}
-
-void SetTargetCondition4(int iv1, int iv2, int iv3, int iv4)
-{
-	g_FixedIvs = 4;
-	g_Ivs[0] = iv1;
-	g_Ivs[1] = iv2;
-	g_Ivs[2] = iv3;
-	g_Ivs[3] = iv4;
-}
-
 void PrepareSix(int ivOffset)
 {
-	const int length = g_FixedIvs * 10;
+	const int length = 60;
 
 	g_IvOffset = ivOffset;
 
@@ -132,12 +112,12 @@ void PrepareSix(int ivOffset)
 
 	// 変換行列を計算
 	InitializeTransformationMatrix(); // r[1]が得られる変換行列がセットされる
-	for (int i = 0; i <= 9 - g_FixedIvs + ivOffset; ++i)
+	for (int i = 0; i <= 3 + ivOffset; ++i)
 	{
 		ProceedTransformationMatrix(); // r[2 + i]が得られる
 	}
 
-	for (int a = 0; a < g_FixedIvs; ++a)
+	for (int a = 0; a < 6; ++a)
 	{
 		for (int i = 0; i < 10; ++i)
 		{
@@ -159,6 +139,11 @@ void PrepareSix(int ivOffset)
 	CalculateCoefficientData(length);
 }
 
+inline unsigned int mod(_u64 n) {
+	_u64 q = (M * n) >> 32;
+	return n - q * 6;
+}
+
 inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	if (g_LSB != -1 && g_LSB != (seed & 1)) {
 		return 0;
@@ -174,7 +159,7 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 
 	// 1匹目個性
 	if (l_First.characteristic > -1) {
-		int characteristic = ec % 6;
+		int characteristic = mod(ec);
 		if (characteristic != l_First.characteristic)
 		{
 			return 1;
@@ -335,65 +320,29 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 
 _u64 SearchSix(_u64 ivs)
 {
-	const int length = g_FixedIvs * 10;
+	const int length =60;
 
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
 
 	_u64 target = 0;
 
-	if (g_FixedIvs == 6)
-	{
-		// 下位30bit = 個体値
-		target |= (ivs & 0x3E000000ul) << 30; // iv0_0
-		target |= (ivs & 0x1F00000ul) << 25; // iv1_0
-		target |= (ivs & 0xF8000ul) << 20; // iv2_0
-		target |= (ivs & 0x7C00ul) << 15; // iv3_0
-		target |= (ivs & 0x3E0ul) << 10; // iv4_0
-		target |= (ivs & 0x1Ful) << 5; // iv5_0
+	// 下位30bit = 個体値
+	target |= (ivs & 0x3E000000ul) << 30; // iv0_0
+	target |= (ivs & 0x1F00000ul) << 25; // iv1_0
+	target |= (ivs & 0xF8000ul) << 20; // iv2_0
+	target |= (ivs & 0x7C00ul) << 15; // iv3_0
+	target |= (ivs & 0x3E0ul) << 10; // iv4_0
+	target |= (ivs & 0x1Ful) << 5; // iv5_0
 
-		// 隠された値を推定
-		target |= ((32ul + g_Ivs[0] - ((ivs & 0x3E000000ul) >> 25)) & 0x1F) << 50;
-		target |= ((32ul + g_Ivs[1] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 40;
-		target |= ((32ul + g_Ivs[2] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
-		target |= ((32ul + g_Ivs[3] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
-		target |= ((32ul + g_Ivs[4] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
-		target |= ((32ul + g_Ivs[5] - (ivs & 0x1Ful)) & 0x1F);
-	}
-	else if (g_FixedIvs == 5)
-	{
-		// 下位25bit = 個体値
-		target |= (ivs & 0x1F00000ul) << 25; // iv0_0
-		target |= (ivs & 0xF8000ul) << 20; // iv1_0
-		target |= (ivs & 0x7C00ul) << 15; // iv2_0
-		target |= (ivs & 0x3E0ul) << 10; // iv3_0
-		target |= (ivs & 0x1Ful) << 5; // iv4_0
+	// 隠された値を推定
+	target |= ((32ul + g_Ivs[0] - ((ivs & 0x3E000000ul) >> 25)) & 0x1F) << 50;
+	target |= ((32ul + g_Ivs[1] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 40;
+	target |= ((32ul + g_Ivs[2] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
+	target |= ((32ul + g_Ivs[3] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
+	target |= ((32ul + g_Ivs[4] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
+	target |= ((32ul + g_Ivs[5] - (ivs & 0x1Ful)) & 0x1F);
 
-		// 隠された値を推定
-		target |= ((32ul + g_Ivs[0] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 40;
-		target |= ((32ul + g_Ivs[1] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
-		target |= ((32ul + g_Ivs[2] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
-		target |= ((32ul + g_Ivs[3] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
-		target |= ((32ul + g_Ivs[4] - (ivs & 0x1Ful)) & 0x1F);
-	}
-	else if (g_FixedIvs == 4)
-	{
-		// 下位25bit = 個体値
-		target |= (ivs & 0xF8000ul) << 20; // iv0_0
-		target |= (ivs & 0x7C00ul) << 15; // iv1_0
-		target |= (ivs & 0x3E0ul) << 10; // iv2_0
-		target |= (ivs & 0x1Ful) << 5; // iv3_0
-
-		// 隠された値を推定
-		target |= ((32ul + g_Ivs[0] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
-		target |= ((32ul + g_Ivs[1] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
-		target |= ((32ul + g_Ivs[2] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
-		target |= ((32ul + g_Ivs[3] - (ivs & 0x1Ful)) & 0x1F);
-	}
-	else
-	{
-		return 0;
-	}
 	// targetベクトル入力完了
 
 	target ^= g_ConstantTermVector;
@@ -428,7 +377,7 @@ _u64 SearchSix(_u64 ivs)
 
 		// 1匹目個性
 		if(l_First.characteristic > -1) {
-			int characteristic = ec % 6;
+			int characteristic = mod(ec);
 			if (characteristic != l_First.characteristic)
 			{
 				continue;
@@ -581,22 +530,19 @@ _u64 SearchSix(_u64 ivs)
 			}
 		}
 
-		xoroshiro.SetSeed(seed);
-		if (!TestPkmn(xoroshiro, l_Second)) {
+		_u64 newseed = seed + Const::c_XoroshiroConst;
+		xoroshiro.SetSeed(newseed + Const::c_XoroshiroConst);
+		if (!TestPkmn(xoroshiro, l_Fourth)) {
 			continue;
 		}
 
-		// 2匹目
-		_u64 newseed = seed + Const::c_XoroshiroConst;
 		xoroshiro.SetSeed(newseed);
 		if (!TestPkmn(xoroshiro, l_Third)) {
 			continue;
 		}
 
-		// 3匹目
-		newseed += Const::c_XoroshiroConst;
-		xoroshiro.SetSeed(newseed);
-		if (!TestPkmn(xoroshiro, l_Fourth)) {
+		xoroshiro.SetSeed(seed);
+		if (!TestPkmn(xoroshiro, l_Second)) {
 			continue;
 		}
 
