@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneStarCalculator", "OneStarCalculator\OneStarCalculator.csproj", "{4A5ADB06-7773-4E21-9336-D46A44B92CC2}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OneStarCalculatorLib", "OneStarCalculatorLib\OneStarCalculatorLib.vcxproj", "{FC9F2AF9-AB51-4382-8028-A36AEA296863}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SeedSearcherLib", "OneStarCalculatorLib\OneStarCalculatorLib.vcxproj", "{FC9F2AF9-AB51-4382-8028-A36AEA296863}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedSearcherGui", "SeedSearcher\SeedSearcherGui.csproj", "{C43B9890-D670-456C-A708-FEBFD06A9E15}"
 EndProject
@@ -19,18 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Debug|Any CPU.Build.0 = Debug|x64
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Debug|x64.ActiveCfg = Debug|x64
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Debug|x64.Build.0 = Debug|x64
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Debug|x86.ActiveCfg = Debug|x86
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Debug|x86.Build.0 = Debug|x86
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Release|Any CPU.ActiveCfg = Release|x64
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Release|Any CPU.Build.0 = Release|x64
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Release|x64.ActiveCfg = Release|x64
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Release|x64.Build.0 = Release|x64
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Release|x86.ActiveCfg = Release|x86
-		{4A5ADB06-7773-4E21-9336-D46A44B92CC2}.Release|x86.Build.0 = Release|x86
 		{FC9F2AF9-AB51-4382-8028-A36AEA296863}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{FC9F2AF9-AB51-4382-8028-A36AEA296863}.Debug|Any CPU.Build.0 = Debug|x64
 		{FC9F2AF9-AB51-4382-8028-A36AEA296863}.Debug|x64.ActiveCfg = Debug|x64

@@ -3,18 +3,16 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OneStarCalculator
+namespace SeedSearcherGui
 {
-	public class SeedSearcher
-	{
-
-		// モード
-		public enum Mode {
+    class SeedSearcher
+    {
+		public enum Mode
+		{
 			Star12,
-			Star35_4,
-			Star35_5,
-			Star35_6,
+			Star35
 		};
+
 		Mode m_Mode;
 
 		public SeedSearcher(Mode mode)
@@ -26,64 +24,63 @@ namespace OneStarCalculator
 		static public List<ulong> Result { get; } = new List<ulong>();
 
 		// ★1～2検索
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		static extern void Prepare(int rerolls);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int flawlessIDX, int ability, int nature, int characteristic, bool noGender, bool isDream);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetLSB(int bit);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		static extern ulong Search(ulong ivs);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		static extern uint TestSeed(ulong seed);
 
 		// ★3～5検索
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		static extern void PrepareSix(int ivOffset);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
 
-		[DllImport("OneStarCalculatorLib.dll")]
-		public static extern void SetTargetCondition6(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5);
+		[DllImport("SeedSearcherLib.dll")]
+		public static extern void SetTargetCondition6(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6);
 
-		[DllImport("OneStarCalculatorLib.dll")]
-		public static extern void SetTargetCondition5(int iv0, int iv1, int iv2, int iv3, int iv4);
-
-		[DllImport("OneStarCalculatorLib.dll")]
-		public static extern void SetTargetCondition4(int iv0, int iv1, int iv2, int iv3);
-
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetSixLSB(int bit);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
 		static extern ulong SearchSix(ulong ivs);
 
-		[DllImport("OneStarCalculatorLib.dll")]
+		[DllImport("SeedSearcherLib.dll")]
+		static extern ulong SearchFive(ulong ivs);
+
+		[DllImport("SeedSearcherLib.dll")]
+		static extern ulong SearchFour(ulong ivs);
+
+		[DllImport("SeedSearcherLib.dll")]
 		static extern uint TestSixSeed(ulong seed);
 
 		static readonly ulong shift = 0x7817eba09827c0eful;
 		static readonly ulong frontshift = 0xFFFFFFFFFFFFFFFFul - shift + 1;
-
 
 		public uint TestInputSeed(ulong seed)
 		{
@@ -96,26 +93,22 @@ namespace OneStarCalculator
 				return TestSixSeed(seed + frontshift);
 			}
 		}
-
-		public void Calculate(int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl, ToolStripProgressBar PB_Deviation)
+		
+		public void Calculate(int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl)
 		{
 			Result.Clear();
-			PB_Deviation.Value = 0;
 			if (m_Mode == Mode.Star12)
 			{
-				if(TestSeed(0) != 5)
+				if (TestSeed(0) != 5)
 				{
-					// 探索範囲
 					int searchLower = 0;
-					int searchUpper = 0xFFFFFFF;
+					int searchUpper = 0x10000000;
 
 					for (int i = minRerolls; i <= maxRerolls; ++i)
 					{
 						updateLbl.Text = i.ToString();
-						// C++ライブラリ側の事前計算
 						Prepare(i);
-						// 中断あり
-						Parallel.For(searchLower, searchUpper, (ivs, state)=>
+						Parallel.For(searchLower, searchUpper, (ivs, state) =>
 						{
 							ulong result = Search((ulong)ivs);
 							if (result != 0)
@@ -129,70 +122,84 @@ namespace OneStarCalculator
 							break;
 						}
 					}
-				} else
+				}
+				else
 				{
 					Result.Add(0);
 				}
 			}
-			else {
-				// 探索範囲
-				int searchLower = 0;
-				int searchUpper = 0x3FFFFFFF;
+			else
+			{
 				if (TestSixSeed(0) != 5)
 				{
-					int limit1 = 0;
-					int limit2 = 0;
-					bool update1 = false;
-					bool update2 = false;
-					if(target[4] == -1)
+					SetTargetCondition6(target[0], target[1], target[2], target[3], target[4], target[5]);
+					int searchLower = 0;
+					if (target[4] == -1)
 					{
-						update1 = true;
-						update2 = true;
-						limit1 = 31;
-						limit2 = 31;
-					} else if(target[5] == -1)
-					{
-						update1 = true;
-						limit1 = 31;
-					}
-					PB_Deviation.Maximum = (limit1 + 1) * (limit2 + 1);
-					for (int i = minRerolls; i <= maxRerolls; ++i)
-					{
-						PB_Deviation.Value = 0;
-						SetTargetCondition6(target[0], target[1], target[2], target[3], target[4], target[5]);
-						PrepareSix(i);
-						for (int l1 = 0; l1 <= limit1; l1++)
+						int searchUpper = 0x100000;
+						for (int i = minRerolls; i <= maxRerolls; ++i)
 						{
-							if(update1)
+							PrepareSix(i);
+							updateLbl.Text = i.ToString();
+
+							Parallel.For(searchLower, searchUpper, (ivs, state) =>
 							{
-								target[5] = l1;
+								ulong result = SearchFour((ulong)ivs);
+								if (result != 0)
+								{
+									Result.Add(result + shift);
+									state.Stop();
+								}
+							});
+							if (Result.Count > 0)
+							{
+								return;
 							}
-							for (int l2 = 0; l2 <= limit2; l2++)
+						}
+					}
+					else if (target[5] == -1)
+					{
+						int searchUpper = 0x2000000;
+						for (int i = minRerolls; i <= maxRerolls; ++i)
+						{
+							PrepareSix(i);
+							updateLbl.Text = i.ToString();
+
+							Parallel.For(searchLower, searchUpper, (ivs, state) =>
 							{
-								if (update2)
+								ulong result = SearchFive((ulong)ivs);
+								if (result != 0)
 								{
-									target[4] = l2;
+									Result.Add(result + shift);
+									state.Stop();
 								}
-								
-								SetTargetCondition6(target[0], target[1], target[2], target[3], target[4], target[5]);
-								updateLbl.Text = i.ToString();
-								// C++ライブラリ側の事前計算
-								
-								// 並列探索
-								Parallel.For(searchLower, searchUpper, (ivs, state) =>
+							});
+							if (Result.Count > 0)
+							{
+								return;
+							}
+						}
+					}
+					else
+					{
+						int searchUpper = 0x40000000;
+						for (int i = minRerolls; i <= maxRerolls; ++i)
+						{
+							PrepareSix(i);
+							updateLbl.Text = i.ToString();
+
+							Parallel.For(searchLower, searchUpper, (ivs, state) =>
+							{
+								ulong result = SearchSix((ulong)ivs);
+								if (result != 0)
 								{
-									ulong result = SearchSix((ulong)ivs);
-									if (result != 0)
-									{
-										Result.Add(result + shift);
-										state.Stop();
-									}
-								});
-								PB_Deviation.Value += 1;
-								if (Result.Count > 0)
-								{
-									return;
+									Result.Add(result + shift);
+									state.Stop();
 								}
+							});
+							if (Result.Count > 0)
+							{
+								return;
 							}
 						}
 					}
