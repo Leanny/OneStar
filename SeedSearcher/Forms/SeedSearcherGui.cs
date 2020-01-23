@@ -1,4 +1,4 @@
-﻿using OneStarCalculator;
+﻿
 using PKHeX.Core;
 using PKHeX_Raid_Plugin;
 using SeedSearcherGui.Properties;
@@ -434,7 +434,7 @@ namespace SeedSearcherGui
             int lateAdd = 0;
             if (entries.Length > 0)
             {
-                if (fixedIVs[fixedIV[0]] == -1)
+                if (setIVs[fixedIV[0]] == -1)
                 {
                     RB_2nd.Visible = false;
                     RB_3rd.Visible = false;
@@ -1109,7 +1109,7 @@ namespace SeedSearcherGui
                 characteristics1 = -1;
             }
 
-            SeedSearcher searcher = new SeedSearcher(consecutiveIVs[4] == -1 ? SeedSearcher.Mode.Star35_4 : consecutiveIVs[5] == -1 ? SeedSearcher.Mode.Star35_5 : SeedSearcher.Mode.Star35_6);
+            SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35);
             SeedSearcher.SetSixFirstCondition(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, noGender1, HA1);
             if (GB_42.Enabled)
             {
@@ -1148,7 +1148,7 @@ namespace SeedSearcherGui
 
             await Task.Run(() =>
             {
-                searcher.Calculate(minRerolls, maxRerolls, target, LBL_IVDev, PB_Deviation);
+                searcher.Calculate(minRerolls, maxRerolls, target, LBL_IVDev);
             });
 
             stopWatch.Stop();
@@ -1156,7 +1156,7 @@ namespace SeedSearcherGui
 
             BT_Search.Enabled = true;
             BT_Search.Text = "Search";
-            // 結果が見つからなかったらエラー
+
             SystemSounds.Asterisk.Play();
             if (SeedSearcher.Result.Count == 0)
             {
