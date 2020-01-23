@@ -47,5 +47,8 @@
     <ClInclude Include="Data.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="fastmod.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

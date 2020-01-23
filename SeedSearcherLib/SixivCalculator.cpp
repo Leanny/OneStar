@@ -4,6 +4,7 @@
 #include "Const.h"
 #include "XoroshiroState.h"
 #include "Data.h"
+#include "fastmod.h"
 
 static PokemonData l_First;
 static PokemonData l_Second;
@@ -15,6 +16,8 @@ static int g_LSB;
 static int g_setIVs;
 
 static int g_IvOffset;
+
+static uint64_t M = fastmod::computeM_u32(6);
 
 void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool isNoGender, bool isEnableDream)
 {
@@ -143,12 +146,12 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	do {
 		ec = xoroshiro.Next(0xFFFFFFFFu);
 	} while (ec == 0xFFFFFFFFu);
-	if (ec != -1 && (ec & 1) != g_LSB) {
+	if (g_LSB != -1 && (ec & 1) != g_LSB) {
 		return 0;
 	}
 	// 1匹目個性
 	if (l_First.characteristic > -1) {
-		int characteristic = ec%6;
+		int characteristic = fastmod::fastmod_u32(ec, M, 6);
 		if (characteristic != l_First.characteristic)
 		{
 			return 1;
@@ -348,19 +351,17 @@ _u64 SearchSix(_u64 ivs)
 	for (_u64 search = 0; search < 16; ++search)
 	{
 		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
-		if (g_LSB != -1 && g_LSB != (seed & 1)) {
-			continue;
-		}
-
 		xoroshiro.SetSeed(seed);
 		// EC
 		unsigned int ec = -1;
 		do {
 			ec = xoroshiro.Next(0xFFFFFFFFu);
 		} while (ec == 0xFFFFFFFFu);
-
+		if (g_LSB != -1 && (ec & 1) != g_LSB) {
+			continue;
+		}
 		if(l_First.characteristic > -1) {
-			int characteristic = ec%6;
+			int characteristic = fastmod::fastmod_u32(ec, M, 6);
 			if (characteristic != l_First.characteristic)
 			{
 				continue;
@@ -429,7 +430,7 @@ _u64 SearchSix(_u64 ivs)
 				}
 				if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
 				{
-					return 1;
+					continue;
 				}
 
 				if (!l_First.isNoGender)
@@ -562,17 +563,17 @@ _u64 SearchFive(_u64 ivs)
 	for (_u64 search = 0; search < 0x4000; ++search)
 	{
 		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
-		if (g_LSB != -1 && g_LSB != (seed & 1)) {
-			continue;
-		}
 		xoroshiro.SetSeed(seed);
 		// EC
 		unsigned int ec = -1;
 		do {
 			ec = xoroshiro.Next(0xFFFFFFFFu);
 		} while (ec == 0xFFFFFFFFu);
+		if (g_LSB != -1 && (ec & 1) != g_LSB) {
+			continue;
+		}
 		if (l_First.characteristic > -1) {
-			int characteristic = ec%6;
+			int characteristic = fastmod::fastmod_u32(ec, M, 6);
 			if (characteristic != l_First.characteristic)
 			{
 				continue;
@@ -641,7 +642,7 @@ _u64 SearchFive(_u64 ivs)
 				}
 				if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
 				{
-					return 1;
+					continue;
 				}
 
 				if (!l_First.isNoGender)
@@ -776,19 +777,17 @@ _u64 SearchFour(_u64 ivs)
 	for (_u64 search = 0; search < 0x1000000; ++search)
 	{
 		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
-		if (g_LSB != -1 && g_LSB != (seed & 1)) {
-			continue;
-		}
-
 		xoroshiro.SetSeed(seed);
 		// EC
 		unsigned int ec = -1;
 		do {
 			ec = xoroshiro.Next(0xFFFFFFFFu);
 		} while (ec == 0xFFFFFFFFu);
-
+		if (g_LSB != -1 && (ec & 1) != g_LSB) {
+			continue;
+		}
 		if (l_First.characteristic > -1) {
-			int characteristic = ec%6;
+			int characteristic = fastmod::fastmod_u32(ec, M, 6);
 			if (characteristic != l_First.characteristic)
 			{
 				continue;
@@ -857,7 +856,7 @@ _u64 SearchFour(_u64 ivs)
 				}
 				if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
 				{
-					return 0;
+					continue;
 				}
 
 				if (!l_First.isNoGender)

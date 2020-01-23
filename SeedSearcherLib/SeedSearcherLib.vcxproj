@@ -136,6 +136,7 @@
     <ClInclude Include="Calculator.h" />
     <ClInclude Include="Const.h" />
     <ClInclude Include="Data.h" />
+    <ClInclude Include="fastmod.h" />
     <ClInclude Include="SixivCalculator.h" />
     <ClInclude Include="Type.h" />
     <ClInclude Include="Util.h" />

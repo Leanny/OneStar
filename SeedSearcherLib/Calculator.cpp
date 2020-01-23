@@ -4,6 +4,7 @@
 #include "Const.h"
 #include "XoroshiroState.h"
 #include "Data.h"
+#include "fastmod.h"
 
 // 検索条件設定
 static PokemonData l_First;
@@ -13,6 +14,8 @@ static PokemonData l_Third;
 static int g_Rerolls;
 static int g_FixedIndex;
 static int g_LSB;
+
+static uint64_t M = fastmod::computeM_u32(6);
 
 // 絞り込み条件設定
 
@@ -153,19 +156,11 @@ inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	do {
 		ec = xoroshiro.Next(0xFFFFFFFFu);
 	} while (ec == 0xFFFFFFFFu);
-	if (ec != -1 && (ec & 1) != g_LSB) {
+	if (g_LSB != -1 && (ec & 1) != g_LSB) {
 		return 0;
 	}
 	if (l_First.characteristic > -1) {
-		int characteristic = ec % 6;
-		for (int i = 0; i < 6; ++i)
-		{
-			if (l_First.IsCharacterized((characteristic + i) % 6))
-			{
-				characteristic = (characteristic + i) % 6;
-				break;
-			}
-		}
+		int characteristic = fastmod::fastmod_u32(ec, M, 6);
 		if (characteristic != l_First.characteristic)
 		{
 			return 1;
@@ -355,16 +350,16 @@ _u64 Search(_u64 ivs)
 		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
 
 		// ここから絞り込み
-		if (g_LSB != -1 && (seed & 1) != g_LSB) {
-			continue;
-		}
 		xoroshiro.SetSeed(seed);
 		unsigned int ec = -1;
 		do {
 			ec = xoroshiro.Next(0xFFFFFFFFu);
 		} while (ec == 0xFFFFFFFFu);
+		if (g_LSB != -1 && (ec & 1) != g_LSB) {
+			continue;
+		}
 		if (l_First.characteristic > -1) {
-			int characteristic = ec % 6;
+			int characteristic = fastmod::fastmod_u32(ec, M, 6);
 			if (characteristic != l_First.characteristic)
 			{
 				continue;
