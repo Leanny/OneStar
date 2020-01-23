@@ -2185,7 +2185,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SeedSearcherGui";
-            this.Text = "Seed Searcher";
+            this.Text = "Seed Searcher 1.0e";
             this.GB_Left.ResumeLayout(false);
             this.GB_Left.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).EndInit();
