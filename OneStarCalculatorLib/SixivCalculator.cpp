@@ -5,7 +5,6 @@
 #include "XoroshiroState.h"
 #include "Data.h"
 
-// 検索条件設定
 static PokemonData l_First;
 static PokemonData l_Second;
 static PokemonData l_Third;
@@ -13,11 +12,9 @@ static PokemonData l_Fourth;
 
 static int g_Ivs[6];
 static int g_LSB;
+static int g_setIVs;
 
 static int g_IvOffset;
-static const _u64 M = 0xaaaaaaab;
-
-//#define LENGTH (60)
 
 void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool isNoGender, bool isEnableDream)
 {
@@ -95,29 +92,29 @@ void SetTargetCondition6(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6)
 	g_Ivs[3] = iv4;
 	g_Ivs[4] = iv5;
 	g_Ivs[5] = iv6;
+	for (int i = 0; i < 6; i++) {
+		if (g_Ivs[i] != -1) {
+			g_setIVs++;
+		}
+	}
+
 }
 
 void PrepareSix(int ivOffset)
 {
-	const int length = 60;
+	const int length = 10 * g_setIVs;
 
 	g_IvOffset = ivOffset;
 
-	// 使用する行列値をセット
-	// 使用する定数ベクトルをセット
-
 	g_ConstantTermVector = 0;
 
-	// r[(11 - FixedIvs) + offset]からr[(11 - FixedIvs) + FixedIvs - 1 + offset]まで使う
-
-	// 変換行列を計算
-	InitializeTransformationMatrix(); // r[1]が得られる変換行列がセットされる
+	InitializeTransformationMatrix();
 	for (int i = 0; i <= 1 + l_First.fixedIV + ivOffset; ++i)
 	{
-		ProceedTransformationMatrix(); // r[2 + i]が得られる
+		ProceedTransformationMatrix();
 	}
 
-	for (int a = 0; a < 6; ++a)
+	for (int a = 0; a < g_setIVs; ++a)
 	{
 		for (int i = 0; i < 10; ++i)
 		{
@@ -132,16 +129,9 @@ void PrepareSix(int ivOffset)
 		ProceedTransformationMatrix();
 	}
 
-	// 行基本変形で求める
 	CalculateInverseMatrix(length);
 
-	// 事前データを計算
 	CalculateCoefficientData(length);
-}
-
-inline unsigned int mod(_u64 n) {
-	_u64 q = (M * n) >> 34;
-	return n - q * 6;
 }
 
 inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
@@ -159,7 +149,7 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 
 	// 1匹目個性
 	if (l_First.characteristic > -1) {
-		int characteristic = mod(ec);
+		int characteristic = ec%6;
 		if (characteristic != l_First.characteristic)
 		{
 			return 1;
@@ -194,7 +184,7 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 			{
 				if (l_First.ivs[i] != 31)
 				{
-					return 103;
+					return 1;
 				}
 			}
 			else if (l_First.ivs[i] != xoroshiro.Next(0x1F))
@@ -328,14 +318,14 @@ _u64 SearchSix(_u64 ivs)
 	_u64 target = 0;
 
 	// 下位30bit = 個体値
-	target |= (ivs & 0x3E000000ul) << 30; // iv0_0
-	target |= (ivs & 0x1F00000ul) << 25; // iv1_0
-	target |= (ivs & 0xF8000ul) << 20; // iv2_0
-	target |= (ivs & 0x7C00ul) << 15; // iv3_0
-	target |= (ivs & 0x3E0ul) << 10; // iv4_0
-	target |= (ivs & 0x1Ful) << 5; // iv5_0
+	target |= (ivs & 0x3E000000ul) << 30;
+	target |= (ivs & 0x1F00000ul) << 25;
+	target |= (ivs & 0xF8000ul) << 20; 
+	target |= (ivs & 0x7C00ul) << 15;
+	target |= (ivs & 0x3E0ul) << 10;
+	target |= (ivs & 0x1Ful) << 5; 
 
-	// 隠された値を推定
+
 	target |= ((32ul + g_Ivs[0] - ((ivs & 0x3E000000ul) >> 25)) & 0x1F) << 50;
 	target |= ((32ul + g_Ivs[1] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 40;
 	target |= ((32ul + g_Ivs[2] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
@@ -343,11 +333,8 @@ _u64 SearchSix(_u64 ivs)
 	target |= ((32ul + g_Ivs[4] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
 	target |= ((32ul + g_Ivs[5] - (ivs & 0x1Ful)) & 0x1F);
 
-	// targetベクトル入力完了
-
 	target ^= g_ConstantTermVector;
 
-	// 60bit側の計算結果キャッシュ
 	_u64 processedTarget = 0;
 	int offset = 0;
 	for (int i = 0; i < length; ++i)
@@ -359,15 +346,13 @@ _u64 SearchSix(_u64 ivs)
 		processedTarget |= (GetSignature(g_AnswerFlag[i] & target) << (63 - (i + offset)));
 	}
 
-	// 下位を決める
-	_u64 max = ((1 << (64 - length)) - 1);
-	for (_u64 search = 0; search <= max; ++search)
+	for (_u64 search = 0; search < 16; ++search)
 	{
 		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
 		if (g_LSB != -1 && g_LSB != (seed & 1)) {
 			continue;
 		}
-		// ここから絞り込み
+
 		xoroshiro.SetSeed(seed);
 		// EC
 		unsigned int ec = -1;
@@ -375,9 +360,8 @@ _u64 SearchSix(_u64 ivs)
 			ec = xoroshiro.Next(0xFFFFFFFFu);
 		} while (ec == 0xFFFFFFFFu);
 
-		// 1匹目個性
 		if(l_First.characteristic > -1) {
-			int characteristic = mod(ec);
+			int characteristic = ec%6;
 			if (characteristic != l_First.characteristic)
 			{
 				continue;
@@ -386,7 +370,6 @@ _u64 SearchSix(_u64 ivs)
 
 		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
 		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
-		// 1匹目
 		{
 			int ivs[6] = { -1, -1, -1, -1, -1, -1 };
 			int fixedCount = 0;
@@ -394,7 +377,7 @@ _u64 SearchSix(_u64 ivs)
 			do {
 				int fixedIndex = 0;
 				do {
-					fixedIndex = xoroshiro.Next(7); // V箇所
+					fixedIndex = xoroshiro.Next(7);
 					++offset;
 				} while (fixedIndex >= 6);
 
@@ -405,13 +388,11 @@ _u64 SearchSix(_u64 ivs)
 				}
 			} while (fixedCount < l_First.fixedIV);
 
-			// reroll回数
 			if (offset != g_IvOffset)
 			{
 				continue;
 			}
 
-			// 個体値
 			bool isPassed = true;
 			for (int i = 0; i < 6; ++i)
 			{
@@ -449,40 +430,37 @@ _u64 SearchSix(_u64 ivs)
 				}
 				if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
 				{
-					return 10;
+					return 1;
 				}
 
-				// 性別値
 				if (!l_First.isNoGender)
 				{
 					int gender = 0;
 					do {
-						gender = xoroshiro.Next(0xFF); // 性別値
+						gender = xoroshiro.Next(0xFF); 
 					} while (gender >= 253);
 				}
 
 				int nature = 0;
 				do {
-					nature = xoroshiro.Next(0x1F); // 性格
+					nature = xoroshiro.Next(0x1F);
 				} while (nature >= 25);
 
 				if (nature != l_First.nature)
 				{
-					// does not work
 					xoroshiro.Copy(&tmp);
 					// ignore ability
-					// 性別値
 					if (!l_First.isNoGender)
 					{
 						int gender = 0;
 						do {
-							gender = xoroshiro.Next(0xFF); // 性別値
+							gender = xoroshiro.Next(0xFF);
 						} while (gender >= 253);
 					}
 
 					int nature = 0;
 					do {
-						nature = xoroshiro.Next(0x1F); // 性格
+						nature = xoroshiro.Next(0x1F);
 					} while (nature >= 25);
 
 					if (nature != l_First.nature)
@@ -492,6 +470,219 @@ _u64 SearchSix(_u64 ivs)
 					}
 				}
 			} else {
+				int ability = 0;
+				if (l_First.isEnableDream)
+				{
+					do {
+						ability = xoroshiro.Next(3);
+					} while (ability >= 3);
+				}
+				else
+				{
+					ability = xoroshiro.Next(1);
+				}
+				if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
+				{
+					continue;
+				}
+				if (!l_First.isNoGender)
+				{
+					int gender = 0;
+					do {
+						gender = xoroshiro.Next(0xFF);
+					} while (gender >= 253);
+				}
+
+				int nature = 0;
+				do {
+					nature = xoroshiro.Next(0x1F);
+				} while (nature >= 25);
+
+				if (nature != l_First.nature)
+				{
+					continue;
+				}
+			}
+		}
+
+		xoroshiro.SetSeed(seed);
+		if (!TestPkmn(xoroshiro, l_Second)) {
+			continue;
+		}
+
+		_u64 newseed = seed + Const::c_XoroshiroConst;
+		xoroshiro.SetSeed(newseed + Const::c_XoroshiroConst);
+		if (!TestPkmn(xoroshiro, l_Fourth)) {
+			continue;
+		}
+
+		xoroshiro.SetSeed(newseed);
+		if (!TestPkmn(xoroshiro, l_Third)) {
+			continue;
+		}
+
+		return seed;
+	}
+	return 0;
+}
+
+_u64 SearchFive(_u64 ivs)
+{
+	const int length = 50;
+
+	XoroshiroState xoroshiro;
+	XoroshiroState tmp;
+
+	_u64 target = 0;
+
+	target |= (ivs & 0x1F00000ul) << 25;
+	target |= (ivs & 0xF8000ul) << 20;
+	target |= (ivs & 0x7C00ul) << 15; 
+	target |= (ivs & 0x3E0ul) << 10; 
+	target |= (ivs & 0x1Ful) << 5; 
+
+	target |= ((32ul + g_Ivs[0] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 40;
+	target |= ((32ul + g_Ivs[1] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
+	target |= ((32ul + g_Ivs[2] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
+	target |= ((32ul + g_Ivs[3] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
+	target |= ((32ul + g_Ivs[4] - (ivs & 0x1Ful)) & 0x1F);
+
+	target ^= g_ConstantTermVector;
+
+	_u64 processedTarget = 0;
+	int offset = 0;
+	for (int i = 0; i < length; ++i)
+	{
+		while (g_FreeBit[i + offset] > 0)
+		{
+			++offset;
+		}
+		processedTarget |= (GetSignature(g_AnswerFlag[i] & target) << (63 - (i + offset)));
+	}
+
+	for (_u64 search = 0; search < 0x4000; ++search)
+	{
+		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
+		if (g_LSB != -1 && g_LSB != (seed & 1)) {
+			continue;
+		}
+		xoroshiro.SetSeed(seed);
+		// EC
+		unsigned int ec = -1;
+		do {
+			ec = xoroshiro.Next(0xFFFFFFFFu);
+		} while (ec == 0xFFFFFFFFu);
+		if (l_First.characteristic > -1) {
+			int characteristic = ec%6;
+			if (characteristic != l_First.characteristic)
+			{
+				continue;
+			}
+		}
+
+		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
+		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
+		{
+			int ivs[6] = { -1, -1, -1, -1, -1, -1 };
+			int fixedCount = 0;
+			int offset = -l_First.fixedIV;
+			do {
+				int fixedIndex = 0;
+				do {
+					fixedIndex = xoroshiro.Next(7);
+					++offset;
+				} while (fixedIndex >= 6);
+
+				if (ivs[fixedIndex] == -1)
+				{
+					ivs[fixedIndex] = 31;
+					++fixedCount;
+				}
+			} while (fixedCount < l_First.fixedIV);
+
+			if (offset != g_IvOffset)
+			{
+				continue;
+			}
+
+			bool isPassed = true;
+			for (int i = 0; i < 6; ++i)
+			{
+				if (ivs[i] == 31)
+				{
+					if (l_First.ivs[i] != 31)
+					{
+						isPassed = false;
+						break;
+					}
+				}
+				else if (l_First.ivs[i] != xoroshiro.Next(0x1F))
+				{
+					isPassed = false;
+					break;
+				}
+			}
+			if (!isPassed)
+			{
+				continue;
+			}
+			if (l_First.ability == -2) {
+				tmp.Copy(&xoroshiro);
+				// normal
+				int ability = 0;
+				if (l_First.isEnableDream)
+				{
+					do {
+						ability = xoroshiro.Next(3);
+					} while (ability >= 3);
+				}
+				else
+				{
+					ability = xoroshiro.Next(1);
+				}
+				if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
+				{
+					return 1;
+				}
+
+				if (!l_First.isNoGender)
+				{
+					int gender = 0;
+					do {
+						gender = xoroshiro.Next(0xFF);
+					} while (gender >= 253);
+				}
+
+				int nature = 0;
+				do {
+					nature = xoroshiro.Next(0x1F);
+				} while (nature >= 25);
+
+				if (nature != l_First.nature)
+				{
+					xoroshiro.Copy(&tmp);
+					// ignore ability
+					if (!l_First.isNoGender)
+					{
+						int gender = 0;
+						do {
+							gender = xoroshiro.Next(0xFF);
+						} while (gender >= 253);
+					}
+
+					int nature = 0;
+					do {
+						nature = xoroshiro.Next(0x1F);
+					} while (nature >= 25);
+
+					if (nature != l_First.nature)
+					{
+						// both do not yield results
+						continue;
+					}
+				}
+			}
+			else {
 				// 特性
 				int ability = 0;
 				if (l_First.isEnableDream)
@@ -546,6 +737,219 @@ _u64 SearchSix(_u64 ivs)
 			continue;
 		}
 
+		return seed;
+	}
+	return 0;
+}
+
+_u64 SearchFour(_u64 ivs)
+{
+	const int length = 40;
+
+	XoroshiroState xoroshiro;
+	XoroshiroState tmp;
+
+	_u64 target = 0;
+
+	target |= (ivs & 0xF8000ul) << 20;
+	target |= (ivs & 0x7C00ul) << 15;
+	target |= (ivs & 0x3E0ul) << 10;
+	target |= (ivs & 0x1Ful) << 5;
+
+	target |= ((32ul + g_Ivs[0] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
+	target |= ((32ul + g_Ivs[1] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
+	target |= ((32ul + g_Ivs[2] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
+	target |= ((32ul + g_Ivs[3] - (ivs & 0x1Ful)) & 0x1F);
+
+	target ^= g_ConstantTermVector;
+
+	_u64 processedTarget = 0;
+	int offset = 0;
+	for (int i = 0; i < length; ++i)
+	{
+		while (g_FreeBit[i + offset] > 0)
+		{
+			++offset;
+		}
+		processedTarget |= (GetSignature(g_AnswerFlag[i] & target) << (63 - (i + offset)));
+	}
+
+	for (_u64 search = 0; search < 0x1000000; ++search)
+	{
+		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
+		if (g_LSB != -1 && g_LSB != (seed & 1)) {
+			continue;
+		}
+
+		xoroshiro.SetSeed(seed);
+		// EC
+		unsigned int ec = -1;
+		do {
+			ec = xoroshiro.Next(0xFFFFFFFFu);
+		} while (ec == 0xFFFFFFFFu);
+
+		if (l_First.characteristic > -1) {
+			int characteristic = ec%6;
+			if (characteristic != l_First.characteristic)
+			{
+				continue;
+			}
+		}
+
+		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
+		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
+		{
+			int ivs[6] = { -1, -1, -1, -1, -1, -1 };
+			int fixedCount = 0;
+			int offset = -l_First.fixedIV;
+			do {
+				int fixedIndex = 0;
+				do {
+					fixedIndex = xoroshiro.Next(7);
+					++offset;
+				} while (fixedIndex >= 6);
+
+				if (ivs[fixedIndex] == -1)
+				{
+					ivs[fixedIndex] = 31;
+					++fixedCount;
+				}
+			} while (fixedCount < l_First.fixedIV);
+
+			if (offset != g_IvOffset)
+			{
+				continue;
+			}
+
+			bool isPassed = true;
+			for (int i = 0; i < 6; ++i)
+			{
+				if (ivs[i] == 31)
+				{
+					if (l_First.ivs[i] != 31)
+					{
+						isPassed = false;
+						break;
+					}
+				}
+				else if (l_First.ivs[i] != xoroshiro.Next(0x1F))
+				{
+					isPassed = false;
+					break;
+				}
+			}
+			if (!isPassed)
+			{
+				continue;
+			}
+			if (l_First.ability == -2) {
+				tmp.Copy(&xoroshiro);
+				// normal
+				int ability = 0;
+				if (l_First.isEnableDream)
+				{
+					do {
+						ability = xoroshiro.Next(3);
+					} while (ability >= 3);
+				}
+				else
+				{
+					ability = xoroshiro.Next(1);
+				}
+				if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
+				{
+					return 0;
+				}
+
+				if (!l_First.isNoGender)
+				{
+					int gender = 0;
+					do {
+						gender = xoroshiro.Next(0xFF);
+					} while (gender >= 253);
+				}
+
+				int nature = 0;
+				do {
+					nature = xoroshiro.Next(0x1F);
+				} while (nature >= 25);
+
+				if (nature != l_First.nature)
+				{
+					xoroshiro.Copy(&tmp);
+					// ignore ability
+					if (!l_First.isNoGender)
+					{
+						int gender = 0;
+						do {
+							gender = xoroshiro.Next(0xFF);
+						} while (gender >= 253);
+					}
+
+					int nature = 0;
+					do {
+						nature = xoroshiro.Next(0x1F);
+					} while (nature >= 25);
+
+					if (nature != l_First.nature)
+					{
+						// both do not yield results
+						continue;
+					}
+				}
+			}
+			else {
+				int ability = 0;
+				if (l_First.isEnableDream)
+				{
+					do {
+						ability = xoroshiro.Next(3);
+					} while (ability >= 3);
+				}
+				else
+				{
+					ability = xoroshiro.Next(1);
+				}
+				if ((l_First.ability >= 0 && l_First.ability != ability) || (l_First.ability == -1 && ability >= 2))
+				{
+					continue;
+				}
+
+				if (!l_First.isNoGender)
+				{
+					int gender = 0;
+					do {
+						gender = xoroshiro.Next(0xFF);
+					} while (gender >= 253);
+				}
+
+				int nature = 0;
+				do {
+					nature = xoroshiro.Next(0x1F); 
+				} while (nature >= 25);
+
+				if (nature != l_First.nature)
+				{
+					continue;
+				}
+			}
+		}
+
+		xoroshiro.SetSeed(seed);
+		if (!TestPkmn(xoroshiro, l_Second)) {
+			continue;
+		}
+
+		_u64 newseed = seed + Const::c_XoroshiroConst;
+		xoroshiro.SetSeed(newseed + Const::c_XoroshiroConst);
+		if (!TestPkmn(xoroshiro, l_Fourth)) {
+			continue;
+		}
+
+		xoroshiro.SetSeed(newseed);
+		if (!TestPkmn(xoroshiro, l_Third)) {
+			continue;
+		}
 		return seed;
 	}
 	return 0;

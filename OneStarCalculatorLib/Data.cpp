@@ -11,8 +11,8 @@ _u64 g_AnswerFlag[64];
 int g_FreeBit[64];
 int g_FreeId[64];
 
-_u64 g_CoefficientData[0x4000];
-_u64 g_SearchPattern[0x4000];
+_u64 g_CoefficientData[0x1000000];
+_u64 g_SearchPattern[0x1000000];
 
 _u64 l_Temp[256];
 
