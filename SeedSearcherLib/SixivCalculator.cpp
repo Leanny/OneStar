@@ -135,9 +135,6 @@ void PrepareSix(int ivOffset)
 }
 
 inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
-	if (g_LSB != -1 && g_LSB != (seed & 1)) {
-		return 0;
-	}
 	// ここから絞り込み
 	XoroshiroState tmp;
 	xoroshiro.SetSeed(seed);
@@ -146,7 +143,9 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	do {
 		ec = xoroshiro.Next(0xFFFFFFFFu);
 	} while (ec == 0xFFFFFFFFu);
-
+	if (ec != -1 && (ec & 1) != g_LSB) {
+		return 0;
+	}
 	// 1匹目個性
 	if (l_First.characteristic > -1) {
 		int characteristic = ec%6;

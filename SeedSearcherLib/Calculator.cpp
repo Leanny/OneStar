@@ -147,15 +147,15 @@ void Prepare(int rerolls)
 }
 
 inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
-	if (g_LSB != -1 && (seed & 1) != g_LSB) {
-		return 0;
-	}
 	XoroshiroState tmp;
 	xoroshiro.SetSeed(seed);
 	unsigned int ec = -1;
 	do {
 		ec = xoroshiro.Next(0xFFFFFFFFu);
 	} while (ec == 0xFFFFFFFFu);
+	if (ec != -1 && (ec & 1) != g_LSB) {
+		return 0;
+	}
 	if (l_First.characteristic > -1) {
 		int characteristic = ec % 6;
 		for (int i = 0; i < 6; ++i)
