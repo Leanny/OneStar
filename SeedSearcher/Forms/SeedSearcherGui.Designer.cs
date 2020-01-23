@@ -41,7 +41,6 @@
             this.DenMap = new System.Windows.Forms.PictureBox();
             this.GB_PKMN1 = new System.Windows.Forms.GroupBox();
             this.LB_Response = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
             this.LBLAO = new System.Windows.Forms.Label();
             this.GB_43 = new System.Windows.Forms.GroupBox();
             this.RB_3rd = new System.Windows.Forms.RadioButton();
@@ -169,8 +168,6 @@
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.日本語ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.PB_Deviation = new System.Windows.Forms.ToolStripProgressBar();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -529,14 +526,13 @@
             // GB_PKMN1
             // 
             this.GB_PKMN1.Controls.Add(this.LB_Response);
-            this.GB_PKMN1.Controls.Add(this.label58);
             this.GB_PKMN1.Controls.Add(this.LBLAO);
             this.GB_PKMN1.Controls.Add(this.GB_43);
             this.GB_PKMN1.Controls.Add(this.GB_42);
             this.GB_PKMN1.Controls.Add(this.GB_41);
             this.GB_PKMN1.Location = new System.Drawing.Point(285, 32);
             this.GB_PKMN1.Name = "GB_PKMN1";
-            this.GB_PKMN1.Size = new System.Drawing.Size(401, 706);
+            this.GB_PKMN1.Size = new System.Drawing.Size(401, 720);
             this.GB_PKMN1.TabIndex = 1;
             this.GB_PKMN1.TabStop = false;
             this.GB_PKMN1.Text = "Pokémon Info Day 4";
@@ -549,15 +545,6 @@
             this.LB_Response.Size = new System.Drawing.Size(53, 17);
             this.LB_Response.TabIndex = 49;
             this.LB_Response.Text = "$RESP";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(30, 717);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(34, 17);
-            this.label58.TabIndex = 11;
-            this.label58.Text = "0ms";
             // 
             // LBLAO
             // 
@@ -593,7 +580,7 @@
             this.GB_43.Controls.Add(this.LBL_PKMN3);
             this.GB_43.Location = new System.Drawing.Point(6, 514);
             this.GB_43.Name = "GB_43";
-            this.GB_43.Size = new System.Drawing.Size(380, 187);
+            this.GB_43.Size = new System.Drawing.Size(380, 200);
             this.GB_43.TabIndex = 2;
             this.GB_43.TabStop = false;
             this.GB_43.Text = "3rd";
@@ -646,7 +633,7 @@
             0,
             0});
             this.SPE3.Name = "SPE3";
-            this.SPE3.Size = new System.Drawing.Size(43, 22);
+            this.SPE3.Size = new System.Drawing.Size(50, 22);
             this.SPE3.TabIndex = 45;
             this.SPE3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.SPE3.Enter += new System.EventHandler(this.HP1_Enter);
@@ -661,7 +648,7 @@
             0,
             0});
             this.SPD3.Name = "SPD3";
-            this.SPD3.Size = new System.Drawing.Size(43, 22);
+            this.SPD3.Size = new System.Drawing.Size(50, 22);
             this.SPD3.TabIndex = 44;
             this.SPD3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.SPD3.Enter += new System.EventHandler(this.HP1_Enter);
@@ -676,7 +663,7 @@
             0,
             0});
             this.SPA3.Name = "SPA3";
-            this.SPA3.Size = new System.Drawing.Size(43, 22);
+            this.SPA3.Size = new System.Drawing.Size(50, 22);
             this.SPA3.TabIndex = 43;
             this.SPA3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.SPA3.Enter += new System.EventHandler(this.HP1_Enter);
@@ -691,7 +678,7 @@
             0,
             0});
             this.DEF3.Name = "DEF3";
-            this.DEF3.Size = new System.Drawing.Size(43, 22);
+            this.DEF3.Size = new System.Drawing.Size(50, 22);
             this.DEF3.TabIndex = 42;
             this.DEF3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.DEF3.Enter += new System.EventHandler(this.HP1_Enter);
@@ -706,7 +693,7 @@
             0,
             0});
             this.ATK3.Name = "ATK3";
-            this.ATK3.Size = new System.Drawing.Size(43, 22);
+            this.ATK3.Size = new System.Drawing.Size(50, 22);
             this.ATK3.TabIndex = 41;
             this.ATK3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.ATK3.Enter += new System.EventHandler(this.HP1_Enter);
@@ -721,7 +708,7 @@
             0,
             0});
             this.HP3.Name = "HP3";
-            this.HP3.Size = new System.Drawing.Size(43, 22);
+            this.HP3.Size = new System.Drawing.Size(50, 22);
             this.HP3.TabIndex = 40;
             this.HP3.ValueChanged += new System.EventHandler(this.HP3_ValueChanged);
             this.HP3.Enter += new System.EventHandler(this.HP1_Enter);
@@ -945,7 +932,7 @@
             0,
             0});
             this.SPE2.Name = "SPE2";
-            this.SPE2.Size = new System.Drawing.Size(43, 22);
+            this.SPE2.Size = new System.Drawing.Size(50, 22);
             this.SPE2.TabIndex = 7;
             this.SPE2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.SPE2.Enter += new System.EventHandler(this.HP1_Enter);
@@ -960,7 +947,7 @@
             0,
             0});
             this.SPD2.Name = "SPD2";
-            this.SPD2.Size = new System.Drawing.Size(43, 22);
+            this.SPD2.Size = new System.Drawing.Size(50, 22);
             this.SPD2.TabIndex = 6;
             this.SPD2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.SPD2.Enter += new System.EventHandler(this.HP1_Enter);
@@ -975,7 +962,7 @@
             0,
             0});
             this.SPA2.Name = "SPA2";
-            this.SPA2.Size = new System.Drawing.Size(43, 22);
+            this.SPA2.Size = new System.Drawing.Size(50, 22);
             this.SPA2.TabIndex = 5;
             this.SPA2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.SPA2.Enter += new System.EventHandler(this.HP1_Enter);
@@ -990,7 +977,7 @@
             0,
             0});
             this.DEF2.Name = "DEF2";
-            this.DEF2.Size = new System.Drawing.Size(43, 22);
+            this.DEF2.Size = new System.Drawing.Size(50, 22);
             this.DEF2.TabIndex = 4;
             this.DEF2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.DEF2.Enter += new System.EventHandler(this.HP1_Enter);
@@ -1005,7 +992,7 @@
             0,
             0});
             this.ATK2.Name = "ATK2";
-            this.ATK2.Size = new System.Drawing.Size(43, 22);
+            this.ATK2.Size = new System.Drawing.Size(50, 22);
             this.ATK2.TabIndex = 3;
             this.ATK2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.ATK2.Enter += new System.EventHandler(this.HP1_Enter);
@@ -1020,7 +1007,7 @@
             0,
             0});
             this.HP2.Name = "HP2";
-            this.HP2.Size = new System.Drawing.Size(43, 22);
+            this.HP2.Size = new System.Drawing.Size(50, 22);
             this.HP2.TabIndex = 2;
             this.HP2.ValueChanged += new System.EventHandler(this.HP2_ValueChanged);
             this.HP2.Enter += new System.EventHandler(this.HP1_Enter);
@@ -1242,7 +1229,7 @@
             0,
             0});
             this.SPE1.Name = "SPE1";
-            this.SPE1.Size = new System.Drawing.Size(43, 22);
+            this.SPE1.Size = new System.Drawing.Size(50, 22);
             this.SPE1.TabIndex = 10;
             this.SPE1.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1256,7 +1243,7 @@
             0,
             0});
             this.SPD1.Name = "SPD1";
-            this.SPD1.Size = new System.Drawing.Size(43, 22);
+            this.SPD1.Size = new System.Drawing.Size(50, 22);
             this.SPD1.TabIndex = 9;
             this.SPD1.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1270,7 +1257,7 @@
             0,
             0});
             this.SPA1.Name = "SPA1";
-            this.SPA1.Size = new System.Drawing.Size(43, 22);
+            this.SPA1.Size = new System.Drawing.Size(50, 22);
             this.SPA1.TabIndex = 8;
             this.SPA1.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1284,7 +1271,7 @@
             0,
             0});
             this.DEF1.Name = "DEF1";
-            this.DEF1.Size = new System.Drawing.Size(43, 22);
+            this.DEF1.Size = new System.Drawing.Size(50, 22);
             this.DEF1.TabIndex = 7;
             this.DEF1.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1298,7 +1285,7 @@
             0,
             0});
             this.ATK1.Name = "ATK1";
-            this.ATK1.Size = new System.Drawing.Size(43, 22);
+            this.ATK1.Size = new System.Drawing.Size(50, 22);
             this.ATK1.TabIndex = 6;
             this.ATK1.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1312,7 +1299,7 @@
             0,
             0});
             this.HP1.Name = "HP1";
-            this.HP1.Size = new System.Drawing.Size(43, 22);
+            this.HP1.Size = new System.Drawing.Size(50, 22);
             this.HP1.TabIndex = 5;
             this.HP1.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1520,7 +1507,7 @@
             0,
             0});
             this.SPE4.Name = "SPE4";
-            this.SPE4.Size = new System.Drawing.Size(43, 22);
+            this.SPE4.Size = new System.Drawing.Size(50, 22);
             this.SPE4.TabIndex = 45;
             this.SPE4.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1534,7 +1521,7 @@
             0,
             0});
             this.SPD4.Name = "SPD4";
-            this.SPD4.Size = new System.Drawing.Size(43, 22);
+            this.SPD4.Size = new System.Drawing.Size(50, 22);
             this.SPD4.TabIndex = 44;
             this.SPD4.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1548,7 +1535,7 @@
             0,
             0});
             this.SPA4.Name = "SPA4";
-            this.SPA4.Size = new System.Drawing.Size(43, 22);
+            this.SPA4.Size = new System.Drawing.Size(50, 22);
             this.SPA4.TabIndex = 43;
             this.SPA4.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1562,7 +1549,7 @@
             0,
             0});
             this.DEF4.Name = "DEF4";
-            this.DEF4.Size = new System.Drawing.Size(43, 22);
+            this.DEF4.Size = new System.Drawing.Size(50, 22);
             this.DEF4.TabIndex = 42;
             this.DEF4.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1576,7 +1563,7 @@
             0,
             0});
             this.ATK4.Name = "ATK4";
-            this.ATK4.Size = new System.Drawing.Size(43, 22);
+            this.ATK4.Size = new System.Drawing.Size(50, 22);
             this.ATK4.TabIndex = 41;
             this.ATK4.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1590,7 +1577,7 @@
             0,
             0});
             this.HP4.Name = "HP4";
-            this.HP4.Size = new System.Drawing.Size(43, 22);
+            this.HP4.Size = new System.Drawing.Size(50, 22);
             this.HP4.TabIndex = 40;
             this.HP4.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1745,7 +1732,7 @@
             this.GB_Controls.Controls.Add(this.BT_Search);
             this.GB_Controls.Location = new System.Drawing.Point(703, 546);
             this.GB_Controls.Name = "GB_Controls";
-            this.GB_Controls.Size = new System.Drawing.Size(387, 187);
+            this.GB_Controls.Size = new System.Drawing.Size(387, 206);
             this.GB_Controls.TabIndex = 5;
             this.GB_Controls.TabStop = false;
             this.GB_Controls.Text = "Controls";
@@ -1753,7 +1740,7 @@
             // BT_Table
             // 
             this.BT_Table.Enabled = false;
-            this.BT_Table.Location = new System.Drawing.Point(6, 123);
+            this.BT_Table.Location = new System.Drawing.Point(6, 136);
             this.BT_Table.Name = "BT_Table";
             this.BT_Table.Size = new System.Drawing.Size(374, 30);
             this.BT_Table.TabIndex = 7;
@@ -1764,7 +1751,7 @@
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(242, 160);
+            this.label55.Location = new System.Drawing.Point(242, 178);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(13, 17);
             this.label55.TabIndex = 6;
@@ -1772,7 +1759,7 @@
             // 
             // NUD_IVMax
             // 
-            this.NUD_IVMax.Location = new System.Drawing.Point(260, 158);
+            this.NUD_IVMax.Location = new System.Drawing.Point(260, 176);
             this.NUD_IVMax.Name = "NUD_IVMax";
             this.NUD_IVMax.Size = new System.Drawing.Size(120, 22);
             this.NUD_IVMax.TabIndex = 5;
@@ -1785,7 +1772,7 @@
             // 
             // NUD_IVMin
             // 
-            this.NUD_IVMin.Location = new System.Drawing.Point(115, 158);
+            this.NUD_IVMin.Location = new System.Drawing.Point(115, 176);
             this.NUD_IVMin.Name = "NUD_IVMin";
             this.NUD_IVMin.Size = new System.Drawing.Size(120, 22);
             this.NUD_IVMin.TabIndex = 4;
@@ -1794,7 +1781,7 @@
             // LBL_IVDeviation
             // 
             this.LBL_IVDeviation.AutoSize = true;
-            this.LBL_IVDeviation.Location = new System.Drawing.Point(7, 160);
+            this.LBL_IVDeviation.Location = new System.Drawing.Point(7, 178);
             this.LBL_IVDeviation.Name = "LBL_IVDeviation";
             this.LBL_IVDeviation.Size = new System.Drawing.Size(87, 17);
             this.LBL_IVDeviation.TabIndex = 3;
@@ -1802,7 +1789,7 @@
             // 
             // BT_newsearch
             // 
-            this.BT_newsearch.Location = new System.Drawing.Point(6, 89);
+            this.BT_newsearch.Location = new System.Drawing.Point(6, 97);
             this.BT_newsearch.Name = "BT_newsearch";
             this.BT_newsearch.Size = new System.Drawing.Size(374, 30);
             this.BT_newsearch.TabIndex = 2;
@@ -1813,7 +1800,7 @@
             // SeedResult
             // 
             this.SeedResult.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SeedResult.Location = new System.Drawing.Point(6, 25);
+            this.SeedResult.Location = new System.Drawing.Point(6, 23);
             this.SeedResult.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SeedResult.Name = "SeedResult";
             this.SeedResult.ReadOnly = true;
@@ -1822,7 +1809,7 @@
             // 
             // BT_Search
             // 
-            this.BT_Search.Location = new System.Drawing.Point(6, 55);
+            this.BT_Search.Location = new System.Drawing.Point(6, 58);
             this.BT_Search.Name = "BT_Search";
             this.BT_Search.Size = new System.Drawing.Size(374, 30);
             this.BT_Search.TabIndex = 0;
@@ -1895,7 +1882,7 @@
             0,
             0});
             this.SPE5.Name = "SPE5";
-            this.SPE5.Size = new System.Drawing.Size(43, 22);
+            this.SPE5.Size = new System.Drawing.Size(50, 22);
             this.SPE5.TabIndex = 45;
             this.SPE5.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1909,7 +1896,7 @@
             0,
             0});
             this.SPD5.Name = "SPD5";
-            this.SPD5.Size = new System.Drawing.Size(43, 22);
+            this.SPD5.Size = new System.Drawing.Size(50, 22);
             this.SPD5.TabIndex = 44;
             this.SPD5.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1923,7 +1910,7 @@
             0,
             0});
             this.SPA5.Name = "SPA5";
-            this.SPA5.Size = new System.Drawing.Size(43, 22);
+            this.SPA5.Size = new System.Drawing.Size(50, 22);
             this.SPA5.TabIndex = 43;
             this.SPA5.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1937,7 +1924,7 @@
             0,
             0});
             this.DEF5.Name = "DEF5";
-            this.DEF5.Size = new System.Drawing.Size(43, 22);
+            this.DEF5.Size = new System.Drawing.Size(50, 22);
             this.DEF5.TabIndex = 42;
             this.DEF5.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1951,7 +1938,7 @@
             0,
             0});
             this.ATK5.Name = "ATK5";
-            this.ATK5.Size = new System.Drawing.Size(43, 22);
+            this.ATK5.Size = new System.Drawing.Size(50, 22);
             this.ATK5.TabIndex = 41;
             this.ATK5.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -1965,7 +1952,7 @@
             0,
             0});
             this.HP5.Name = "HP5";
-            this.HP5.Size = new System.Drawing.Size(43, 22);
+            this.HP5.Size = new System.Drawing.Size(50, 22);
             this.HP5.TabIndex = 40;
             this.HP5.Enter += new System.EventHandler(this.HP1_Enter);
             // 
@@ -2115,10 +2102,8 @@
             this.toolStripStatusLabel1,
             this.LBL_IVDev,
             this.toolStripStatusLabel2,
-            this.LBL_Time,
-            this.toolStripStatusLabel3,
-            this.PB_Deviation});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 761);
+            this.LBL_Time});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 779);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.statusStrip1.Size = new System.Drawing.Size(1103, 26);
@@ -2184,24 +2169,11 @@
             this.checkSeedToolStripMenuItem.Text = "Check Seed";
             this.checkSeedToolStripMenuItem.Click += new System.EventHandler(this.checkSeedToolStripMenuItem_Click);
             // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(136, 20);
-            this.toolStripStatusLabel3.Text = "Deviation Progress:";
-            // 
-            // PB_Deviation
-            // 
-            this.PB_Deviation.Maximum = 1024;
-            this.PB_Deviation.Name = "PB_Deviation";
-            this.PB_Deviation.Size = new System.Drawing.Size(100, 18);
-            this.PB_Deviation.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            // 
             // SeedSearcherGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 787);
+            this.ClientSize = new System.Drawing.Size(1103, 805);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.MenuBar);
             this.Controls.Add(this.GB_61);
@@ -2211,9 +2183,7 @@
             this.Controls.Add(this.GB_Left);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1121, 834);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1121, 834);
             this.Name = "SeedSearcherGui";
             this.Text = "Seed Searcher";
             this.GB_Left.ResumeLayout(false);
@@ -2404,7 +2374,6 @@
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.NumericUpDown NUD_IVMax;
         private System.Windows.Forms.NumericUpDown NUD_IVMin;
-        private System.Windows.Forms.Label label58;
         private System.Windows.Forms.MenuStrip MenuBar;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 日本語ToolStripMenuItem;
@@ -2416,8 +2385,6 @@
         private System.Windows.Forms.ToolStripStatusLabel LBL_Time;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CB_Nest;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripProgressBar PB_Deviation;
     }
 }
 
