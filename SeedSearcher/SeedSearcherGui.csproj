@@ -9,6 +9,8 @@
     <RootNamespace>SeedSearcherGui</RootNamespace>
     <AssemblyName>SeedSearcherGui</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <LangVersion>8.0</LangVersion>
+    <NullableReferenceTypes>True</NullableReferenceTypes>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -47,6 +49,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,6 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Util\SeedSearcher.cs" />
     <Compile Include="Util\Util.cs" />
     <EmbeddedResource Include="Forms\Results.resx">
       <DependentUpon>Results.cs</DependentUpon>
@@ -117,12 +121,6 @@
     <Content Include="alcremie3.ico" />
     <Content Include="deps\PKHeX_Raid_Plugin.dll" />
     <None Include="Resources\map.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OneStarCalculator\OneStarCalculator.csproj">
-      <Project>{4A5ADB06-7773-4E21-9336-D46A44B92CC2}</Project>
-      <Name>OneStarCalculator</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
