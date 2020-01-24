@@ -100,7 +100,20 @@ void SetTargetCondition6(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6)
 			g_setIVs++;
 		}
 	}
+}
 
+void Reset() {
+	l_First = PokemonData();
+	l_Second = PokemonData();
+	l_Third = PokemonData();
+	l_Fourth = PokemonData();
+
+	for(int i=0; i<6; i++) {
+		g_Ivs[i] = -1;
+	}
+	g_LSB = -1;
+	g_setIVs = 0;
+	g_IvOffset = 0;
 }
 
 void PrepareSix(int ivOffset)

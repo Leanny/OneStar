@@ -79,8 +79,16 @@ namespace SeedSearcherGui
 		[DllImport("SeedSearcherLib.dll")]
 		static extern uint TestSixSeed(ulong seed);
 
+		[DllImport("SeedSearcherLib.dll")]
+		static extern void Reset();
+
 		static readonly ulong shift = 0x7817eba09827c0eful;
 		static readonly ulong frontshift = 0xFFFFFFFFFFFFFFFFul - shift + 1;
+
+		public static void ResetSearcher()
+		{
+			Reset();
+		}
 
 		public uint TestInputSeed(ulong seed)
 		{

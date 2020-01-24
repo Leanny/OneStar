@@ -1370,6 +1370,7 @@ namespace SeedSearcherGui
                 cb.SelectedIndex = 0;
             }
             SeedResult.Text = "";
+            SeedSearcher.ResetSearcher();
         }
 
         private void BT_newsearch_Click(object sender, EventArgs e)

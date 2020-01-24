@@ -14,4 +14,5 @@ extern "C"
 	__declspec(dllexport) _u64 SearchSix(_u64);
 	__declspec(dllexport) _u64 SearchFive(_u64);
 	__declspec(dllexport) _u64 SearchFour(_u64);
+	__declspec(dllexport) void Reset();
 }
