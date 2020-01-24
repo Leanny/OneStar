@@ -434,7 +434,7 @@ namespace SeedSearcherGui
             int lateAdd = 0;
             if (entries.Length > 0)
             {
-                if (setIVs[fixedIV[0]] == -1)
+                if (fixedIVs[fixedIV[0]] == -1)
                 {
                     RB_2nd.Visible = false;
                     RB_3rd.Visible = false;
@@ -477,43 +477,50 @@ namespace SeedSearcherGui
                     GB_42.Text = String.Format(Properties.strings.Day4Follow, fixedIV[1], idx2 + unsetIV - lateAdd);
                     ChangeGroupBoxColor(GB_42, colors[idx2 + unsetIV - lateAdd]);
                     set2 = idx2 + unsetIV;
-                    if (!GB_42.Enabled && lateAdd == 0)
+                    if (set2 - lateAdd == 3)
                     {
-                        RB_2nd.Visible = true;
-                        RB_3rd.Visible = false;
-                        GB_43.Enabled = false;
-                        GB_51.Enabled = false;
-                        GB_61.Enabled = false;
-                        GB_42.Enabled = true;
-                        PopulateSpeciesCB(CB_Species[1], entries);
+                        settwo = false;
                     }
-                    if (RB_2nd.Visible && RB_2nd.Checked)
+                    else
                     {
-                        if (setIVs[3] != -1)
+                        if (!GB_42.Enabled && lateAdd == 0)
                         {
                             RB_2nd.Visible = true;
-                            RB_3rd.Visible = true;
-                            GB_51.Enabled = true;
-                            GB_61.Enabled = true;
-                            GB_42.Enabled = true;
-                            GB_43.Enabled = false;
-                            LB_Response.Text = "OK!";
-                            GB_PKMN1.Enabled = false;
-                            checkSeedToolStripMenuItem.Enabled = true;
-                            return setIVs; // we have enough information
-                        }
-                        else
-                        {
-                            RB_2nd.Visible = false;
                             RB_3rd.Visible = false;
-                            RB_2nd.Checked = false;
-                            RB_3rd.Checked = false;
-                            GB_42.Enabled = false;
                             GB_43.Enabled = false;
                             GB_51.Enabled = false;
                             GB_61.Enabled = false;
-                            LB_Response.Text = "NOK!";
-                            return null; // we have more than enough information
+                            GB_42.Enabled = true;
+                            PopulateSpeciesCB(CB_Species[1], entries);
+                        }
+                        if (RB_2nd.Visible && RB_2nd.Checked)
+                        {
+                            if (setIVs[3] != -1)
+                            {
+                                RB_2nd.Visible = true;
+                                RB_3rd.Visible = true;
+                                GB_51.Enabled = true;
+                                GB_61.Enabled = true;
+                                GB_42.Enabled = true;
+                                GB_43.Enabled = false;
+                                LB_Response.Text = "OK!";
+                                GB_PKMN1.Enabled = false;
+                                checkSeedToolStripMenuItem.Enabled = true;
+                                return setIVs; // we have enough information
+                            }
+                            else
+                            {
+                                RB_2nd.Visible = false;
+                                RB_3rd.Visible = false;
+                                RB_2nd.Checked = false;
+                                RB_3rd.Checked = false;
+                                GB_42.Enabled = false;
+                                GB_43.Enabled = false;
+                                GB_51.Enabled = false;
+                                GB_61.Enabled = false;
+                                LB_Response.Text = "NOK!";
+                                return null; // we have more than enough information
+                            }
                         }
                     }
                 }
