@@ -20,6 +20,10 @@ Repeat the process, but catch any Pokémon from 1 days later and from 2 days lat
 ## Step 3 - Calculate
 Click "Start Search". This can take a long time, depending on the power of your PC. When a result is found, it will be printed in the textbox.
 
+# FAQ
+## What does "4/6", "5/6", or "6/6" mean?
+The RNG used for raids produces a sequence of random numbers. In order to get the seed from a list of Pokémon part of the random number sequence is restored. The IVs you provide for your Day 4 Pokémon belongs to this sequence of random numbers. To get the seed as fast as possible, an IV spread that allows to reconstruct 6 consecutive random numbers works the best, which is 6/6. If the IV spread provides less numbers, then the seed finding will take longer. 
+
 # Credits
 * [Rusted Coil](https://github.com/rusted-coil/OneStar) and [Pattirudon](https://github.com/pattirudon/xoroshiro-inverse) - Providing the base for my tool and figuring out most of the Math.
 * [Kaphotics](https://github.com/kwsch/PKHeX) - Providing PKHeX Core, a lib I used for language strings and getting all information for specific Pokémon.
