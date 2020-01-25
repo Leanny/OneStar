@@ -816,11 +816,11 @@ namespace SeedSearcherGui
             bool HA2 = pkmn2.Ability == 4 || pkmn1.Ability == 2;
             bool HA3 = pkmn3.Ability == 4 || pkmn1.Ability == 2;
 
-            SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star12);
-            SeedSearcher.SetFirstCondition(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, flawlessIdx, ability1, nature1, characteristics1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1);
-            SeedSearcher.SetNextCondition(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
-            SeedSearcher.SetThirdCondition(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
-            SeedSearcher.SetLSB(LSB);
+            SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star12, SeedSearcher.SearchMode.CPU);
+            searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1, flawlessIdx);
+            searcher.RegisterPokemon2(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
+            searcher.RegisterPokemon3(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
+            searcher.RegisterLSB(LSB);
             return searcher;
         }
 
@@ -1124,20 +1124,20 @@ namespace SeedSearcherGui
                 characteristics1 = -1;
             }
 
-            SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35);
-            SeedSearcher.SetSixFirstCondition(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1);
+            SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35, SeedSearcher.SearchMode.CPU);
+            searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1);
             if (GB_42.Enabled)
             {
-                SeedSearcher.SetSixSecondCondition(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
+                searcher.RegisterPokemon2(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
             }
             else
             {
-                SeedSearcher.SetSixSecondCondition(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
+                searcher.RegisterPokemon2(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
             }
 
-            SeedSearcher.SetSixThirdCondition(iv4[0], iv4[1], iv4[2], iv4[3], iv4[4], iv4[5], pkmn4.FlawlessIVs, ability4, nature4, characteristics4, pkmn4.Species, pkmn4.AltForm, noGender4, HA4);
-            SeedSearcher.SetSixFourthCondition(iv5[0], iv5[1], iv5[2], iv5[3], iv5[4], iv5[5], pkmn5.FlawlessIVs, ability5, nature5, characteristics5, pkmn5.Species, pkmn5.AltForm, noGender5, HA5);
-            SeedSearcher.SetSixLSB(LSB);
+            searcher.RegisterPokemon3(iv4[0], iv4[1], iv4[2], iv4[3], iv4[4], iv4[5], pkmn4.FlawlessIVs, ability4, nature4, characteristics4, pkmn4.Species, pkmn4.AltForm, noGender4, HA4);
+            searcher.RegisterPokemon4(iv5[0], iv5[1], iv5[2], iv5[3], iv5[4], iv5[5], pkmn5.FlawlessIVs, ability5, nature5, characteristics5, pkmn5.Species, pkmn5.AltForm, noGender5, HA5);
+            searcher.RegisterLSB(LSB);
             return searcher;
         }
 
