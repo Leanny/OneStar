@@ -2183,7 +2183,9 @@
             this.Controls.Add(this.GB_Left);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1121, 852);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1121, 852);
             this.Name = "SeedSearcherGui";
             this.Text = "Seed Searcher 1.0e";
             this.GB_Left.ResumeLayout(false);
