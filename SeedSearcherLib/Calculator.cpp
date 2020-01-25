@@ -34,7 +34,7 @@ const int* g_IvsRef[30] = {
 // 夢特性なし、かつ特性指定ありの場合AbilityBitが有効
 inline bool IsEnableAbilityBit() { return (!l_First.isEnableDream && l_First.ability >= 0); }
 
-void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int flawlessIDX, int ability, int nature, int characteristics, bool isNoGender, bool isEnableDream)
+void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int flawlessIDX, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream)
 {
 	l_First.ivs[0] = iv0;
 	l_First.ivs[1] = iv1;
@@ -48,10 +48,12 @@ void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int
 	l_First.isEnableDream = isEnableDream;
 	l_First.fixedIV = fixedIV;
 	l_First.characteristic = characteristics;
+	l_First.ID = species;
+	l_First.altForm = altform;
 	g_FixedIndex = flawlessIDX;
 }
 
-void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, bool isNoGender, bool isEnableDream)
+void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream)
 {
 	l_Second.ivs[0] = iv0;
 	l_Second.ivs[1] = iv1;
@@ -64,10 +66,12 @@ void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int 
 	l_Second.characteristic = characteristics;
 	l_Second.isNoGender = isNoGender;
 	l_Second.isEnableDream = isEnableDream;
+	l_Second.ID = species;
+	l_Second.altForm = altform;
 	l_Second.fixedIV = fixedIV;
 }
 
-void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, bool isNoGender, bool isEnableDream)
+void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream)
 {
 	l_Third.ivs[0] = iv0;
 	l_Third.ivs[1] = iv1;
@@ -80,6 +84,8 @@ void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int
 	l_Third.characteristic = characteristics;
 	l_Third.isNoGender = isNoGender;
 	l_Third.isEnableDream = isEnableDream;
+	l_Third.ID = species;
+	l_Third.altForm = altform;
 	l_Third.fixedIV = fixedIV;
 }
 
@@ -208,9 +214,26 @@ inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
 		}
 
 		int nature = 0;
-		do {
-			nature = xoroshiro.Next(0x1F); // 性格
-		} while (nature >= 25);
+		if (l_First.ID == ToxtricityID) {
+			if (l_First.altForm == 0) { // ToxtricityAmplifiedNatures
+				do {
+					nature = xoroshiro.Next(0xF);
+				} while (nature >= 13);
+				nature = ToxtricityAmplifiedNatures[nature];
+			}
+			else
+			{ // ToxtricityLowKeyNatures
+				do {
+					nature = xoroshiro.Next(0xF);
+				} while (nature >= 12);
+				nature = ToxtricityLowKeyNatures[nature];
+			}
+		}
+		else {
+			do {
+				nature = xoroshiro.Next(0x1F);
+			} while (nature >= 25);
+		}
 
 		if (nature != l_First.nature)
 		{
@@ -227,9 +250,26 @@ inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
 			}
 
 			int nature = 0;
-			do {
-				nature = xoroshiro.Next(0x1F); // 性格
-			} while (nature >= 25);
+			if (l_First.ID == ToxtricityID) {
+				if (l_First.altForm == 0) { // ToxtricityAmplifiedNatures
+					do {
+						nature = xoroshiro.Next(0xF);
+					} while (nature >= 13);
+					nature = ToxtricityAmplifiedNatures[nature];
+				}
+				else
+				{ // ToxtricityLowKeyNatures
+					do {
+						nature = xoroshiro.Next(0xF);
+					} while (nature >= 12);
+					nature = ToxtricityLowKeyNatures[nature];
+				}
+			}
+			else {
+				do {
+					nature = xoroshiro.Next(0x1F);
+				} while (nature >= 25);
+			}
 
 			if (nature != l_First.nature)
 			{
@@ -271,9 +311,26 @@ inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
 			}
 
 			int nature = 0;
-			do {
-				nature = xoroshiro.Next(0x1F); // 性格
-			} while (nature >= 25);
+			if (l_First.ID == ToxtricityID) {
+				if (l_First.altForm == 0) { // ToxtricityAmplifiedNatures
+					do {
+						nature = xoroshiro.Next(0xF);
+					} while (nature >= 13);
+					nature = ToxtricityAmplifiedNatures[nature];
+				}
+				else
+				{ // ToxtricityLowKeyNatures
+					do {
+						nature = xoroshiro.Next(0xF);
+					} while (nature >= 12);
+					nature = ToxtricityLowKeyNatures[nature];
+				}
+			}
+			else {
+				do {
+					nature = xoroshiro.Next(0x1F);
+				} while (nature >= 25);
+			}
 
 			if (nature != l_First.nature)
 			{
@@ -414,9 +471,26 @@ _u64 Search(_u64 ivs)
 			}
 
 			int nature = 0;
-			do {
-				nature = xoroshiro.Next(0x1F); // 性格
-			} while (nature >= 25);
+			if (l_First.ID == ToxtricityID) {
+				if (l_First.altForm == 0) { // ToxtricityAmplifiedNatures
+					do {
+						nature = xoroshiro.Next(0xF);
+					} while (nature >= 13);
+					nature = ToxtricityAmplifiedNatures[nature];
+				}
+				else
+				{ // ToxtricityLowKeyNatures
+					do {
+						nature = xoroshiro.Next(0xF);
+					} while (nature >= 12);
+					nature = ToxtricityLowKeyNatures[nature];
+				}
+			}
+			else {
+				do {
+					nature = xoroshiro.Next(0x1F);
+				} while (nature >= 25);
+			}
 
 			if (nature != l_First.nature)
 			{
@@ -433,9 +507,26 @@ _u64 Search(_u64 ivs)
 				}
 
 				int nature = 0;
-				do {
-					nature = xoroshiro.Next(0x1F); // 性格
-				} while (nature >= 25);
+				if (l_First.ID == ToxtricityID) {
+					if (l_First.altForm == 0) { // ToxtricityAmplifiedNatures
+						do {
+							nature = xoroshiro.Next(0xF);
+						} while (nature >= 13);
+						nature = ToxtricityAmplifiedNatures[nature];
+					}
+					else
+					{ // ToxtricityLowKeyNatures
+						do {
+							nature = xoroshiro.Next(0xF);
+						} while (nature >= 12);
+						nature = ToxtricityLowKeyNatures[nature];
+					}
+				}
+				else {
+					do {
+						nature = xoroshiro.Next(0x1F);
+					} while (nature >= 25);
+				}
 
 				if (nature != l_First.nature)
 				{
@@ -477,9 +568,26 @@ _u64 Search(_u64 ivs)
 				}
 
 				int nature = 0;
-				do {
-					nature = xoroshiro.Next(0x1F); // 性格
-				} while (nature >= 25);
+				if (l_First.ID == ToxtricityID) {
+					if (l_First.altForm == 0) { // ToxtricityAmplifiedNatures
+						do {
+							nature = xoroshiro.Next(0xF);
+						} while (nature >= 13);
+						nature = ToxtricityAmplifiedNatures[nature];
+					}
+					else
+					{ // ToxtricityLowKeyNatures
+						do {
+							nature = xoroshiro.Next(0xF);
+						} while (nature >= 12);
+						nature = ToxtricityLowKeyNatures[nature];
+					}
+				}
+				else {
+					do {
+						nature = xoroshiro.Next(0x1F);
+					} while (nature >= 25);
+				}
 
 				if (nature != l_First.nature)
 				{

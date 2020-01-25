@@ -12,6 +12,10 @@ inline _u64 GetSignature(_u64 value)
 	return (a ^ (a >> 1)) & 1;
 }
 
+static const int ToxtricityAmplifiedNatures[] = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
+static const int ToxtricityLowKeyNatures[] = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
+static const int ToxtricityID = 849;
+
 struct PokemonData
 {
 	int ivs[6];
@@ -19,6 +23,8 @@ struct PokemonData
 	int nature;
 	int characteristic;
 	int fixedIV;
+	int ID;
+	int altForm;
 	bool isNoGender;
 	bool isEnableDream;
 
@@ -108,10 +114,25 @@ inline bool TestPkmn(XoroshiroState xoroshiro, PokemonData pkmn) {
 
 		// 性格
 		int nature = 0;
-		do {
-			nature = xoroshiro.Next(0x1F);
-		} while (nature >= 25);
-
+		if (pkmn.ID == ToxtricityID) {
+			if (pkmn.altForm == 0) { // ToxtricityAmplifiedNatures
+				do {
+					nature = xoroshiro.Next(0x1F);
+				} while (nature >= 13);
+				nature = ToxtricityAmplifiedNatures[nature];
+			}
+			else
+			{ // ToxtricityLowKeyNatures
+				do {
+					nature = xoroshiro.Next(0x1F);
+				} while (nature >= 12);
+				nature = ToxtricityLowKeyNatures[nature];
+			}
+		} else {
+			do {
+				nature = xoroshiro.Next(0x1F);
+			} while (nature >= 25);
+		}
 		if (nature != pkmn.nature) {
 			xoroshiro.Copy(&tmp);
 
@@ -126,9 +147,26 @@ inline bool TestPkmn(XoroshiroState xoroshiro, PokemonData pkmn) {
 
 			// 性格
 			int nature = 0;
-			do {
-				nature = xoroshiro.Next(0x1F);
-			} while (nature >= 25);
+			if (pkmn.ID == ToxtricityID) {
+				if (pkmn.altForm == 0) { // ToxtricityAmplifiedNatures
+					do {
+						nature = xoroshiro.Next(0x1F);
+					} while (nature >= 13);
+					nature = ToxtricityAmplifiedNatures[nature];
+				}
+				else
+				{ // ToxtricityLowKeyNatures
+					do {
+						nature = xoroshiro.Next(0x1F);
+					} while (nature >= 12);
+					nature = ToxtricityLowKeyNatures[nature];
+				}
+			}
+			else {
+				do {
+					nature = xoroshiro.Next(0x1F);
+				} while (nature >= 25);
+			}
 
 			return nature == pkmn.nature;
 		}
@@ -163,9 +201,26 @@ inline bool TestPkmn(XoroshiroState xoroshiro, PokemonData pkmn) {
 
 		// 性格
 		int nature = 0;
-		do {
-			nature = xoroshiro.Next(0x1F);
-		} while (nature >= 25);
+		if (pkmn.ID == ToxtricityID) {
+			if (pkmn.altForm == 0) { // ToxtricityAmplifiedNatures
+				do {
+					nature = xoroshiro.Next(0xF);
+				} while (nature >= 13);
+				nature = ToxtricityAmplifiedNatures[nature];
+			}
+			else
+			{ // ToxtricityLowKeyNatures
+				do {
+					nature = xoroshiro.Next(0xF);
+				} while (nature >= 12);
+				nature = ToxtricityLowKeyNatures[nature];
+			}
+		}
+		else {
+			do {
+				nature = xoroshiro.Next(0x1F);
+			} while (nature >= 25);
+		}
 
 		return nature == pkmn.nature;
 	}

@@ -27,6 +27,9 @@ namespace SeedSearcherGui
         private bool dontChange = false;
         private static readonly int UNDEFINED_ABILITY = -2;
         private static readonly int NORMAL_ABILITY = -1;
+        public static readonly int[] ToxtricityAmplifiedNatures = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
+        public static readonly int[] ToxtricityLowKeyNatures = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
+        public const int ToxtricityID = 849;
 
         public SeedSearcherGui()
         {
@@ -75,19 +78,24 @@ namespace SeedSearcherGui
 
         }
 
+        private void PopulateNature(ComboBox cb)
+        {
+            int old_idx = cb.SelectedIndex;
+            cb.Items.Clear();
+            for (int i = 0; i < GameStrings.natures.Length; i++)
+            {
+                cb.Items.Add(new ComboboxItem(GameStrings.natures[i], i));
+            }
+            cb.SelectedIndex = old_idx;
+        }
+
         private void PopulateLanguage(int l)
         {
             dontChange = true;
             GameStrings = GameInfo.GetStrings(l);
             foreach (var cb in CB_Nature)
             {
-                int old_idx = cb.SelectedIndex;
-                cb.Items.Clear();
-                for (int i = 0; i < GameStrings.natures.Length; i++)
-                {
-                    cb.Items.Add(new ComboboxItem(GameStrings.natures[i], i));
-                }
-                cb.SelectedIndex = old_idx;
+                PopulateNature(cb);
             }
             foreach (var cb in CB_Characteristic)
             {
@@ -809,9 +817,9 @@ namespace SeedSearcherGui
             bool HA3 = pkmn3.Ability == 4 || pkmn1.Ability == 2;
 
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star12);
-            SeedSearcher.SetFirstCondition(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, flawlessIdx, ability1, nature1, characteristics1, noGender1, HA1);
-            SeedSearcher.SetNextCondition(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, noGender2, HA2);
-            SeedSearcher.SetThirdCondition(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, noGender3, HA3);
+            SeedSearcher.SetFirstCondition(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, flawlessIdx, ability1, nature1, characteristics1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1);
+            SeedSearcher.SetNextCondition(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
+            SeedSearcher.SetThirdCondition(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
             SeedSearcher.SetLSB(LSB);
             return searcher;
         }
@@ -1117,18 +1125,18 @@ namespace SeedSearcherGui
             }
 
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35);
-            SeedSearcher.SetSixFirstCondition(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, noGender1, HA1);
+            SeedSearcher.SetSixFirstCondition(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1);
             if (GB_42.Enabled)
             {
-                SeedSearcher.SetSixSecondCondition(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, noGender2, HA2);
+                SeedSearcher.SetSixSecondCondition(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
             }
             else
             {
-                SeedSearcher.SetSixSecondCondition(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, noGender3, HA3);
+                SeedSearcher.SetSixSecondCondition(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
             }
 
-            SeedSearcher.SetSixThirdCondition(iv4[0], iv4[1], iv4[2], iv4[3], iv4[4], iv4[5], pkmn4.FlawlessIVs, ability4, nature4, characteristics4, noGender4, HA4);
-            SeedSearcher.SetSixFourthCondition(iv5[0], iv5[1], iv5[2], iv5[3], iv5[4], iv5[5], pkmn5.FlawlessIVs, ability5, nature5, characteristics5, noGender5, HA5);
+            SeedSearcher.SetSixThirdCondition(iv4[0], iv4[1], iv4[2], iv4[3], iv4[4], iv4[5], pkmn4.FlawlessIVs, ability4, nature4, characteristics4, pkmn4.Species, pkmn4.AltForm, noGender4, HA4);
+            SeedSearcher.SetSixFourthCondition(iv5[0], iv5[1], iv5[2], iv5[3], iv5[4], iv5[5], pkmn5.FlawlessIVs, ability5, nature5, characteristics5, pkmn5.Species, pkmn5.AltForm, noGender5, HA5);
             SeedSearcher.SetSixLSB(LSB);
             return searcher;
         }
@@ -1190,6 +1198,28 @@ namespace SeedSearcherGui
         private void CB_Species1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Adjust_Ability(CB_Species1, CB_Ability1);
+            PopulateNature(CB_Nature1);
+            PopulateToxtricityNature(CB_Nature1, CB_Species1);
+        }
+
+        private void PopulateToxtricityNature(ComboBox nature, ComboBox species)
+        {
+            var item = (RaidTemplate) ((ComboboxItem)species.SelectedItem).Value;
+            if(item.Species == ToxtricityID)
+            {
+                List<ComboboxItem> toxNatures = new List<ComboboxItem>();
+                var natures = item.AltForm == 0 ? ToxtricityAmplifiedNatures : ToxtricityLowKeyNatures;
+                foreach(ComboboxItem natureEntry in nature.Items)
+                {
+                    if(natures.Contains((int)natureEntry.Value))
+                    {
+                        toxNatures.Add(natureEntry);
+                    }
+                }
+                nature.Items.Clear();
+                nature.Items.AddRange(toxNatures.ToArray());
+                nature.SelectedIndex = 0;
+            }
         }
 
         private void CB_Species2_SelectedIndexChanged(object sender, EventArgs e)
@@ -1199,6 +1229,8 @@ namespace SeedSearcherGui
                 RB_2nd.Checked = true;
             }
             Adjust_Ability(CB_Species2, CB_Ability2);
+            PopulateNature(CB_Nature2);
+            PopulateToxtricityNature(CB_Nature2, CB_Species2);
         }
 
         private void CB_Species3_SelectedIndexChanged(object sender, EventArgs e)
@@ -1208,16 +1240,22 @@ namespace SeedSearcherGui
                 RB_3rd.Checked = true;
             }
             Adjust_Ability(CB_Species3, CB_Ability3);
+            PopulateNature(CB_Nature3);
+            PopulateToxtricityNature(CB_Nature3, CB_Species3);
         }
 
         private void CB_Species4_SelectedIndexChanged(object sender, EventArgs e)
         {
             Adjust_Ability(CB_Species4, CB_Ability4);
+            PopulateNature(CB_Nature4);
+            PopulateToxtricityNature(CB_Nature4, CB_Species4);
         }
 
         private void CB_Species5_SelectedIndexChanged(object sender, EventArgs e)
         {
             Adjust_Ability(CB_Species5, CB_Ability5);
+            PopulateNature(CB_Nature5);
+            PopulateToxtricityNature(CB_Nature5, CB_Species5);
         }
 
         private void Adjust_Ability(ComboBox species, ComboBox abilityBox)

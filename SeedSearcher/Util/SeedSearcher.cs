@@ -28,13 +28,13 @@ namespace SeedSearcherGui
 		static extern void Prepare(int rerolls);
 
 		[DllImport("SeedSearcherLib.dll")]
-		public static extern void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int flawlessIDX, int ability, int nature, int characteristic, bool noGender, bool isDream);
+		public static extern void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int flawlessIDX, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		public static extern void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
+		public static extern void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		public static extern void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
+		public static extern void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetLSB(int bit);
@@ -50,16 +50,16 @@ namespace SeedSearcherGui
 		static extern void PrepareSix(int ivOffset);
 
 		[DllImport("SeedSearcherLib.dll")]
-		public static extern void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
+		public static extern void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		public static extern void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
+		public static extern void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		public static extern void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
+		public static extern void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		public static extern void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, bool noGender, bool isDream);
+		public static extern void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
 		public static extern void SetTargetCondition6(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6);
