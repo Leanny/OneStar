@@ -618,8 +618,8 @@ namespace SeedSearcherGui
             if (setIVs[4] == -1 && !RB_3rd.Checked)
             {
                 if(settwo) { 
-                LBLAO.Text = "OR";
-                GB_42.Enabled = true;
+                    LBLAO.Text = "OR";
+                    GB_42.Enabled = true;
                 }
                 GB_43.Enabled = true;
                 RB_2nd.Checked = true;
@@ -1334,6 +1334,7 @@ namespace SeedSearcherGui
         private void RefreshUI()
         {
             if (!doneLoading) return;
+            dontChange = true;
             checkSeedToolStripMenuItem.Enabled = false;
             GB_Left.Enabled = true;
             BT_Table.Enabled = false;
@@ -1371,6 +1372,7 @@ namespace SeedSearcherGui
             }
             SeedResult.Text = "";
             SeedSearcher.ResetSearcher();
+            dontChange = false;
         }
 
         private void BT_newsearch_Click(object sender, EventArgs e)
