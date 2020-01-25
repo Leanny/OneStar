@@ -21,7 +21,7 @@ Repeat the process, but catch any Pokémon from 1 days later and from 2 days lat
 Click "Start Search". This can take a long time, depending on the power of your PC. When a result is found, it will be printed in the textbox.
 
 ## UI
-![alt text](https://github.com/Leanny/SeedSearcher/images/screen.png "Seed Searcher UI")
+![Seed Searcher UI](https://raw.githubusercontent.com/Leanny/SeedSearcher/master/images/screen.png "Seed Searcher UI")
 
 The UI consists of multiple parts.
 ### Configuration
