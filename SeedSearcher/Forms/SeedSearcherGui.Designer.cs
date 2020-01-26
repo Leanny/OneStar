@@ -43,6 +43,7 @@
             this.LB_Response = new System.Windows.Forms.Label();
             this.LBLAO = new System.Windows.Forms.Label();
             this.GB_43 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.RB_3rd = new System.Windows.Forms.RadioButton();
             this.CB_Characteristic3 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic3 = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@
             this.CB_Species3 = new System.Windows.Forms.ComboBox();
             this.LBL_PKMN3 = new System.Windows.Forms.Label();
             this.GB_42 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.RB_2nd = new System.Windows.Forms.RadioButton();
             this.CB_Characteristic2 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic2 = new System.Windows.Forms.Label();
@@ -87,6 +89,7 @@
             this.CB_Species2 = new System.Windows.Forms.ComboBox();
             this.LBL_PKMN2 = new System.Windows.Forms.Label();
             this.GB_41 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.CB_Characteristic1 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic1 = new System.Windows.Forms.Label();
@@ -109,6 +112,7 @@
             this.CB_Species1 = new System.Windows.Forms.ComboBox();
             this.LBL_PKMN1 = new System.Windows.Forms.Label();
             this.GB_51 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.CB_Characteristic4 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic4 = new System.Windows.Forms.Label();
             this.SPE4 = new System.Windows.Forms.NumericUpDown();
@@ -139,6 +143,7 @@
             this.SeedResult = new System.Windows.Forms.TextBox();
             this.BT_Search = new System.Windows.Forms.Button();
             this.GB_61 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.CB_Characteristic5 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic5 = new System.Windows.Forms.Label();
             this.SPE5 = new System.Windows.Forms.NumericUpDown();
@@ -169,11 +174,6 @@
             this.日本語ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acceleratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -592,6 +592,16 @@
             this.GB_43.TabStop = false;
             this.GB_43.Text = "3rd";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(265, 171);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(105, 23);
+            this.button5.TabIndex = 51;
+            this.button5.Text = "IV Calc";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.StartIVCalc);
+            // 
             // RB_3rd
             // 
             this.RB_3rd.AutoSize = true;
@@ -891,6 +901,16 @@
             this.GB_42.TabIndex = 1;
             this.GB_42.TabStop = false;
             this.GB_42.Text = "2nd";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(265, 179);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(105, 23);
+            this.button4.TabIndex = 50;
+            this.button4.Text = "IV Calc";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.StartIVCalc);
             // 
             // RB_2nd
             // 
@@ -1192,6 +1212,16 @@
             this.GB_41.TabStop = false;
             this.GB_41.Text = "1st";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(265, 181);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(105, 23);
+            this.button3.TabIndex = 49;
+            this.button3.Text = "IV Calc";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.StartIVCalc);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(19, 181);
@@ -1480,6 +1510,16 @@
             this.GB_51.TabIndex = 3;
             this.GB_51.TabStop = false;
             this.GB_51.Text = "Pokémon Info Day 5";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(265, 211);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(105, 23);
+            this.button7.TabIndex = 50;
+            this.button7.Text = "IV Calc";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.StartIVCalc);
             // 
             // CB_Characteristic4
             // 
@@ -1857,6 +1897,16 @@
             this.GB_61.TabStop = false;
             this.GB_61.Text = "Pokémon Info Day 6";
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(265, 179);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(105, 23);
+            this.button6.TabIndex = 50;
+            this.button6.Text = "IV Calc";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.StartIVCalc);
+            // 
             // CB_Characteristic5
             // 
             this.CB_Characteristic5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2187,51 +2237,6 @@
             this.acceleratorToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
             this.acceleratorToolStripMenuItem.Text = "Accelerator";
             this.acceleratorToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.UncheckToolStripMenuItem_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(265, 181);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 23);
-            this.button3.TabIndex = 49;
-            this.button3.Text = "IV Calc";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(265, 179);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(105, 23);
-            this.button4.TabIndex = 50;
-            this.button4.Text = "IV Calc";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(265, 171);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(105, 23);
-            this.button5.TabIndex = 51;
-            this.button5.Text = "IV Calc";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(265, 179);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(105, 23);
-            this.button6.TabIndex = 50;
-            this.button6.Text = "IV Calc";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(265, 211);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(105, 23);
-            this.button7.TabIndex = 50;
-            this.button7.Text = "IV Calc";
-            this.button7.UseVisualStyleBackColor = true;
             // 
             // SeedSearcherGui
             // 

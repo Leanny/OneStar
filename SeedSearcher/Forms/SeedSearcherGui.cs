@@ -1591,5 +1591,11 @@ namespace SeedSearcherGui
                 }
             }
         }
+
+        private void StartIVCalc(object sender, EventArgs e)
+        {
+            var calc = new IVCalculator(GameStrings, (RaidTemplate)((ComboboxItem)CB_Species[0].SelectedItem).Value, HP1, ATK1, DEF1, SPA1, SPD1, SPE1);
+            calc.Show();
+        }
     }
 }
