@@ -13,19 +13,11 @@ namespace SeedSearcherGui
 			Star35
 		};
 
-		public enum SearchMode
-		{
-			CPU,
-			GPU
-		}
-
 		Mode m_Mode;
-		SearchMode m_SearchMode;
 
-		public SeedSearcher(Mode mode, SearchMode sm)
+		public SeedSearcher(Mode mode)
 		{
 			m_Mode = mode;
-			m_SearchMode = sm;
 		}
 
 		// 結果
@@ -157,25 +149,72 @@ namespace SeedSearcherGui
 		}
 
 
-		private void CalculateGPU(int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl)
+		private void CalculateGPU(int searcherIDX, int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl)
 		{
+			var devices = SeedSearcherGPU.UseableGPU();
+			var ssg = new SeedSearcherGPU();
+			ssg.SetSixFirstCondition(pkmn1);
+			ssg.SetSixSecondCondition(pkmn2);
+			ssg.SetSixThirdCondition(pkmn3);
+			ssg.SetTargetCondition(target);
+			ssg.SetSixLSB(LSB);
+			if(m_Mode == Mode.Star12)
+			{
+				if (ssg.TestSeed(0) != 5)
+				{
+					var result = ssg.SearchSix(devices[searcherIDX], minRerolls, maxRerolls, updateLbl);
+					if (result != 0)
+					{
+						Result.Add(result);
+					}
+				}
+				else
+				{
+					Result.Add(0);
+				}
+			} else
+			{
+				ssg.SetSixFourthCondition(pkmn4);
+				if (ssg.TestSeed(0) != 5)
+				{
+					ulong result;
+					if(target[4] == -1)
+					{
+						result = ssg.SearchFour(devices[searcherIDX], minRerolls, maxRerolls, updateLbl);
+					} else if(target[5] == -1)
+					{
+						result = ssg.SearchFive(devices[searcherIDX], minRerolls, maxRerolls, updateLbl);
+					} else
+					{
+						result = ssg.SearchSix(devices[searcherIDX], minRerolls, maxRerolls, updateLbl);
+					}
+					if (result != 0)
+					{
+						Result.Add(result + shift);
+					}
+				}
+				else
+				{
+					Result.Add(shift);
+				}
+			}
 		}
 
-		public void Calculate(int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl)
+		public void Calculate(int searcherIDX, int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl)
 		{
 			Result.Clear();
-			SetLSB(LSB);
-			if (m_SearchMode == SearchMode.CPU)
+			if (searcherIDX == -1)
 			{
 				CalculateCPU(minRerolls, maxRerolls, target, updateLbl);
 			} else
 			{
-				CalculateGPU(minRerolls, maxRerolls, target, updateLbl);
+				CalculateGPU(searcherIDX, minRerolls, maxRerolls, target, updateLbl);
 			}
 		}
 
 		private void CalculateCPU(int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl)
 		{
+			SetLSB(LSB);
 			if (m_Mode == Mode.Star12)
 			{
 				SetFirstCondition(pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn1.fixedIV, pkmn1.fixedIVPos,

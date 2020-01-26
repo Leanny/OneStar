@@ -75,7 +75,29 @@ namespace SeedSearcherGui
             }
             dontChange = false;
 
-
+            ToolStripMenuItem cpu = new ToolStripMenuItem();
+            this.acceleratorToolStripMenuItem.DropDownItems.Add(cpu);
+            cpu.CheckOnClick = true;
+            cpu.Name = "cPUToolStripMenuItem";
+            cpu.Size = new System.Drawing.Size(224, 26);
+            cpu.Text = "CPU";
+            var devices = SeedSearcherGPU.UseableGPU();
+            int num = 0;
+            foreach(var device in devices)
+            {
+                ToolStripMenuItem gpu = new ToolStripMenuItem();
+                this.acceleratorToolStripMenuItem.DropDownItems.Add(gpu);
+                gpu.CheckOnClick = true;
+                gpu.Name = "GPUToolStripMenuItem" + device.Name;
+                gpu.Size = new System.Drawing.Size(224, 26);
+                gpu.Text = device.Name;
+                num++;
+            }
+            ((ToolStripMenuItem)this.acceleratorToolStripMenuItem.DropDownItems[num]).Checked = true;
+            if(num > 0)
+            {
+                NUD_IVMax.Value = 10;
+            }
         }
 
         private void PopulateNature(ComboBox cb)
@@ -816,12 +838,28 @@ namespace SeedSearcherGui
             bool HA2 = pkmn2.Ability == 4 || pkmn1.Ability == 2;
             bool HA3 = pkmn3.Ability == 4 || pkmn1.Ability == 2;
 
-            SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star12, SeedSearcher.SearchMode.CPU);
+            SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star12);
             searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1, flawlessIdx);
             searcher.RegisterPokemon2(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
             searcher.RegisterPokemon3(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
             searcher.RegisterLSB(LSB);
             return searcher;
+        }
+
+        private int GetAcceleratorIdx()
+        {
+            int res = 0;
+            int idx = 0;
+            foreach(ToolStripMenuItem item in acceleratorToolStripMenuItem.DropDownItems)
+            {
+                if(item.Checked)
+                {
+                    res = idx;
+                }
+                idx++;
+            }
+            return res - 1;
+
         }
 
         private void BT_Search_Click(object sender, EventArgs e)
@@ -1124,7 +1162,7 @@ namespace SeedSearcherGui
                 characteristics1 = -1;
             }
 
-            SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35, SeedSearcher.SearchMode.CPU);
+            SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35);
             searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1);
             if (GB_42.Enabled)
             {
@@ -1163,7 +1201,7 @@ namespace SeedSearcherGui
 
             await Task.Run(() =>
             {
-                searcher.Calculate(minRerolls, maxRerolls, target, LBL_IVDev);
+                searcher.Calculate(GetAcceleratorIdx(), minRerolls, maxRerolls, target, LBL_IVDev);
             });
 
             stopWatch.Stop();
@@ -1537,6 +1575,19 @@ namespace SeedSearcherGui
                 if (cb.Items.Count > 0)
                 {
                     cb.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private void UncheckToolStripMenuItem_Click(object sender, ToolStripItemClickedEventArgs e)
+        {
+            ToolStripMenuItem ownerItem = e.ClickedItem.OwnerItem as ToolStripMenuItem;
+            if (ownerItem != null)
+            {
+                //uncheck all item
+                foreach (ToolStripMenuItem item in ownerItem.DropDownItems)
+                {
+                    item.Checked = false;
                 }
             }
         }

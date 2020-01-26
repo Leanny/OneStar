@@ -168,6 +168,12 @@
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.日本語ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acceleratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -549,7 +555,7 @@
             // LBLAO
             // 
             this.LBLAO.AutoSize = true;
-            this.LBLAO.Location = new System.Drawing.Point(175, 487);
+            this.LBLAO.Location = new System.Drawing.Point(175, 498);
             this.LBLAO.Name = "LBLAO";
             this.LBLAO.Size = new System.Drawing.Size(45, 17);
             this.LBLAO.TabIndex = 3;
@@ -557,6 +563,7 @@
             // 
             // GB_43
             // 
+            this.GB_43.Controls.Add(this.button5);
             this.GB_43.Controls.Add(this.RB_3rd);
             this.GB_43.Controls.Add(this.CB_Characteristic3);
             this.GB_43.Controls.Add(this.LBL_Characteristic3);
@@ -856,6 +863,7 @@
             // 
             // GB_42
             // 
+            this.GB_42.Controls.Add(this.button4);
             this.GB_42.Controls.Add(this.RB_2nd);
             this.GB_42.Controls.Add(this.CB_Characteristic2);
             this.GB_42.Controls.Add(this.LBL_Characteristic2);
@@ -877,9 +885,9 @@
             this.GB_42.Controls.Add(this.LBL_Nature2);
             this.GB_42.Controls.Add(this.CB_Species2);
             this.GB_42.Controls.Add(this.LBL_PKMN2);
-            this.GB_42.Location = new System.Drawing.Point(6, 285);
+            this.GB_42.Location = new System.Drawing.Point(6, 280);
             this.GB_42.Name = "GB_42";
-            this.GB_42.Size = new System.Drawing.Size(380, 189);
+            this.GB_42.Size = new System.Drawing.Size(380, 210);
             this.GB_42.TabIndex = 1;
             this.GB_42.TabStop = false;
             this.GB_42.Text = "2nd";
@@ -1155,6 +1163,7 @@
             // 
             // GB_41
             // 
+            this.GB_41.Controls.Add(this.button3);
             this.GB_41.Controls.Add(this.button1);
             this.GB_41.Controls.Add(this.CB_Characteristic1);
             this.GB_41.Controls.Add(this.LBL_Characteristic1);
@@ -1444,6 +1453,7 @@
             // 
             // GB_51
             // 
+            this.GB_51.Controls.Add(this.button7);
             this.GB_51.Controls.Add(this.CB_Characteristic4);
             this.GB_51.Controls.Add(this.LBL_Characteristic4);
             this.GB_51.Controls.Add(this.SPE4);
@@ -1819,6 +1829,7 @@
             // 
             // GB_61
             // 
+            this.GB_61.Controls.Add(this.button6);
             this.GB_61.Controls.Add(this.CB_Characteristic5);
             this.GB_61.Controls.Add(this.LBL_Characteristic5);
             this.GB_61.Controls.Add(this.SPE5);
@@ -1839,9 +1850,9 @@
             this.GB_61.Controls.Add(this.LBL_Nature5);
             this.GB_61.Controls.Add(this.CB_Species5);
             this.GB_61.Controls.Add(this.LBL_PKMN5);
-            this.GB_61.Location = new System.Drawing.Point(703, 317);
+            this.GB_61.Location = new System.Drawing.Point(703, 312);
             this.GB_61.Name = "GB_61";
-            this.GB_61.Size = new System.Drawing.Size(380, 189);
+            this.GB_61.Size = new System.Drawing.Size(380, 210);
             this.GB_61.TabIndex = 4;
             this.GB_61.TabStop = false;
             this.GB_61.Text = "Pokémon Info Day 6";
@@ -2140,7 +2151,8 @@
             this.MenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.englishToolStripMenuItem,
             this.日本語ToolStripMenuItem,
-            this.checkSeedToolStripMenuItem});
+            this.checkSeedToolStripMenuItem,
+            this.acceleratorToolStripMenuItem});
             this.MenuBar.Location = new System.Drawing.Point(0, 0);
             this.MenuBar.Name = "MenuBar";
             this.MenuBar.Size = new System.Drawing.Size(1103, 28);
@@ -2168,6 +2180,58 @@
             this.checkSeedToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
             this.checkSeedToolStripMenuItem.Text = "Check Seed";
             this.checkSeedToolStripMenuItem.Click += new System.EventHandler(this.checkSeedToolStripMenuItem_Click);
+            // 
+            // acceleratorToolStripMenuItem
+            // 
+            this.acceleratorToolStripMenuItem.Name = "acceleratorToolStripMenuItem";
+            this.acceleratorToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
+            this.acceleratorToolStripMenuItem.Text = "Accelerator";
+            this.acceleratorToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.UncheckToolStripMenuItem_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(265, 181);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(105, 23);
+            this.button3.TabIndex = 49;
+            this.button3.Text = "IV Calc";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(265, 179);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(105, 23);
+            this.button4.TabIndex = 50;
+            this.button4.Text = "IV Calc";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(265, 171);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(105, 23);
+            this.button5.TabIndex = 51;
+            this.button5.Text = "IV Calc";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(265, 179);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(105, 23);
+            this.button6.TabIndex = 50;
+            this.button6.Text = "IV Calc";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(265, 211);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(105, 23);
+            this.button7.TabIndex = 50;
+            this.button7.Text = "IV Calc";
+            this.button7.UseVisualStyleBackColor = true;
             // 
             // SeedSearcherGui
             // 
@@ -2387,6 +2451,12 @@
         private System.Windows.Forms.ToolStripStatusLabel LBL_Time;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CB_Nest;
+        private System.Windows.Forms.ToolStripMenuItem acceleratorToolStripMenuItem;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
     }
 }
 
