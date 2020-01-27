@@ -1370,10 +1370,12 @@ namespace SeedSearcherGui
                             abilityBox.Items.Add(ab);
                         }
                     }
-                    int hiddenability = abilities[2];
-                    var haname = GameStrings.Ability[hiddenability] + AbilitySuffix[2];
-                    var haab = new ComboboxItem(haname, 2);
-                    abilityBox.Items.Add(haab);
+                    if (a == 4) { 
+                        int hiddenability = abilities[2];
+                        var haname = GameStrings.Ability[hiddenability] + AbilitySuffix[2];
+                        var haab = new ComboboxItem(haname, 2);
+                        abilityBox.Items.Add(haab);
+                    }
                 }
 
             }
