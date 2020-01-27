@@ -123,28 +123,19 @@ namespace SeedSearcherGui
 
 		public uint TestInputSeed(ulong seed)
 		{
-			SetLSB(LSB);
+			var ssg = new SeedSearcherGPU();
+			ssg.SetSixLSB(LSB);
+			ssg.SetSixFirstCondition(pkmn1);
+			ssg.SetSixSecondCondition(pkmn2);
+			ssg.SetSixThirdCondition(pkmn3);
 			if (m_Mode == Mode.Star12)
 			{
-				SetFirstCondition(pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn1.fixedIV, pkmn1.fixedIVPos,
-					pkmn1.ability, pkmn1.nature, pkmn1.characteristic, pkmn1.ID, pkmn1.altForm, pkmn1.isNoGender, pkmn1.isEnableDream);
-				SetNextCondition(pkmn2.ivs0, pkmn2.ivs1, pkmn2.ivs2, pkmn2.ivs3, pkmn2.ivs4, pkmn2.ivs5, pkmn2.fixedIV,
-					pkmn2.ability, pkmn2.nature, pkmn2.characteristic, pkmn2.ID, pkmn2.altForm, pkmn2.isNoGender, pkmn2.isEnableDream);
-				SetThirdCondition(pkmn3.ivs0, pkmn3.ivs1, pkmn3.ivs2, pkmn3.ivs3, pkmn3.ivs4, pkmn3.ivs5, pkmn3.fixedIV,
-					pkmn3.ability, pkmn3.nature, pkmn3.characteristic, pkmn3.ID, pkmn3.altForm, pkmn3.isNoGender, pkmn3.isEnableDream);
 				return TestSeed(seed);
 			}
 			else
 			{
-				SetSixFirstCondition(pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn1.fixedIV,
-					pkmn1.ability, pkmn1.nature, pkmn1.characteristic, pkmn1.ID, pkmn1.altForm, pkmn1.isNoGender, pkmn1.isEnableDream);
-				SetSixSecondCondition(pkmn2.ivs0, pkmn2.ivs1, pkmn2.ivs2, pkmn2.ivs3, pkmn2.ivs4, pkmn2.ivs5, pkmn2.fixedIV,
-					pkmn2.ability, pkmn2.nature, pkmn2.characteristic, pkmn2.ID, pkmn2.altForm, pkmn2.isNoGender, pkmn2.isEnableDream);
-				SetSixThirdCondition(pkmn3.ivs0, pkmn3.ivs1, pkmn3.ivs2, pkmn3.ivs3, pkmn3.ivs4, pkmn3.ivs5, pkmn3.fixedIV,
-					pkmn3.ability, pkmn3.nature, pkmn3.characteristic, pkmn3.ID, pkmn3.altForm, pkmn3.isNoGender, pkmn3.isEnableDream);
-				SetSixFourthCondition(pkmn4.ivs0, pkmn4.ivs1, pkmn4.ivs2, pkmn4.ivs3, pkmn4.ivs4, pkmn4.ivs5, pkmn4.fixedIV,
-					pkmn4.ability, pkmn4.nature, pkmn4.characteristic, pkmn4.ID, pkmn4.altForm, pkmn4.isNoGender, pkmn4.isEnableDream);
-				return TestSixSeed(seed + frontshift);
+				ssg.SetSixFourthCondition(pkmn4);
+				return ssg.TestSeed(seed + frontshift);
 			}
 		}
 
