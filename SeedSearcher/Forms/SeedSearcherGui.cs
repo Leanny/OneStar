@@ -1644,5 +1644,29 @@ namespace SeedSearcherGui
             var calc = new IVCalculator(GameStrings, (RaidTemplate)((ComboboxItem)CB_Species[0].SelectedItem).Value, HP1, ATK1, DEF1, SPA1, SPD1, SPE1);
             calc.Show();
         }
+
+        private void BT_IVCalc2_Click(object sender, EventArgs e)
+        {
+            var calc = new IVCalculator(GameStrings, (RaidTemplate)((ComboboxItem)CB_Species[1].SelectedItem).Value, HP2, ATK2, DEF2, SPA2, SPD2, SPE2);
+            calc.Show();
+        }
+
+        private void BT_IVCalc3_Click(object sender, EventArgs e)
+        {
+            var calc = new IVCalculator(GameStrings, (RaidTemplate)((ComboboxItem)CB_Species[2].SelectedItem).Value, HP3, ATK3, DEF3, SPA3, SPD3, SPE3);
+            calc.Show();
+        }
+
+        private void BT_IVCalc4_Click(object sender, EventArgs e)
+        {
+            var calc = new IVCalculator(GameStrings, (RaidTemplate)((ComboboxItem)CB_Species[3].SelectedItem).Value, HP4, ATK4, DEF4, SPA4, SPD4, SPE4);
+            calc.Show();
+        }
+
+        private void BT_IVCalc5_Click(object sender, EventArgs e)
+        {
+            var calc = new IVCalculator(GameStrings, (RaidTemplate)((ComboboxItem)CB_Species[4].SelectedItem).Value, HP5, ATK5, DEF5, SPA5, SPD5, SPE5);
+            calc.Show();
+        }
     }
 }

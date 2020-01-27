@@ -43,7 +43,8 @@
             this.LB_Response = new System.Windows.Forms.Label();
             this.LBLAO = new System.Windows.Forms.Label();
             this.GB_43 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.BT_IVCalc3 = new System.Windows.Forms.Button();
             this.RB_3rd = new System.Windows.Forms.RadioButton();
             this.CB_Characteristic3 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic3 = new System.Windows.Forms.Label();
@@ -66,7 +67,8 @@
             this.CB_Species3 = new System.Windows.Forms.ComboBox();
             this.LBL_PKMN3 = new System.Windows.Forms.Label();
             this.GB_42 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.BT_IVCalc2 = new System.Windows.Forms.Button();
             this.RB_2nd = new System.Windows.Forms.RadioButton();
             this.CB_Characteristic2 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic2 = new System.Windows.Forms.Label();
@@ -89,7 +91,7 @@
             this.CB_Species2 = new System.Windows.Forms.ComboBox();
             this.LBL_PKMN2 = new System.Windows.Forms.Label();
             this.GB_41 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.BT_IVCalc1 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.CB_Characteristic1 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic1 = new System.Windows.Forms.Label();
@@ -112,7 +114,7 @@
             this.CB_Species1 = new System.Windows.Forms.ComboBox();
             this.LBL_PKMN1 = new System.Windows.Forms.Label();
             this.GB_51 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.BT_IVCalc4 = new System.Windows.Forms.Button();
             this.CB_Characteristic4 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic4 = new System.Windows.Forms.Label();
             this.SPE4 = new System.Windows.Forms.NumericUpDown();
@@ -143,7 +145,7 @@
             this.SeedResult = new System.Windows.Forms.TextBox();
             this.BT_Search = new System.Windows.Forms.Button();
             this.GB_61 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.BT_IVCalc5 = new System.Windows.Forms.Button();
             this.CB_Characteristic5 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic5 = new System.Windows.Forms.Label();
             this.SPE5 = new System.Windows.Forms.NumericUpDown();
@@ -174,8 +176,6 @@
             this.日本語ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acceleratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -566,7 +566,7 @@
             // GB_43
             // 
             this.GB_43.Controls.Add(this.button8);
-            this.GB_43.Controls.Add(this.button5);
+            this.GB_43.Controls.Add(this.BT_IVCalc3);
             this.GB_43.Controls.Add(this.RB_3rd);
             this.GB_43.Controls.Add(this.CB_Characteristic3);
             this.GB_43.Controls.Add(this.LBL_Characteristic3);
@@ -595,15 +595,25 @@
             this.GB_43.TabStop = false;
             this.GB_43.Text = "3rd";
             // 
-            // button5
+            // button8
             // 
-            this.button5.Location = new System.Drawing.Point(265, 175);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(105, 23);
-            this.button5.TabIndex = 51;
-            this.button5.Text = "IV Calc";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.StartIVCalc);
+            this.button8.Location = new System.Drawing.Point(19, 176);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(226, 23);
+            this.button8.TabIndex = 51;
+            this.button8.Text = "Confirm IVs";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.BT_IVCheck);
+            // 
+            // BT_IVCalc3
+            // 
+            this.BT_IVCalc3.Location = new System.Drawing.Point(265, 175);
+            this.BT_IVCalc3.Name = "BT_IVCalc3";
+            this.BT_IVCalc3.Size = new System.Drawing.Size(105, 23);
+            this.BT_IVCalc3.TabIndex = 51;
+            this.BT_IVCalc3.Text = "IV Calc";
+            this.BT_IVCalc3.UseVisualStyleBackColor = true;
+            this.BT_IVCalc3.Click += new System.EventHandler(this.BT_IVCalc3_Click);
             // 
             // RB_3rd
             // 
@@ -877,7 +887,7 @@
             // GB_42
             // 
             this.GB_42.Controls.Add(this.button2);
-            this.GB_42.Controls.Add(this.button4);
+            this.GB_42.Controls.Add(this.BT_IVCalc2);
             this.GB_42.Controls.Add(this.RB_2nd);
             this.GB_42.Controls.Add(this.CB_Characteristic2);
             this.GB_42.Controls.Add(this.LBL_Characteristic2);
@@ -906,15 +916,25 @@
             this.GB_42.TabStop = false;
             this.GB_42.Text = "2nd";
             // 
-            // button4
+            // button2
             // 
-            this.button4.Location = new System.Drawing.Point(265, 179);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(105, 23);
-            this.button4.TabIndex = 50;
-            this.button4.Text = "IV Calc";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.StartIVCalc);
+            this.button2.Location = new System.Drawing.Point(19, 179);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(226, 23);
+            this.button2.TabIndex = 50;
+            this.button2.Text = "Confirm IVs";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.BT_IVCheck);
+            // 
+            // BT_IVCalc2
+            // 
+            this.BT_IVCalc2.Location = new System.Drawing.Point(265, 179);
+            this.BT_IVCalc2.Name = "BT_IVCalc2";
+            this.BT_IVCalc2.Size = new System.Drawing.Size(105, 23);
+            this.BT_IVCalc2.TabIndex = 50;
+            this.BT_IVCalc2.Text = "IV Calc";
+            this.BT_IVCalc2.UseVisualStyleBackColor = true;
+            this.BT_IVCalc2.Click += new System.EventHandler(this.BT_IVCalc2_Click);
             // 
             // RB_2nd
             // 
@@ -1187,7 +1207,7 @@
             // 
             // GB_41
             // 
-            this.GB_41.Controls.Add(this.button3);
+            this.GB_41.Controls.Add(this.BT_IVCalc1);
             this.GB_41.Controls.Add(this.button1);
             this.GB_41.Controls.Add(this.CB_Characteristic1);
             this.GB_41.Controls.Add(this.LBL_Characteristic1);
@@ -1216,15 +1236,15 @@
             this.GB_41.TabStop = false;
             this.GB_41.Text = "1st";
             // 
-            // button3
+            // BT_IVCalc1
             // 
-            this.button3.Location = new System.Drawing.Point(265, 181);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 23);
-            this.button3.TabIndex = 49;
-            this.button3.Text = "IV Calc";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.StartIVCalc);
+            this.BT_IVCalc1.Location = new System.Drawing.Point(265, 181);
+            this.BT_IVCalc1.Name = "BT_IVCalc1";
+            this.BT_IVCalc1.Size = new System.Drawing.Size(105, 23);
+            this.BT_IVCalc1.TabIndex = 49;
+            this.BT_IVCalc1.Text = "IV Calc";
+            this.BT_IVCalc1.UseVisualStyleBackColor = true;
+            this.BT_IVCalc1.Click += new System.EventHandler(this.StartIVCalc);
             // 
             // button1
             // 
@@ -1487,7 +1507,7 @@
             // 
             // GB_51
             // 
-            this.GB_51.Controls.Add(this.button7);
+            this.GB_51.Controls.Add(this.BT_IVCalc4);
             this.GB_51.Controls.Add(this.CB_Characteristic4);
             this.GB_51.Controls.Add(this.LBL_Characteristic4);
             this.GB_51.Controls.Add(this.SPE4);
@@ -1515,15 +1535,15 @@
             this.GB_51.TabStop = false;
             this.GB_51.Text = "Pokémon Info Day 5";
             // 
-            // button7
+            // BT_IVCalc4
             // 
-            this.button7.Location = new System.Drawing.Point(265, 211);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(105, 23);
-            this.button7.TabIndex = 50;
-            this.button7.Text = "IV Calc";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.StartIVCalc);
+            this.BT_IVCalc4.Location = new System.Drawing.Point(265, 211);
+            this.BT_IVCalc4.Name = "BT_IVCalc4";
+            this.BT_IVCalc4.Size = new System.Drawing.Size(105, 23);
+            this.BT_IVCalc4.TabIndex = 50;
+            this.BT_IVCalc4.Text = "IV Calc";
+            this.BT_IVCalc4.UseVisualStyleBackColor = true;
+            this.BT_IVCalc4.Click += new System.EventHandler(this.BT_IVCalc4_Click);
             // 
             // CB_Characteristic4
             // 
@@ -1873,7 +1893,7 @@
             // 
             // GB_61
             // 
-            this.GB_61.Controls.Add(this.button6);
+            this.GB_61.Controls.Add(this.BT_IVCalc5);
             this.GB_61.Controls.Add(this.CB_Characteristic5);
             this.GB_61.Controls.Add(this.LBL_Characteristic5);
             this.GB_61.Controls.Add(this.SPE5);
@@ -1901,15 +1921,15 @@
             this.GB_61.TabStop = false;
             this.GB_61.Text = "Pokémon Info Day 6";
             // 
-            // button6
+            // BT_IVCalc5
             // 
-            this.button6.Location = new System.Drawing.Point(265, 179);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(105, 23);
-            this.button6.TabIndex = 50;
-            this.button6.Text = "IV Calc";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.StartIVCalc);
+            this.BT_IVCalc5.Location = new System.Drawing.Point(265, 179);
+            this.BT_IVCalc5.Name = "BT_IVCalc5";
+            this.BT_IVCalc5.Size = new System.Drawing.Size(105, 23);
+            this.BT_IVCalc5.TabIndex = 50;
+            this.BT_IVCalc5.Text = "IV Calc";
+            this.BT_IVCalc5.UseVisualStyleBackColor = true;
+            this.BT_IVCalc5.Click += new System.EventHandler(this.BT_IVCalc5_Click);
             // 
             // CB_Characteristic5
             // 
@@ -2242,26 +2262,6 @@
             this.acceleratorToolStripMenuItem.Text = "Accelerator";
             this.acceleratorToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.UncheckToolStripMenuItem_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(19, 179);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(226, 23);
-            this.button2.TabIndex = 50;
-            this.button2.Text = "Confirm IVs";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.BT_IVCheck);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(19, 176);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(226, 23);
-            this.button8.TabIndex = 51;
-            this.button8.Text = "Confirm IVs";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.BT_IVCheck);
-            // 
             // SeedSearcherGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2481,11 +2481,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CB_Nest;
         private System.Windows.Forms.ToolStripMenuItem acceleratorToolStripMenuItem;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button BT_IVCalc3;
+        private System.Windows.Forms.Button BT_IVCalc2;
+        private System.Windows.Forms.Button BT_IVCalc1;
+        private System.Windows.Forms.Button BT_IVCalc4;
+        private System.Windows.Forms.Button BT_IVCalc5;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button2;
     }
