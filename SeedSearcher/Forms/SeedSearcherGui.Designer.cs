@@ -174,6 +174,8 @@
             this.日本語ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acceleratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -232,7 +234,7 @@
             this.GB_Left.Controls.Add(this.DenMap);
             this.GB_Left.Location = new System.Drawing.Point(12, 32);
             this.GB_Left.Name = "GB_Left";
-            this.GB_Left.Size = new System.Drawing.Size(267, 722);
+            this.GB_Left.Size = new System.Drawing.Size(267, 729);
             this.GB_Left.TabIndex = 0;
             this.GB_Left.TabStop = false;
             this.GB_Left.Text = "Configuration";
@@ -538,7 +540,7 @@
             this.GB_PKMN1.Controls.Add(this.GB_41);
             this.GB_PKMN1.Location = new System.Drawing.Point(285, 32);
             this.GB_PKMN1.Name = "GB_PKMN1";
-            this.GB_PKMN1.Size = new System.Drawing.Size(401, 720);
+            this.GB_PKMN1.Size = new System.Drawing.Size(401, 729);
             this.GB_PKMN1.TabIndex = 1;
             this.GB_PKMN1.TabStop = false;
             this.GB_PKMN1.Text = "Pokémon Info Day 4";
@@ -563,6 +565,7 @@
             // 
             // GB_43
             // 
+            this.GB_43.Controls.Add(this.button8);
             this.GB_43.Controls.Add(this.button5);
             this.GB_43.Controls.Add(this.RB_3rd);
             this.GB_43.Controls.Add(this.CB_Characteristic3);
@@ -587,14 +590,14 @@
             this.GB_43.Controls.Add(this.LBL_PKMN3);
             this.GB_43.Location = new System.Drawing.Point(6, 514);
             this.GB_43.Name = "GB_43";
-            this.GB_43.Size = new System.Drawing.Size(380, 200);
+            this.GB_43.Size = new System.Drawing.Size(380, 209);
             this.GB_43.TabIndex = 2;
             this.GB_43.TabStop = false;
             this.GB_43.Text = "3rd";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(265, 171);
+            this.button5.Location = new System.Drawing.Point(265, 175);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(105, 23);
             this.button5.TabIndex = 51;
@@ -873,6 +876,7 @@
             // 
             // GB_42
             // 
+            this.GB_42.Controls.Add(this.button2);
             this.GB_42.Controls.Add(this.button4);
             this.GB_42.Controls.Add(this.RB_2nd);
             this.GB_42.Controls.Add(this.CB_Characteristic2);
@@ -1782,7 +1786,7 @@
             this.GB_Controls.Controls.Add(this.BT_Search);
             this.GB_Controls.Location = new System.Drawing.Point(703, 546);
             this.GB_Controls.Name = "GB_Controls";
-            this.GB_Controls.Size = new System.Drawing.Size(387, 206);
+            this.GB_Controls.Size = new System.Drawing.Size(387, 215);
             this.GB_Controls.TabIndex = 5;
             this.GB_Controls.TabStop = false;
             this.GB_Controls.Text = "Controls";
@@ -2238,6 +2242,26 @@
             this.acceleratorToolStripMenuItem.Text = "Accelerator";
             this.acceleratorToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.UncheckToolStripMenuItem_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(19, 179);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(226, 23);
+            this.button2.TabIndex = 50;
+            this.button2.Text = "Confirm IVs";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.BT_IVCheck);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(19, 176);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(226, 23);
+            this.button8.TabIndex = 51;
+            this.button8.Text = "Confirm IVs";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.BT_IVCheck);
+            // 
             // SeedSearcherGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2462,6 +2486,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button2;
     }
 }
 
