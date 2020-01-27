@@ -13,6 +13,7 @@ namespace SeedSearcherGui
         private TextBox[] minVals;
         private TextBox[] maxVals;
         private int[] ivstarts = { 0, 1, 16, 26, 30, 31, 32 };
+        private int[] statorder = { 0, 1, 2, 5, 3, 4 };
         private ComboBox[] ratings;
         private NumericUpDown[] original;
         public IVCalculator(PKHeX.Core.GameStrings gameStrings, RaidTemplate raidInfo, NumericUpDown hP1, NumericUpDown aTK1, NumericUpDown dEF1, NumericUpDown sPA1, NumericUpDown sPD1, NumericUpDown sPE1)
@@ -44,8 +45,8 @@ namespace SeedSearcherGui
         private int GetReccomendedLevel()
         {
             int natureID = (int)((ComboboxItem)CB_Nature.SelectedItem).Value;
-            int increase = natureID / 5 + 1;
-            int decrease = natureID % 5 + 1;
+            int increase = statorder[natureID / 5 + 1];
+            int decrease = statorder[natureID % 5 + 1];
             int level = (int)NUD_Level.Value;
             int[] reccomendedLevel = { 100, 100, 100, 100, 100, 100 };
             // HP Manually 
@@ -100,8 +101,8 @@ namespace SeedSearcherGui
             NumericUpDown[] NUD_Stats = { HP, ATK, DEF, SPA, SPD, SPE };
             string[] statNames = { "HP", "ATK", "DEF", "SPA", "SPD", "SPE" };
             int natureID = (int) ((ComboboxItem)CB_Nature.SelectedItem).Value;
-            int increase = natureID / 5 + 1;
-            int decrease = natureID % 5 + 1;
+            int increase = statorder[natureID / 5 + 1];
+            int decrease = statorder[natureID % 5 + 1];
             int level = (int) NUD_Level.Value;
             // get HP
             int HPJudgement = CB_Rating1.SelectedIndex;
