@@ -532,6 +532,32 @@ namespace SeedSearcherGui
 					for (int search = 0; search < numElems; ++search)
 					{
 						seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
+
+						s0 = seed;
+						s1 = 0x82a2b175229d6a5b;
+						// EC
+						do
+						{
+							ec = (uint)(s0 + s1);
+							s1 = s0 ^ s1;
+							s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+							s1 = RotateLeft(s1, 37);
+						} while (ec == 0xFFFFFFFF);
+
+						if (g_lsb >= 0 && (ec & 1) != g_lsb)
+						{
+							continue;
+						}
+
+						if (characteristic1 >= 0)
+						{
+							int characteristic = (int)ec % 6;
+							if (characteristic != characteristic1)
+							{
+								continue;
+							}
+						}
+
 						int val = 2;
 						while (val >= 0)
 						{
@@ -546,22 +572,6 @@ namespace SeedSearcherGui
 								s1 = RotateLeft(s1, 37);
 							} while (ec == 0xFFFFFFFF);
 
-							if (val == 0)
-							{
-								if (g_lsb >= 0 && (ec & 1) != g_lsb)
-								{
-									break;
-								}
-
-								if (characteristic1 >= 0)
-								{
-									int characteristic = (int)ec % 6;
-									if (characteristic != characteristic1)
-									{
-										break;
-									}
-								}
-							}
 							// SIDTID
 							do
 							{
@@ -944,6 +954,33 @@ namespace SeedSearcherGui
 					for (int search = 0; search < numElems; ++search)
 					{
 						seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
+
+						s0 = seed;
+						s1 = 0x82a2b175229d6a5b;
+						// EC
+						do
+						{
+							ec = (uint)(s0 + s1);
+							s1 = s0 ^ s1;
+							s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+							s1 = RotateLeft(s1, 37);
+						} while (ec == 0xFFFFFFFF);
+
+						if (g_lsb >= 0 && (ec & 1) != g_lsb)
+						{
+							continue;
+						}
+
+						if (characteristic1 >= 0)
+						{
+							int characteristic = (int)ec % 6;
+							if (characteristic != characteristic1)
+							{
+								continue;
+							}
+						}
+
+
 						int val = 3;
 						while(val >= 0)
 						{
@@ -958,21 +995,6 @@ namespace SeedSearcherGui
 								s1 = RotateLeft(s1, 37);
 							} while (ec == 0xFFFFFFFF);
 
-							if(val == 0) { 
-								if (g_lsb >= 0 && (ec & 1) != g_lsb)
-								{
-									break;
-								}
-
-								if (characteristic1 >= 0)
-								{
-									int characteristic = (int)ec % 6;
-									if (characteristic != characteristic1)
-									{
-										break;
-									}
-								}
-							}
 							// SIDTID
 							do
 							{
@@ -1243,7 +1265,7 @@ namespace SeedSearcherGui
 			return 0;
 		}
 
-		//[GpuManaged]
+		[GpuManaged]
 		public ulong SearchFive(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl)
 		{
 			const int length = 50;
@@ -1353,6 +1375,32 @@ namespace SeedSearcherGui
 					for (int search = 0; search < numElems; ++search)
 					{
 						seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
+
+						s0 = seed;
+						s1 = 0x82a2b175229d6a5b;
+						// EC
+						do
+						{
+							ec = (uint)(s0 + s1);
+							s1 = s0 ^ s1;
+							s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+							s1 = RotateLeft(s1, 37);
+						} while (ec == 0xFFFFFFFF);
+
+						if (g_lsb >= 0 && (ec & 1) != g_lsb)
+						{
+							continue;
+						}
+
+						if (characteristic1 >= 0)
+						{
+							int characteristic = (int)ec % 6;
+							if (characteristic != characteristic1)
+							{
+								continue;
+							}
+						}
+
 						int val = 3;
 						while (val >= 0)
 						{
@@ -1367,22 +1415,6 @@ namespace SeedSearcherGui
 								s1 = RotateLeft(s1, 37);
 							} while (ec == 0xFFFFFFFF);
 
-							if (val == 0)
-							{
-								if (g_lsb >= 0 && (ec & 1) != g_lsb)
-								{
-									break;
-								}
-
-								if (characteristic1 >= 0)
-								{
-									int characteristic = (int)ec % 6;
-									if (characteristic != characteristic1)
-									{
-										break;
-									}
-								}
-							}
 							// SIDTID
 							do
 							{
@@ -1761,6 +1793,33 @@ namespace SeedSearcherGui
 					for (int search = 0; search < numElems; ++search)
 					{
 						seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
+
+						s0 = seed;
+						s1 = 0x82a2b175229d6a5b;
+						// EC
+						do
+						{
+							ec = (uint)(s0 + s1);
+							s1 = s0 ^ s1;
+							s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+							s1 = RotateLeft(s1, 37);
+						} while (ec == 0xFFFFFFFF);
+
+						if (g_lsb >= 0 && (ec & 1) != g_lsb)
+						{
+							continue;
+						}
+
+						if (characteristic1 >= 0)
+						{
+							int characteristic = (int)ec % 6;
+							if (characteristic != characteristic1)
+							{
+								continue;
+							}
+						}
+
+
 						int val = 3;
 						while (val >= 0)
 						{
@@ -1775,22 +1834,6 @@ namespace SeedSearcherGui
 								s1 = RotateLeft(s1, 37);
 							} while (ec == 0xFFFFFFFF);
 
-							if (val == 0)
-							{
-								if (g_lsb >= 0 && (ec & 1) != g_lsb)
-								{
-									break;
-								}
-
-								if (characteristic1 >= 0)
-								{
-									int characteristic = (int)ec % 6;
-									if (characteristic != characteristic1)
-									{
-										break;
-									}
-								}
-							}
 							// SIDTID
 							do
 							{
