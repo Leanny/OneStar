@@ -162,7 +162,7 @@ namespace SeedSearcherGui
 			{
 				if (ssg.TestSeed(0) != 5)
 				{
-					var result = ssg.SearchSix(devices[searcherIDX], minRerolls, maxRerolls, updateLbl);
+					var result = ssg.SearchOne(devices[searcherIDX], minRerolls, maxRerolls, updateLbl);
 					if (result != 0)
 					{
 						Result.Add(result);
@@ -237,7 +237,7 @@ namespace SeedSearcherGui
 							ulong result = Search((ulong)ivs);
 							if (result != 0)
 							{
-								Result.Add(result);
+								Result.Add((ulong)ivs);
 								state.Stop();
 							}
 						});

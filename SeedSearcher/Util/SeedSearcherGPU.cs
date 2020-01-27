@@ -382,6 +382,458 @@ namespace SeedSearcherGui
 		}
 
 		[GpuManaged]
+		public ulong SearchOne(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl)
+		{
+			var gpu = Gpu.Get(device.Id);
+			const int searchLower = 0;
+			const int searchUpper = 0x10000000;
+			int length = 56;
+			bool abilityBit = pkmn1.ability == 0 || pkmn1.ability == 1;
+			if (abilityBit)
+			{
+				length += 1;
+			}
+			int numElems = 1 << (64 - length);
+			ulong iv0 = (ulong)g_Ivs[0];
+			ulong iv1 = (ulong)g_Ivs[1];
+			ulong iv2 = (ulong)g_Ivs[2];
+			ulong iv3 = (ulong)g_Ivs[3];
+			ulong iv4 = (ulong)g_Ivs[4];
+
+			ulong[] g_IvsRef = {
+				(ulong) pkmn1.ivs1, (ulong) pkmn1.ivs2, (ulong) pkmn1.ivs3, (ulong) pkmn1.ivs4, (ulong) pkmn1.ivs5,
+				(ulong) pkmn1.ivs0, (ulong) pkmn1.ivs2, (ulong) pkmn1.ivs3, (ulong) pkmn1.ivs4, (ulong) pkmn1.ivs5,
+				(ulong) pkmn1.ivs0, (ulong) pkmn1.ivs1, (ulong) pkmn1.ivs3, (ulong) pkmn1.ivs4, (ulong) pkmn1.ivs5,
+				(ulong) pkmn1.ivs0, (ulong) pkmn1.ivs1, (ulong) pkmn1.ivs2, (ulong) pkmn1.ivs4, (ulong) pkmn1.ivs5,
+				(ulong) pkmn1.ivs0, (ulong) pkmn1.ivs1, (ulong) pkmn1.ivs2, (ulong) pkmn1.ivs3, (ulong) pkmn1.ivs5,
+				(ulong) pkmn1.ivs0, (ulong) pkmn1.ivs1, (ulong) pkmn1.ivs2, (ulong) pkmn1.ivs3, (ulong) pkmn1.ivs4
+			};
+
+			int[] allIVs = { pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn2.ivs0, pkmn2.ivs1, pkmn2.ivs2, pkmn2.ivs3, pkmn2.ivs4, pkmn2.ivs5,
+							 pkmn3.ivs0, pkmn3.ivs1, pkmn3.ivs2, pkmn3.ivs3, pkmn3.ivs4, pkmn3.ivs5};
+			int[] fixedIVs = { pkmn1.fixedIV, pkmn2.fixedIV, pkmn3.fixedIV};
+			int[] abilitys = { pkmn1.ability, pkmn2.ability, pkmn3.ability };
+			bool[] noGender = { pkmn1.isNoGender, pkmn2.isNoGender, pkmn3.isNoGender};
+			bool[] HA = { pkmn1.isEnableDream, pkmn2.isEnableDream, pkmn3.isEnableDream};
+			int[] natures = { pkmn1.nature, pkmn2.nature, pkmn3.nature };
+			int characteristic1 = pkmn1.characteristic;
+			int g_lsb = LSB;
+			int[] species = { pkmn1.ID, pkmn2.ID, pkmn3.ID };
+			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm };
+
+			ulong[] entry = { 0 };
+			for (int ivOffset = start; ivOffset <= end; ivOffset++)
+			{
+				updateLbl.Text = ivOffset.ToString();
+				ulong g_ConstantTermVector = 0;
+
+				MatrixStruct.InitializeTransformationMatrix();
+				for (int i = 0; i <= 1 + ivOffset; ++i)
+				{
+					MatrixStruct.ProceedTransformationMatrix();
+				}
+
+				int bit = 0;
+				for (int i = 0; i < 6; ++i, ++bit)
+				{
+					int index = 61 + (i / 3) * 64 + (i % 3);
+					MatrixStruct.g_InputMatrix[bit] = MatrixStruct.GetMatrixMultiplier(index);
+					if (MatrixStruct.GetMatrixConst(index) != 0)
+					{
+						g_ConstantTermVector |= (1ul << (length - 1 - bit));
+					}
+				}
+				for (int a = 0; a < 5; ++a)
+				{
+					MatrixStruct.ProceedTransformationMatrix();
+					for (int i = 0; i < 10; ++i, ++bit)
+					{
+						int index = 59 + (i / 5) * 64 + (i % 5);
+						MatrixStruct.g_InputMatrix[bit] = MatrixStruct.GetMatrixMultiplier(index);
+						if (MatrixStruct.GetMatrixConst(index) != 0)
+						{
+							g_ConstantTermVector |= (1ul << (length - 1 - bit));
+						}
+					}
+				}
+
+				if (abilityBit)
+				{
+					MatrixStruct.ProceedTransformationMatrix();
+
+					MatrixStruct.g_InputMatrix[56] = MatrixStruct.GetMatrixMultiplier(63) ^ MatrixStruct.GetMatrixMultiplier(127);
+					if ((MatrixStruct.GetMatrixConst(63) ^ MatrixStruct.GetMatrixConst(127)) != 0)
+					{
+						g_ConstantTermVector |= 1;
+					}
+				}
+
+				MatrixStruct.CalculateInverseMatrix(length);
+				MatrixStruct.CalculateCoefficientData(length);
+
+				bool[] g_FreeBit = new bool[64];
+				ulong[] g_AnswerFlag = new ulong[64];
+				ulong[] g_CoefficientData = new ulong[numElems];
+				ulong[] g_SearchPattern = new ulong[numElems];
+				Array.Copy(MatrixStruct.g_CoefficientData, 0, g_CoefficientData, 0, numElems);
+				Array.Copy(MatrixStruct.g_SearchPattern, 0, g_SearchPattern, 0, numElems);
+				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
+				for (int num = 0; num < g_FreeBit.Length; num++)
+				{
+					g_FreeBit[num] = MatrixStruct.g_FreeBit[num] > 0;
+				}
+
+				ulong[] add_const = { 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
+				ulong targetStart = abilityBit ? ((ulong)pkmn1.ability & 1) : 0ul;
+				int bitOffset = abilityBit ? 1 : 0;
+				int g_FixedIndex = pkmn1.fixedIVPos;
+				ulong g_ulongIndex = (ulong)g_FixedIndex;
+				gpu.LongFor(searchLower, searchUpper, input => {
+					ulong target = targetStart;
+					ulong input_ivs = (ulong)input;
+					target |= (input_ivs & 0xE000000ul) << (28 + bitOffset); 
+					target |= (input_ivs & 0x1F00000ul) << (25 + bitOffset); 
+					target |= (input_ivs & 0xF8000ul) << (20 + bitOffset); 
+					target |= (input_ivs & 0x7C00ul) << (15 + bitOffset); 
+					target |= (input_ivs & 0x3E0ul) << (10 + bitOffset);
+					target |= (input_ivs & 0x1Ful) << (5 + bitOffset);
+
+					target |= ((8ul + g_ulongIndex - ((input_ivs & 0xE000000ul) >> 25)) & 7) << (50 + bitOffset);
+					target |= ((32ul + g_IvsRef[g_FixedIndex * 5] - ((input_ivs & 0x1F00000ul) >> 20)) & 0x1F) << (40 + bitOffset);
+					target |= ((32ul + g_IvsRef[g_FixedIndex * 5 + 1] - ((input_ivs & 0xF8000ul) >> 15)) & 0x1F) << (30 + bitOffset);
+					target |= ((32ul + g_IvsRef[g_FixedIndex * 5 + 2] - ((input_ivs & 0x7C00ul) >> 10)) & 0x1F) << (20 + bitOffset);
+					target |= ((32ul + g_IvsRef[g_FixedIndex * 5 + 3] - ((input_ivs & 0x3E0ul) >> 5)) & 0x1F) << (10 + bitOffset);
+					target |= ((32ul + g_IvsRef[g_FixedIndex * 5 + 4] - (input_ivs & 0x1Ful)) & 0x1F) << bitOffset;
+
+					target ^= g_ConstantTermVector;
+
+					ulong processedTarget = 0;
+					int offset = 0;
+					for (int i = 0; i < length; ++i)
+					{
+						while (g_FreeBit[i + offset])
+						{
+							++offset;
+						}
+						processedTarget |= MatrixStruct.GetSignature(g_AnswerFlag[i] & target) << (63 - (i + offset));
+					}
+
+					ulong s0;
+					ulong s1;
+					ulong s0tmp;
+					ulong s1tmp;
+					uint ec;
+					uint skip;
+					int ivs;
+					int g_FixedIvs;
+					int fixedIndex;
+					int tmp;
+					ulong seed = 0;
+					for (int search = 0; search < numElems; ++search)
+					{
+						seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
+						int val = 2;
+						while (val >= 0)
+						{
+							s0 = seed + add_const[val];
+							s1 = 0x82a2b175229d6a5b;
+							// EC
+							do
+							{
+								ec = (uint)(s0 + s1);
+								s1 = s0 ^ s1;
+								s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+								s1 = RotateLeft(s1, 37);
+							} while (ec == 0xFFFFFFFF);
+
+							if (val == 0)
+							{
+								if (g_lsb >= 0 && (ec & 1) != g_lsb)
+								{
+									break;
+								}
+
+								if (characteristic1 >= 0)
+								{
+									int characteristic = (int)ec % 6;
+									if (characteristic != characteristic1)
+									{
+										break;
+									}
+								}
+							}
+							// SIDTID
+							do
+							{
+								skip = (uint)(s0 + s1);
+								s1 = s0 ^ s1;
+								s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+								s1 = RotateLeft(s1, 37);
+							} while (skip == 0xFFFFFFFF);
+
+							// TID
+							do
+							{
+								skip = (uint)(s0 + s1);
+								s1 = s0 ^ s1;
+								s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+								s1 = RotateLeft(s1, 37);
+							} while (skip == 0xFFFFFFFF);
+
+							ivs = 0;
+							g_FixedIvs = fixedIVs[val];
+							fixedIndex = 0;
+							while (g_FixedIvs > 0)
+							{
+								do
+								{
+									fixedIndex = (int)((s0 + s1) & 7);
+									s1 = s0 ^ s1;
+									s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+									s1 = RotateLeft(s1, 37);
+								} while (fixedIndex >= 6 || ((1 << fixedIndex) & ivs) != 0);
+								ivs |= 1 << fixedIndex;
+								if (allIVs[val * 6 + fixedIndex] != 31)
+								{
+									goto end;
+								}
+								g_FixedIvs--;
+							}
+
+							for (int i = 0; i < 6; ++i)
+							{
+								if (((1 << i) & ivs) == 0)
+								{
+									if (allIVs[val * 6 + i] != (int)((s0 + s1) & 31))
+									{
+										goto end;
+									}
+									s1 = s0 ^ s1;
+									s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+									s1 = RotateLeft(s1, 37);
+								}
+							}
+							tmp = 0;
+							// special case
+							if (abilitys[val] == -2)
+							{
+								s0tmp = s0;
+								s1tmp = s1;
+								if (HA[val])
+								{
+									do
+									{
+										tmp = (int)((s0 + s1) & 3);
+										s1 = s0 ^ s1;
+										s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+										s1 = RotateLeft(s1, 37);
+									} while (tmp >= 3);
+								}
+								else
+								{
+									tmp = (int)((s0 + s1) & 1);
+									s1 = s0 ^ s1;
+									s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+									s1 = RotateLeft(s1, 37);
+								}
+								if (!noGender[val])
+								{
+									do
+									{
+										tmp = (int)((s0 + s1) & 255);
+										s1 = s0 ^ s1;
+										s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+										s1 = RotateLeft(s1, 37);
+									} while (tmp >= 253);
+								}
+								tmp = 0;
+								if (species[val] == ToxtricityID)
+								{
+									if (alt[val] == 0)
+									{
+										do
+										{
+											tmp = (int)((s0 + s1) & 15);
+											s1 = s0 ^ s1;
+											s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+											s1 = RotateLeft(s1, 37);
+										} while (tmp >= 13);
+										tmp = ToxtricityAmplifiedNatures[tmp];
+									}
+									else
+									{
+										do
+										{
+											tmp = (int)((s0 + s1) & 15);
+											s1 = s0 ^ s1;
+											s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+											s1 = RotateLeft(s1, 37);
+										} while (tmp >= 12);
+										tmp = ToxtricityLowKeyNatures[tmp];
+									}
+								}
+								else
+								{
+									do
+									{
+										tmp = (int)((s0 + s1) & 31);
+										s1 = s0 ^ s1;
+										s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+										s1 = RotateLeft(s1, 37);
+									} while (tmp >= 25);
+								}
+								if (tmp != natures[val])
+								{
+									s0 = s0tmp;
+									s1 = s1tmp;
+									if (!noGender[val])
+									{
+										do
+										{
+											tmp = (int)((s0 + s1) & 255);
+											s1 = s0 ^ s1;
+											s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+											s1 = RotateLeft(s1, 37);
+										} while (tmp >= 253);
+									}
+									tmp = 0;
+									if (species[val] == ToxtricityID)
+									{
+										if (alt[val] == 0)
+										{
+											do
+											{
+												tmp = (int)((s0 + s1) & 15);
+												s1 = s0 ^ s1;
+												s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+												s1 = RotateLeft(s1, 37);
+											} while (tmp >= 13);
+											tmp = ToxtricityAmplifiedNatures[tmp];
+										}
+										else
+										{
+											do
+											{
+												tmp = (int)((s0 + s1) & 15);
+												s1 = s0 ^ s1;
+												s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+												s1 = RotateLeft(s1, 37);
+											} while (tmp >= 12);
+											tmp = ToxtricityLowKeyNatures[tmp];
+										}
+									}
+									else
+									{
+										do
+										{
+											tmp = (int)((s0 + s1) & 31);
+											s1 = s0 ^ s1;
+											s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+											s1 = RotateLeft(s1, 37);
+										} while (tmp >= 25);
+									}
+									if (tmp != natures[val])
+									{
+										break;
+									}
+								}
+
+							}
+							else
+							{
+								if (HA[val])
+								{
+									do
+									{
+										tmp = (int)((s0 + s1) & 3);
+										s1 = s0 ^ s1;
+										s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+										s1 = RotateLeft(s1, 37);
+									} while (tmp >= 3);
+									if (abilitys[val] != -1 && abilitys[val] != tmp) break;
+								}
+								else
+								{
+									tmp = (int)((s0 + s1) & 1);
+									s1 = s0 ^ s1;
+									s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+									s1 = RotateLeft(s1, 37);
+									if (abilitys[val] != -1 && abilitys[val] != tmp) break;
+								}
+
+								if (!noGender[val])
+								{
+									do
+									{
+										tmp = (int)((s0 + s1) & 255);
+										s1 = s0 ^ s1;
+										s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+										s1 = RotateLeft(s1, 37);
+									} while (tmp >= 253);
+								}
+
+								tmp = 0;
+								if (species[val] == ToxtricityID)
+								{
+									if (alt[val] == 0)
+									{
+										do
+										{
+											tmp = (int)((s0 + s1) & 15);
+											s1 = s0 ^ s1;
+											s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+											s1 = RotateLeft(s1, 37);
+										} while (tmp >= 13);
+										tmp = ToxtricityAmplifiedNatures[tmp];
+									}
+									else
+									{
+										do
+										{
+											tmp = (int)((s0 + s1) & 15);
+											s1 = s0 ^ s1;
+											s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+											s1 = RotateLeft(s1, 37);
+										} while (tmp >= 12);
+										tmp = ToxtricityLowKeyNatures[tmp];
+									}
+								}
+								else
+								{
+									do
+									{
+										tmp = (int)((s0 + s1) & 31);
+										s1 = s0 ^ s1;
+										s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
+										s1 = RotateLeft(s1, 37);
+									} while (tmp >= 25);
+								}
+								if (tmp != natures[val])
+								{
+									break;
+								}
+							}
+							if (val == 0)
+							{
+								entry[0] = seed;
+							}
+							val--;
+							continue;
+						end:
+							break;
+						}
+					}
+				});
+				Gpu.Default.Synchronize();
+				if (entry[0] != 0)
+				{
+					return entry[0];
+				}
+			}
+			return 0;
+		}
+
+		[GpuManaged]
 		public ulong SearchSix(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl) {
 			var gpu = Gpu.Get(device.Id);
 			const int searchLower = 0;
@@ -441,7 +893,7 @@ namespace SeedSearcherGui
 				ulong[] g_SearchPattern = new ulong[numElems];
 				Array.Copy(MatrixStruct.g_CoefficientData, 0, g_CoefficientData, 0, numElems);
 				Array.Copy(MatrixStruct.g_SearchPattern, 0, g_SearchPattern, 0, numElems);
-				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
+				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
 				for (int num = 0; num < g_FreeBit.Length; num++)
 				{
 					g_FreeBit[num] = MatrixStruct.g_FreeBit[num] > 0;
