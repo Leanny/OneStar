@@ -384,7 +384,7 @@ namespace SeedSearcherGui
 		[GpuManaged]
 		public ulong SearchOne(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl)
 		{
-			var gpu = Gpu.Get(device.Id);
+			var gpu = Gpu.Get(device);
 			const int searchLower = 0;
 			const int searchUpper = 0x10000000;
 			int length = 56;
@@ -845,7 +845,7 @@ namespace SeedSearcherGui
 
 		[GpuManaged]
 		public ulong SearchSix(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl) {
-			var gpu = Gpu.Get(device.Id);
+			var gpu = Gpu.Get(device);
 			const int searchLower = 0;
 			const int searchUpper = 0x40000000 ;
 			const int length = 60;
@@ -1270,7 +1270,7 @@ namespace SeedSearcherGui
 		{
 			const int length = 50;
 			const int numElems = 1 << (64 - length);
-			var gpu = Gpu.Get(device.Id);
+			var gpu = Gpu.Get(device);
 			const int searchLower = 0;
 			const int searchUpper = 0x2000000;
 
@@ -1691,7 +1691,7 @@ namespace SeedSearcherGui
 		{
 			const int length = 40;
 			const int numElems = 1 << (64 - length);
-			var gpu = Gpu.Get(device.Id);
+			var gpu = Gpu.Get(device);
 			const int searchLower = 0;
 			const int searchUpper = 0x100000;
 
