@@ -834,7 +834,7 @@ namespace SeedSearcherGui
 						}
 					}
 				});
-				Gpu.Default.Synchronize();
+				gpu.Synchronize();
 				if (entry[0] != 0)
 				{
 					return entry[0];
@@ -1256,7 +1256,7 @@ namespace SeedSearcherGui
 						}
 					}
 				});
-				Gpu.Default.Synchronize();
+				gpu.Synchronize();
 				if(entry[0] != 0)
 				{
 					return entry[0];
@@ -1677,7 +1677,7 @@ namespace SeedSearcherGui
 						}
 					}
 				});
-				Gpu.Default.Synchronize();
+				gpu.Synchronize();
 				if (entry[0] != 0)
 				{
 					return entry[0];
@@ -2096,7 +2096,7 @@ namespace SeedSearcherGui
 						}
 					}
 				});
-				Gpu.Default.Synchronize();
+				gpu.Synchronize();
 				if (entry[0] != 0)
 				{
 					return entry[0];
