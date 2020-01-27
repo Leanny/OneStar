@@ -101,7 +101,7 @@ namespace SeedSearcherGui
 
 					if (characteristic1 >= 0)
 					{
-						int characteristic = (int)ec % 6;
+						int characteristic = (int)(ec % 6);
 						if (characteristic != characteristic1)
 						{
 							return val + 1;
@@ -551,7 +551,7 @@ namespace SeedSearcherGui
 
 						if (characteristic1 >= 0)
 						{
-							int characteristic = (int)ec % 6;
+							int characteristic = (int)(ec % 6);
 							if (characteristic != characteristic1)
 							{
 								continue;
@@ -973,7 +973,7 @@ namespace SeedSearcherGui
 
 						if (characteristic1 >= 0)
 						{
-							int characteristic = (int)ec % 6;
+							int characteristic = (int)(ec % 6);
 							if (characteristic != characteristic1)
 							{
 								continue;
@@ -1394,7 +1394,7 @@ namespace SeedSearcherGui
 
 						if (characteristic1 >= 0)
 						{
-							int characteristic = (int)ec % 6;
+							int characteristic = (int)(ec % 6);
 							if (characteristic != characteristic1)
 							{
 								continue;
@@ -1812,7 +1812,7 @@ namespace SeedSearcherGui
 
 						if (characteristic1 >= 0)
 						{
-							int characteristic = (int)ec % 6;
+							int characteristic = (int)(ec % 6);
 							if (characteristic != characteristic1)
 							{
 								continue;
