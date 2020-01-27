@@ -1383,7 +1383,7 @@ namespace SeedSearcherGui
 
         private void RB_2nd_CheckedChanged(object sender, EventArgs e)
         {
-            if (!dontChange && RB_2nd.Checked)
+            if (RB_2nd.Checked)
             {
                 RB_3rd.Checked = false;
                 RB_2nd.Checked = true;
@@ -1392,7 +1392,7 @@ namespace SeedSearcherGui
 
         private void RB_3rd_CheckedChanged(object sender, EventArgs e)
         {
-            if (!dontChange && RB_3rd.Checked)
+            if (RB_3rd.Checked)
             {
                 RB_2nd.Checked = false;
                 RB_3rd.Checked = true;
