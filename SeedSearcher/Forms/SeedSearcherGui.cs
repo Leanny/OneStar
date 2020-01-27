@@ -529,8 +529,8 @@ namespace SeedSearcherGui
                         }
                     }
 
-                    GB_42.Text = String.Format(Properties.strings.Day4Follow, fixedIV[1], idx2 + unsetIV - lateAdd);
-                    ChangeGroupBoxColor(GB_42, colors[idx2 + unsetIV - lateAdd]);
+                    GB_42.Text = String.Format(Properties.strings.Day4Follow, fixedIV[1], Math.Min(6, idx2 + unsetIV - lateAdd));
+                    ChangeGroupBoxColor(GB_42, colors[Math.Min(6, idx2 + unsetIV - lateAdd)]);
                     set2 = idx2 + unsetIV;
                     if (set2 - lateAdd == 3)
                     {
