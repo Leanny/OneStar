@@ -388,7 +388,7 @@ namespace SeedSearcherGui
 			const int searchLower = 0;
 			const int searchUpper = 0x10000000;
 			int length = 56;
-			bool abilityBit = pkmn1.ability == 0 || pkmn1.ability == 1;
+			bool abilityBit = !pkmn1.isEnableDream && (pkmn1.ability == 0 || pkmn1.ability == 1);
 			if (abilityBit)
 			{
 				length += 1;
