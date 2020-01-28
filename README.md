@@ -50,6 +50,9 @@ Here, your seed will be printed when its found. Click "Start Search" to start a 
 ## What does "4/6", "5/6", or "6/6" mean?
 The RNG used for raids produces a sequence of random numbers. In order to get the seed from a list of Pokémon part of the random number sequence is restored. The IVs you provide for your Day 4 Pokémon belongs to this sequence of random numbers. To get the seed as fast as possible, an IV spread that allows to reconstruct 6 consecutive random numbers works the best, which is 6/6. If the IV spread provides less numbers, then the seed finding will take longer. 
 
+## I get the ``[CUDAError] CUDA_ERROR_LAUNCH_FAILED`` error. What should I do?
+In this case there is a batch file in the directory ``CudaSetup`` called ``EnableCuda.bat``. This needs to be executed as admin in order to write 2 values to the registry. After that, the PC must be rebooted in order for it to take action. For more information about what the registry entries are doing, check out the documentation by [Microsoft](https://docs.microsoft.com/de-de/windows-hardware/drivers/display/tdr-registry-keys).
+
 # Roadmap
 Here are a few points I want to add in future versions:
 * IV calculator 
