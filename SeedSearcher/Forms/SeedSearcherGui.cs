@@ -1206,7 +1206,9 @@ namespace SeedSearcherGui
 
         async void SearchImpl(SeedSearcher searcher, int[] target = null)
         {
+            GB_PKMN1.Enabled = true;
             bool[] enabled = { GB_41.Enabled, GB_42.Enabled, GB_43.Enabled, GB_51.Enabled, GB_61.Enabled };
+            GB_PKMN1.Enabled = false;
             GB_41.Enabled = false;
             GB_42.Enabled = false;
             GB_43.Enabled = false;
@@ -1240,11 +1242,12 @@ namespace SeedSearcherGui
             {
                 MessageBox.Show("No Seed found. Please increase IV Deviation and run the tool again.");
                 //unlock for editing
-                GB_41.Enabled = enabled[0];
+                GB_41.Enabled = true;
                 GB_42.Enabled = enabled[1];
                 GB_43.Enabled = enabled[2];
                 GB_51.Enabled = enabled[3];
                 GB_61.Enabled = enabled[4];
+                GB_PKMN1.Enabled = true;
                 MenuBar.Enabled = true;
             }
             else
