@@ -54,7 +54,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PKHeX.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PKHeX.Core.20.1.11\lib\net46\PKHeX.Core.dll</HintPath>
+      <HintPath>..\packages\PKHeX.Core.20.1.26\lib\net46\PKHeX.Core.dll</HintPath>
     </Reference>
     <Reference Include="PKHeX_Raid_Plugin">
       <HintPath>..\..\PKHeX_Raid_Plugin\PKHeX_Raid_Plugin\bin\Release\net48\PKHeX_Raid_Plugin.dll</HintPath>
@@ -159,4 +159,8 @@
     <Error Condition="!Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.4\build\dotnet\Fody.targets'))" />
   </Target>
   <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>
