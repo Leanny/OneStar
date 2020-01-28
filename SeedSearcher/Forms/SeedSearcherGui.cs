@@ -392,7 +392,7 @@ namespace SeedSearcherGui
                     return null;
                 } else
                 {
-                    LB_Response.Text = "Please use a different Pokémon.";
+                    LB_Response.Text = "Too many IVs are at 31. Please use a different Pokémon.";
                     return null;
 
                 }
@@ -405,7 +405,7 @@ namespace SeedSearcherGui
                 GB_43.Enabled = false;
                 GB_51.Enabled = false;
                 GB_61.Enabled = false;
-                LB_Response.Text = "Too many IVs are at 31. Please use a different Pokémon.";
+                LB_Response.Text = "Not enough 31 IVs set for this Pokémon.";
                 return null;
             }
             if (GB_42.Enabled && flawless > fixedIV[0])
