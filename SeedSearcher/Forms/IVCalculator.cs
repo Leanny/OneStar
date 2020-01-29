@@ -16,7 +16,8 @@ namespace SeedSearcherGui
         private int[] statorder = { 0, 1, 2, 5, 3, 4 };
         private ComboBox[] ratings;
         private NumericUpDown[] original;
-        public IVCalculator(PKHeX.Core.GameStrings gameStrings, RaidTemplate raidInfo, NumericUpDown hP1, NumericUpDown aTK1, NumericUpDown dEF1, NumericUpDown sPA1, NumericUpDown sPD1, NumericUpDown sPE1)
+        private ComboBox nature;
+        public IVCalculator(PKHeX.Core.GameStrings gameStrings, RaidTemplate raidInfo, NumericUpDown hP1, NumericUpDown aTK1, NumericUpDown dEF1, NumericUpDown sPA1, NumericUpDown sPD1, NumericUpDown sPE1, ComboBox cB_Nature)
         {
             InitializeComponent();
             CB_Nature.Items.Clear();
@@ -24,7 +25,8 @@ namespace SeedSearcherGui
             {
                 CB_Nature.Items.Add(new ComboboxItem(gameStrings.natures[i], i));
             }
-            CB_Nature.SelectedIndex = 0;
+            CB_Nature.SelectedIndex = cB_Nature.SelectedIndex;
+            nature = cB_Nature;
             this.RaidInfo = raidInfo;
             TB_Species.Text = gameStrings.Species[raidInfo.Species];
             var baseinfo = PKHeX.Core.PersonalTable.SWSH[raidInfo.Species];
@@ -224,6 +226,7 @@ namespace SeedSearcherGui
             {
                 original[stat].Value = int.Parse(minVals[stat].Text);
             }
+            nature.SelectedIndex = CB_Nature.SelectedIndex;
             this.Close();
         }
     }
