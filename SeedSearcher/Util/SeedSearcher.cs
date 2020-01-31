@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace SeedSearcherGui
 {
-    class SeedSearcher
+    public class SeedSearcher
     {
 		public enum Mode
 		{
@@ -130,7 +130,7 @@ namespace SeedSearcherGui
 			ssg.SetSixThirdCondition(pkmn3);
 			if (m_Mode == Mode.Star12)
 			{
-				return TestSeed(seed);
+				return ssg.TestSeed(seed);
 			}
 			else
 			{
@@ -191,6 +191,12 @@ namespace SeedSearcherGui
 			}
 		}
 
+		public List<ulong> Calculate(int rolls, int[] target)
+		{
+			Calculate(0, rolls, rolls, target, null);
+			return Result;
+		}
+
 		public void Calculate(int searcherIDX, int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl)
 		{
 			Result.Clear();
@@ -221,7 +227,8 @@ namespace SeedSearcherGui
 
 					for (int i = minRerolls; i <= maxRerolls; ++i)
 					{
-						updateLbl.Text = i.ToString();
+						if(updateLbl != null)
+							updateLbl.Text = i.ToString();
 						Prepare(i);
 						Parallel.For(searchLower, searchUpper, (ivs, state) =>
 						{
@@ -263,7 +270,8 @@ namespace SeedSearcherGui
 						for (int i = minRerolls; i <= maxRerolls; ++i)
 						{
 							PrepareSix(i);
-							updateLbl.Text = i.ToString();
+							if (updateLbl != null)
+								updateLbl.Text = i.ToString();
 
 							Parallel.For(searchLower, searchUpper, (ivs, state) =>
 							{
@@ -286,7 +294,8 @@ namespace SeedSearcherGui
 						for (int i = minRerolls; i <= maxRerolls; ++i)
 						{
 							PrepareSix(i);
-							updateLbl.Text = i.ToString();
+							if (updateLbl != null)
+								updateLbl.Text = i.ToString();
 
 							Parallel.For(searchLower, searchUpper, (ivs, state) =>
 							{
@@ -309,7 +318,8 @@ namespace SeedSearcherGui
 						for (int i = minRerolls; i <= maxRerolls; ++i)
 						{
 							PrepareSix(i);
-							updateLbl.Text = i.ToString();
+							if (updateLbl != null)
+								updateLbl.Text = i.ToString();
 
 							Parallel.For(searchLower, searchUpper, (ivs, state) =>
 							{

@@ -50,13 +50,6 @@ namespace SeedSearcherGui
 		}
 
 		public uint TestSeed(ulong seed) {
-			ulong iv0 = (ulong)g_Ivs[0];
-			ulong iv1 = (ulong)g_Ivs[1];
-			ulong iv2 = (ulong)g_Ivs[2];
-			ulong iv3 = (ulong)g_Ivs[3];
-			ulong iv4 = (ulong)g_Ivs[4];
-			ulong iv5 = (ulong)g_Ivs[5];
-
 			int[] allIVs = { pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn2.ivs0, pkmn2.ivs1, pkmn2.ivs2, pkmn2.ivs3, pkmn2.ivs4, pkmn2.ivs5,
 							 pkmn3.ivs0, pkmn3.ivs1, pkmn3.ivs2, pkmn3.ivs3, pkmn3.ivs4, pkmn3.ivs5, pkmn4.ivs0, pkmn4.ivs1, pkmn4.ivs2, pkmn4.ivs3, pkmn4.ivs4, pkmn4.ivs5,};
 			int[] fixedIVs = { pkmn1.fixedIV, pkmn2.fixedIV, pkmn3.fixedIV, pkmn4.fixedIV };
@@ -424,7 +417,8 @@ namespace SeedSearcherGui
 			ulong[] entry = { 0 };
 			for (int ivOffset = start; ivOffset <= end; ivOffset++)
 			{
-				updateLbl.Text = ivOffset.ToString();
+				if (updateLbl != null)
+					updateLbl.Text = ivOffset.ToString();
 				ulong g_ConstantTermVector = 0;
 
 				MatrixStruct.InitializeTransformationMatrix();
@@ -872,7 +866,8 @@ namespace SeedSearcherGui
 			ulong[] entry = { 0 };
 			for (int ivOffset=start; ivOffset <= end; ivOffset++)
 			{
-				updateLbl.Text = ivOffset.ToString();
+				if (updateLbl != null)
+					updateLbl.Text = ivOffset.ToString();
 				ulong g_ConstantTermVector = 0;
 				MatrixStruct.InitializeTransformationMatrix();
 				for (int i = 0; i <= 1 + pkmn1.fixedIV + ivOffset; ++i)
@@ -1295,7 +1290,8 @@ namespace SeedSearcherGui
 			ulong[] entry = { 0 };
 			for (int ivOffset = start; ivOffset <= end; ivOffset++)
 			{
-				updateLbl.Text = ivOffset.ToString();
+				if (updateLbl != null)
+					updateLbl.Text = ivOffset.ToString();
 				ulong g_ConstantTermVector = 0;
 				MatrixStruct.InitializeTransformationMatrix();
 				for (int i = 0; i <= 1 + pkmn1.fixedIV + ivOffset; ++i)
@@ -1715,7 +1711,8 @@ namespace SeedSearcherGui
 			ulong[] entry = { 0 };
 			for (int ivOffset = start; ivOffset <= end; ivOffset++)
 			{
-				updateLbl.Text = ivOffset.ToString();
+				if (updateLbl != null)
+					updateLbl.Text = ivOffset.ToString();
 				ulong g_ConstantTermVector = 0;
 				MatrixStruct.InitializeTransformationMatrix();
 				for (int i = 0; i <= 1 + pkmn1.fixedIV + ivOffset; ++i)
