@@ -29,7 +29,16 @@ namespace SeedSearcherGui
             nature = cB_Nature;
             this.RaidInfo = raidInfo;
             TB_Species.Text = gameStrings.Species[raidInfo.Species];
-            var baseinfo = PKHeX.Core.PersonalTable.SWSH[raidInfo.Species];
+            PKHeX.Core.PersonalInfo baseinfo;
+            if (raidInfo.Species == (int) PKHeX.Core.Species.Indeedee)
+            {
+                baseinfo = PKHeX.Core.PersonalTable.SWSH.GetFormeEntry(raidInfo.Species, raidInfo.Gender);
+            } else
+            {
+                baseinfo = PKHeX.Core.PersonalTable.SWSH.GetFormeEntry(raidInfo.Species, raidInfo.AltForm);
+            }
+            
+            //var baseinfo = PKHeX.Core.PersonalTable.SWSH[raidInfo.Species];
             basestats = new int[] { baseinfo.HP, baseinfo.ATK, baseinfo.DEF, baseinfo.SPA, baseinfo.SPD, baseinfo.SPE };
             minVals = new TextBox[] { ResHP1, ResAtk1, ResDef1, ResSpa1, ResSpd1, ResSpe1 };
             maxVals = new TextBox[] { ResHP2, ResAtk2, ResDef2, ResSpa2, ResSpd2, ResSpe2 };
