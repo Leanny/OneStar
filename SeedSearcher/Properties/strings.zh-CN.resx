@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Stony21" xml:space="preserve">
+    <value>巨石原野C</value>
+    <comment>ストーンズ原野C</comment>
+  </data>
+  <data name="Stony11" xml:space="preserve">
+    <value>巨石原野K</value>
+    <comment>ストーンズ原野K</comment>
+  </data>
+  <data name="IVDeviation" xml:space="preserve">
+    <value>IV偏差</value>
+    <comment>V箇所のズレを考慮</comment>
+  </data>
+  <data name="Watchtower2" xml:space="preserve">
+    <value>瞭望塔旧址A</value>
+    <comment>見張り塔跡地A</comment>
+  </data>
+  <data name="Watchtower1" xml:space="preserve">
+    <value>瞭望塔旧址C</value>
+    <comment>見張り塔跡地C</comment>
+  </data>
+  <data name="Giant1" xml:space="preserve">
+    <value>巨人凳岩E</value>
+    <comment>巨人の腰かけE</comment>
+  </data>
+  <data name="Giant2" xml:space="preserve">
+    <value>巨人凳岩B</value>
+    <comment>巨人の腰かけB</comment>
+  </data>
+  <data name="Giant3" xml:space="preserve">
+    <value>巨人凳岩C</value>
+    <comment>巨人の腰かけC</comment>
+  </data>
+  <data name="Giant4" xml:space="preserve">
+    <value>巨人凳岩D</value>
+    <comment>巨人の腰かけD</comment>
+  </data>
+  <data name="Giant5" xml:space="preserve">
+    <value>巨人凳岩A</value>
+    <comment>巨人の腰かけA</comment>
+  </data>
+  <data name="Dusty8" xml:space="preserve">
+    <value>沙尘洼地I</value>
+    <comment>砂塵の窪地I</comment>
+  </data>
+  <data name="Dusty9" xml:space="preserve">
+    <value>沙尘洼地F</value>
+    <comment>砂塵の窪地F</comment>
+  </data>
+  <data name="Dusty2" xml:space="preserve">
+    <value>沙尘洼地D</value>
+    <comment>砂塵の窪地D</comment>
+  </data>
+  <data name="Dusty3" xml:space="preserve">
+    <value>沙尘洼地E</value>
+    <comment>砂塵の窪地E</comment>
+  </data>
+  <data name="Dusty1" xml:space="preserve">
+    <value>沙尘洼地H</value>
+    <comment>砂塵の窪地H</comment>
+  </data>
+  <data name="Dusty6" xml:space="preserve">
+    <value>沙尘洼地G</value>
+    <comment>砂塵の窪地G</comment>
+  </data>
+  <data name="Dusty7" xml:space="preserve">
+    <value>沙尘洼地C</value>
+    <comment>砂塵の窪地C</comment>
+  </data>
+  <data name="Dusty4" xml:space="preserve">
+    <value>沙尘洼地A</value>
+    <comment>砂塵の窪地A</comment>
+  </data>
+  <data name="Dusty5" xml:space="preserve">
+    <value>沙尘洼地B</value>
+    <comment>砂塵の窪地B</comment>
+  </data>
+  <data name="Characteristic" xml:space="preserve">
+    <value>个性</value>
+    <comment>個性</comment>
+  </data>
+  <data name="North2" xml:space="preserve">
+    <value>美纳斯湖北岸D</value>
+    <comment>ミロカロ湖・北D</comment>
+  </data>
+  <data name="North3" xml:space="preserve">
+    <value>美纳斯湖北岸A</value>
+    <comment>ミロカロ湖・北A</comment>
+  </data>
+  <data name="North1" xml:space="preserve">
+    <value>美纳斯湖北岸E</value>
+    <comment>ミロカロ湖・北E</comment>
+  </data>
+  <data name="North6" xml:space="preserve">
+    <value>美纳斯湖北岸F</value>
+    <comment>ミロカロ湖・北F</comment>
+  </data>
+  <data name="North4" xml:space="preserve">
+    <value>美纳斯湖北岸C</value>
+    <comment>ミロカロ湖・北C</comment>
+  </data>
+  <data name="North5" xml:space="preserve">
+    <value>美纳斯湖北岸B</value>
+    <comment>ミロカロ湖・北B</comment>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>红光</value>
+    <comment>ノーマル(赤い柱)</comment>
+  </data>
+  <data name="Nature" xml:space="preserve">
+    <value>性格</value>
+    <comment>性格</comment>
+  </data>
+  <data name="Bridge8" xml:space="preserve">
+    <value>桥间空地D</value>
+    <comment>ハシノマ原っぱD</comment>
+  </data>
+  <data name="Bridge9" xml:space="preserve">
+    <value>桥间空地G</value>
+    <comment>ハシノマ原っぱG</comment>
+  </data>
+  <data name="Bridge2" xml:space="preserve">
+    <value>桥间空地F</value>
+    <comment>ハシノマ原っぱF</comment>
+  </data>
+  <data name="Bridge3" xml:space="preserve">
+    <value>桥间空地H</value>
+    <comment>ハシノマ原っぱH</comment>
+  </data>
+  <data name="Bridge1" xml:space="preserve">
+    <value>桥间空地A</value>
+    <comment>ハシノマ原っぱA</comment>
+  </data>
+  <data name="Bridge6" xml:space="preserve">
+    <value>桥间空地E</value>
+    <comment>ハシノマ原っぱE</comment>
+  </data>
+  <data name="Bridge7" xml:space="preserve">
+    <value>桥间空地C</value>
+    <comment>ハシノマ原っぱC</comment>
+  </data>
+  <data name="Bridge4" xml:space="preserve">
+    <value>桥间空地I</value>
+    <comment>ハシノマ原っぱI</comment>
+  </data>
+  <data name="Bridge5" xml:space="preserve">
+    <value>桥间空地B</value>
+    <comment>ハシノマ原っぱB</comment>
+  </data>
+  <data name="Dappled5" xml:space="preserve">
+    <value>沐光森林C</value>
+    <comment>こもれび林C</comment>
+  </data>
+  <data name="Dappled4" xml:space="preserve">
+    <value>沐光森林D</value>
+    <comment>こもれび林D</comment>
+  </data>
+  <data name="Dappled1" xml:space="preserve">
+    <value>沐光森林E</value>
+    <comment>こもれび林E</comment>
+  </data>
+  <data name="Dappled3" xml:space="preserve">
+    <value>沐光森林A</value>
+    <comment>こもれび林A</comment>
+  </data>
+  <data name="Dappled2" xml:space="preserve">
+    <value>沐光森林B</value>
+    <comment>こもれび林B</comment>
+  </data>
+  <data name="Giant22" xml:space="preserve">
+    <value>巨人镜池C</value>
+    <comment>巨人の鏡子C</comment>
+  </data>
+  <data name="Giant21" xml:space="preserve">
+    <value>巨人帽岩D</value>
+    <comment>巨人の帽池D</comment>
+  </data>
+  <data name="Giant11" xml:space="preserve">
+    <value>巨人帽岩E</value>
+    <comment>巨人の帽池E</comment>
+  </data>
+  <data name="Giant12" xml:space="preserve">
+    <value>巨人镜池E</value>
+    <comment>巨人の鏡子E</comment>
+  </data>
+  <data name="Giant41" xml:space="preserve">
+    <value>巨人帽岩A</value>
+    <comment>巨人の帽池A</comment>
+  </data>
+  <data name="Giant42" xml:space="preserve">
+    <value>巨人镜池A</value>
+    <comment>巨人の鏡子A</comment>
+  </data>
+  <data name="Giant32" xml:space="preserve">
+    <value>巨人镜池D</value>
+    <comment>巨人の鏡子D</comment>
+  </data>
+  <data name="Giant31" xml:space="preserve">
+    <value>巨人帽岩B</value>
+    <comment>巨人の帽池B</comment>
+  </data>
+  <data name="Giant51" xml:space="preserve">
+    <value>巨人帽岩C</value>
+    <comment>巨人の帽池C</comment>
+  </data>
+  <data name="Giant52" xml:space="preserve">
+    <value>巨人镜池B</value>
+    <comment>巨人の鏡子B</comment>
+  </data>
+  <data name="Day4Base" xml:space="preserve">
+    <value>1V～3V</value>
+    <comment>1V～3V</comment>
+  </data>
+  <data name="Rarity" xml:space="preserve">
+    <value>光柱</value>
+    <comment>希少性</comment>
+  </data>
+  <data name="Stony8" xml:space="preserve">
+    <value>巨石原野H</value>
+    <comment>ストーンズ原野H</comment>
+  </data>
+  <data name="Stony9" xml:space="preserve">
+    <value>巨石原野I</value>
+    <comment>ストーンズ原野I</comment>
+  </data>
+  <data name="Stony2" xml:space="preserve">
+    <value>巨石原野E</value>
+    <comment>ストーンズ原野E</comment>
+  </data>
+  <data name="Stony3" xml:space="preserve">
+    <value>巨石原野G</value>
+    <comment>ストーンズ原野G</comment>
+  </data>
+  <data name="Stony0" xml:space="preserve">
+    <value>巨石原野J</value>
+    <comment>ストーンズ原野J</comment>
+  </data>
+  <data name="Stony1" xml:space="preserve">
+    <value>巨石原野野L</value>
+    <comment>ストーンズ原野L</comment>
+  </data>
+  <data name="Stony6" xml:space="preserve">
+    <value>巨石原野B</value>
+    <comment>ストーンズ原野B</comment>
+  </data>
+  <data name="Stony7" xml:space="preserve">
+    <value>巨石原野A</value>
+    <comment>ストーンズ原野A</comment>
+  </data>
+  <data name="Stony4" xml:space="preserve">
+    <value>巨石原野D</value>
+    <comment>ストーンズ原野D</comment>
+  </data>
+  <data name="Stony5" xml:space="preserve">
+    <value>巨石原野F</value>
+    <comment>ストーンズ原野F</comment>
+  </data>
+  <data name="South1" xml:space="preserve">
+    <value>美纳斯湖南岸C</value>
+    <comment>ミロカロ湖・南C</comment>
+  </data>
+  <data name="South2" xml:space="preserve">
+    <value>美纳斯湖南岸D</value>
+    <comment>ミロカロ湖・南D</comment>
+  </data>
+  <data name="South3" xml:space="preserve">
+    <value>美纳斯湖南岸E</value>
+    <comment>ミロカロ湖・南E</comment>
+  </data>
+  <data name="South4" xml:space="preserve">
+    <value>美纳斯湖南岸A</value>
+    <comment>ミロカロ湖・南A</comment>
+  </data>
+  <data name="South5" xml:space="preserve">
+    <value>美纳斯湖南岸B</value>
+    <comment>ミロカロ湖・南B</comment>
+  </data>
+  <data name="Shield" xml:space="preserve">
+    <value>盾</value>
+    <comment>シールド</comment>
+  </data>
+  <data name="Hammerlocke5" xml:space="preserve">
+    <value>拳关丘陵C</value>
+    <comment>ナックル丘陵C</comment>
+  </data>
+  <data name="Hammerlocke4" xml:space="preserve">
+    <value>拳关丘陵E</value>
+    <comment>ナックル丘陵E</comment>
+  </data>
+  <data name="Hammerlocke7" xml:space="preserve">
+    <value>拳关丘陵G</value>
+    <comment>ナックル丘陵G</comment>
+  </data>
+  <data name="Hammerlocke6" xml:space="preserve">
+    <value>拳关丘陵D</value>
+    <comment>ナックル丘陵D</comment>
+  </data>
+  <data name="Hammerlocke1" xml:space="preserve">
+    <value>拳关丘陵B</value>
+    <comment>ナックル丘陵B</comment>
+  </data>
+  <data name="Hammerlocke3" xml:space="preserve">
+    <value>拳关丘陵A</value>
+    <comment>ナックル丘陵A</comment>
+  </data>
+  <data name="Hammerlocke2" xml:space="preserve">
+    <value>拳关丘陵F</value>
+    <comment>ナックル丘陵F</comment>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>不明</value>
+    <comment>不明</comment>
+  </data>
+  <data name="AbilityNormal" xml:space="preserve">
+    <value>普通特性</value>
+    <comment>通常特性</comment>
+  </data>
+  <data name="Pokemon" xml:space="preserve">
+    <value>宝可梦</value>
+    <comment>ポケモン</comment>
+  </data>
+  <data name="HP" xml:space="preserve">
+    <value>HP</value>
+    <comment>H</comment>
+  </data>
+  <data name="1ivok" xml:space="preserve">
+    <value>1V. OK!</value>
+    <comment>1V. OK!</comment>
+  </data>
+  <data name="ATK" xml:space="preserve">
+    <value>ATK</value>
+    <comment>A</comment>
+  </data>
+  <data name="DEF" xml:space="preserve">
+    <value>DEF</value>
+    <comment>B</comment>
+  </data>
+  <data name="Den" xml:space="preserve">
+    <value>巣穴</value>
+    <comment>巣穴</comment>
+  </data>
+  <data name="SPD" xml:space="preserve">
+    <value>SPD</value>
+    <comment>D</comment>
+  </data>
+  <data name="SPE" xml:space="preserve">
+    <value>SPE</value>
+    <comment>S</comment>
+  </data>
+  <data name="SPA" xml:space="preserve">
+    <value>SPA</value>
+    <comment>C</comment>
+  </data>
+  <data name="East4" xml:space="preserve">
+    <value>牙牙湖东岸D</value>
+    <comment>キバ湖・東D</comment>
+  </data>
+  <data name="East5" xml:space="preserve">
+    <value>牙牙湖东岸B</value>
+    <comment>キバ湖・東B</comment>
+  </data>
+  <data name="East2" xml:space="preserve">
+    <value>牙牙湖东岸A</value>
+    <comment>キバ湖・東A</comment>
+  </data>
+  <data name="East3" xml:space="preserve">
+    <value>牙牙湖东岸C</value>
+    <comment>キバ湖・東C</comment>
+  </data>
+  <data name="East1" xml:space="preserve">
+    <value>牙牙湖东岸E</value>
+    <comment>キバ湖・東E</comment>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>活动巢穴</value>
+    <comment>Event Den</comment>
+  </data>
+  <data name="Axew1" xml:space="preserve">
+    <value>牙牙湖之眼A</value>
+    <comment>キバ湖の瞳A</comment>
+  </data>
+  <data name="Lake4" xml:space="preserve">
+    <value>逆鳞湖B</value>
+    <comment>げきりんの湖B</comment>
+  </data>
+  <data name="Lake2" xml:space="preserve">
+    <value>逆鳞湖A</value>
+    <comment>げきりんの湖A</comment>
+  </data>
+  <data name="Lake3" xml:space="preserve">
+    <value>逆鳞湖C</value>
+    <comment>げきりんの湖C</comment>
+  </data>
+  <data name="Lake1" xml:space="preserve">
+    <value>逆鳞湖D</value>
+    <comment>げきりんの湖D</comment>
+  </data>
+  <data name="West1" xml:space="preserve">
+    <value>牙牙湖西岸D</value>
+    <comment>キバ湖・西D</comment>
+  </data>
+  <data name="West2" xml:space="preserve">
+    <value>牙牙湖西岸C</value>
+    <comment>キバ湖・西C</comment>
+  </data>
+  <data name="West3" xml:space="preserve">
+    <value>牙牙湖西岸F</value>
+    <comment>キバ湖・西F</comment>
+  </data>
+  <data name="West4" xml:space="preserve">
+    <value>牙牙湖西岸E</value>
+    <comment>キバ湖・西E</comment>
+  </data>
+  <data name="West5" xml:space="preserve">
+    <value>牙牙湖西岸B</value>
+    <comment>キバ湖・西B</comment>
+  </data>
+  <data name="West6" xml:space="preserve">
+    <value>牙牙湖西岸A</value>
+    <comment>キバ湖・西A</comment>
+  </data>
+  <data name="Sword" xml:space="preserve">
+    <value>剑</value>
+    <comment>ソード</comment>
+  </data>
+  <data name="Rolling8" xml:space="preserve">
+    <value>煦丽草原B</value>
+    <comment>うららか草原B</comment>
+  </data>
+  <data name="Rolling9" xml:space="preserve">
+    <value>煦丽草原C</value>
+    <comment>うららか草原C</comment>
+  </data>
+  <data name="Rolling1" xml:space="preserve">
+    <value>煦丽草原D</value>
+    <comment>うららか草原D</comment>
+  </data>
+  <data name="Rolling2" xml:space="preserve">
+    <value>煦丽草原G</value>
+    <comment>うららか草原G</comment>
+  </data>
+  <data name="Rolling3" xml:space="preserve">
+    <value>煦丽草原A</value>
+    <comment>うららか草原A</comment>
+  </data>
+  <data name="Rolling4" xml:space="preserve">
+    <value>煦丽草原H</value>
+    <comment>うららか草原H</comment>
+  </data>
+  <data name="Rolling5" xml:space="preserve">
+    <value>煦丽草原F</value>
+    <comment>うららか草原F</comment>
+  </data>
+  <data name="Rolling6" xml:space="preserve">
+    <value>煦丽草原I</value>
+    <comment>うららか草原I</comment>
+  </data>
+  <data name="Rolling7" xml:space="preserve">
+    <value>煦丽草原E</value>
+    <comment>うららか草原E</comment>
+  </data>
+  <data name="Ability" xml:space="preserve">
+    <value>特性</value>
+    <comment>特性</comment>
+  </data>
+  <data name="Day4Follow" xml:space="preserve">
+    <value>{0}V {1}/6</value>
+    <comment>{0}V {1}/6</comment>
+  </data>
+  <data name="Motostoke2" xml:space="preserve">
+    <value>机擎河岸A</value>
+    <comment>エンジンリバーサイドA</comment>
+  </data>
+  <data name="Motostoke3" xml:space="preserve">
+    <value>机擎河岸C</value>
+    <comment>エンジンリバーサイドC</comment>
+  </data>
+  <data name="Motostoke1" xml:space="preserve">
+    <value>机擎河岸B</value>
+    <comment>エンジンリバーサイドB</comment>
+  </data>
+  <data name="Motostoke4" xml:space="preserve">
+    <value>机擎河岸D</value>
+    <comment>エンジンリバーサイドD</comment>
+  </data>
+  <data name="Game" xml:space="preserve">
+    <value>游戏</value>
+    <comment>ゲーム</comment>
+  </data>
+  <data name="Day5" xml:space="preserve">
+    <value>第5天</value>
+    <comment>5匹目</comment>
+  </data>
+  <data name="Day4" xml:space="preserve">
+    <value>第4天</value>
+    <comment>4匹目</comment>
+  </data>
+  <data name="Day6" xml:space="preserve">
+    <value>第6天</value>
+    <comment>6匹目</comment>
+  </data>
+  <data name="Rare" xml:space="preserve">
+    <value>紫光</value>
+    <comment>レア(太い柱)</comment>
+  </data>
+</root>

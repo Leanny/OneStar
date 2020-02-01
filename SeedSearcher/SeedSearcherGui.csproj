@@ -130,6 +130,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\strings.zh-CN.resx" />
     <None Include="CudaSetup\EnableCuda.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
