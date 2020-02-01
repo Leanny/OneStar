@@ -1,4 +1,5 @@
 ﻿
+using Newtonsoft.Json;
 using PKHeX.Core;
 using PKHeX_Raid_Plugin;
 using SeedSearcherGui.Properties;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Threading;
@@ -34,6 +36,10 @@ namespace SeedSearcherGui
         public SeedSearcherGui()
         {
             InitializeComponent();
+            if (!Directory.Exists("Events"))
+            {
+                Directory.CreateDirectory("Events");
+            }
             dontChange = true;
             doneLoading = false;
             CB_Game.SelectedIndex = 0;
@@ -71,7 +77,7 @@ namespace SeedSearcherGui
             {
                 NihongoToolStripMenuItem_Click(null, null);
             }
-            else if(Properties.Settings.Default.Language == 7)
+            else if (Properties.Settings.Default.Language == 7)
             {
                 ChineseToolStripMenuItem_Click(null, null);
             }
@@ -89,7 +95,7 @@ namespace SeedSearcherGui
             cpu.Text = "CPU";
             var devices = SeedSearcherGPU.UseableGPU();
             int num = 0;
-            foreach(var device in devices)
+            foreach (var device in devices)
             {
                 ToolStripMenuItem gpu = new ToolStripMenuItem();
                 this.acceleratorToolStripMenuItem.DropDownItems.Add(gpu);
@@ -100,10 +106,11 @@ namespace SeedSearcherGui
                 num++;
             }
             ((ToolStripMenuItem)this.acceleratorToolStripMenuItem.DropDownItems[num]).Checked = true;
-            if(num > 0)
+            if (num > 0)
             {
                 NUD_IVMax.Value = 10;
             }
+            PopulateEvents();
         }
 
         private void PopulateNature(ComboBox cb)
@@ -182,8 +189,8 @@ namespace SeedSearcherGui
 
             for (int i = 0; i < CB_Species.Length; i++)
             {
-                if(CB_Species[i].Items.Count > 0) 
-                { 
+                if (CB_Species[i].Items.Count > 0)
+                {
                     CB_Species[i].SelectedIndex = species_idx[i];
                 }
             }
@@ -298,7 +305,7 @@ namespace SeedSearcherGui
         private void PopulateSpeciesCB(ComboBox species, RaidTemplate[] entries)
         {
             species.Items.Clear();
-            if(entries[0].Species == (int) PKHeX.Core.Species.Ditto)
+            if (entries[0].Species == (int)PKHeX.Core.Species.Ditto)
             {
                 List<string> used = new List<string>();
                 // special case to make it distinguishable
@@ -309,7 +316,8 @@ namespace SeedSearcherGui
                         if (entry.Probabilities[stars] > 0)
                         {
                             string s = $"{entry.FlawlessIVs}IV {GameStrings.Species[entry.Species]} {stars + 1}\u2605";
-                            if(!used.Contains(s)) { 
+                            if (!used.Contains(s))
+                            {
                                 ComboboxItem item = new ComboboxItem(s, entry);
                                 species.Items.Add(item);
                                 used.Add(s);
@@ -317,7 +325,8 @@ namespace SeedSearcherGui
                         }
                     }
                 }
-            } else
+            }
+            else
             {
                 for (int stars = 0; stars < 5; stars++)
                 {
@@ -356,7 +365,7 @@ namespace SeedSearcherGui
             }
         }
 
-        static Color[] colors = new Color[]{ Color.White, Color.White, Color.White, Color.White, Color.Orange, Color.Blue, Color.Green, Color.White, Color.White, Color.White };
+        static Color[] colors = new Color[] { Color.White, Color.White, Color.White, Color.White, Color.Orange, Color.Blue, Color.Green, Color.White, Color.White, Color.White };
 
         private int[] CheckIVs(ref int[] fixedIVs)
         {
@@ -389,12 +398,14 @@ namespace SeedSearcherGui
             }
             if (!GB_42.Enabled && flawless > fixedIV[0])
             {
-                if(flawless == 1) { 
+                if (flawless == 1)
+                {
                     LB_Response.Text = "Not enough info.";
                     GB_42.Enabled = true;
                     PopulateSpeciesCB(CB_Species[1], GetEntriesWithIV(fixedIV[1]));
                     return null;
-                } else
+                }
+                else
                 {
                     LB_Response.Text = "Too many IVs are at 31. Please use a different Pokémon.";
                     return null;
@@ -525,7 +536,8 @@ namespace SeedSearcherGui
                             {
                                 setIVs[idx2++] = (int)NUD_Stats[i + 6].Value;
                                 lateAdd++;
-                            } else
+                            }
+                            else
                             {
                                 NUD_Stats[i + 6].BackColor = Color.Red;
                             }
@@ -588,7 +600,7 @@ namespace SeedSearcherGui
             entries = GetEntriesWithIV(fixedIV[2]);
             if (entries.Length == 0)
             {
-                if(!settwo)
+                if (!settwo)
                 {
                     RB_2nd.Visible = false;
                     RB_3rd.Visible = false;
@@ -629,9 +641,9 @@ namespace SeedSearcherGui
                     unsetIV2++;
                 }
             }
-            if(6 - fixedIV[2] < unsetIV2)
+            if (6 - fixedIV[2] < unsetIV2)
             {
-                if(!settwo)
+                if (!settwo)
                 {
                     RB_2nd.Visible = false;
                     RB_3rd.Visible = false;
@@ -676,7 +688,8 @@ namespace SeedSearcherGui
             }
             if (setIVs[4] == -1 && firstTime)
             {
-                if(settwo) { 
+                if (settwo)
+                {
                     LBLAO.Text = "OR";
                     GB_42.Enabled = true;
                 }
@@ -879,9 +892,9 @@ namespace SeedSearcherGui
         {
             int res = 0;
             int idx = 0;
-            foreach(ToolStripMenuItem item in acceleratorToolStripMenuItem.DropDownItems)
+            foreach (ToolStripMenuItem item in acceleratorToolStripMenuItem.DropDownItems)
             {
-                if(item.Checked)
+                if (item.Checked)
                 {
                     res = idx;
                 }
@@ -1005,7 +1018,8 @@ namespace SeedSearcherGui
                 int Gender = PersonalTable.SWSH[pkmn4.Species].Gender;
                 noGender4 = Gender == 0 || Gender > 253;
                 HA4 = pkmn4.Ability == 4 || pkmn4.Ability == 2;
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -1274,14 +1288,14 @@ namespace SeedSearcherGui
 
         private void PopulateToxtricityNature(ComboBox nature, ComboBox species)
         {
-            var item = (RaidTemplate) ((ComboboxItem)species.SelectedItem).Value;
-            if(item.Species == ToxtricityID)
+            var item = (RaidTemplate)((ComboboxItem)species.SelectedItem).Value;
+            if (item.Species == ToxtricityID)
             {
                 List<ComboboxItem> toxNatures = new List<ComboboxItem>();
                 var natures = item.AltForm == 0 ? ToxtricityAmplifiedNatures : ToxtricityLowKeyNatures;
-                foreach(ComboboxItem natureEntry in nature.Items)
+                foreach (ComboboxItem natureEntry in nature.Items)
                 {
-                    if(natures.Contains((int)natureEntry.Value))
+                    if (natures.Contains((int)natureEntry.Value))
                     {
                         toxNatures.Add(natureEntry);
                     }
@@ -1349,9 +1363,10 @@ namespace SeedSearcherGui
                 var name = GameStrings.Ability[ability];
                 var ab = new ComboboxItem(name, UNDEFINED_ABILITY);
                 abilityBox.Items.Add(ab);
-            } else
+            }
+            else
             {
-                if((a == 3 && abilities[0] == abilities[1]) ||
+                if ((a == 3 && abilities[0] == abilities[1]) ||
                     (a == 4 && abilities[0] == abilities[1] && abilities[0] == abilities[2]))
                 {
                     // one ability only
@@ -1359,15 +1374,17 @@ namespace SeedSearcherGui
                     var name = GameStrings.Ability[ability];
                     var ab = new ComboboxItem(name, NORMAL_ABILITY);
                     abilityBox.Items.Add(ab);
-                } else
+                }
+                else
                 {
-                    if(abilities[0] == abilities[1])
+                    if (abilities[0] == abilities[1])
                     {
                         int ability = abilities[0];
                         var name = GameStrings.Ability[ability];
                         var ab = new ComboboxItem(name, NORMAL_ABILITY);
                         abilityBox.Items.Add(ab);
-                    } else
+                    }
+                    else
                     {
                         for (var i = 0; i < 2; i++)
                         {
@@ -1377,7 +1394,8 @@ namespace SeedSearcherGui
                             abilityBox.Items.Add(ab);
                         }
                     }
-                    if (a == 4) { 
+                    if (a == 4)
+                    {
                         int hiddenability = abilities[2];
                         var haname = GameStrings.Ability[hiddenability] + AbilitySuffix[2];
                         var haab = new ComboboxItem(haname, 2);
@@ -1545,7 +1563,8 @@ namespace SeedSearcherGui
         {
             if (!dontChange)
             {
-                if(sender is NumericUpDown) { 
+                if (sender is NumericUpDown)
+                {
                     var s = (NumericUpDown)sender;
                     s.BackColor = Color.White;
                 }
@@ -1601,7 +1620,7 @@ namespace SeedSearcherGui
                 }
             }
             else
-            { 
+            {
                 for (int stars = 0; stars < 5; stars++)
                 {
                     foreach (var entry in toUse.Entries)
@@ -1684,6 +1703,80 @@ namespace SeedSearcherGui
             Properties.Settings.Default.Save();
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
             PopulateLanguage(7);
+        }
+
+        const string EventPath = "Events/";
+        readonly string EventFilePath = $"{EventPath}files.json";
+        const string BASEURL = "https://raw.githubusercontent.com/Leanny/SeedSearcher/master/Events/";
+        readonly string VersionURL = $"{BASEURL}files.json";
+        private void updateEventDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var AppPath = Application.StartupPath.Trim() + "/";
+            if (!File.Exists(AppPath + EventFilePath))
+            {
+                File.WriteAllText(AppPath + EventFilePath, "");
+            }
+
+            var versionJson = Util.GetUrlString(VersionURL);
+            string localJson = File.ReadAllText(AppPath + EventFilePath);
+            if (localJson == versionJson)
+            {
+                return;
+            }
+            if (versionJson != null)
+            {
+                var versionNumbers = JsonConvert.DeserializeObject<List<string>>(versionJson);
+                File.WriteAllText(AppPath + EventFilePath, versionJson);
+
+                foreach (string filename in versionNumbers)
+                {
+                    var downloadedJson = Util.GetUrlString(BASEURL + filename);
+                    if (downloadedJson != null)
+                    {
+                        File.WriteAllText($"{AppPath}{EventPath}{filename}", downloadedJson);
+                    }
+                }
+            }
+            PopulateEvents();
+        }
+
+        private void PopulateEvents()
+        {
+            var AppPath = Application.StartupPath.Trim() + "/";
+            if (!File.Exists(AppPath + EventFilePath))
+            {
+                updateEventDatabaseToolStripMenuItem_Click(null, null);
+            }
+
+            string localJson = File.ReadAllText(AppPath + EventFilePath);
+            var EventEntries = JsonConvert.DeserializeObject<List<string>>(localJson);
+            this.eventsToolStripMenuItem.DropDownItems.Clear();
+            foreach (string EventName in EventEntries)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem();
+                item.Name = EventName;
+                item.Text = EventName.Substring(0, EventName.Length - 5); // - ".json"
+                item.Click += new System.EventHandler(LoadEvent);
+                this.eventsToolStripMenuItem.DropDownItems.Add(item);
+            }
+            this.eventsToolStripMenuItem.DropDownItems.Add(this.updateEventDatabaseToolStripMenuItem);
+        }
+
+        private void LoadEvent(object sender, EventArgs e)
+        {
+            var AppPath = Application.StartupPath.Trim() + "/";
+            ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
+            var EventData = $"{AppPath}{EventPath}{tsmi.Text}.json";
+            if (!File.Exists(EventData))
+            {
+                updateEventDatabaseToolStripMenuItem_Click(null, null);
+            }
+            var content = File.ReadAllText(EventData);
+            PKHeX_Raid_Plugin.EventTableConverter.LoadFromJson(content, _raidTables);
+            if(CB_Nest.SelectedIndex == 0)
+            {
+                CB_Nest_SelectedIndexChanged(null, null);
+            }
         }
     }
 }
