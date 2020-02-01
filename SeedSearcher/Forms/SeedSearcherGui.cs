@@ -71,6 +71,10 @@ namespace SeedSearcherGui
             {
                 NihongoToolStripMenuItem_Click(null, null);
             }
+            else if(Properties.Settings.Default.Language == 7)
+            {
+                ChineseToolStripMenuItem_Click(null, null);
+            }
             else
             {
                 englishToolStripMenuItem_Click(null, null);
@@ -1672,6 +1676,14 @@ namespace SeedSearcherGui
         {
             var calc = new IVCalculator(GameStrings, (RaidTemplate)((ComboboxItem)CB_Species[4].SelectedItem).Value, HP5, ATK5, DEF5, SPA5, SPD5, SPE5, CB_Nature5);
             calc.Show();
+        }
+
+        private void ChineseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Language = 7;
+            Properties.Settings.Default.Save();
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh-CN");
+            PopulateLanguage(7);
         }
     }
 }
