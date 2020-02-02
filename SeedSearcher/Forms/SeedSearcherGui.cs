@@ -1233,12 +1233,11 @@ namespace SeedSearcherGui
             GB_61.Enabled = false;
             MenuBar.Enabled = false;
             GB_Left.Enabled = false;
-            BT_newsearch.Enabled = false;
             SeedResult.Text = "";
             int minRerolls = (int)NUD_IVMin.Value;
             int maxRerolls = (int)NUD_IVMax.Value;
-            BT_Search.Enabled = false;
             BT_Search.Text = "Searching...";
+            GB_Controls.Enabled = false;
             // 時間計測
             System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
             stopWatch.Start();
@@ -1251,8 +1250,8 @@ namespace SeedSearcherGui
             stopWatch.Stop();
             LBL_Time.Text = $"{stopWatch.ElapsedMilliseconds} ms";
 
-            BT_Search.Enabled = true;
             BT_Search.Text = "Search";
+            GB_Controls.Enabled = true;
 
             SystemSounds.Asterisk.Play();
             if (SeedSearcher.Result.Count == 0)
