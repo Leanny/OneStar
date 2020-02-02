@@ -71,7 +71,6 @@ namespace SeedSearcherGui
             {
                 field.SelectedIndex = 0;
             }
-            BT_Table.Enabled = false;
             CB_Den.SelectedIndex = 1;
             if (Properties.Settings.Default.Language == 0)
             {
@@ -1274,7 +1273,6 @@ namespace SeedSearcherGui
                 {
                     SeedResult.Text += $"{SeedSearcher.Result[i]:X}\n";
                 }
-                BT_Table.Enabled = true;
             }
             BT_newsearch.Enabled = true;
         }
@@ -1465,7 +1463,6 @@ namespace SeedSearcherGui
             dontChange = true;
             checkSeedToolStripMenuItem.Enabled = false;
             GB_Left.Enabled = true;
-            BT_Table.Enabled = false;
             GB_41.Enabled = true;
             MenuBar.Enabled = true;
             GB_42.Enabled = false;
@@ -1515,7 +1512,7 @@ namespace SeedSearcherGui
 
         private void BT_Table_Click(object sender, EventArgs e)
         {
-            var f = new Results(SeedResult.Text, CB_Den, CB_Species4.Items, GameStrings);
+            var f = new Results(SeedResult.Text, CB_Nest, CB_Species4.Items, GameStrings);
             f.Show();
         }
 
@@ -1778,6 +1775,11 @@ namespace SeedSearcherGui
             {
                 CB_Nest_SelectedIndexChanged(null, null);
             }
+        }
+
+        private void exportDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -340,9 +340,9 @@
             this.seedBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.seedBox.MaxLength = 16;
             this.seedBox.Name = "seedBox";
-            this.seedBox.ReadOnly = true;
             this.seedBox.Size = new System.Drawing.Size(187, 23);
             this.seedBox.TabIndex = 6;
+            this.seedBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.seedBox_KeyPress);
             // 
             // generateData
             // 
@@ -378,9 +378,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(19, 70);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 17);
+            this.label2.Size = new System.Drawing.Size(37, 17);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Den";
+            this.label2.Text = "Nest";
             // 
             // label1
             // 
@@ -453,6 +453,7 @@
             0,
             0,
             0});
+            this.maxSpe.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // maxSpd
             // 
@@ -471,6 +472,7 @@
             0,
             0,
             0});
+            this.maxSpd.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // maxSpa
             // 
@@ -489,6 +491,7 @@
             0,
             0,
             0});
+            this.maxSpa.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // maxDef
             // 
@@ -507,6 +510,7 @@
             0,
             0,
             0});
+            this.maxDef.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // maxAtk
             // 
@@ -525,6 +529,7 @@
             0,
             0,
             0});
+            this.maxAtk.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // maxHP
             // 
@@ -543,6 +548,7 @@
             0,
             0,
             0});
+            this.maxHP.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // MinSpe
             // 
@@ -556,6 +562,7 @@
             this.MinSpe.Name = "MinSpe";
             this.MinSpe.Size = new System.Drawing.Size(43, 22);
             this.MinSpe.TabIndex = 13;
+            this.MinSpe.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // minSpd
             // 
@@ -569,6 +576,7 @@
             this.minSpd.Name = "minSpd";
             this.minSpd.Size = new System.Drawing.Size(43, 22);
             this.minSpd.TabIndex = 12;
+            this.minSpd.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // SpaCell
             // 
@@ -609,6 +617,7 @@
             this.minSpa.Name = "minSpa";
             this.minSpa.Size = new System.Drawing.Size(43, 22);
             this.minSpa.TabIndex = 11;
+            this.minSpa.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // minDef
             // 
@@ -622,6 +631,7 @@
             this.minDef.Name = "minDef";
             this.minDef.Size = new System.Drawing.Size(43, 22);
             this.minDef.TabIndex = 10;
+            this.minDef.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // minAtk
             // 
@@ -635,6 +645,7 @@
             this.minAtk.Name = "minAtk";
             this.minAtk.Size = new System.Drawing.Size(43, 22);
             this.minAtk.TabIndex = 9;
+            this.minAtk.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // label13
             // 
@@ -693,6 +704,7 @@
             this.minHP.Name = "minHP";
             this.minHP.Size = new System.Drawing.Size(43, 22);
             this.minHP.TabIndex = 8;
+            this.minHP.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // raidContent
             // 
@@ -851,6 +863,7 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filters";
+            this.groupBox2.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // DetailsBox
             // 
@@ -873,6 +886,7 @@
             this.Controls.Add(this.raidContent);
             this.Controls.Add(this.DetailsBox);
             this.Name = "Results";
+            this.ShowIcon = false;
             this.Text = "Results";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -44,6 +44,7 @@ namespace SeedSearcherGui
 
         private void generateData_Click(object sender, EventArgs e)
         {
+            if (seedBox.Text.Length == 0) return;
             ulong start_seed = ulong.Parse(seedBox.Text, System.Globalization.NumberStyles.HexNumber);
             uint start_frame = uint.Parse(startFrame.Text);
             uint end_frame = uint.Parse(endFrame.Text);
@@ -246,6 +247,14 @@ namespace SeedSearcherGui
                 break;
             }
             ((ISupportInitialize)raidContent).EndInit();
+        }
+
+        private void seedBox_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = !PKHeX_Raid_Plugin.Util.IsHexOrControl(e.KeyChar);
+
+        private void minHP_Enter(object sender, EventArgs e)
+        {
+            NumericUpDown numbox = (NumericUpDown)sender;
+            numbox.Select(0, numbox.Text.Length);
         }
     }
 }

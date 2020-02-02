@@ -180,6 +180,9 @@
             this.englishToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.日本語ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.简体中文ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -1784,7 +1787,6 @@
             // 
             // BT_Table
             // 
-            this.BT_Table.Enabled = false;
             this.BT_Table.Location = new System.Drawing.Point(5, 136);
             this.BT_Table.Name = "BT_Table";
             this.BT_Table.Size = new System.Drawing.Size(373, 29);
@@ -2186,6 +2188,7 @@
             // 
             this.MenuBar.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importExportToolStripMenuItem,
             this.languagesToolStripMenuItem,
             this.checkSeedToolStripMenuItem,
             this.acceleratorToolStripMenuItem,
@@ -2257,6 +2260,28 @@
             this.简体中文ToolStripMenuItem1.Name = "简体中文ToolStripMenuItem1";
             this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.简体中文ToolStripMenuItem1.Text = "简体中文";
+            // 
+            // importExportToolStripMenuItem
+            // 
+            this.importExportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportDataToolStripMenuItem,
+            this.importDataToolStripMenuItem});
+            this.importExportToolStripMenuItem.Name = "importExportToolStripMenuItem";
+            this.importExportToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
+            this.importExportToolStripMenuItem.Text = "Import/Export";
+            // 
+            // importDataToolStripMenuItem
+            // 
+            this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
+            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.importDataToolStripMenuItem.Text = "Import Data";
+            // 
+            // exportDataToolStripMenuItem
+            // 
+            this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exportDataToolStripMenuItem.Text = "Export Data";
+            this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.exportDataToolStripMenuItem_Click);
             // 
             // SeedSearcherGui
             // 
@@ -2488,6 +2513,9 @@
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 日本語ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 简体中文ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem importExportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importDataToolStripMenuItem;
     }
 }
 
