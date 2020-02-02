@@ -14,6 +14,17 @@ namespace SeedSearcherGui
             return MessageBox.Show(msg, "Prompt", btn, MessageBoxIcon.Asterisk);
         }
 
+        public static string CalculateChecksum(string dataToCalculate)
+        {
+            byte[] byteToCalculate = System.Text.Encoding.ASCII.GetBytes(dataToCalculate);
+            uint checksum = 0;
+            foreach (byte chData in byteToCalculate)
+            {
+                checksum += chData;
+            }
+            return checksum.ToString("X8");
+        }
+
         public static string GetUrlString(string url)
         {
             try
