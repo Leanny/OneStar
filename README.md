@@ -1,4 +1,4 @@
-# Seed Finder by Lean
+# Seed Searcher by Lean
 This tool allows you to recover the seed of a den in Pokémon Sword and Shield. All you need to do is to input IVs, Nature, Ability, and Characteristic of up to 4 Pokémon. 
 
 # Tutorial
