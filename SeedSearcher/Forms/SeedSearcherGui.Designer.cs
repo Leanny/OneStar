@@ -172,13 +172,14 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.LBL_Time = new System.Windows.Forms.ToolStripStatusLabel();
             this.MenuBar = new System.Windows.Forms.MenuStrip();
-            this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.日本語ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.简体中文ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acceleratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateEventDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.languagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.englishToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.日本語ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.简体中文ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -2185,9 +2186,7 @@
             // 
             this.MenuBar.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.MenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.englishToolStripMenuItem,
-            this.日本語ToolStripMenuItem,
-            this.简体中文ToolStripMenuItem,
+            this.languagesToolStripMenuItem,
             this.checkSeedToolStripMenuItem,
             this.acceleratorToolStripMenuItem,
             this.eventsToolStripMenuItem});
@@ -2197,27 +2196,6 @@
             this.MenuBar.Size = new System.Drawing.Size(1103, 30);
             this.MenuBar.TabIndex = 11;
             this.MenuBar.Text = "menuStrip1";
-            // 
-            // englishToolStripMenuItem
-            // 
-            this.englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            this.englishToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
-            this.englishToolStripMenuItem.Text = "English";
-            this.englishToolStripMenuItem.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
-            // 
-            // 日本語ToolStripMenuItem
-            // 
-            this.日本語ToolStripMenuItem.Name = "日本語ToolStripMenuItem";
-            this.日本語ToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
-            this.日本語ToolStripMenuItem.Text = "日本語";
-            this.日本語ToolStripMenuItem.Click += new System.EventHandler(this.NihongoToolStripMenuItem_Click);
-            // 
-            // 简体中文ToolStripMenuItem
-            // 
-            this.简体中文ToolStripMenuItem.Name = "简体中文ToolStripMenuItem";
-            this.简体中文ToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
-            this.简体中文ToolStripMenuItem.Text = "简体中文";
-            this.简体中文ToolStripMenuItem.Click += new System.EventHandler(this.ChineseToolStripMenuItem_Click);
             // 
             // checkSeedToolStripMenuItem
             // 
@@ -2248,6 +2226,37 @@
             this.updateEventDatabaseToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
             this.updateEventDatabaseToolStripMenuItem.Text = "Update Event Database";
             this.updateEventDatabaseToolStripMenuItem.Click += new System.EventHandler(this.updateEventDatabaseToolStripMenuItem_Click);
+            // 
+            // languagesToolStripMenuItem
+            // 
+            this.languagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.englishToolStripMenuItem1,
+            this.日本語ToolStripMenuItem1,
+            this.简体中文ToolStripMenuItem1});
+            this.languagesToolStripMenuItem.Name = "languagesToolStripMenuItem";
+            this.languagesToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.languagesToolStripMenuItem.Text = "Languages";
+            this.languagesToolStripMenuItem.Click += new System.EventHandler(this.ChineseToolStripMenuItem_Click);
+            // 
+            // englishToolStripMenuItem1
+            // 
+            this.englishToolStripMenuItem1.Name = "englishToolStripMenuItem1";
+            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.englishToolStripMenuItem1.Text = "English";
+            this.englishToolStripMenuItem1.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+            // 
+            // 日本語ToolStripMenuItem1
+            // 
+            this.日本語ToolStripMenuItem1.Name = "日本語ToolStripMenuItem1";
+            this.日本語ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.日本語ToolStripMenuItem1.Text = "日本語";
+            this.日本語ToolStripMenuItem1.Click += new System.EventHandler(this.NihongoToolStripMenuItem_Click);
+            // 
+            // 简体中文ToolStripMenuItem1
+            // 
+            this.简体中文ToolStripMenuItem1.Name = "简体中文ToolStripMenuItem1";
+            this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.简体中文ToolStripMenuItem1.Text = "简体中文";
             // 
             // SeedSearcherGui
             // 
@@ -2457,8 +2466,6 @@
         private System.Windows.Forms.NumericUpDown NUD_IVMax;
         private System.Windows.Forms.NumericUpDown NUD_IVMin;
         private System.Windows.Forms.MenuStrip MenuBar;
-        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 日本語ToolStripMenuItem;
         private System.Windows.Forms.Button BT_Table;
         private System.Windows.Forms.ToolStripMenuItem checkSeedToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -2475,9 +2482,12 @@
         private System.Windows.Forms.Button BT_IVCalc5;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ToolStripMenuItem 简体中文ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateEventDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem languagesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 日本語ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 简体中文ToolStripMenuItem1;
     }
 }
 
