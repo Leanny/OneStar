@@ -1738,6 +1738,7 @@ namespace SeedSearcherGui
                 }
             }
             PopulateEvents();
+            MessageBox.Show("Update completed.");
         }
 
         private void PopulateEvents()
