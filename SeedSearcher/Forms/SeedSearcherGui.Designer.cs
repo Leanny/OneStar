@@ -1791,7 +1791,7 @@
             this.BT_Table.Name = "BT_Table";
             this.BT_Table.Size = new System.Drawing.Size(373, 29);
             this.BT_Table.TabIndex = 7;
-            this.BT_Table.Text = "Show Results";
+            this.BT_Table.Text = "Seed Checker";
             this.BT_Table.UseVisualStyleBackColor = true;
             this.BT_Table.Click += new System.EventHandler(this.BT_Table_Click);
             // 
