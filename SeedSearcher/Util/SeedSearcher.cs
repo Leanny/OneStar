@@ -235,7 +235,7 @@ namespace SeedSearcherGui
 							ulong result = Search((ulong)ivs);
 							if (result != 0)
 							{
-								Result.Add((ulong)ivs);
+								Result.Add(result);
 								state.Stop();
 							}
 						});
