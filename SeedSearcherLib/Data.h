@@ -16,5 +16,5 @@ void ProceedTransformationMatrix();
 _u64 GetMatrixMultiplier(int index);
 short GetMatrixConst(int index);
 
-void CalculateInverseMatrix(int length);
+int CalculateInverseMatrix(int length);
 void CalculateCoefficientData(int length);

@@ -119,7 +119,7 @@ namespace SeedSearcherGui
 					s1 = RotateLeft(s1, 37);
 				} while (skip == 0xFFFFFFFF);
 
-				ivs = 0;
+				ivs = 0xC0;
 				g_FixedIvs = fixedIVs[val];
 				while (g_FixedIvs > 0)
 				{
@@ -129,7 +129,7 @@ namespace SeedSearcherGui
 						s1 = s0 ^ s1;
 						s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
 						s1 = RotateLeft(s1, 37);
-					} while (fixedIndex >= 6 || ((1 << fixedIndex) & ivs) != 0);
+					} while (((1 << fixedIndex) & ivs) != 0);
 					ivs |= 1 << fixedIndex;
 					if (allIVs[val * 6 + fixedIndex] != 31)
 					{
@@ -386,7 +386,6 @@ namespace SeedSearcherGui
 			{
 				length += 1;
 			}
-			int numElems = 1 << (64 - length);
 			ulong iv0 = (ulong)g_Ivs[0];
 			ulong iv1 = (ulong)g_Ivs[1];
 			ulong iv2 = (ulong)g_Ivs[2];
@@ -462,8 +461,9 @@ namespace SeedSearcherGui
 					}
 				}
 
-				MatrixStruct.CalculateInverseMatrix(length);
-				MatrixStruct.CalculateCoefficientData(length);
+				int l = MatrixStruct.CalculateInverseMatrix(length);
+				MatrixStruct.CalculateCoefficientData(l);
+				int numElems = 1 << (64 - l);
 
 				bool[] g_FreeBit = new bool[64];
 				ulong[] g_AnswerFlag = new ulong[64];
@@ -472,10 +472,7 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_CoefficientData, 0, g_CoefficientData, 0, numElems);
 				Array.Copy(MatrixStruct.g_SearchPattern, 0, g_SearchPattern, 0, numElems);
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
-				for (int num = 0; num < g_FreeBit.Length; num++)
-				{
-					g_FreeBit[num] = MatrixStruct.g_FreeBit[num] > 0;
-				}
+				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
 
 				ulong[] add_const = { 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
 				ulong targetStart = abilityBit ? ((ulong)pkmn1.ability & 1) : 0ul;
@@ -503,7 +500,7 @@ namespace SeedSearcherGui
 
 					ulong processedTarget = 0;
 					int offset = 0;
-					for (int i = 0; i < length; ++i)
+					for (int i = 0; i < l; ++i)
 					{
 						while (g_FreeBit[i + offset])
 						{
@@ -584,7 +581,7 @@ namespace SeedSearcherGui
 								s1 = RotateLeft(s1, 37);
 							} while (skip == 0xFFFFFFFF);
 
-							ivs = 0;
+							ivs = 0xC0;
 							g_FixedIvs = fixedIVs[val];
 							fixedIndex = 0;
 							while (g_FixedIvs > 0)
@@ -595,7 +592,7 @@ namespace SeedSearcherGui
 									s1 = s0 ^ s1;
 									s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
 									s1 = RotateLeft(s1, 37);
-								} while (fixedIndex >= 6 || ((1 << fixedIndex) & ivs) != 0);
+								} while (((1 << fixedIndex) & ivs) != 0);
 								ivs |= 1 << fixedIndex;
 								if (allIVs[val * 6 + fixedIndex] != 31)
 								{
@@ -843,7 +840,6 @@ namespace SeedSearcherGui
 			const int searchLower = 0;
 			const int searchUpper = 0x40000000 ;
 			const int length = 60;
-			const int numElems = 1 << (64 - length);
 			ulong iv0 = (ulong)g_Ivs[0];
 			ulong iv1 = (ulong)g_Ivs[1];
 			ulong iv2 = (ulong)g_Ivs[2];
@@ -889,9 +885,9 @@ namespace SeedSearcherGui
 					}
 					MatrixStruct.ProceedTransformationMatrix();
 				}
-				MatrixStruct.CalculateInverseMatrix(length);
-				MatrixStruct.CalculateCoefficientData(length);
-
+				int l = MatrixStruct.CalculateInverseMatrix(length);
+				MatrixStruct.CalculateCoefficientData(l);
+				int numElems = 1 << (64 - l);
 				bool[] g_FreeBit = new bool[64];
 				ulong[] g_AnswerFlag = new ulong[64];
 				ulong[] g_CoefficientData = new ulong[numElems];
@@ -899,13 +895,10 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_CoefficientData, 0, g_CoefficientData, 0, numElems);
 				Array.Copy(MatrixStruct.g_SearchPattern, 0, g_SearchPattern, 0, numElems);
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
-				for (int num = 0; num < g_FreeBit.Length; num++)
-				{
-					g_FreeBit[num] = MatrixStruct.g_FreeBit[num] > 0;
-				}
-
+				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
 				ulong[] add_const = {0, 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
 				gpu.LongFor(searchLower, searchUpper, input => {
+				//for(long input = searchLower; input < searchUpper; input++) {
 					ulong target = 0;
 					ulong input_ivs = (ulong)input;
 					target |= (input_ivs & 0x3E000000ul) << 30; // iv0_0
@@ -926,7 +919,7 @@ namespace SeedSearcherGui
 
 					ulong processedTarget = 0;
 					int offset = 0;
-					for (int i = 0; i < length; ++i)
+					for (int i = 0; i < l; ++i)
 					{
 						while (g_FreeBit[i + offset])
 						{
@@ -949,7 +942,6 @@ namespace SeedSearcherGui
 					for (int search = 0; search < numElems; ++search)
 					{
 						seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
-
 						s0 = seed;
 						s1 = 0x82a2b175229d6a5b;
 						// EC
@@ -1008,7 +1000,7 @@ namespace SeedSearcherGui
 								s1 = RotateLeft(s1, 37);
 							} while (skip == 0xFFFFFFFF);
 
-							ivs = 0;
+							ivs = 0xC0;
 							g_FixedIvs = fixedIVs[val];
 							fixedIndex = 0;
 							while (g_FixedIvs > 0)
@@ -1019,7 +1011,7 @@ namespace SeedSearcherGui
 									s1 = s0 ^ s1;
 									s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
 									s1 = RotateLeft(s1, 37);
-								} while (fixedIndex >= 6 || ((1 << fixedIndex) & ivs) != 0);
+								} while (((1 << fixedIndex) & ivs) != 0);
 								ivs |= 1 << fixedIndex;
 								if(allIVs[val * 6 + fixedIndex] != 31)
 								{
@@ -1264,7 +1256,6 @@ namespace SeedSearcherGui
 		public ulong SearchFive(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl)
 		{
 			const int length = 50;
-			const int numElems = 1 << (64 - length);
 			var gpu = Gpu.Get(device);
 			const int searchLower = 0;
 			const int searchUpper = 0x2000000;
@@ -1313,8 +1304,10 @@ namespace SeedSearcherGui
 					}
 					MatrixStruct.ProceedTransformationMatrix();
 				}
-				MatrixStruct.CalculateInverseMatrix(length);
-				MatrixStruct.CalculateCoefficientData(length);
+
+				int l = MatrixStruct.CalculateInverseMatrix(length);
+				MatrixStruct.CalculateCoefficientData(l);
+				int numElems = 1 << (64 - l);
 
 				bool[] g_FreeBit = new bool[64];
 				ulong[] g_AnswerFlag = new ulong[64];
@@ -1323,10 +1316,7 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_CoefficientData, 0, g_CoefficientData, 0, numElems);
 				Array.Copy(MatrixStruct.g_SearchPattern, 0, g_SearchPattern, 0, numElems);
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
-				for (int num = 0; num < g_FreeBit.Length; num++)
-				{
-					g_FreeBit[num] = MatrixStruct.g_FreeBit[num] > 0;
-				}
+				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
 
 				ulong[] add_const = { 0, 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
 				gpu.LongFor(searchLower, searchUpper, input => {
@@ -1348,7 +1338,7 @@ namespace SeedSearcherGui
 
 					ulong processedTarget = 0;
 					int offset = 0;
-					for (int i = 0; i < length; ++i)
+					for (int i = 0; i < l; ++i)
 					{
 						while (g_FreeBit[i + offset])
 						{
@@ -1429,7 +1419,7 @@ namespace SeedSearcherGui
 								s1 = RotateLeft(s1, 37);
 							} while (skip == 0xFFFFFFFF);
 
-							ivs = 0;
+							ivs = 0xC0;
 							g_FixedIvs = fixedIVs[val];
 							fixedIndex = 0;
 							while (g_FixedIvs > 0)
@@ -1440,7 +1430,7 @@ namespace SeedSearcherGui
 									s1 = s0 ^ s1;
 									s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
 									s1 = RotateLeft(s1, 37);
-								} while (fixedIndex >= 6 || ((1 << fixedIndex) & ivs) != 0);
+								} while (((1 << fixedIndex) & ivs) != 0);
 								ivs |= 1 << fixedIndex;
 								if (allIVs[val * 6 + fixedIndex] != 31)
 								{
@@ -1686,7 +1676,6 @@ namespace SeedSearcherGui
 		public ulong SearchFour(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl)
 		{
 			const int length = 40;
-			const int numElems = 1 << (64 - length);
 			var gpu = Gpu.Get(device);
 			const int searchLower = 0;
 			const int searchUpper = 0x100000;
@@ -1734,8 +1723,10 @@ namespace SeedSearcherGui
 					}
 					MatrixStruct.ProceedTransformationMatrix();
 				}
-				MatrixStruct.CalculateInverseMatrix(length);
-				MatrixStruct.CalculateCoefficientData(length);
+
+				int l = MatrixStruct.CalculateInverseMatrix(length);
+				MatrixStruct.CalculateCoefficientData(l);
+				int numElems = 1 << (64 - l);
 
 				bool[] g_FreeBit = new bool[64];
 				ulong[] g_AnswerFlag = new ulong[64];
@@ -1744,10 +1735,7 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_CoefficientData, 0, g_CoefficientData, 0, numElems);
 				Array.Copy(MatrixStruct.g_SearchPattern, 0, g_SearchPattern, 0, numElems);
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
-				for (int num = 0; num < g_FreeBit.Length; num++)
-				{
-					g_FreeBit[num] = MatrixStruct.g_FreeBit[num] > 0;
-				}
+				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
 
 				ulong[] add_const = { 0, 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
 				gpu.LongFor(searchLower, searchUpper, input => {
@@ -1767,7 +1755,7 @@ namespace SeedSearcherGui
 
 					ulong processedTarget = 0;
 					int offset = 0;
-					for (int i = 0; i < length; ++i)
+					for (int i = 0; i < l; ++i)
 					{
 						while (g_FreeBit[i + offset])
 						{
@@ -1849,7 +1837,7 @@ namespace SeedSearcherGui
 								s1 = RotateLeft(s1, 37);
 							} while (skip == 0xFFFFFFFF);
 
-							ivs = 0;
+							ivs = 0xC0;
 							g_FixedIvs = fixedIVs[val];
 							fixedIndex = 0;
 							while (g_FixedIvs > 0)
@@ -1860,7 +1848,7 @@ namespace SeedSearcherGui
 									s1 = s0 ^ s1;
 									s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
 									s1 = RotateLeft(s1, 37);
-								} while (fixedIndex >= 6 || ((1 << fixedIndex) & ivs) != 0);
+								} while (((1 << fixedIndex) & ivs) != 0);
 								ivs |= 1 << fixedIndex;
 								if (allIVs[val * 6 + fixedIndex] != 31)
 								{
@@ -2369,7 +2357,7 @@ namespace SeedSearcherGui
 			public static ulong[] g_InputMatrix = new ulong[64]; // 64
 			public static ulong[] g_Coefficient = new ulong[64]; // 64
 			public static ulong[] g_AnswerFlag = new ulong[64]; // 64
-			public static int[] g_FreeBit = new int[64]; // 64
+			public static bool[] g_FreeBit = new bool[64]; // 64
 			public static int[] g_FreeId = new int[64]; // 64
 			public static ulong[] g_CoefficientData = new ulong[0x1000000];
 			public static ulong[] g_SearchPattern = new ulong[0x1000000];
@@ -2436,7 +2424,7 @@ namespace SeedSearcherGui
 				return (short)GetSignature(g_TempMatrix[index * 2] & c_XoroshiroConst);
 			}
 
-			public static void CalculateInverseMatrix(int length)
+			public static int CalculateInverseMatrix(int length)
 			{
 				for (int i = 0; i < length; ++i)
 				{
@@ -2446,10 +2434,10 @@ namespace SeedSearcherGui
 				int skip = 0;
 				for (int i = 0; i < 64; ++i)
 				{
-					g_FreeBit[i] = 0;
+					g_FreeBit[i] = false;
 				}
-
-				for (int rank = 0; rank < length;)
+				int rank = 0;
+				for (rank = 0; rank + skip < 64;)
 				{
 					ulong top = (1ul << (63 - (rank + skip)));
 					bool rankUpFlag = false;
@@ -2475,30 +2463,26 @@ namespace SeedSearcherGui
 
 							++rank;
 							rankUpFlag = true;
+							break;
 						}
 					}
 					if (rankUpFlag == false)
 					{
-						g_FreeBit[rank + skip] = 1;
+						g_FreeBit[rank + skip] = true;
 						g_FreeId[skip] = rank + skip;
 						++skip;
 					}
 				}
 
-				for (int i = length + skip; i < 64; ++i)
-				{
-					g_FreeBit[i] = 1;
-					g_FreeId[i - length] = i;
-				}
-
-				for (int i = 0; i < length; ++i)
+				for (int i = 0; i < rank; ++i)
 				{
 					g_Coefficient[i] = 0;
-					for (int a = 0; a < (64 - length); ++a)
+					for (int a = 0; a < skip; ++a)
 					{
-						g_Coefficient[i] |= (g_InputMatrix[i] & (1ul << (63 - g_FreeId[a]))) >> ((length + a) - g_FreeId[a]);
+						g_Coefficient[i] |= (g_InputMatrix[i] & (1ul << (63 - g_FreeId[a]))) >> (rank + a - g_FreeId[a]);
 					}
 				}
+				return 64 - skip;
 			}
 
 			public static void CalculateCoefficientData(int length)
@@ -2511,13 +2495,13 @@ namespace SeedSearcherGui
 					int offset = 0;
 					for (int i = 0; i < length; ++i)
 					{
-						while (g_FreeBit[i + offset] > 0)
+						while (g_FreeBit[i + offset])
 						{
 							++offset;
 						}
-						g_CoefficientData[search] |= (GetSignature(g_Coefficient[i] & search) << (63 - (i + offset)));
+						g_CoefficientData[search] |= GetSignature(g_Coefficient[i] & search) << (63 - (i + offset));
 					}
-					for (int a = 0; a < (64 - length); ++a)
+					for (int a = 0; a < (64 - length) + offset; ++a)
 					{
 						g_SearchPattern[search] |= ((ulong)search & (1ul << (64 - length - 1 - a))) << ((length + a) - g_FreeId[a]);
 					}
@@ -2527,10 +2511,10 @@ namespace SeedSearcherGui
 			public static ulong GetSignature(ulong value)
 			{
 				uint a = (uint)(value ^ (value >> 32));
-				a = a ^ (a >> 16);
-				a = a ^ (a >> 8);
-				a = a ^ (a >> 4);
-				a = a ^ (a >> 2);
+				a ^= a >> 16;
+				a ^= a >> 8;
+				a ^= a >> 4;
+				a ^= a >> 2;
 				return (a ^ (a >> 1)) & 1;
 			}
 		}

@@ -85,7 +85,7 @@ short GetMatrixConst(int index)
 	return (short)GetSignature(g_TempMatrix[index * 2] & Const::c_XoroshiroConst);
 }
 
-void CalculateInverseMatrix(int length)
+int CalculateInverseMatrix(int length)
 {
 	// 初期状態をセット
 	for (int i = 0; i < length; ++i)
@@ -100,7 +100,8 @@ void CalculateInverseMatrix(int length)
 	}
 
 	// 行基本変形で求める
-	for (int rank = 0; rank < length; )
+	int rank = 0;
+	for (rank = 0; rank + skip < length; )
 	{
 		_u64 top = (1ull << (63 - (rank + skip)));
 		bool rankUpFlag = false;
@@ -129,6 +130,7 @@ void CalculateInverseMatrix(int length)
 
 				++rank;
 				rankUpFlag = true;
+				break;
 			}
 		}
 		if (rankUpFlag == false)
@@ -139,20 +141,15 @@ void CalculateInverseMatrix(int length)
 			++skip;
 		}
 	}
-	// 自由bit
-	for (int i = length + skip; i < 64; ++i)
-	{
-		g_FreeBit[i] = 1;
-		g_FreeId[i - length] = i;
-	}
+
 
 	// 係数部分だけ抜き出し
-	for (int i = 0; i < length; ++i)
+	for (int i = 0; i < rank; ++i)
 	{
 		g_Coefficient[i] = 0;
-		for (int a = 0; a < (64 - length); ++a)
+		for (int a = 0; a < skip; ++a)
 		{
-			g_Coefficient[i] |= (g_InputMatrix[i] & (1ull << (63 - g_FreeId[a]))) >> ((length + a) - g_FreeId[a]);
+			g_Coefficient[i] |= (g_InputMatrix[i] & (1ull << (63 - g_FreeId[a]))) >> ((rank + a) - g_FreeId[a]);
 		}
 	}
 }

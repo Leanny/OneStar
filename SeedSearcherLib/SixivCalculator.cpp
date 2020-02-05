@@ -18,6 +18,7 @@ static int g_setIVs;
 static int g_IvOffset;
 
 static uint64_t M = fastmod::computeM_u32(6);
+static int RoundLength = 0;
 
 void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int ID, int altform, bool isNoGender, bool isEnableDream)
 {
@@ -154,9 +155,9 @@ void PrepareSix(int ivOffset)
 		ProceedTransformationMatrix();
 	}
 
-	CalculateInverseMatrix(length);
+	RoundLength = CalculateInverseMatrix(length);
 
-	CalculateCoefficientData(length);
+	CalculateCoefficientData(RoundLength);
 }
 
 inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
@@ -385,7 +386,6 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 
 _u64 SearchSix(_u64 ivs)
 {
-	const int length =60;
 
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
@@ -412,7 +412,7 @@ _u64 SearchSix(_u64 ivs)
 
 	_u64 processedTarget = 0;
 	int offset = 0;
-	for (int i = 0; i < length; ++i)
+	for (int i = 0; i < RoundLength; ++i)
 	{
 		while (g_FreeBit[i + offset] > 0)
 		{
@@ -652,8 +652,6 @@ _u64 SearchSix(_u64 ivs)
 
 _u64 SearchFive(_u64 ivs)
 {
-	const int length = 50;
-
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
 
@@ -675,7 +673,7 @@ _u64 SearchFive(_u64 ivs)
 
 	_u64 processedTarget = 0;
 	int offset = 0;
-	for (int i = 0; i < length; ++i)
+	for (int i = 0; i < RoundLength; ++i)
 	{
 		while (g_FreeBit[i + offset] > 0)
 		{
@@ -919,8 +917,6 @@ _u64 SearchFive(_u64 ivs)
 
 _u64 SearchFour(_u64 ivs)
 {
-	const int length = 40;
-
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
 
@@ -940,7 +936,7 @@ _u64 SearchFour(_u64 ivs)
 
 	_u64 processedTarget = 0;
 	int offset = 0;
-	for (int i = 0; i < length; ++i)
+	for (int i = 0; i < RoundLength; ++i)
 	{
 		while (g_FreeBit[i + offset] > 0)
 		{

@@ -149,10 +149,10 @@ void Prepare(int rerolls)
 	}
 
 	// 行基本変形で求める
-	CalculateInverseMatrix(length);
+	int l = CalculateInverseMatrix(length);
 
 	// 事前データを計算
-	CalculateCoefficientData(length);
+	CalculateCoefficientData(l);
 }
 
 inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
