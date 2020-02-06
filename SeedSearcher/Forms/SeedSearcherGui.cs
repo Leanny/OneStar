@@ -850,7 +850,6 @@ namespace SeedSearcherGui
             if (candidates.Count == 1)
             {
                 LSB = candidates[0] & 1;
-                characteristics1 = candidates[0];
             }
             else
             {
@@ -862,7 +861,6 @@ namespace SeedSearcherGui
                         return null;
                     }
                 }
-                characteristics1 = -1;
             }
             int nature1 = (int)((ComboboxItem)CB_Nature1.SelectedItem).Value;
             int nature2 = (int)((ComboboxItem)CB_Nature4.SelectedItem).Value;
@@ -1190,7 +1188,6 @@ namespace SeedSearcherGui
             if (candidates.Count == 1)
             {
                 LSB = candidates[0] & 1;
-                characteristics1 = (candidates[0] + 4) % 6;
             }
             else
             {
@@ -1202,7 +1199,6 @@ namespace SeedSearcherGui
                         return null;
                     }
                 }
-                characteristics1 = -1;
             }
 
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35);
