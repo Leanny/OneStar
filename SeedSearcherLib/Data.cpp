@@ -101,7 +101,7 @@ int CalculateInverseMatrix(int length)
 
 	// 行基本変形で求める
 	int rank = 0;
-	for (rank = 0; rank + skip < length; )
+	for (rank = 0; rank + skip < 64; )
 	{
 		_u64 top = (1ull << (63 - (rank + skip)));
 		bool rankUpFlag = false;

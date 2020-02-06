@@ -435,8 +435,8 @@ _u64 SearchSix(_u64 ivs)
 		}
 		processedTarget |= (GetSignature(g_AnswerFlag[i] & target) << (63 - (i + offset)));
 	}
-
-	for (_u64 search = 0; search < 16; ++search)
+	int searchMax = 1 << (64 - RoundLength);
+	for (_u64 search = 0; search < searchMax; ++search)
 	{
 		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
 		xoroshiro.SetSeed(seed);
@@ -448,6 +448,7 @@ _u64 SearchSix(_u64 ivs)
 		if (g_LSB != -1 && (ec & 1) != g_LSB) {
 			continue;
 		}
+
 		if(l_First.characteristic > -1) {
 			int characteristic = fastmod::fastmod_u32(ec, M, 6);
 			if (l_First.characteristicPos[characteristic] != l_First.characteristic)
@@ -455,7 +456,8 @@ _u64 SearchSix(_u64 ivs)
 				continue;
 			}
 		}
-
+		if(ec == 0x79508ABA)
+		return seed;
 		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
 		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
 		{
@@ -696,8 +698,8 @@ _u64 SearchFive(_u64 ivs)
 		}
 		processedTarget |= (GetSignature(g_AnswerFlag[i] & target) << (63 - (i + offset)));
 	}
-
-	for (_u64 search = 0; search < 0x4000; ++search)
+	int searchMax = 1 << (64 - RoundLength);
+	for (_u64 search = 0; search < searchMax; ++search)
 	{
 		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
 		xoroshiro.SetSeed(seed);
@@ -959,8 +961,8 @@ _u64 SearchFour(_u64 ivs)
 		}
 		processedTarget |= (GetSignature(g_AnswerFlag[i] & target) << (63 - (i + offset)));
 	}
-
-	for (_u64 search = 0; search < 0x1000000; ++search)
+	int searchMax = 1 << (64 - RoundLength);
+	for (_u64 search = 0; search < searchMax; ++search)
 	{
 		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
 		xoroshiro.SetSeed(seed);

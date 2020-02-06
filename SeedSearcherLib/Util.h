@@ -70,7 +70,7 @@ inline bool TestPkmn(XoroshiroState xoroshiro, PokemonData pkmn) {
 		int characteristic = fastmod::fastmod_u32(ec, M, 6);
 		if (pkmn.characteristicPos[characteristic] != pkmn.characteristic)
 		{
-			return 1;
+			return false;
 		}
 	}
 
