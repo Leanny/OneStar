@@ -1251,6 +1251,7 @@ namespace SeedSearcherGui
             }
             else
             {
+                File.WriteAllText("results.txt", $"{SeedSearcher.Result[0]:X}\n");
                 for (int i = 0; i < SeedSearcher.Result.Count; ++i)
                 {
                     SeedResult.Text += $"{SeedSearcher.Result[i]:X}\n";
