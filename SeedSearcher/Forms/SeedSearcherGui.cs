@@ -1761,14 +1761,18 @@ namespace SeedSearcherGui
             var AppPath = Application.StartupPath.Trim() + "/";
             ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
             var EventData = $"{AppPath}{EventPath}{tsmi.Text}.json";
+            LoadEventData(EventData);
+        }
+
+        private void LoadEventData(string EventData)
+        {
             if (!File.Exists(EventData))
             {
                 updateEventDatabaseToolStripMenuItem_Click(null, null);
             }
-            loadedEvent = $"{tsmi.Text}.json";
             var content = File.ReadAllText(EventData);
             PKHeX_Raid_Plugin.EventTableConverter.LoadFromJson(content, _raidTables);
-            if(CB_Nest.SelectedIndex == 0)
+            if (CB_Nest.SelectedIndex == 0)
             {
                 CB_Nest_SelectedIndexChanged(null, null);
             }
@@ -1937,7 +1941,11 @@ namespace SeedSearcherGui
             CB_Nest.SelectedIndex = si.Setup.NestID + 1;
             if (si.Setup.NestID == -1)
             {
+                var AppPath = Application.StartupPath.Trim() + "/";
                 // special case: load event 
+                var EventData = $"{AppPath}{EventPath}{si.Setup.EventID}";
+                LoadEventData(EventData);
+                CB_Nest.SelectedIndex = 0;
             }
             CB_Game.SelectedIndex = si.Setup.GameID;
 
