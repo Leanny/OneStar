@@ -28,6 +28,7 @@ struct PokemonData
 	int ID;
 	int altForm;
 	int characteristicPos[6];
+	int day;
 	bool isNoGender;
 	bool isEnableDream;
 

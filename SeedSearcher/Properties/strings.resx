@@ -178,7 +178,7 @@
     <value>Dappled Grove 5</value>
   </data>
   <data name="Day4" xml:space="preserve">
-    <value>Pokémon Info Day 4</value>
+    <value>Day</value>
   </data>
   <data name="Day4Base" xml:space="preserve">
     <value>1-3IV</value>
@@ -187,10 +187,10 @@
     <value>{0}IV {1}/6</value>
   </data>
   <data name="Day5" xml:space="preserve">
-    <value>Pokémon Info Day 5</value>
+    <value>Day</value>
   </data>
   <data name="Day6" xml:space="preserve">
-    <value>Pokémon Info Day 6</value>
+    <value>Day</value>
   </data>
   <data name="DEF" xml:space="preserve">
     <value>DEF</value>

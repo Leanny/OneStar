@@ -867,10 +867,14 @@ namespace SeedSearcherGui
             bool HA2 = pkmn2.Ability == 4 || pkmn1.Ability == 2;
             bool HA3 = pkmn3.Ability == 4 || pkmn1.Ability == 2;
 
+            int day1 = (int)NUD_Frame1.Value;
+            int day2 = (int)NUD_Frame2.Value;
+            int day3 = (int)NUD_Frame3.Value;
+
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star12);
-            searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1, flawlessIdx);
-            searcher.RegisterPokemon2(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
-            searcher.RegisterPokemon3(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
+            searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, day1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1, flawlessIdx);
+            searcher.RegisterPokemon2(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, day2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
+            searcher.RegisterPokemon3(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, day3, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
             searcher.RegisterLSB(LSB);
             return searcher;
         }
@@ -1179,19 +1183,23 @@ namespace SeedSearcherGui
                 LSB = candidates[0] & 1;
             }
 
+            int day1 = (int)NUD_Frame1.Value;
+            int day2 = (int)NUD_Frame2.Value;
+            int day3 = (int)NUD_Frame3.Value;
+
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35);
-            searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1);
+            searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, day1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1);
             if (GB_42.Enabled)
             {
-                searcher.RegisterPokemon2(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
+                searcher.RegisterPokemon2(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, day1, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
             }
             else
             {
-                searcher.RegisterPokemon2(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
+                searcher.RegisterPokemon2(iv3[0], iv3[1], iv3[2], iv3[3], iv3[4], iv3[5], pkmn3.FlawlessIVs, ability3, nature3, characteristics3, day1, pkmn3.Species, pkmn3.AltForm, noGender3, HA3);
             }
 
-            searcher.RegisterPokemon3(iv4[0], iv4[1], iv4[2], iv4[3], iv4[4], iv4[5], pkmn4.FlawlessIVs, ability4, nature4, characteristics4, pkmn4.Species, pkmn4.AltForm, noGender4, HA4);
-            searcher.RegisterPokemon4(iv5[0], iv5[1], iv5[2], iv5[3], iv5[4], iv5[5], pkmn5.FlawlessIVs, ability5, nature5, characteristics5, pkmn5.Species, pkmn5.AltForm, noGender5, HA5);
+            searcher.RegisterPokemon3(iv4[0], iv4[1], iv4[2], iv4[3], iv4[4], iv4[5], pkmn4.FlawlessIVs, ability4, nature4, characteristics4, day2, pkmn4.Species, pkmn4.AltForm, noGender4, HA4);
+            searcher.RegisterPokemon4(iv5[0], iv5[1], iv5[2], iv5[3], iv5[4], iv5[5], pkmn5.FlawlessIVs, ability5, nature5, characteristics5, day3, pkmn5.Species, pkmn5.AltForm, noGender5, HA5);
             searcher.RegisterLSB(LSB);
             return searcher;
         }
@@ -1504,6 +1512,7 @@ namespace SeedSearcherGui
                 catch (System.FormatException ex)
                 {
                     Util.Prompt(MessageBoxButtons.OK, "Invalid Seed Number");
+                    return;
                 }
                 var res = searcher.TestInputSeed(seed);
                 switch (res)
@@ -1775,10 +1784,10 @@ namespace SeedSearcherGui
             var pkmn3 = new PokemonInput();
             var pkmn4 = new PokemonInput();
 
-            pkmn1.Day = 4;
-            pkmn2.Day = 4;
-            pkmn3.Day = 5;
-            pkmn4.Day = 6;
+            pkmn1.Day = (int) NUD_Frame1.Value;
+            pkmn2.Day = (int)NUD_Frame1.Value;
+            pkmn3.Day = (int)NUD_Frame2.Value;
+            pkmn4.Day = (int)NUD_Frame3.Value;
 
             pkmn1.Index = GetIndexForSpecies((ComboboxItem)CB_Species1.SelectedItem);
             pkmn1.IVs = GetIVs(new int[] { (int)HP1.Value, (int)ATK1.Value, (int)DEF1.Value, (int)SPA1.Value, (int)SPD1.Value, (int)SPE1.Value });
@@ -1930,6 +1939,7 @@ namespace SeedSearcherGui
             // search value
             SetCBValue(CB_Nature1, si.Pkmn1.Nature);
             SetCBValue(CB_Ability1, si.Pkmn1.Ability);
+            NUD_Frame1.Value = si.Pkmn1.Day;
 
             // next check IVs to prefill input
             BT_IVCheck(null, null);
@@ -1986,6 +1996,7 @@ namespace SeedSearcherGui
                 // search value
                 SetCBValue(CB_Nature4, si.Pkmn3.Nature);
                 SetCBValue(CB_Ability4, si.Pkmn3.Ability);
+                NUD_Frame2.Value = si.Pkmn3.Day;
             }
             if (GB_61.Enabled)
             {
@@ -1999,6 +2010,7 @@ namespace SeedSearcherGui
                 // search value
                 SetCBValue(CB_Nature5, si.Pkmn4.Nature);
                 SetCBValue(CB_Ability5, si.Pkmn4.Ability);
+                NUD_Frame3.Value = si.Pkmn4.Day;
             }
         }
 

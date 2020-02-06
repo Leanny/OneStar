@@ -17,9 +17,10 @@
 		public readonly bool isNoGender;
 		public readonly bool isEnableDream;
 		public readonly int fixedIVPos;
+		public readonly int day;
 		public readonly int[] characteristicPos;
 
-		public PkmnStruct(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
+		public PkmnStruct(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int day, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
 		{
 			this.ivs0 = iv0;
 			this.ivs1 = iv1;
@@ -27,6 +28,7 @@
 			this.ivs3 = iv3;
 			this.ivs4 = iv4;
 			this.ivs5 = iv5;
+			this.day = day;
 			this.ability = ability;
 			this.nature = nature;
 			this.characteristic = characteristics;

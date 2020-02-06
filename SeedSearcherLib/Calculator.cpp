@@ -32,7 +32,7 @@ const int* g_IvsRef[30] = {
 // 夢特性なし、かつ特性指定ありの場合AbilityBitが有効
 inline bool IsEnableAbilityBit() { return (!l_First.isEnableDream && l_First.ability >= 0); }
 
-void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int flawlessIDX, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream)
+void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int flawlessIDX, int ability, int nature, int characteristics, int day, int species, int altform, bool isNoGender, bool isEnableDream)
 {
 	l_First.ivs[0] = iv0;
 	l_First.ivs[1] = iv1;
@@ -48,6 +48,7 @@ void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int
 	l_First.characteristic = characteristics;
 	l_First.ID = species;
 	l_First.altForm = altform;
+	l_First.day = day;
 	g_FixedIndex = flawlessIDX;
 	for (int i = 0; i < 6; i++)
 	{
@@ -55,7 +56,7 @@ void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int
 	}
 }
 
-void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream)
+void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int day, int species, int altform, bool isNoGender, bool isEnableDream)
 {
 	l_Second.ivs[0] = iv0;
 	l_Second.ivs[1] = iv1;
@@ -69,6 +70,7 @@ void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int 
 	l_Second.isNoGender = isNoGender;
 	l_Second.isEnableDream = isEnableDream;
 	l_Second.ID = species;
+	l_Second.day = day;
 	l_Second.altForm = altform;
 	l_Second.fixedIV = fixedIV;
 	for (int i = 0; i < 6; i++)
@@ -77,7 +79,7 @@ void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int 
 	}
 }
 
-void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream)
+void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int day, int species, int altform, bool isNoGender, bool isEnableDream)
 {
 	l_Third.ivs[0] = iv0;
 	l_Third.ivs[1] = iv1;
@@ -91,6 +93,7 @@ void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int
 	l_Third.isNoGender = isNoGender;
 	l_Third.isEnableDream = isEnableDream;
 	l_Third.ID = species;
+	l_Third.day = day;
 	l_Third.altForm = altform;
 	l_Third.fixedIV = fixedIV;
 	for (int i = 0; i < 6; i++)
@@ -166,8 +169,9 @@ void Prepare(int rerolls)
 }
 
 inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
+	const _u64 add_val[] = {(l_First.day - 1) * Const::c_XoroshiroConst, (l_Second.day - 1) * Const::c_XoroshiroConst, (l_Third.day - 1) * Const::c_XoroshiroConst };
 	XoroshiroState tmp;
-	xoroshiro.SetSeed(seed);
+	xoroshiro.SetSeed(seed + add_val[0]);
 	unsigned int ec = -1;
 	do {
 		ec = xoroshiro.Next(0xFFFFFFFFu);
@@ -351,14 +355,14 @@ inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	
 
 	// 2匹目
-	_u64 nextSeed = seed + Const::c_XoroshiroConst;
+	_u64 nextSeed = seed + add_val[1];
 	xoroshiro.SetSeed(nextSeed);
 	if (!TestPkmn(xoroshiro, l_Second)) {
 		return 3;
 	}
 
 	// 3匹目
-	nextSeed = seed + Const::c_XoroshiroConst + Const::c_XoroshiroConst;
+	nextSeed = seed + add_val[2];
 	xoroshiro.SetSeed(nextSeed);
 	if (!TestPkmn(xoroshiro, l_Third)) {
 		return 4;
@@ -368,6 +372,11 @@ inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
 
 _u64 Search(_u64 ivs)
 {
+	_u64 add_val[] = { (l_First.day - 1) * Const::c_XoroshiroConst, (l_Second.day - 1) * Const::c_XoroshiroConst, (l_Third.day - 1) * Const::c_XoroshiroConst };
+	_u64 add_last = add_val[0];
+	for (int i = 0; i < 3; i++) {
+		add_val[i] -= add_last;
+	}
 	const int length = (IsEnableAbilityBit() ? LENGTH_BASE + 1 : LENGTH_BASE);
 
 	XoroshiroState xoroshiro;
@@ -607,19 +616,19 @@ _u64 Search(_u64 ivs)
 		}
 
 		// 2匹目
-		_u64 nextSeed = seed + Const::c_XoroshiroConst;
+		_u64 nextSeed = seed + add_val[1];
 		xoroshiro.SetSeed(nextSeed);
 		if (!TestPkmn(xoroshiro, l_Second)) {
 			continue;
 		}
 
 		// 3匹目
-		nextSeed += Const::c_XoroshiroConst;
+		nextSeed = seed + add_val[2];
 		xoroshiro.SetSeed(nextSeed);
 		if (!TestPkmn(xoroshiro, l_Third)) {
 			continue;
 		}
-		return seed;
+		return seed - add_last;
 	}
 	return 0;
 }

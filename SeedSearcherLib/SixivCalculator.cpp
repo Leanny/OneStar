@@ -19,7 +19,7 @@ static int g_IvOffset;
 
 static int RoundLength = 0;
 
-void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int ID, int altform, bool isNoGender, bool isEnableDream)
+void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int ID, int altform, bool isNoGender, bool isEnableDream)
 {
 	l_First.ivs[0] = iv0;
 	l_First.ivs[1] = iv1;
@@ -34,6 +34,7 @@ void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, 
 	l_First.isEnableDream = isEnableDream;
 	l_First.fixedIV = fixedIV;
 	l_First.ID = ID;
+	l_First.day = day;
 	l_First.altForm = altform;
 	for (int i = 0; i < 6; i++)
 	{
@@ -42,7 +43,7 @@ void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, 
 
 }
 
-void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int ID, int altform, bool isNoGender, bool isEnableDream)
+void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int ID, int altform, bool isNoGender, bool isEnableDream)
 {
 	l_Second.ivs[0] = iv0;
 	l_Second.ivs[1] = iv1;
@@ -56,6 +57,7 @@ void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5,
 	l_Second.isNoGender = isNoGender;
 	l_Second.isEnableDream = isEnableDream;
 	l_Second.fixedIV = fixedIV;
+	l_Second.day = day;
 	l_Second.ID = ID;
 	l_Second.altForm = altform;
 	for (int i = 0; i < 6; i++)
@@ -64,7 +66,7 @@ void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5,
 	}
 }
 
-void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int ID, int altform, bool isNoGender, bool isEnableDream)
+void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int ID, int altform, bool isNoGender, bool isEnableDream)
 {
 	l_Third.ivs[0] = iv0;
 	l_Third.ivs[1] = iv1;
@@ -79,6 +81,7 @@ void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, 
 	l_Third.isEnableDream = isEnableDream;
 	l_Third.fixedIV = fixedIV;
 	l_Third.ID = ID;
+	l_Third.day = day;
 	l_Third.altForm = altform;
 	for (int i = 0; i < 6; i++)
 	{
@@ -86,7 +89,7 @@ void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, 
 	}
 }
 
-void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int ID, int altform, bool isNoGender, bool isEnableDream)
+void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int ID, int altform, bool isNoGender, bool isEnableDream)
 {
 	l_Fourth.ivs[0] = iv0;
 	l_Fourth.ivs[1] = iv1;
@@ -101,6 +104,7 @@ void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5,
 	l_Fourth.isEnableDream = isEnableDream;
 	l_Fourth.fixedIV = fixedIV;
 	l_Fourth.ID = ID;
+	l_Fourth.day = day;
 	l_Fourth.altForm = altform;
 	for (int i = 0; i < 6; i++)
 	{
@@ -401,7 +405,11 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 
 _u64 SearchSix(_u64 ivs)
 {
-
+	_u64 add_val[] = { (l_First.day - 1) * Const::c_XoroshiroConst, (l_Second.day - 1) * Const::c_XoroshiroConst, (l_Third.day - 1) * Const::c_XoroshiroConst, (l_Fourth.day - 1) * Const::c_XoroshiroConst };
+	_u64 add_last = add_val[0];
+	for (int i = 0; i < 4; i++) {
+		add_val[i] -= add_last;
+	}
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
 
@@ -651,24 +659,28 @@ _u64 SearchSix(_u64 ivs)
 			continue;
 		}
 
-		_u64 newseed = seed + Const::c_XoroshiroConst;
-		xoroshiro.SetSeed(newseed + Const::c_XoroshiroConst);
-		if (!TestPkmn(xoroshiro, l_Fourth)) {
-			continue;
-		}
-
-		xoroshiro.SetSeed(newseed);
+		xoroshiro.SetSeed(seed + add_val[2]);
 		if (!TestPkmn(xoroshiro, l_Third)) {
 			continue;
 		}
 
-		return seed;
+		xoroshiro.SetSeed(seed + add_val[3]);
+		if (!TestPkmn(xoroshiro, l_Fourth)) {
+			continue;
+		}
+
+		return seed - add_last;
 	}
 	return 0;
 }
 
 _u64 SearchFive(_u64 ivs)
 {
+	_u64 add_val[] = { (l_First.day - 1) * Const::c_XoroshiroConst, (l_Second.day - 1) * Const::c_XoroshiroConst, (l_Third.day - 1) * Const::c_XoroshiroConst, (l_Fourth.day - 1) * Const::c_XoroshiroConst };
+	_u64 add_last = add_val[0];
+	for (int i = 0; i < 4; i++) {
+		add_val[i] -= add_last;
+	}
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
 
@@ -911,29 +923,33 @@ _u64 SearchFive(_u64 ivs)
 			}
 		}
 
-		_u64 newseed = seed + Const::c_XoroshiroConst;
-		xoroshiro.SetSeed(newseed + Const::c_XoroshiroConst);
-		if (!TestPkmn(xoroshiro, l_Fourth)) {
-			continue;
-		}
-
-		xoroshiro.SetSeed(newseed);
-		if (!TestPkmn(xoroshiro, l_Third)) {
-			continue;
-		}
-
 		xoroshiro.SetSeed(seed);
 		if (!TestPkmn(xoroshiro, l_Second)) {
 			continue;
 		}
 
-		return seed;
+		xoroshiro.SetSeed(seed + add_val[2]);
+		if (!TestPkmn(xoroshiro, l_Third)) {
+			continue;
+		}
+
+		xoroshiro.SetSeed(seed + add_val[3]);
+		if (!TestPkmn(xoroshiro, l_Fourth)) {
+			continue;
+		}
+
+		return seed - add_last;
 	}
 	return 0;
 }
 
 _u64 SearchFour(_u64 ivs)
 {
+	_u64 add_val[] = { (l_First.day - 1) * Const::c_XoroshiroConst, (l_Second.day - 1) * Const::c_XoroshiroConst, (l_Third.day - 1) * Const::c_XoroshiroConst, (l_Fourth.day - 1) * Const::c_XoroshiroConst };
+	_u64 add_last = add_val[0];
+	for (int i = 0; i < 4; i++) {
+		add_val[i] -= add_last;
+	}
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
 
@@ -1176,17 +1192,17 @@ _u64 SearchFour(_u64 ivs)
 			continue;
 		}
 
-		_u64 newseed = seed + Const::c_XoroshiroConst;
-		xoroshiro.SetSeed(newseed + Const::c_XoroshiroConst);
+		xoroshiro.SetSeed(seed + add_val[2]);
+		if (!TestPkmn(xoroshiro, l_Third)) {
+			continue;
+		}
+
+		xoroshiro.SetSeed(seed + add_val[3]);
 		if (!TestPkmn(xoroshiro, l_Fourth)) {
 			continue;
 		}
 
-		xoroshiro.SetSeed(newseed);
-		if (!TestPkmn(xoroshiro, l_Third)) {
-			continue;
-		}
-		return seed;
+		return seed - add_last;
 	}
 	return 0;
 }

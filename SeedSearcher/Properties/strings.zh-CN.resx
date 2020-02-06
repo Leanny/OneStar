@@ -606,15 +606,15 @@
     <comment>ゲーム</comment>
   </data>
   <data name="Day5" xml:space="preserve">
-    <value>第5天</value>
+    <value>第天</value>
     <comment>5匹目</comment>
   </data>
   <data name="Day4" xml:space="preserve">
-    <value>第4天</value>
+    <value>第天</value>
     <comment>4匹目</comment>
   </data>
   <data name="Day6" xml:space="preserve">
-    <value>第6天</value>
+    <value>第天</value>
     <comment>6匹目</comment>
   </data>
   <data name="Rare" xml:space="preserve">

@@ -40,6 +40,7 @@
             this.LBL_Den = new System.Windows.Forms.Label();
             this.DenMap = new System.Windows.Forms.PictureBox();
             this.GB_PKMN1 = new System.Windows.Forms.GroupBox();
+            this.NUD_Frame1 = new System.Windows.Forms.NumericUpDown();
             this.LB_Response = new System.Windows.Forms.Label();
             this.LBLAO = new System.Windows.Forms.Label();
             this.GB_43 = new System.Windows.Forms.GroupBox();
@@ -114,6 +115,7 @@
             this.CB_Species1 = new System.Windows.Forms.ComboBox();
             this.LBL_PKMN1 = new System.Windows.Forms.Label();
             this.GB_51 = new System.Windows.Forms.GroupBox();
+            this.NUD_Frame2 = new System.Windows.Forms.NumericUpDown();
             this.BT_IVCalc4 = new System.Windows.Forms.Button();
             this.CB_Characteristic4 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic4 = new System.Windows.Forms.Label();
@@ -145,6 +147,7 @@
             this.SeedResult = new System.Windows.Forms.TextBox();
             this.BT_Search = new System.Windows.Forms.Button();
             this.GB_61 = new System.Windows.Forms.GroupBox();
+            this.NUD_Frame3 = new System.Windows.Forms.NumericUpDown();
             this.BT_IVCalc5 = new System.Windows.Forms.Button();
             this.CB_Characteristic5 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic5 = new System.Windows.Forms.Label();
@@ -186,6 +189,7 @@
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Frame1)).BeginInit();
             this.GB_43.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SPE3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPD3)).BeginInit();
@@ -208,6 +212,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ATK1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HP1)).BeginInit();
             this.GB_51.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Frame2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPE4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPD4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPA4)).BeginInit();
@@ -218,6 +223,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUD_IVMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_IVMin)).BeginInit();
             this.GB_61.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Frame3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPE5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPD5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPA5)).BeginInit();
@@ -539,6 +545,7 @@
             // 
             // GB_PKMN1
             // 
+            this.GB_PKMN1.Controls.Add(this.NUD_Frame1);
             this.GB_PKMN1.Controls.Add(this.LB_Response);
             this.GB_PKMN1.Controls.Add(this.LBLAO);
             this.GB_PKMN1.Controls.Add(this.GB_43);
@@ -549,7 +556,29 @@
             this.GB_PKMN1.Size = new System.Drawing.Size(401, 729);
             this.GB_PKMN1.TabIndex = 1;
             this.GB_PKMN1.TabStop = false;
-            this.GB_PKMN1.Text = "Pokémon Info Day 4";
+            this.GB_PKMN1.Text = "Day";
+            // 
+            // NUD_Frame1
+            // 
+            this.NUD_Frame1.Location = new System.Drawing.Point(52, 0);
+            this.NUD_Frame1.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NUD_Frame1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NUD_Frame1.Name = "NUD_Frame1";
+            this.NUD_Frame1.Size = new System.Drawing.Size(51, 22);
+            this.NUD_Frame1.TabIndex = 50;
+            this.NUD_Frame1.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // LB_Response
             // 
@@ -916,7 +945,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(19, 179);
+            this.button2.Location = new System.Drawing.Point(19, 184);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(227, 23);
             this.button2.TabIndex = 50;
@@ -926,7 +955,7 @@
             // 
             // BT_IVCalc2
             // 
-            this.BT_IVCalc2.Location = new System.Drawing.Point(265, 179);
+            this.BT_IVCalc2.Location = new System.Drawing.Point(265, 184);
             this.BT_IVCalc2.Name = "BT_IVCalc2";
             this.BT_IVCalc2.Size = new System.Drawing.Size(105, 23);
             this.BT_IVCalc2.TabIndex = 50;
@@ -957,7 +986,7 @@
             "Alert to sounds",
             "Mischievous",
             "Somewhat vain"});
-            this.CB_Characteristic2.Location = new System.Drawing.Point(124, 147);
+            this.CB_Characteristic2.Location = new System.Drawing.Point(124, 152);
             this.CB_Characteristic2.Name = "CB_Characteristic2";
             this.CB_Characteristic2.Size = new System.Drawing.Size(121, 24);
             this.CB_Characteristic2.TabIndex = 10;
@@ -966,7 +995,7 @@
             // LBL_Characteristic2
             // 
             this.LBL_Characteristic2.AutoSize = true;
-            this.LBL_Characteristic2.Location = new System.Drawing.Point(16, 151);
+            this.LBL_Characteristic2.Location = new System.Drawing.Point(16, 156);
             this.LBL_Characteristic2.Name = "LBL_Characteristic2";
             this.LBL_Characteristic2.Size = new System.Drawing.Size(94, 17);
             this.LBL_Characteristic2.TabIndex = 46;
@@ -974,7 +1003,7 @@
             // 
             // SPE2
             // 
-            this.SPE2.Location = new System.Drawing.Point(320, 147);
+            this.SPE2.Location = new System.Drawing.Point(320, 152);
             this.SPE2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -988,7 +1017,7 @@
             // 
             // SPD2
             // 
-            this.SPD2.Location = new System.Drawing.Point(320, 121);
+            this.SPD2.Location = new System.Drawing.Point(320, 126);
             this.SPD2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1002,7 +1031,7 @@
             // 
             // SPA2
             // 
-            this.SPA2.Location = new System.Drawing.Point(320, 97);
+            this.SPA2.Location = new System.Drawing.Point(320, 102);
             this.SPA2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1016,7 +1045,7 @@
             // 
             // DEF2
             // 
-            this.DEF2.Location = new System.Drawing.Point(320, 71);
+            this.DEF2.Location = new System.Drawing.Point(320, 76);
             this.DEF2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1030,7 +1059,7 @@
             // 
             // ATK2
             // 
-            this.ATK2.Location = new System.Drawing.Point(320, 45);
+            this.ATK2.Location = new System.Drawing.Point(320, 50);
             this.ATK2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1044,7 +1073,7 @@
             // 
             // HP2
             // 
-            this.HP2.Location = new System.Drawing.Point(320, 21);
+            this.HP2.Location = new System.Drawing.Point(320, 26);
             this.HP2.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1059,7 +1088,7 @@
             // LBL_SPE2
             // 
             this.LBL_SPE2.AutoSize = true;
-            this.LBL_SPE2.Location = new System.Drawing.Point(261, 151);
+            this.LBL_SPE2.Location = new System.Drawing.Point(261, 156);
             this.LBL_SPE2.Name = "LBL_SPE2";
             this.LBL_SPE2.Size = new System.Drawing.Size(35, 17);
             this.LBL_SPE2.TabIndex = 39;
@@ -1068,7 +1097,7 @@
             // LBL_SPD2
             // 
             this.LBL_SPD2.AutoSize = true;
-            this.LBL_SPD2.Location = new System.Drawing.Point(261, 125);
+            this.LBL_SPD2.Location = new System.Drawing.Point(261, 130);
             this.LBL_SPD2.Name = "LBL_SPD2";
             this.LBL_SPD2.Size = new System.Drawing.Size(36, 17);
             this.LBL_SPD2.TabIndex = 38;
@@ -1077,7 +1106,7 @@
             // LBL_SPA2
             // 
             this.LBL_SPA2.AutoSize = true;
-            this.LBL_SPA2.Location = new System.Drawing.Point(261, 101);
+            this.LBL_SPA2.Location = new System.Drawing.Point(261, 106);
             this.LBL_SPA2.Name = "LBL_SPA2";
             this.LBL_SPA2.Size = new System.Drawing.Size(35, 17);
             this.LBL_SPA2.TabIndex = 37;
@@ -1086,7 +1115,7 @@
             // LBL_DEF2
             // 
             this.LBL_DEF2.AutoSize = true;
-            this.LBL_DEF2.Location = new System.Drawing.Point(261, 76);
+            this.LBL_DEF2.Location = new System.Drawing.Point(261, 81);
             this.LBL_DEF2.Name = "LBL_DEF2";
             this.LBL_DEF2.Size = new System.Drawing.Size(35, 17);
             this.LBL_DEF2.TabIndex = 36;
@@ -1095,7 +1124,7 @@
             // LBL_ATK2
             // 
             this.LBL_ATK2.AutoSize = true;
-            this.LBL_ATK2.Location = new System.Drawing.Point(261, 51);
+            this.LBL_ATK2.Location = new System.Drawing.Point(261, 56);
             this.LBL_ATK2.Name = "LBL_ATK2";
             this.LBL_ATK2.Size = new System.Drawing.Size(35, 17);
             this.LBL_ATK2.TabIndex = 35;
@@ -1104,7 +1133,7 @@
             // LBL_HP2
             // 
             this.LBL_HP2.AutoSize = true;
-            this.LBL_HP2.Location = new System.Drawing.Point(261, 27);
+            this.LBL_HP2.Location = new System.Drawing.Point(261, 32);
             this.LBL_HP2.Name = "LBL_HP2";
             this.LBL_HP2.Size = new System.Drawing.Size(27, 17);
             this.LBL_HP2.TabIndex = 34;
@@ -1115,7 +1144,7 @@
             this.CB_Ability2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Ability2.DropDownWidth = 135;
             this.CB_Ability2.FormattingEnabled = true;
-            this.CB_Ability2.Location = new System.Drawing.Point(124, 107);
+            this.CB_Ability2.Location = new System.Drawing.Point(124, 112);
             this.CB_Ability2.Name = "CB_Ability2";
             this.CB_Ability2.Size = new System.Drawing.Size(121, 24);
             this.CB_Ability2.TabIndex = 9;
@@ -1151,7 +1180,7 @@
             "Sassy",
             "Serious",
             "Timid"});
-            this.CB_Nature2.Location = new System.Drawing.Point(124, 68);
+            this.CB_Nature2.Location = new System.Drawing.Point(124, 73);
             this.CB_Nature2.Name = "CB_Nature2";
             this.CB_Nature2.Size = new System.Drawing.Size(121, 24);
             this.CB_Nature2.Sorted = true;
@@ -1161,7 +1190,7 @@
             // LBL_Ability2
             // 
             this.LBL_Ability2.AutoSize = true;
-            this.LBL_Ability2.Location = new System.Drawing.Point(16, 111);
+            this.LBL_Ability2.Location = new System.Drawing.Point(16, 116);
             this.LBL_Ability2.Name = "LBL_Ability2";
             this.LBL_Ability2.Size = new System.Drawing.Size(45, 17);
             this.LBL_Ability2.TabIndex = 31;
@@ -1170,7 +1199,7 @@
             // LBL_Nature2
             // 
             this.LBL_Nature2.AutoSize = true;
-            this.LBL_Nature2.Location = new System.Drawing.Point(16, 71);
+            this.LBL_Nature2.Location = new System.Drawing.Point(16, 76);
             this.LBL_Nature2.Name = "LBL_Nature2";
             this.LBL_Nature2.Size = new System.Drawing.Size(51, 17);
             this.LBL_Nature2.TabIndex = 30;
@@ -1180,7 +1209,7 @@
             // 
             this.CB_Species2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Species2.FormattingEnabled = true;
-            this.CB_Species2.Location = new System.Drawing.Point(124, 29);
+            this.CB_Species2.Location = new System.Drawing.Point(124, 34);
             this.CB_Species2.Name = "CB_Species2";
             this.CB_Species2.Size = new System.Drawing.Size(121, 24);
             this.CB_Species2.TabIndex = 1;
@@ -1189,7 +1218,7 @@
             // LBL_PKMN2
             // 
             this.LBL_PKMN2.AutoSize = true;
-            this.LBL_PKMN2.Location = new System.Drawing.Point(16, 31);
+            this.LBL_PKMN2.Location = new System.Drawing.Point(16, 36);
             this.LBL_PKMN2.Name = "LBL_PKMN2";
             this.LBL_PKMN2.Size = new System.Drawing.Size(67, 17);
             this.LBL_PKMN2.TabIndex = 0;
@@ -1489,6 +1518,7 @@
             // 
             // GB_51
             // 
+            this.GB_51.Controls.Add(this.NUD_Frame2);
             this.GB_51.Controls.Add(this.BT_IVCalc4);
             this.GB_51.Controls.Add(this.CB_Characteristic4);
             this.GB_51.Controls.Add(this.LBL_Characteristic4);
@@ -1515,7 +1545,29 @@
             this.GB_51.Size = new System.Drawing.Size(387, 249);
             this.GB_51.TabIndex = 3;
             this.GB_51.TabStop = false;
-            this.GB_51.Text = "Pokémon Info Day 5";
+            this.GB_51.Text = "Day";
+            // 
+            // NUD_Frame2
+            // 
+            this.NUD_Frame2.Location = new System.Drawing.Point(52, 0);
+            this.NUD_Frame2.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NUD_Frame2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NUD_Frame2.Name = "NUD_Frame2";
+            this.NUD_Frame2.Size = new System.Drawing.Size(51, 22);
+            this.NUD_Frame2.TabIndex = 51;
+            this.NUD_Frame2.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // BT_IVCalc4
             // 
@@ -1865,6 +1917,7 @@
             // 
             // GB_61
             // 
+            this.GB_61.Controls.Add(this.NUD_Frame3);
             this.GB_61.Controls.Add(this.BT_IVCalc5);
             this.GB_61.Controls.Add(this.CB_Characteristic5);
             this.GB_61.Controls.Add(this.LBL_Characteristic5);
@@ -1891,11 +1944,33 @@
             this.GB_61.Size = new System.Drawing.Size(380, 211);
             this.GB_61.TabIndex = 4;
             this.GB_61.TabStop = false;
-            this.GB_61.Text = "Pokémon Info Day 6";
+            this.GB_61.Text = "Day";
+            // 
+            // NUD_Frame3
+            // 
+            this.NUD_Frame3.Location = new System.Drawing.Point(52, 0);
+            this.NUD_Frame3.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.NUD_Frame3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NUD_Frame3.Name = "NUD_Frame3";
+            this.NUD_Frame3.Size = new System.Drawing.Size(51, 22);
+            this.NUD_Frame3.TabIndex = 52;
+            this.NUD_Frame3.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
             // 
             // BT_IVCalc5
             // 
-            this.BT_IVCalc5.Location = new System.Drawing.Point(265, 179);
+            this.BT_IVCalc5.Location = new System.Drawing.Point(265, 184);
             this.BT_IVCalc5.Name = "BT_IVCalc5";
             this.BT_IVCalc5.Size = new System.Drawing.Size(105, 23);
             this.BT_IVCalc5.TabIndex = 50;
@@ -1915,7 +1990,7 @@
             "Alert to sounds",
             "Mischievous",
             "Somewhat vain"});
-            this.CB_Characteristic5.Location = new System.Drawing.Point(124, 147);
+            this.CB_Characteristic5.Location = new System.Drawing.Point(124, 152);
             this.CB_Characteristic5.Name = "CB_Characteristic5";
             this.CB_Characteristic5.Size = new System.Drawing.Size(121, 24);
             this.CB_Characteristic5.TabIndex = 48;
@@ -1923,7 +1998,7 @@
             // LBL_Characteristic5
             // 
             this.LBL_Characteristic5.AutoSize = true;
-            this.LBL_Characteristic5.Location = new System.Drawing.Point(16, 151);
+            this.LBL_Characteristic5.Location = new System.Drawing.Point(16, 156);
             this.LBL_Characteristic5.Name = "LBL_Characteristic5";
             this.LBL_Characteristic5.Size = new System.Drawing.Size(94, 17);
             this.LBL_Characteristic5.TabIndex = 46;
@@ -1931,7 +2006,7 @@
             // 
             // SPE5
             // 
-            this.SPE5.Location = new System.Drawing.Point(320, 147);
+            this.SPE5.Location = new System.Drawing.Point(320, 152);
             this.SPE5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1944,7 +2019,7 @@
             // 
             // SPD5
             // 
-            this.SPD5.Location = new System.Drawing.Point(320, 121);
+            this.SPD5.Location = new System.Drawing.Point(320, 126);
             this.SPD5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1957,7 +2032,7 @@
             // 
             // SPA5
             // 
-            this.SPA5.Location = new System.Drawing.Point(320, 97);
+            this.SPA5.Location = new System.Drawing.Point(320, 102);
             this.SPA5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1970,7 +2045,7 @@
             // 
             // DEF5
             // 
-            this.DEF5.Location = new System.Drawing.Point(320, 71);
+            this.DEF5.Location = new System.Drawing.Point(320, 76);
             this.DEF5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1983,7 +2058,7 @@
             // 
             // ATK5
             // 
-            this.ATK5.Location = new System.Drawing.Point(320, 45);
+            this.ATK5.Location = new System.Drawing.Point(320, 50);
             this.ATK5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -1996,7 +2071,7 @@
             // 
             // HP5
             // 
-            this.HP5.Location = new System.Drawing.Point(320, 21);
+            this.HP5.Location = new System.Drawing.Point(320, 26);
             this.HP5.Maximum = new decimal(new int[] {
             31,
             0,
@@ -2010,7 +2085,7 @@
             // LBL_SPE5
             // 
             this.LBL_SPE5.AutoSize = true;
-            this.LBL_SPE5.Location = new System.Drawing.Point(261, 151);
+            this.LBL_SPE5.Location = new System.Drawing.Point(261, 156);
             this.LBL_SPE5.Name = "LBL_SPE5";
             this.LBL_SPE5.Size = new System.Drawing.Size(35, 17);
             this.LBL_SPE5.TabIndex = 39;
@@ -2019,7 +2094,7 @@
             // LBL_SPD5
             // 
             this.LBL_SPD5.AutoSize = true;
-            this.LBL_SPD5.Location = new System.Drawing.Point(261, 125);
+            this.LBL_SPD5.Location = new System.Drawing.Point(261, 130);
             this.LBL_SPD5.Name = "LBL_SPD5";
             this.LBL_SPD5.Size = new System.Drawing.Size(36, 17);
             this.LBL_SPD5.TabIndex = 38;
@@ -2028,7 +2103,7 @@
             // LBL_SPA5
             // 
             this.LBL_SPA5.AutoSize = true;
-            this.LBL_SPA5.Location = new System.Drawing.Point(261, 101);
+            this.LBL_SPA5.Location = new System.Drawing.Point(261, 106);
             this.LBL_SPA5.Name = "LBL_SPA5";
             this.LBL_SPA5.Size = new System.Drawing.Size(35, 17);
             this.LBL_SPA5.TabIndex = 37;
@@ -2037,7 +2112,7 @@
             // LBL_DEF5
             // 
             this.LBL_DEF5.AutoSize = true;
-            this.LBL_DEF5.Location = new System.Drawing.Point(261, 76);
+            this.LBL_DEF5.Location = new System.Drawing.Point(261, 81);
             this.LBL_DEF5.Name = "LBL_DEF5";
             this.LBL_DEF5.Size = new System.Drawing.Size(35, 17);
             this.LBL_DEF5.TabIndex = 36;
@@ -2046,7 +2121,7 @@
             // LBL_ATK5
             // 
             this.LBL_ATK5.AutoSize = true;
-            this.LBL_ATK5.Location = new System.Drawing.Point(261, 51);
+            this.LBL_ATK5.Location = new System.Drawing.Point(261, 56);
             this.LBL_ATK5.Name = "LBL_ATK5";
             this.LBL_ATK5.Size = new System.Drawing.Size(35, 17);
             this.LBL_ATK5.TabIndex = 35;
@@ -2055,7 +2130,7 @@
             // LBL_HP5
             // 
             this.LBL_HP5.AutoSize = true;
-            this.LBL_HP5.Location = new System.Drawing.Point(261, 27);
+            this.LBL_HP5.Location = new System.Drawing.Point(261, 32);
             this.LBL_HP5.Name = "LBL_HP5";
             this.LBL_HP5.Size = new System.Drawing.Size(27, 17);
             this.LBL_HP5.TabIndex = 34;
@@ -2066,7 +2141,7 @@
             this.CB_Ability5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Ability5.DropDownWidth = 135;
             this.CB_Ability5.FormattingEnabled = true;
-            this.CB_Ability5.Location = new System.Drawing.Point(124, 107);
+            this.CB_Ability5.Location = new System.Drawing.Point(124, 112);
             this.CB_Ability5.Name = "CB_Ability5";
             this.CB_Ability5.Size = new System.Drawing.Size(121, 24);
             this.CB_Ability5.TabIndex = 47;
@@ -2101,7 +2176,7 @@
             "Sassy",
             "Serious",
             "Timid"});
-            this.CB_Nature5.Location = new System.Drawing.Point(124, 68);
+            this.CB_Nature5.Location = new System.Drawing.Point(124, 73);
             this.CB_Nature5.Name = "CB_Nature5";
             this.CB_Nature5.Size = new System.Drawing.Size(121, 24);
             this.CB_Nature5.Sorted = true;
@@ -2110,7 +2185,7 @@
             // LBL_Ability5
             // 
             this.LBL_Ability5.AutoSize = true;
-            this.LBL_Ability5.Location = new System.Drawing.Point(16, 111);
+            this.LBL_Ability5.Location = new System.Drawing.Point(16, 116);
             this.LBL_Ability5.Name = "LBL_Ability5";
             this.LBL_Ability5.Size = new System.Drawing.Size(45, 17);
             this.LBL_Ability5.TabIndex = 31;
@@ -2119,7 +2194,7 @@
             // LBL_Nature5
             // 
             this.LBL_Nature5.AutoSize = true;
-            this.LBL_Nature5.Location = new System.Drawing.Point(16, 71);
+            this.LBL_Nature5.Location = new System.Drawing.Point(16, 76);
             this.LBL_Nature5.Name = "LBL_Nature5";
             this.LBL_Nature5.Size = new System.Drawing.Size(51, 17);
             this.LBL_Nature5.TabIndex = 30;
@@ -2129,7 +2204,7 @@
             // 
             this.CB_Species5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Species5.FormattingEnabled = true;
-            this.CB_Species5.Location = new System.Drawing.Point(124, 29);
+            this.CB_Species5.Location = new System.Drawing.Point(124, 34);
             this.CB_Species5.Name = "CB_Species5";
             this.CB_Species5.Size = new System.Drawing.Size(121, 24);
             this.CB_Species5.TabIndex = 1;
@@ -2138,7 +2213,7 @@
             // LBL_PKMN5
             // 
             this.LBL_PKMN5.AutoSize = true;
-            this.LBL_PKMN5.Location = new System.Drawing.Point(16, 31);
+            this.LBL_PKMN5.Location = new System.Drawing.Point(16, 36);
             this.LBL_PKMN5.Name = "LBL_PKMN5";
             this.LBL_PKMN5.Size = new System.Drawing.Size(67, 17);
             this.LBL_PKMN5.TabIndex = 0;
@@ -2207,19 +2282,19 @@
             this.importDataToolStripMenuItem});
             this.importExportToolStripMenuItem.Name = "importExportToolStripMenuItem";
             this.importExportToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
-            this.importExportToolStripMenuItem.Text = "Import/Export";
+            this.importExportToolStripMenuItem.Text = "Export/Import";
             // 
             // exportDataToolStripMenuItem
             // 
             this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.exportDataToolStripMenuItem.Text = "Export Data";
             this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.exportDataToolStripMenuItem_Click);
             // 
             // importDataToolStripMenuItem
             // 
             this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
-            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.importDataToolStripMenuItem.Text = "Import Data";
             this.importDataToolStripMenuItem.Click += new System.EventHandler(this.importDataToolStripMenuItem_Click);
             // 
@@ -2308,6 +2383,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).EndInit();
             this.GB_PKMN1.ResumeLayout(false);
             this.GB_PKMN1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Frame1)).EndInit();
             this.GB_43.ResumeLayout(false);
             this.GB_43.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SPE3)).EndInit();
@@ -2334,6 +2410,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.HP1)).EndInit();
             this.GB_51.ResumeLayout(false);
             this.GB_51.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Frame2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPE4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPD4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPA4)).EndInit();
@@ -2346,6 +2423,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUD_IVMin)).EndInit();
             this.GB_61.ResumeLayout(false);
             this.GB_61.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NUD_Frame3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPE5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPD5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SPA5)).EndInit();
@@ -2517,6 +2595,9 @@
         private System.Windows.Forms.ToolStripMenuItem importExportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importDataToolStripMenuItem;
+        private System.Windows.Forms.NumericUpDown NUD_Frame1;
+        private System.Windows.Forms.NumericUpDown NUD_Frame2;
+        private System.Windows.Forms.NumericUpDown NUD_Frame3;
     }
 }
 

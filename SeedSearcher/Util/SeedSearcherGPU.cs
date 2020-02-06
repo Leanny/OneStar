@@ -61,7 +61,11 @@ namespace SeedSearcherGui
 			int g_lsb = LSB;
 			int[] species = { pkmn1.ID, pkmn2.ID, pkmn3.ID, pkmn4.ID };
 			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm, pkmn4.altForm };
-			ulong[] add_const = { 0, 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
+			ulong[] add_const = { 0, 0, 0, 0 };
+			add_const[0] = (uint)(pkmn1.day - 1) * 0x82a2b175229d6a5b;
+			add_const[1] = (uint)(pkmn2.day - 1) * 0x82a2b175229d6a5b;
+			add_const[2] = (uint)(pkmn3.day - 1) * 0x82a2b175229d6a5b;
+			add_const[3] = (uint)(pkmn4.day - 1) * 0x82a2b175229d6a5b;
 
 			int[] characteristicorder = new int[4 * 6];
 			for (int i = 0; i < 6; i++)
@@ -74,10 +78,6 @@ namespace SeedSearcherGui
 				}
 			}
 			int maxVal = pkmn4.characteristicPos == null ? 3 : 4;
-			if(maxVal == 3)
-			{
-				add_const = new ulong[]{ 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
-			}
 			ulong s0;
 			ulong s1;
 			ulong s0tmp;
@@ -438,6 +438,18 @@ namespace SeedSearcherGui
 			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm };
 
 			ulong[] entry = { 0 };
+
+			ulong[] add_const = { 0, 0, 0 };
+			add_const[0] = (uint)(pkmn1.day - 1) * 0x82a2b175229d6a5b;
+			add_const[1] = (uint)(pkmn2.day - 1) * 0x82a2b175229d6a5b;
+			add_const[2] = (uint)(pkmn3.day - 1) * 0x82a2b175229d6a5b;
+
+			ulong add_value_end = add_const[0];
+			for(int i=0; i < 3; i++)
+			{
+				add_const[i] -= add_value_end;
+			}
+
 			for (int ivOffset = start; ivOffset <= end; ivOffset++)
 			{
 				if (updateLbl != null)
@@ -498,7 +510,6 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
 				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
 
-				ulong[] add_const = { 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
 				ulong targetStart = abilityBit ? ((ulong)pkmn1.ability & 1) : 0ul;
 				int bitOffset = abilityBit ? 1 : 0;
 				int g_FixedIndex = pkmn1.fixedIVPos;
@@ -852,7 +863,7 @@ namespace SeedSearcherGui
 				gpu.Synchronize();
 				if (entry[0] != 0)
 				{
-					return entry[0];
+					return entry[0] - add_value_end;
 				}
 			}
 			return 0;
@@ -889,6 +900,19 @@ namespace SeedSearcherGui
 			int g_lsb = LSB;
 			int[] species = { pkmn1.ID, pkmn2.ID, pkmn3.ID, pkmn4.ID };
 			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm, pkmn4.altForm };
+
+			ulong[] add_const = { 0, 0, 0, 0 };
+			add_const[0] = (uint)(pkmn1.day - 1) * 0x82a2b175229d6a5b;
+			add_const[1] = (uint)(pkmn2.day - 1) * 0x82a2b175229d6a5b;
+			add_const[2] = (uint)(pkmn3.day - 1) * 0x82a2b175229d6a5b;
+			add_const[3] = (uint)(pkmn4.day - 1) * 0x82a2b175229d6a5b;
+
+			ulong add_value_end = add_const[0];
+			for (int i = 0; i < 4; i++)
+			{
+				add_const[i] -= add_value_end;
+			}
+
 
 			ulong[] entry = { 0 };
 			for (int ivOffset=start; ivOffset <= end; ivOffset++)
@@ -927,7 +951,7 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_SearchPattern, 0, g_SearchPattern, 0, numElems);
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
 				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
-				ulong[] add_const = {0, 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
+
 				gpu.LongFor(searchLower, searchUpper, input => {
 				//for(long input = searchLower; input < searchUpper; input++) {
 					ulong target = 0;
@@ -1277,7 +1301,7 @@ namespace SeedSearcherGui
 				gpu.Synchronize();
 				if(entry[0] != 0)
 				{
-					return entry[0];
+					return entry[0] - add_value_end;
 				}
 			}
 			return 0;
@@ -1316,6 +1340,18 @@ namespace SeedSearcherGui
 			int g_lsb = LSB;
 			int[] species = { pkmn1.ID, pkmn2.ID, pkmn3.ID, pkmn4.ID };
 			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm, pkmn4.altForm };
+
+			ulong[] add_const = { 0, 0, 0, 0 };
+			add_const[0] = (uint)(pkmn1.day - 1) * 0x82a2b175229d6a5b;
+			add_const[1] = (uint)(pkmn2.day - 1) * 0x82a2b175229d6a5b;
+			add_const[2] = (uint)(pkmn3.day - 1) * 0x82a2b175229d6a5b;
+			add_const[3] = (uint)(pkmn4.day - 1) * 0x82a2b175229d6a5b;
+
+			ulong add_value_end = add_const[0];
+			for (int i = 0; i < 4; i++)
+			{
+				add_const[i] -= add_value_end;
+			}
 
 			ulong[] entry = { 0 };
 			for (int ivOffset = start; ivOffset <= end; ivOffset++)
@@ -1357,7 +1393,6 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
 				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
 
-				ulong[] add_const = { 0, 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
 				gpu.LongFor(searchLower, searchUpper, input => {
 					ulong target = 0;
 					ulong input_ivs = (ulong)input;
@@ -1705,7 +1740,7 @@ namespace SeedSearcherGui
 				gpu.Synchronize();
 				if (entry[0] != 0)
 				{
-					return entry[0];
+					return entry[0] - add_value_end;
 				}
 			}
 			return 0;
@@ -1743,6 +1778,18 @@ namespace SeedSearcherGui
 			int g_lsb = LSB;
 			int[] species = { pkmn1.ID, pkmn2.ID, pkmn3.ID, pkmn4.ID };
 			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm, pkmn4.altForm };
+
+			ulong[] add_const = { 0, 0, 0, 0 };
+			add_const[0] = (uint)(pkmn1.day - 1) * 0x82a2b175229d6a5b;
+			add_const[1] = (uint)(pkmn2.day - 1) * 0x82a2b175229d6a5b;
+			add_const[2] = (uint)(pkmn3.day - 1) * 0x82a2b175229d6a5b;
+			add_const[3] = (uint)(pkmn4.day - 1) * 0x82a2b175229d6a5b;
+
+			ulong add_value_end = add_const[0];
+			for (int i = 0; i < 4; i++)
+			{
+				add_const[i] -= add_value_end;
+			}
 
 			ulong[] entry = { 0 };
 			for (int ivOffset = start; ivOffset <= end; ivOffset++)
@@ -1784,7 +1831,6 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
 				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
 
-				ulong[] add_const = { 0, 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
 				gpu.LongFor(searchLower, searchUpper, input => {
 					ulong target = 0;
 					ulong input_ivs = (ulong)input;
@@ -2130,7 +2176,7 @@ namespace SeedSearcherGui
 				gpu.Synchronize();
 				if (entry[0] != 0)
 				{
-					return entry[0];
+					return entry[0] - add_value_end;
 				}
 			}
 			return 0;

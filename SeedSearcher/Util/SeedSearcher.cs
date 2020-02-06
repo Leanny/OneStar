@@ -28,13 +28,13 @@ namespace SeedSearcherGui
 		static extern void Prepare(int rerolls);
 
 		[DllImport("SeedSearcherLib.dll")]
-		private static extern void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int flawlessIDX, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
+		private static extern void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int flawlessIDX, int ability, int nature, int day, int characteristic, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		private static extern void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
+		private static extern void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		private static extern void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
+		private static extern void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
 		private static extern void SetLSB(int bit);
@@ -50,16 +50,16 @@ namespace SeedSearcherGui
 		static extern void PrepareSix(int ivOffset);
 
 		[DllImport("SeedSearcherLib.dll")]
-		private static extern void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
+		private static extern void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		private static extern void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
+		private static extern void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		private static extern void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
+		private static extern void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		private static extern void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int species, int altform, bool noGender, bool isDream);
+		private static extern void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
 		private static extern void SetTargetCondition6(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6);
@@ -96,24 +96,24 @@ namespace SeedSearcherGui
 			Reset();
 		}
 
-		public void RegisterPokemon1(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
+		public void RegisterPokemon1(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int day, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
 		{
-			pkmn1 = new PkmnStruct(iv0, iv1, iv2, iv3, iv4, iv5, fixedIV, ability, nature, characteristics, species, altform, isNoGender, isEnableDream, fixedIVPos);
+			pkmn1 = new PkmnStruct(iv0, iv1, iv2, iv3, iv4, iv5, fixedIV, ability, nature, characteristics, day, species, altform, isNoGender, isEnableDream, fixedIVPos);
 		}
 
-		public void RegisterPokemon2(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
+		public void RegisterPokemon2(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int day, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
 		{
-			pkmn2 = new PkmnStruct(iv0, iv1, iv2, iv3, iv4, iv5, fixedIV, ability, nature, characteristics, species, altform, isNoGender, isEnableDream, fixedIVPos);
+			pkmn2 = new PkmnStruct(iv0, iv1, iv2, iv3, iv4, iv5, fixedIV, ability, nature, characteristics, day, species, altform, isNoGender, isEnableDream, fixedIVPos);
 		}
 
-		public void RegisterPokemon3(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
+		public void RegisterPokemon3(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int day, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
 		{
-			pkmn3 = new PkmnStruct(iv0, iv1, iv2, iv3, iv4, iv5, fixedIV, ability, nature, characteristics, species, altform, isNoGender, isEnableDream, fixedIVPos);
+			pkmn3 = new PkmnStruct(iv0, iv1, iv2, iv3, iv4, iv5, fixedIV, ability, nature, characteristics, day, species, altform, isNoGender, isEnableDream, fixedIVPos);
 		}
 
-		public void RegisterPokemon4(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
+		public void RegisterPokemon4(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int day, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
 		{
-			pkmn4 = new PkmnStruct(iv0, iv1, iv2, iv3, iv4, iv5, fixedIV, ability, nature, characteristics, species, altform, isNoGender, isEnableDream, fixedIVPos);
+			pkmn4 = new PkmnStruct(iv0, iv1, iv2, iv3, iv4, iv5, fixedIV, ability, nature, characteristics, day, species, altform, isNoGender, isEnableDream, fixedIVPos);
 		}
 
 		public void RegisterLSB(int lsb)
@@ -128,15 +128,11 @@ namespace SeedSearcherGui
 			ssg.SetSixFirstCondition(pkmn1);
 			ssg.SetSixSecondCondition(pkmn2);
 			ssg.SetSixThirdCondition(pkmn3);
-			if (m_Mode == Mode.Star12)
-			{
-				return ssg.TestSeed(seed);
-			}
-			else
+			if (m_Mode == Mode.Star35)
 			{
 				ssg.SetSixFourthCondition(pkmn4);
-				return ssg.TestSeed(seed + frontshift);
 			}
+			return ssg.TestSeed(seed);
 		}
 
 
@@ -181,12 +177,12 @@ namespace SeedSearcherGui
 					}
 					if (result != 0)
 					{
-						Result.Add(result + shift);
+						Result.Add(result);
 					}
 				}
 				else
 				{
-					Result.Add(shift);
+					Result.Add(0);
 				}
 			}
 		}
@@ -215,11 +211,11 @@ namespace SeedSearcherGui
 			if (m_Mode == Mode.Star12)
 			{
 				SetFirstCondition(pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn1.fixedIV, pkmn1.fixedIVPos,
-					pkmn1.ability, pkmn1.nature, pkmn1.characteristic, pkmn1.ID, pkmn1.altForm, pkmn1.isNoGender, pkmn1.isEnableDream);
+					pkmn1.ability, pkmn1.nature, pkmn1.characteristic, pkmn1.day, pkmn1.ID, pkmn1.altForm, pkmn1.isNoGender, pkmn1.isEnableDream);
 				SetNextCondition(pkmn2.ivs0, pkmn2.ivs1, pkmn2.ivs2, pkmn2.ivs3, pkmn2.ivs4, pkmn2.ivs5, pkmn2.fixedIV,
-					pkmn2.ability, pkmn2.nature, pkmn2.characteristic, pkmn2.ID, pkmn2.altForm, pkmn2.isNoGender, pkmn2.isEnableDream);
+					pkmn2.ability, pkmn2.nature, pkmn2.characteristic, pkmn2.day, pkmn2.ID, pkmn2.altForm, pkmn2.isNoGender, pkmn2.isEnableDream);
 				SetThirdCondition(pkmn3.ivs0, pkmn3.ivs1, pkmn3.ivs2, pkmn3.ivs3, pkmn3.ivs4, pkmn3.ivs5, pkmn3.fixedIV,
-					pkmn3.ability, pkmn3.nature, pkmn3.characteristic, pkmn3.ID, pkmn3.altForm, pkmn3.isNoGender, pkmn3.isEnableDream);
+					pkmn3.ability, pkmn3.nature, pkmn3.characteristic, pkmn3.day, pkmn3.ID, pkmn3.altForm, pkmn3.isNoGender, pkmn3.isEnableDream);
 				if (TestSeed(0) != 5)
 				{
 					int searchLower = 0;
@@ -253,13 +249,13 @@ namespace SeedSearcherGui
 			else
 			{
 				SetSixFirstCondition(pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn1.fixedIV, 
-					pkmn1.ability, pkmn1.nature, pkmn1.characteristic, pkmn1.ID, pkmn1.altForm, pkmn1.isNoGender, pkmn1.isEnableDream);
+					pkmn1.ability, pkmn1.nature, pkmn1.characteristic, pkmn1.day, pkmn1.ID, pkmn1.altForm, pkmn1.isNoGender, pkmn1.isEnableDream);
 				SetSixSecondCondition(pkmn2.ivs0, pkmn2.ivs1, pkmn2.ivs2, pkmn2.ivs3, pkmn2.ivs4, pkmn2.ivs5, pkmn2.fixedIV,
-					pkmn2.ability, pkmn2.nature, pkmn2.characteristic, pkmn2.ID, pkmn2.altForm, pkmn2.isNoGender, pkmn2.isEnableDream);
+					pkmn2.ability, pkmn2.nature, pkmn2.characteristic, pkmn2.day, pkmn2.ID, pkmn2.altForm, pkmn2.isNoGender, pkmn2.isEnableDream);
 				SetSixThirdCondition(pkmn3.ivs0, pkmn3.ivs1, pkmn3.ivs2, pkmn3.ivs3, pkmn3.ivs4, pkmn3.ivs5, pkmn3.fixedIV,
-					pkmn3.ability, pkmn3.nature, pkmn3.characteristic, pkmn3.ID, pkmn3.altForm, pkmn3.isNoGender, pkmn3.isEnableDream);
+					pkmn3.ability, pkmn3.nature, pkmn3.characteristic, pkmn3.day, pkmn3.ID, pkmn3.altForm, pkmn3.isNoGender, pkmn3.isEnableDream);
 				SetSixFourthCondition(pkmn4.ivs0, pkmn4.ivs1, pkmn4.ivs2, pkmn4.ivs3, pkmn4.ivs4, pkmn4.ivs5, pkmn4.fixedIV,
-					pkmn4.ability, pkmn4.nature, pkmn4.characteristic, pkmn4.ID, pkmn4.altForm, pkmn4.isNoGender, pkmn4.isEnableDream);
+					pkmn4.ability, pkmn4.nature, pkmn4.characteristic, pkmn4.day, pkmn4.ID, pkmn4.altForm, pkmn4.isNoGender, pkmn4.isEnableDream);
 				if (TestSixSeed(0) != 5)
 				{
 					SetTargetCondition6(target[0], target[1], target[2], target[3], target[4], target[5]);

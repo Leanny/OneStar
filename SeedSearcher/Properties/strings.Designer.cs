@@ -241,7 +241,7 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Pokémon Info Day 4 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Day ähnelt.
         /// </summary>
         internal static string Day4 {
             get {
@@ -268,7 +268,7 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Pokémon Info Day 5 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Day ähnelt.
         /// </summary>
         internal static string Day5 {
             get {
@@ -277,7 +277,7 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Pokémon Info Day 6 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Day ähnelt.
         /// </summary>
         internal static string Day6 {
             get {

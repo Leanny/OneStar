@@ -178,7 +178,7 @@
     <value>こもれび林C</value>
   </data>
   <data name="Day4" xml:space="preserve">
-    <value>4匹目</value>
+    <value>匹目</value>
   </data>
   <data name="Day4Base" xml:space="preserve">
     <value>1V～3V</value>
@@ -187,10 +187,10 @@
     <value>{0}V {1}/6</value>
   </data>
   <data name="Day5" xml:space="preserve">
-    <value>5匹目</value>
+    <value>匹目</value>
   </data>
   <data name="Day6" xml:space="preserve">
-    <value>6匹目</value>
+    <value>匹目</value>
   </data>
   <data name="DEF" xml:space="preserve">
     <value>B</value>
