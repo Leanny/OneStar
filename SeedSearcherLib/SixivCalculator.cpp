@@ -36,6 +36,10 @@ void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, 
 	l_First.fixedIV = fixedIV;
 	l_First.ID = ID;
 	l_First.altForm = altform;
+	for (int i = 0; i < 6; i++)
+	{
+		l_First.characteristicPos[i] = l_First.GetNextPos(i);
+	}
 
 }
 
@@ -55,6 +59,10 @@ void SetSixSecondCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5,
 	l_Second.fixedIV = fixedIV;
 	l_Second.ID = ID;
 	l_Second.altForm = altform;
+	for (int i = 0; i < 6; i++)
+	{
+		l_Second.characteristicPos[i] = l_Second.GetNextPos(i);
+	}
 }
 
 void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int ID, int altform, bool isNoGender, bool isEnableDream)
@@ -73,6 +81,10 @@ void SetSixThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, 
 	l_Third.fixedIV = fixedIV;
 	l_Third.ID = ID;
 	l_Third.altForm = altform;
+	for (int i = 0; i < 6; i++)
+	{
+		l_Third.characteristicPos[i] = l_Third.GetNextPos(i);
+	}
 }
 
 void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int ID, int altform, bool isNoGender, bool isEnableDream)
@@ -91,6 +103,10 @@ void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5,
 	l_Fourth.fixedIV = fixedIV;
 	l_Fourth.ID = ID;
 	l_Fourth.altForm = altform;
+	for (int i = 0; i < 6; i++)
+	{
+		l_Fourth.characteristicPos[i] = l_Fourth.GetNextPos(i);
+	}
 }
 
 void SetSixLSB(int lsb) {
@@ -175,7 +191,7 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	// 1匹目個性
 	if (l_First.characteristic > -1) {
 		int characteristic = fastmod::fastmod_u32(ec, M, 6);
-		if (characteristic != l_First.characteristic)
+		if (l_First.characteristicPos[characteristic] != l_First.characteristic)
 		{
 			return 1;
 		}
@@ -435,7 +451,7 @@ _u64 SearchSix(_u64 ivs)
 		}
 		if(l_First.characteristic > -1) {
 			int characteristic = fastmod::fastmod_u32(ec, M, 6);
-			if (characteristic != l_First.characteristic)
+			if (l_First.characteristicPos[characteristic] != l_First.characteristic)
 			{
 				continue;
 			}
@@ -696,7 +712,7 @@ _u64 SearchFive(_u64 ivs)
 		}
 		if (l_First.characteristic > -1) {
 			int characteristic = fastmod::fastmod_u32(ec, M, 6);
-			if (characteristic != l_First.characteristic)
+			if (l_First.characteristicPos[characteristic] != l_First.characteristic)
 			{
 				continue;
 			}
@@ -959,7 +975,7 @@ _u64 SearchFour(_u64 ivs)
 		}
 		if (l_First.characteristic > -1) {
 			int characteristic = fastmod::fastmod_u32(ec, M, 6);
-			if (characteristic != l_First.characteristic)
+			if (l_First.characteristicPos[characteristic] != l_First.characteristic)
 			{
 				continue;
 			}

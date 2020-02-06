@@ -15,7 +15,7 @@ inline _u64 GetSignature(_u64 value)
 static const int ToxtricityAmplifiedNatures[] = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
 static const int ToxtricityLowKeyNatures[] = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
 static const int ToxtricityID = 849;
-
+static const int iv_order[] = { 0, 1, 2, 5, 3, 4 };
 struct PokemonData
 {
 	int ivs[6];
@@ -25,6 +25,7 @@ struct PokemonData
 	int fixedIV;
 	int ID;
 	int altForm;
+	int characteristicPos[6];
 	bool isNoGender;
 	bool isEnableDream;
 
@@ -41,12 +42,36 @@ struct PokemonData
 			default: return true;
 		}
 	}
+
+	inline int GetNextPos(int idx)
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			int pos = (idx + i) % 6;
+			if (ivs[iv_order[pos]] == 31)
+			{
+				return pos;
+			}
+		}
+		return 0;
+	}
 };
 
 
 
 inline bool TestPkmn(XoroshiroState xoroshiro, PokemonData pkmn) {
-	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // EC
+	unsigned int ec = -1;
+	do {
+		ec = xoroshiro.Next(0xFFFFFFFFu);
+	} while (ec == 0xFFFFFFFFu);
+	if (pkmn.characteristic > -1) {
+		int characteristic = fastmod::fastmod_u32(ec, M, 6);
+		if (pkmn.characteristicPos[characteristic] != pkmn.characteristic)
+		{
+			return 1;
+		}
+	}
+
 	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
 	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
 	XoroshiroState tmp;

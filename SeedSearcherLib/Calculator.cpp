@@ -51,6 +51,10 @@ void SetFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int
 	l_First.ID = species;
 	l_First.altForm = altform;
 	g_FixedIndex = flawlessIDX;
+	for (int i = 0; i < 6; i++)
+	{
+		l_First.characteristicPos[i] = l_First.GetNextPos(i);
+	}
 }
 
 void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream)
@@ -69,6 +73,10 @@ void SetNextCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int 
 	l_Second.ID = species;
 	l_Second.altForm = altform;
 	l_Second.fixedIV = fixedIV;
+	for (int i = 0; i < 6; i++)
+	{
+		l_Second.characteristicPos[i] = l_Second.GetNextPos(i);
+	}
 }
 
 void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream)
@@ -87,6 +95,10 @@ void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int
 	l_Third.ID = species;
 	l_Third.altForm = altform;
 	l_Third.fixedIV = fixedIV;
+	for (int i = 0; i < 6; i++)
+	{
+		l_Third.characteristicPos[i] = l_Third.GetNextPos(i);
+	}
 }
 
 void SetLSB(int lsb) {
@@ -167,7 +179,7 @@ inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	}
 	if (l_First.characteristic > -1) {
 		int characteristic = fastmod::fastmod_u32(ec, M, 6);
-		if (characteristic != l_First.characteristic)
+		if (l_First.characteristicPos[characteristic] != l_First.characteristic)
 		{
 			return 1;
 		}
@@ -417,7 +429,7 @@ _u64 Search(_u64 ivs)
 		}
 		if (l_First.characteristic > -1) {
 			int characteristic = fastmod::fastmod_u32(ec, M, 6);
-			if (characteristic != l_First.characteristic)
+			if (l_First.characteristicPos[characteristic] != l_First.characteristic)
 			{
 				continue;
 			}
