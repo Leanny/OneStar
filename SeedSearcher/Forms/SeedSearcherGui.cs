@@ -851,17 +851,6 @@ namespace SeedSearcherGui
             {
                 LSB = candidates[0] & 1;
             }
-            else
-            {
-                if (candidates.Count == 0)
-                {
-                    var result = Util.Prompt(MessageBoxButtons.YesNo, "Entered characteristics seem to be wrong. This might increase the search time. Do you want to start the search anyway?");
-                    if (result == DialogResult.No)
-                    {
-                        return null;
-                    }
-                }
-            }
             int nature1 = (int)((ComboboxItem)CB_Nature1.SelectedItem).Value;
             int nature2 = (int)((ComboboxItem)CB_Nature4.SelectedItem).Value;
             int nature3 = (int)((ComboboxItem)CB_Nature5.SelectedItem).Value;
@@ -1188,17 +1177,6 @@ namespace SeedSearcherGui
             if (candidates.Count == 1)
             {
                 LSB = candidates[0] & 1;
-            }
-            else
-            {
-                if (candidates.Count == 0)
-                {
-                    var result = Util.Prompt(MessageBoxButtons.YesNo, "Entered characteristics seem to be wrong. This might increase the search time. Do you want to start the search anyway?");
-                    if (result == DialogResult.No)
-                    {
-                        return null;
-                    }
-                }
             }
 
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35);
