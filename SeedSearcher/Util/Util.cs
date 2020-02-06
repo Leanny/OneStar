@@ -14,7 +14,7 @@ namespace SeedSearcherGui
             return MessageBox.Show(msg, "Prompt", btn, MessageBoxIcon.Asterisk);
         }
 
-        public static string CalculateChecksum(string dataToCalculate)
+        public static uint CalculateChecksum(string dataToCalculate)
         {
             byte[] byteToCalculate = System.Text.Encoding.ASCII.GetBytes(dataToCalculate);
             uint checksum = 0;
@@ -22,7 +22,19 @@ namespace SeedSearcherGui
             {
                 checksum += chData;
             }
-            return checksum.ToString("X8");
+            return checksum;
+        }
+
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+
+        public static string Base64Decode(string base64EncodedData)
+        {
+            var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
+            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
 
         public static string GetUrlString(string url)
