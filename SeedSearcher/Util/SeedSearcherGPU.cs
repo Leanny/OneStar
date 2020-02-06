@@ -57,11 +57,23 @@ namespace SeedSearcherGui
 			bool[] noGender = { pkmn1.isNoGender, pkmn2.isNoGender, pkmn3.isNoGender, pkmn4.isNoGender };
 			bool[] HA = { pkmn1.isEnableDream, pkmn2.isEnableDream, pkmn3.isEnableDream, pkmn4.isEnableDream };
 			int[] natures = { pkmn1.nature, pkmn2.nature, pkmn3.nature, pkmn4.nature };
-			int characteristic1 = pkmn1.characteristic;
+			int[] characteristics = { pkmn1.characteristic, pkmn2.characteristic, pkmn3.characteristic, pkmn4.characteristic };
 			int g_lsb = LSB;
 			int[] species = { pkmn1.ID, pkmn2.ID, pkmn3.ID, pkmn4.ID };
 			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm, pkmn4.altForm };
 			ulong[] add_const = { 0, 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
+
+			int[] characteristicorder = new int[4 * 6];
+			for (int i = 0; i < 6; i++)
+			{
+				characteristicorder[i] = pkmn1.characteristicPos[i];
+				characteristicorder[i + 6] = pkmn2.characteristicPos[i];
+				characteristicorder[i + 12] = pkmn3.characteristicPos[i];
+				if(pkmn4.characteristicPos != null) { 
+					characteristicorder[i + 18] = pkmn4.characteristicPos[i];
+				}
+			}
+			int maxVal = pkmn4.characteristicPos == null ? 3 : 4;
 			ulong s0;
 			ulong s1;
 			ulong s0tmp;
@@ -72,7 +84,7 @@ namespace SeedSearcherGui
 			int g_FixedIvs;
 			int fixedIndex;
 			int tmp;
-			for(uint val = 0; val < 4; val++)
+			for(uint val = 0; val < maxVal; val++)
 			{
 				s0 = seed + add_const[val];
 				s1 = 0x82a2b175229d6a5b;
@@ -91,16 +103,17 @@ namespace SeedSearcherGui
 					{
 						return 0;
 					}
+				}
 
-					if (characteristic1 >= 0)
+				if (characteristics[val] >= 0)
+				{
+					int characteristic = characteristicorder[val * 6 + ec % 6];
+					if (characteristic != characteristics[val])
 					{
-						int characteristic = (int)(ec % 6);
-						if (characteristic != characteristic1)
-						{
-							return val + 1;
-						}
+						return val + 1;
 					}
 				}
+
 				// SIDTID
 				do
 				{
@@ -408,7 +421,14 @@ namespace SeedSearcherGui
 			bool[] noGender = { pkmn1.isNoGender, pkmn2.isNoGender, pkmn3.isNoGender};
 			bool[] HA = { pkmn1.isEnableDream, pkmn2.isEnableDream, pkmn3.isEnableDream};
 			int[] natures = { pkmn1.nature, pkmn2.nature, pkmn3.nature };
-			int characteristic1 = pkmn1.characteristic;
+			int[] characteristics = { pkmn1.characteristic, pkmn2.characteristic, pkmn3.characteristic };
+			int[] characteristicorder = new int[3 * 6];
+			for (int i = 0; i < 6; i++)
+			{
+				characteristicorder[i] = pkmn1.characteristicPos[i];
+				characteristicorder[i + 6] = pkmn2.characteristicPos[i];
+				characteristicorder[i + 12] = pkmn3.characteristicPos[i];
+			}
 			int g_lsb = LSB;
 			int[] species = { pkmn1.ID, pkmn2.ID, pkmn3.ID };
 			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm };
@@ -540,15 +560,6 @@ namespace SeedSearcherGui
 							continue;
 						}
 
-						if (characteristic1 >= 0)
-						{
-							int characteristic = (int)(ec % 6);
-							if (characteristic != characteristic1)
-							{
-								continue;
-							}
-						}
-
 						int val = 2;
 						while (val >= 0)
 						{
@@ -562,6 +573,15 @@ namespace SeedSearcherGui
 								s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
 								s1 = RotateLeft(s1, 37);
 							} while (ec == 0xFFFFFFFF);
+
+							if (characteristics[val] >= 0)
+							{
+								int characteristic = characteristicorder[val * 6 + ec % 6];
+								if (characteristic != characteristics[val])
+								{
+									break;
+								}
+							}
 
 							// SIDTID
 							do
@@ -846,7 +866,6 @@ namespace SeedSearcherGui
 			ulong iv3 = (ulong)g_Ivs[3];
 			ulong iv4 = (ulong)g_Ivs[4];
 			ulong iv5 = (ulong)g_Ivs[5];
-
 			int[] allIVs = { pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn2.ivs0, pkmn2.ivs1, pkmn2.ivs2, pkmn2.ivs3, pkmn2.ivs4, pkmn2.ivs5,
 							 pkmn3.ivs0, pkmn3.ivs1, pkmn3.ivs2, pkmn3.ivs3, pkmn3.ivs4, pkmn3.ivs5, pkmn4.ivs0, pkmn4.ivs1, pkmn4.ivs2, pkmn4.ivs3, pkmn4.ivs4, pkmn4.ivs5,};
 			int[] fixedIVs = { pkmn1.fixedIV, pkmn2.fixedIV, pkmn3.fixedIV, pkmn4.fixedIV };
@@ -854,7 +873,15 @@ namespace SeedSearcherGui
 			bool[] noGender = { pkmn1.isNoGender, pkmn2.isNoGender, pkmn3.isNoGender, pkmn4.isNoGender };
 			bool[] HA = { pkmn1.isEnableDream, pkmn2.isEnableDream, pkmn3.isEnableDream, pkmn4.isEnableDream };
 			int[] natures = { pkmn1.nature, pkmn2.nature, pkmn3.nature, pkmn4.nature };
-			int characteristic1 = pkmn1.characteristic;
+			int[] characteristics = { pkmn1.characteristic, pkmn2.characteristic, pkmn3.characteristic, pkmn4.characteristic };
+			int[] characteristicorder = new int[4 * 6];
+			for(int i=0; i < 6; i++)
+			{
+				characteristicorder[i] = pkmn1.characteristicPos[i];
+				characteristicorder[i+6] = pkmn2.characteristicPos[i];
+				characteristicorder[i+12] = pkmn3.characteristicPos[i];
+				characteristicorder[i+18] = pkmn4.characteristicPos[i];
+			}
 			int g_lsb = LSB;
 			int[] species = { pkmn1.ID, pkmn2.ID, pkmn3.ID, pkmn4.ID };
 			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm, pkmn4.altForm };
@@ -958,16 +985,6 @@ namespace SeedSearcherGui
 							continue;
 						}
 
-						if (characteristic1 >= 0)
-						{
-							int characteristic = (int)(ec % 6);
-							if (characteristic != characteristic1)
-							{
-								continue;
-							}
-						}
-
-
 						int val = 3;
 						while(val >= 0)
 						{
@@ -981,6 +998,15 @@ namespace SeedSearcherGui
 								s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
 								s1 = RotateLeft(s1, 37);
 							} while (ec == 0xFFFFFFFF);
+
+							if (characteristics[val] >= 0)
+							{
+								int characteristic = characteristicorder[val * 6 + ec % 6];
+								if (characteristic != characteristics[val])
+								{
+									break;
+								}
+							}
 
 							// SIDTID
 							do
@@ -1032,6 +1058,7 @@ namespace SeedSearcherGui
 									s1 = RotateLeft(s1, 37);
 								}
 							}
+
 							tmp = 0;
 							// special case
 							if (abilitys[val] == -2)
@@ -1273,7 +1300,15 @@ namespace SeedSearcherGui
 			bool[] noGender = { pkmn1.isNoGender, pkmn2.isNoGender, pkmn3.isNoGender, pkmn4.isNoGender };
 			bool[] HA = { pkmn1.isEnableDream, pkmn2.isEnableDream, pkmn3.isEnableDream, pkmn4.isEnableDream };
 			int[] natures = { pkmn1.nature, pkmn2.nature, pkmn3.nature, pkmn4.nature };
-			int characteristic1 = pkmn1.characteristic;
+			int[] characteristics = { pkmn1.characteristic, pkmn2.characteristic, pkmn3.characteristic, pkmn4.characteristic };
+			int[] characteristicorder = new int[4 * 6];
+			for (int i = 0; i < 6; i++)
+			{
+				characteristicorder[i] = pkmn1.characteristicPos[i];
+				characteristicorder[i + 6] = pkmn2.characteristicPos[i];
+				characteristicorder[i + 12] = pkmn3.characteristicPos[i];
+				characteristicorder[i + 18] = pkmn4.characteristicPos[i];
+			}
 			int g_lsb = LSB;
 			int[] species = { pkmn1.ID, pkmn2.ID, pkmn3.ID, pkmn4.ID };
 			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm, pkmn4.altForm };
@@ -1378,15 +1413,6 @@ namespace SeedSearcherGui
 							continue;
 						}
 
-						if (characteristic1 >= 0)
-						{
-							int characteristic = (int)(ec % 6);
-							if (characteristic != characteristic1)
-							{
-								continue;
-							}
-						}
-
 						int val = 3;
 						while (val >= 0)
 						{
@@ -1400,6 +1426,15 @@ namespace SeedSearcherGui
 								s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
 								s1 = RotateLeft(s1, 37);
 							} while (ec == 0xFFFFFFFF);
+
+							if (characteristics[val] >= 0)
+							{
+								int characteristic = characteristicorder[val * 6 + ec % 6];
+								if (characteristic != characteristics[val])
+								{
+									break;
+								}
+							}
 
 							// SIDTID
 							do
@@ -1692,7 +1727,15 @@ namespace SeedSearcherGui
 			bool[] noGender = { pkmn1.isNoGender, pkmn2.isNoGender, pkmn3.isNoGender, pkmn4.isNoGender };
 			bool[] HA = { pkmn1.isEnableDream, pkmn2.isEnableDream, pkmn3.isEnableDream, pkmn4.isEnableDream };
 			int[] natures = { pkmn1.nature, pkmn2.nature, pkmn3.nature, pkmn4.nature };
-			int characteristic1 = pkmn1.characteristic;
+			int[] characteristics = { pkmn1.characteristic, pkmn2.characteristic, pkmn3.characteristic, pkmn4.characteristic };
+			int[] characteristicorder = new int[4 * 6];
+			for (int i = 0; i < 6; i++)
+			{
+				characteristicorder[i] = pkmn1.characteristicPos[i];
+				characteristicorder[i + 6] = pkmn2.characteristicPos[i];
+				characteristicorder[i + 12] = pkmn3.characteristicPos[i];
+				characteristicorder[i + 18] = pkmn4.characteristicPos[i];
+			}
 			int g_lsb = LSB;
 			int[] species = { pkmn1.ID, pkmn2.ID, pkmn3.ID, pkmn4.ID };
 			int[] alt = { pkmn1.altForm, pkmn2.altForm, pkmn3.altForm, pkmn4.altForm };
@@ -1795,16 +1838,6 @@ namespace SeedSearcherGui
 							continue;
 						}
 
-						if (characteristic1 >= 0)
-						{
-							int characteristic = (int)(ec % 6);
-							if (characteristic != characteristic1)
-							{
-								continue;
-							}
-						}
-
-
 						int val = 3;
 						while (val >= 0)
 						{
@@ -1818,6 +1851,15 @@ namespace SeedSearcherGui
 								s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
 								s1 = RotateLeft(s1, 37);
 							} while (ec == 0xFFFFFFFF);
+
+							if (characteristics[val] >= 0)
+							{
+								int characteristic = characteristicorder[val * 6 + ec % 6];
+								if (characteristic != characteristics[val])
+								{
+									break;
+								}
+							}
 
 							// SIDTID
 							do
