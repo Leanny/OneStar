@@ -17,6 +17,7 @@
 		public readonly bool isNoGender;
 		public readonly bool isEnableDream;
 		public readonly int fixedIVPos;
+		public readonly int[] characteristicPos;
 
 		public PkmnStruct(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
 		{
@@ -35,6 +36,26 @@
 			this.altForm = altform;
 			this.fixedIV = fixedIV;
 			this.fixedIVPos = fixedIVPos;
+			characteristicPos = new int[] { 0, 0, 0, 0, 0, 0 };
+			int[] ivs = { iv0, iv1, iv2, iv3, iv4, iv5 };
+			for(int i=0; i < 6; i++)
+			{
+				characteristicPos[i] = GetNextPos(ivs, i);
+			}
+		}
+
+		private int GetNextPos(int[] ivs, int idx)
+		{
+			int[] iv_order = { 0, 1, 2, 5, 3, 4 };
+			for(int i=0; i < 6; i++)
+			{
+				int pos = (idx + i) % 6;
+				if(ivs[iv_order[pos]] == 31)
+				{
+					return pos;
+				}
+			}
+			return 0;
 		}
 	}
 }
