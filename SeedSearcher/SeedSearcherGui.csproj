@@ -80,6 +80,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ExportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExportWindow.Designer.cs">
+      <DependentUpon>ExportWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\IVCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,7 +114,11 @@
     <Compile Include="Util\PkmnStruct.cs" />
     <Compile Include="Util\SeedSearcher.cs" />
     <Compile Include="Util\SeedSearcherGPU.cs" />
+    <Compile Include="Util\SerializedInput.cs" />
     <Compile Include="Util\Util.cs" />
+    <EmbeddedResource Include="Forms\ExportWindow.resx">
+      <DependentUpon>ExportWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\IVCalculator.resx">
       <DependentUpon>IVCalculator.cs</DependentUpon>
     </EmbeddedResource>

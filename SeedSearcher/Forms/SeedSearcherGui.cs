@@ -32,6 +32,7 @@ namespace SeedSearcherGui
         public static readonly int[] ToxtricityAmplifiedNatures = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
         public static readonly int[] ToxtricityLowKeyNatures = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
         public const int ToxtricityID = 849;
+        private string loadedEvent = "200131.json";
 
         public SeedSearcherGui()
         {
@@ -1768,6 +1769,7 @@ namespace SeedSearcherGui
             {
                 updateEventDatabaseToolStripMenuItem_Click(null, null);
             }
+            loadedEvent = $"{tsmi.Text}.json";
             var content = File.ReadAllText(EventData);
             PKHeX_Raid_Plugin.EventTableConverter.LoadFromJson(content, _raidTables);
             if(CB_Nest.SelectedIndex == 0)
@@ -1778,7 +1780,93 @@ namespace SeedSearcherGui
 
         private void exportDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var input = new SerializedInput();
 
+            // setup
+            var setup = new Setup();
+            setup.NestID = CB_Nest.SelectedIndex - 1;
+            if (setup.NestID == -1)
+            {
+                setup.EventID = loadedEvent;
+            } else
+            {
+                setup.EventID = ""; // no event
+            }
+            setup.GameID = CB_Game.SelectedIndex;
+            input.Setup = setup;
+
+            // pkmn 
+            var pkmn1 = new PokemonInput();
+            var pkmn2 = new PokemonInput();
+            var pkmn3 = new PokemonInput();
+            var pkmn4 = new PokemonInput();
+
+            pkmn1.Day = 4;
+            pkmn2.Day = 4;
+            pkmn3.Day = 5;
+            pkmn4.Day = 6;
+
+            pkmn1.Index = CB_Species1.SelectedIndex;
+            pkmn1.IVs = GetIVs(new int[] { (int)HP1.Value, (int)ATK1.Value, (int)DEF1.Value, (int)SPA1.Value, (int)SPD1.Value, (int)SPE1.Value });
+            pkmn1.Nature = (int)((ComboboxItem)CB_Nature1.SelectedItem).Value;
+            pkmn1.Characteristic = CB_Characteristic1.SelectedIndex;
+            pkmn1.Ability = (int)((ComboboxItem)CB_Ability1.SelectedItem).Value;
+
+            if(RB_2nd.Checked)
+            {
+                pkmn2.Index = CB_Species2.SelectedIndex;
+                pkmn2.IVs = GetIVs(new int[] { (int)HP2.Value, (int)ATK2.Value, (int)DEF2.Value, (int)SPA2.Value, (int)SPD2.Value, (int)SPE2.Value });
+                pkmn2.Nature = (int)((ComboboxItem)CB_Nature2.SelectedItem).Value;
+                pkmn2.Characteristic = CB_Characteristic2.SelectedIndex;
+                pkmn2.Ability = (int)((ComboboxItem)CB_Ability2.SelectedItem).Value;
+            }
+
+            if (RB_3rd.Checked)
+            {
+                pkmn2.Index = CB_Species3.SelectedIndex;
+                pkmn2.IVs = GetIVs(new int[] { (int)HP3.Value, (int)ATK3.Value, (int)DEF3.Value, (int)SPA3.Value, (int)SPD3.Value, (int)SPE3.Value });
+                pkmn2.Nature = (int)((ComboboxItem)CB_Nature3.SelectedItem).Value;
+                pkmn2.Characteristic = CB_Characteristic3.SelectedIndex;
+                pkmn2.Ability = (int)((ComboboxItem)CB_Ability3.SelectedItem).Value;
+            }
+
+            if(GB_51.Enabled)
+            {
+                pkmn3.Index = CB_Species4.SelectedIndex;
+                pkmn3.IVs = GetIVs(new int[] { (int)HP4.Value, (int)ATK4.Value, (int)DEF4.Value, (int)SPA4.Value, (int)SPD4.Value, (int)SPE4.Value });
+                pkmn3.Nature = (int)((ComboboxItem)CB_Nature4.SelectedItem).Value;
+                pkmn3.Characteristic = CB_Characteristic4.SelectedIndex;
+                pkmn3.Ability = (int)((ComboboxItem)CB_Ability4.SelectedItem).Value;
+            }
+
+            if (GB_61.Enabled)
+            {
+                pkmn4.Index = CB_Species5.SelectedIndex;
+                pkmn4.IVs = GetIVs(new int[] { (int)HP5.Value, (int)ATK5.Value, (int)DEF5.Value, (int)SPA5.Value, (int)SPD5.Value, (int)SPE5.Value });
+                pkmn4.Nature = (int)((ComboboxItem)CB_Nature5.SelectedItem).Value;
+                pkmn4.Characteristic = CB_Characteristic5.SelectedIndex;
+                pkmn4.Ability = (int)((ComboboxItem)CB_Ability5.SelectedItem).Value;
+            }
+
+            input.Pkmn1 = pkmn1;
+            input.Pkmn2 = pkmn2;
+            input.Pkmn3 = pkmn3;
+            input.Pkmn4 = pkmn4;
+            input.CalculateChecksum();
+
+            var str = JsonConvert.SerializeObject(input);
+            new ExportWindow(Util.Base64Encode(str)).Show();
+        }
+
+        private int GetIVs(int[] vals)
+        {
+            int res = 0;
+            foreach(int v in vals)
+            {
+                res <<= 5;
+                res |= v;
+            }
+            return res;
         }
     }
 }
