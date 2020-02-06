@@ -1806,7 +1806,7 @@ namespace SeedSearcherGui
             pkmn3.Day = 5;
             pkmn4.Day = 6;
 
-            pkmn1.Index = CB_Species1.SelectedIndex;
+            pkmn1.Index = GetIndexForSpecies((ComboboxItem)CB_Species1.SelectedItem);
             pkmn1.IVs = GetIVs(new int[] { (int)HP1.Value, (int)ATK1.Value, (int)DEF1.Value, (int)SPA1.Value, (int)SPD1.Value, (int)SPE1.Value });
             pkmn1.Nature = (int)((ComboboxItem)CB_Nature1.SelectedItem).Value;
             pkmn1.Characteristic = CB_Characteristic1.SelectedIndex;
@@ -1814,7 +1814,7 @@ namespace SeedSearcherGui
 
             if(RB_2nd.Checked)
             {
-                pkmn2.Index = CB_Species2.SelectedIndex;
+                pkmn2.Index = GetIndexForSpecies((ComboboxItem) CB_Species2.SelectedItem);
                 pkmn2.IVs = GetIVs(new int[] { (int)HP2.Value, (int)ATK2.Value, (int)DEF2.Value, (int)SPA2.Value, (int)SPD2.Value, (int)SPE2.Value });
                 pkmn2.Nature = (int)((ComboboxItem)CB_Nature2.SelectedItem).Value;
                 pkmn2.Characteristic = CB_Characteristic2.SelectedIndex;
@@ -1823,7 +1823,7 @@ namespace SeedSearcherGui
 
             if (RB_3rd.Checked)
             {
-                pkmn2.Index = CB_Species3.SelectedIndex;
+                pkmn2.Index = GetIndexForSpecies((ComboboxItem) CB_Species3.SelectedItem);
                 pkmn2.IVs = GetIVs(new int[] { (int)HP3.Value, (int)ATK3.Value, (int)DEF3.Value, (int)SPA3.Value, (int)SPD3.Value, (int)SPE3.Value });
                 pkmn2.Nature = (int)((ComboboxItem)CB_Nature3.SelectedItem).Value;
                 pkmn2.Characteristic = CB_Characteristic3.SelectedIndex;
@@ -1858,6 +1858,30 @@ namespace SeedSearcherGui
             new ExportWindow(Util.Base64Encode(str)).Show();
         }
 
+        private int GetIndexForSpecies(ComboboxItem selectedItem)
+        {
+            for(int i=0; i < CB_Species4.Items.Count; i++)
+            {
+                if(selectedItem.Value == ((ComboboxItem) CB_Species4.Items[i]).Value)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private int GetSpeciesForIndex(int idx, ComboBox SpeciesBox)
+        {
+            for (int i = 0; i < SpeciesBox.Items.Count; i++)
+            {
+                if (((ComboboxItem) SpeciesBox.Items[i]).Value == ((ComboboxItem)CB_Species4.Items[idx]).Value)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
         private int GetIVs(int[] vals)
         {
             int res = 0;
@@ -1867,6 +1891,152 @@ namespace SeedSearcherGui
                 res |= v;
             }
             return res;
+        }
+
+        private int[] GetIVsArray(int val)
+        {
+            int[] res = { 0, 0, 0, 0, 0, 0 };
+            for (int i = 0; i < 6; i++)
+            {
+                res[5 - i] = val & 0x1F;
+                val >>= 5;
+            }
+            return res;
+        }
+
+        private void importDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Input you want to import.", "Enter Input", "");
+            if (UserAnswer.Length < 100) return;
+            if (!UserAnswer.StartsWith("eyJTZX")) return;
+            var JsonStr = "";
+            try
+            {
+                JsonStr = Util.Base64Decode(UserAnswer);
+            } catch(System.FormatException ex)
+            {
+                MessageBox.Show("Invalid Character in Input", "Invalid Input");
+                return;
+            }
+            SerializedInput si;
+            try
+            {
+                si = JsonConvert.DeserializeObject<SerializedInput>(JsonStr);
+            }
+            catch (System.FormatException ex)
+            {
+                MessageBox.Show("Invalid Character in Input. Maybe your input is cut-off?", "Invalid Input");
+                return;
+            }
+
+            uint checksum = si.Checksum;
+            si.CalculateChecksum();
+            if(checksum != si.Checksum)
+            {
+                MessageBox.Show("Corrupted data.", "Invalid Input");
+                return;
+            }
+
+            // Reconstruct input
+            CB_Nest.SelectedIndex = si.Setup.NestID + 1;
+            if (si.Setup.NestID == -1)
+            {
+                // special case: load event 
+            }
+            CB_Game.SelectedIndex = si.Setup.GameID;
+
+            // input pkmn 1
+            CB_Species1.SelectedIndex = GetSpeciesForIndex(si.Pkmn1.Index, CB_Species1);
+            int[] ivs = GetIVsArray(si.Pkmn1.IVs);
+            for(int i = 0; i < 6; i++)
+            {
+                NUD_Stats[i].Value = ivs[i];
+            }
+            CB_Characteristic1.SelectedIndex = si.Pkmn1.Characteristic;
+            // search value
+            SetCBValue(CB_Nature1, si.Pkmn1.Nature);
+            SetCBValue(CB_Ability1, si.Pkmn1.Ability);
+
+            // next check IVs to prefill input
+            BT_IVCheck(null, null);
+            bool checkedVal = false;
+            if(GB_42.Enabled)
+            {
+                int idx = GetSpeciesForIndex(si.Pkmn2.Index, CB_Species2);
+                if(idx != -1)
+                {
+                    CB_Species2.SelectedIndex = idx;
+                    ivs = GetIVsArray(si.Pkmn2.IVs);
+                    for (int i = 0; i < 6; i++)
+                    {
+                        NUD_Stats[i + 6].Value = ivs[i];
+                    }
+                    CB_Characteristic2.SelectedIndex = si.Pkmn2.Characteristic;
+                    // search value
+                    SetCBValue(CB_Nature2, si.Pkmn2.Nature);
+                    SetCBValue(CB_Ability2, si.Pkmn2.Ability);
+                    checkedVal = true;
+                }
+            }
+            if (GB_43.Enabled && !checkedVal)
+            {
+                int idx = GetSpeciesForIndex(si.Pkmn2.Index, CB_Species3);
+                if (idx != -1)
+                {
+                    CB_Species3.SelectedIndex = idx;
+                    ivs = GetIVsArray(si.Pkmn2.IVs);
+                    for (int i = 0; i < 6; i++)
+                    {
+                        NUD_Stats[i + 12].Value = ivs[i];
+                    }
+                    CB_Characteristic3.SelectedIndex = si.Pkmn2.Characteristic;
+                    // search value
+                    SetCBValue(CB_Nature3, si.Pkmn2.Nature);
+                    SetCBValue(CB_Ability3, si.Pkmn2.Ability);
+                    checkedVal = true;
+                }
+            }
+            if(checkedVal)
+            {
+                BT_IVCheck(null, null);
+            }
+            if(GB_51.Enabled)
+            {
+                CB_Species4.SelectedIndex = si.Pkmn3.Index;
+                ivs = GetIVsArray(si.Pkmn3.IVs);
+                for (int i = 0; i < 6; i++)
+                {
+                    NUD_Stats[i + 18].Value = ivs[i];
+                }
+                CB_Characteristic4.SelectedIndex = si.Pkmn3.Characteristic;
+                // search value
+                SetCBValue(CB_Nature4, si.Pkmn3.Nature);
+                SetCBValue(CB_Ability4, si.Pkmn3.Ability);
+            }
+            if (GB_61.Enabled)
+            {
+                CB_Species5.SelectedIndex = si.Pkmn4.Index;
+                ivs = GetIVsArray(si.Pkmn4.IVs);
+                for (int i = 0; i < 6; i++)
+                {
+                    NUD_Stats[i + 24].Value = ivs[i];
+                }
+                CB_Characteristic5.SelectedIndex = si.Pkmn4.Characteristic;
+                // search value
+                SetCBValue(CB_Nature5, si.Pkmn4.Nature);
+                SetCBValue(CB_Ability5, si.Pkmn4.Ability);
+            }
+        }
+
+        private void SetCBValue(ComboBox cb, int value)
+        {
+            foreach (ComboboxItem ci in cb.Items)
+            {
+                if ((int)ci.Value == value)
+                {
+                    cb.SelectedItem = ci;
+                }
+            }
         }
     }
 }

@@ -172,17 +172,17 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.LBL_Time = new System.Windows.Forms.ToolStripStatusLabel();
             this.MenuBar = new System.Windows.Forms.MenuStrip();
-            this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.acceleratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateEventDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.日本語ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.简体中文ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.importExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkSeedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acceleratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateEventDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -2200,6 +2200,60 @@
             this.MenuBar.TabIndex = 11;
             this.MenuBar.Text = "menuStrip1";
             // 
+            // importExportToolStripMenuItem
+            // 
+            this.importExportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportDataToolStripMenuItem,
+            this.importDataToolStripMenuItem});
+            this.importExportToolStripMenuItem.Name = "importExportToolStripMenuItem";
+            this.importExportToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
+            this.importExportToolStripMenuItem.Text = "Import/Export";
+            // 
+            // exportDataToolStripMenuItem
+            // 
+            this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exportDataToolStripMenuItem.Text = "Export Data";
+            this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.exportDataToolStripMenuItem_Click);
+            // 
+            // importDataToolStripMenuItem
+            // 
+            this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
+            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.importDataToolStripMenuItem.Text = "Import Data";
+            this.importDataToolStripMenuItem.Click += new System.EventHandler(this.importDataToolStripMenuItem_Click);
+            // 
+            // languagesToolStripMenuItem
+            // 
+            this.languagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.englishToolStripMenuItem1,
+            this.日本語ToolStripMenuItem1,
+            this.简体中文ToolStripMenuItem1});
+            this.languagesToolStripMenuItem.Name = "languagesToolStripMenuItem";
+            this.languagesToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.languagesToolStripMenuItem.Text = "Languages";
+            this.languagesToolStripMenuItem.Click += new System.EventHandler(this.ChineseToolStripMenuItem_Click);
+            // 
+            // englishToolStripMenuItem1
+            // 
+            this.englishToolStripMenuItem1.Name = "englishToolStripMenuItem1";
+            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
+            this.englishToolStripMenuItem1.Text = "English";
+            this.englishToolStripMenuItem1.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+            // 
+            // 日本語ToolStripMenuItem1
+            // 
+            this.日本語ToolStripMenuItem1.Name = "日本語ToolStripMenuItem1";
+            this.日本語ToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
+            this.日本語ToolStripMenuItem1.Text = "日本語";
+            this.日本語ToolStripMenuItem1.Click += new System.EventHandler(this.NihongoToolStripMenuItem_Click);
+            // 
+            // 简体中文ToolStripMenuItem1
+            // 
+            this.简体中文ToolStripMenuItem1.Name = "简体中文ToolStripMenuItem1";
+            this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
+            this.简体中文ToolStripMenuItem1.Text = "简体中文";
+            // 
             // checkSeedToolStripMenuItem
             // 
             this.checkSeedToolStripMenuItem.Enabled = false;
@@ -2229,59 +2283,6 @@
             this.updateEventDatabaseToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
             this.updateEventDatabaseToolStripMenuItem.Text = "Update Event Database";
             this.updateEventDatabaseToolStripMenuItem.Click += new System.EventHandler(this.updateEventDatabaseToolStripMenuItem_Click);
-            // 
-            // languagesToolStripMenuItem
-            // 
-            this.languagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.englishToolStripMenuItem1,
-            this.日本語ToolStripMenuItem1,
-            this.简体中文ToolStripMenuItem1});
-            this.languagesToolStripMenuItem.Name = "languagesToolStripMenuItem";
-            this.languagesToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
-            this.languagesToolStripMenuItem.Text = "Languages";
-            this.languagesToolStripMenuItem.Click += new System.EventHandler(this.ChineseToolStripMenuItem_Click);
-            // 
-            // englishToolStripMenuItem1
-            // 
-            this.englishToolStripMenuItem1.Name = "englishToolStripMenuItem1";
-            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.englishToolStripMenuItem1.Text = "English";
-            this.englishToolStripMenuItem1.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
-            // 
-            // 日本語ToolStripMenuItem1
-            // 
-            this.日本語ToolStripMenuItem1.Name = "日本語ToolStripMenuItem1";
-            this.日本語ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.日本語ToolStripMenuItem1.Text = "日本語";
-            this.日本語ToolStripMenuItem1.Click += new System.EventHandler(this.NihongoToolStripMenuItem_Click);
-            // 
-            // 简体中文ToolStripMenuItem1
-            // 
-            this.简体中文ToolStripMenuItem1.Name = "简体中文ToolStripMenuItem1";
-            this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.简体中文ToolStripMenuItem1.Text = "简体中文";
-            // 
-            // importExportToolStripMenuItem
-            // 
-            this.importExportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportDataToolStripMenuItem,
-            this.importDataToolStripMenuItem});
-            this.importExportToolStripMenuItem.Name = "importExportToolStripMenuItem";
-            this.importExportToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
-            this.importExportToolStripMenuItem.Text = "Import/Export";
-            // 
-            // importDataToolStripMenuItem
-            // 
-            this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
-            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.importDataToolStripMenuItem.Text = "Import Data";
-            // 
-            // exportDataToolStripMenuItem
-            // 
-            this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.exportDataToolStripMenuItem.Text = "Export Data";
-            this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.exportDataToolStripMenuItem_Click);
             // 
             // SeedSearcherGui
             // 
