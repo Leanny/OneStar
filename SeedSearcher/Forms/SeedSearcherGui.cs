@@ -782,11 +782,11 @@ namespace SeedSearcherGui
             }
         }
 
-        private void shiftCandidates(ref List<int> candidates)
+        private void shiftCandidates(ref List<int> candidates, int days)
         {
             for (int i = 0; i < candidates.Count; i++)
             {
-                candidates[i] = (candidates[i] + 1) % 6;
+                candidates[i] = (candidates[i] + (days % 6) + 6) % 6;
             }
         }
 
@@ -817,6 +817,16 @@ namespace SeedSearcherGui
             int characteristics2 = CB_Characteristic4.SelectedIndex - 1;
             int characteristics3 = CB_Characteristic5.SelectedIndex - 1;
 
+            int day1 = (int)NUD_Frame1.Value;
+            int day2 = (int)NUD_Frame2.Value;
+            int day3 = (int)NUD_Frame3.Value;
+
+            if (day1 == day2 || day1 == day3 || day2 == day3)
+            {
+                MessageBox.Show("Please use different days for every input.");
+                return null;
+            }
+
             // calculate seed LSB
             int LSB = -1;
             var candidates = new List<int>();
@@ -829,7 +839,7 @@ namespace SeedSearcherGui
             {
                 characteristics1 = -1; // ensure its -1
             }
-            shiftCandidates(ref candidates);
+            shiftCandidates(ref candidates, day2 - day1);
             if (characteristics2 >= 0 && flawless2 > 1)
             {
                 removeCandidates(characteristics2, iv2, ref candidates);
@@ -838,7 +848,7 @@ namespace SeedSearcherGui
             {
                 characteristics2 = -1; // ensure its -1
             }
-            shiftCandidates(ref candidates);
+            shiftCandidates(ref candidates, day3 - day2);
             if (characteristics3 >= 0 && flawless3 > 1)
             {
                 removeCandidates(characteristics3, iv3, ref candidates);
@@ -866,16 +876,6 @@ namespace SeedSearcherGui
             bool HA1 = pkmn1.Ability == 4 || pkmn1.Ability == 2;
             bool HA2 = pkmn2.Ability == 4 || pkmn1.Ability == 2;
             bool HA3 = pkmn3.Ability == 4 || pkmn1.Ability == 2;
-
-            int day1 = (int)NUD_Frame1.Value;
-            int day2 = (int)NUD_Frame2.Value;
-            int day3 = (int)NUD_Frame3.Value;
-
-            if (day1 == day2 || day1 == day3 || day2 == day3)
-            {
-                MessageBox.Show("Please use different days for every input.");
-                return null;
-            }
 
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star12);
             searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, day1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1, flawlessIdx);
@@ -1137,6 +1137,16 @@ namespace SeedSearcherGui
                 MessageBox.Show("Invalid IVs for first Pokémon. Use \"Check IVs\" option to check your IVs.");
                 return null;
             }
+
+            int day1 = (int)NUD_Frame1.Value;
+            int day2 = (int)NUD_Frame2.Value;
+            int day3 = (int)NUD_Frame3.Value;
+
+            if (day1 == day2 || day1 == day3 || day2 == day3)
+            {
+                MessageBox.Show("Please use different days for every input.");
+                return null;
+            }
             // 2+ search
             // calculate seed LSB
             int LSB = -1;
@@ -1166,7 +1176,7 @@ namespace SeedSearcherGui
             {
                 characteristics3 = -1; // ensure its -1
             }
-            shiftCandidates(ref candidates);
+            shiftCandidates(ref candidates, day2 - day1);
             if (characteristics4 >= 0 && flawless4 > 1)
             {
                 removeCandidates(characteristics4, iv4, ref candidates);
@@ -1175,7 +1185,7 @@ namespace SeedSearcherGui
             {
                 characteristics4 = -1; // ensure its -1
             }
-            shiftCandidates(ref candidates);
+            shiftCandidates(ref candidates, day3 - day2);
             if (characteristics5 >= 0 && flawless5 > 1)
             {
                 removeCandidates(characteristics5, iv5, ref candidates);
@@ -1187,14 +1197,6 @@ namespace SeedSearcherGui
             if (candidates.Count == 1)
             {
                 LSB = candidates[0] & 1;
-            }
-            int day1 = (int)NUD_Frame1.Value;
-            int day2 = (int)NUD_Frame2.Value;
-            int day3 = (int)NUD_Frame3.Value;
-            if(day1 == day2 || day1 == day3 || day2 == day3)
-            {
-                MessageBox.Show("Please use different days for every input.");
-                return null;
             }
 
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35);
