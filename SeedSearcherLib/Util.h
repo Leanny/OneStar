@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Type.h"
 #include "XoroshiroState.h"
+#include "fastmod.h"
 
 inline _u64 GetSignature(_u64 value)
 {
@@ -12,6 +13,7 @@ inline _u64 GetSignature(_u64 value)
 	return (a ^ (a >> 1)) & 1;
 }
 
+static uint64_t M = fastmod::computeM_u32(6);
 static const int ToxtricityAmplifiedNatures[] = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
 static const int ToxtricityLowKeyNatures[] = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
 static const int ToxtricityID = 849;

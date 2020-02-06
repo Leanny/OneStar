@@ -152,6 +152,8 @@ int CalculateInverseMatrix(int length)
 			g_Coefficient[i] |= (g_InputMatrix[i] & (1ull << (63 - g_FreeId[a]))) >> ((rank + a) - g_FreeId[a]);
 		}
 	}
+
+	return 64 - skip;
 }
 
 void CalculateCoefficientData(int length)

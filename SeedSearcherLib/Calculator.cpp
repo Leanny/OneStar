@@ -15,8 +15,6 @@ static int g_Rerolls;
 static int g_FixedIndex;
 static int g_LSB;
 
-static uint64_t M = fastmod::computeM_u32(6);
-
 // 絞り込み条件設定
 
 // V確定用参照

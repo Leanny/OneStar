@@ -17,7 +17,6 @@ static int g_setIVs;
 
 static int g_IvOffset;
 
-static uint64_t M = fastmod::computeM_u32(6);
 static int RoundLength = 0;
 
 void SetSixFirstCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int ID, int altform, bool isNoGender, bool isEnableDream)
