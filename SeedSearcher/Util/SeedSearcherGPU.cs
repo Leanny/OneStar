@@ -74,6 +74,10 @@ namespace SeedSearcherGui
 				}
 			}
 			int maxVal = pkmn4.characteristicPos == null ? 3 : 4;
+			if(maxVal == 3)
+			{
+				add_const = new ulong[]{ 0, 0x82a2b175229d6a5bul, 0x54562ea453ad4b6ul };
+			}
 			ulong s0;
 			ulong s1;
 			ulong s0tmp;
