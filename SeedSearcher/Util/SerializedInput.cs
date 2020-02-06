@@ -7,7 +7,7 @@
         public PokemonInput Pkmn2 { get; set; }
         public PokemonInput Pkmn3 { get; set; }
         public PokemonInput Pkmn4 { get; set; }
-        public uint Checksum { get; private set; }
+        public uint Checksum { get; set; }
 
         public void CalculateChecksum()
         {
