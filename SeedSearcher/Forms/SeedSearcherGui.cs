@@ -871,6 +871,12 @@ namespace SeedSearcherGui
             int day2 = (int)NUD_Frame2.Value;
             int day3 = (int)NUD_Frame3.Value;
 
+            if (day1 == day2 || day1 == day3 || day2 == day3)
+            {
+                MessageBox.Show("Please use different days for every input.");
+                return null;
+            }
+
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star12);
             searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, day1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1, flawlessIdx);
             searcher.RegisterPokemon2(iv2[0], iv2[1], iv2[2], iv2[3], iv2[4], iv2[5], pkmn2.FlawlessIVs, ability2, nature2, characteristics2, day2, pkmn2.Species, pkmn2.AltForm, noGender2, HA2);
@@ -1182,10 +1188,14 @@ namespace SeedSearcherGui
             {
                 LSB = candidates[0] & 1;
             }
-
             int day1 = (int)NUD_Frame1.Value;
             int day2 = (int)NUD_Frame2.Value;
             int day3 = (int)NUD_Frame3.Value;
+            if(day1 == day2 || day1 == day3 || day2 == day3)
+            {
+                MessageBox.Show("Please use different days for every input.");
+                return null;
+            }
 
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35);
             searcher.RegisterPokemon1(iv1[0], iv1[1], iv1[2], iv1[3], iv1[4], iv1[5], pkmn1.FlawlessIVs, ability1, nature1, characteristics1, day1, pkmn1.Species, pkmn1.AltForm, noGender1, HA1);
