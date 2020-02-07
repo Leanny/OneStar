@@ -1841,11 +1841,29 @@ namespace SeedSearcherGui
             new ExportWindow(Util.Base64Encode(str)).Show();
         }
 
+        private List<RaidTemplate> GetFullList()
+        {
+            RaidTemplateTable toUse = GetTableToUse();
+            List<RaidTemplate> res = new List<RaidTemplate>();
+            for (int stars = 0; stars < 5; stars++)
+            {
+                foreach (var entry in toUse.Entries)
+                {
+                    if (entry.Probabilities[stars] > 0)
+                    {
+                        res.Add(entry);
+                    }
+                }
+            }
+            return res;
+        }
+
         private int GetIndexForSpecies(ComboboxItem selectedItem)
         {
-            for(int i=0; i < CB_Species4.Items.Count; i++)
+            var toCompare = GetFullList();
+            for (int i=0; i < toCompare.Count; i++)
             {
-                if(selectedItem.Value == ((ComboboxItem) CB_Species4.Items[i]).Value)
+                if(selectedItem.Value == toCompare[i])
                 {
                     return i;
                 }
@@ -1855,9 +1873,10 @@ namespace SeedSearcherGui
 
         private int GetSpeciesForIndex(int idx, ComboBox SpeciesBox)
         {
-            for (int i = 0; i < SpeciesBox.Items.Count; i++)
+            var toCompare = GetFullList();
+            for (int i = 0; i < toCompare.Count; i++)
             {
-                if (((ComboboxItem) SpeciesBox.Items[i]).Value == ((ComboboxItem)CB_Species4.Items[idx]).Value)
+                if (((ComboboxItem) SpeciesBox.Items[i]).Value == toCompare[idx])
                 {
                     return i;
                 }
@@ -1990,7 +2009,7 @@ namespace SeedSearcherGui
             }
             if(GB_51.Enabled)
             {
-                CB_Species4.SelectedIndex = si.Pkmn3.Index;
+                CB_Species4.SelectedIndex = GetSpeciesForIndex(si.Pkmn3.Index, CB_Species4);
                 ivs = GetIVsArray(si.Pkmn3.IVs);
                 for (int i = 0; i < 6; i++)
                 {
@@ -2004,7 +2023,7 @@ namespace SeedSearcherGui
             }
             if (GB_61.Enabled)
             {
-                CB_Species5.SelectedIndex = si.Pkmn4.Index;
+                CB_Species5.SelectedIndex = GetSpeciesForIndex(si.Pkmn4.Index, CB_Species5);
                 ivs = GetIVsArray(si.Pkmn4.IVs);
                 for (int i = 0; i < 6; i++)
                 {
