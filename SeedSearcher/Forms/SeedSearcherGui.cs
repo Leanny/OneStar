@@ -305,42 +305,32 @@ namespace SeedSearcherGui
         private void PopulateSpeciesCB(ComboBox species, RaidTemplate[] entries)
         {
             species.Items.Clear();
-            if (entries[0].Species == (int)PKHeX.Core.Species.Ditto)
+            List<string> used = new List<string>();
+            // special case to make it distinguishable
+            for (int stars = 0; stars < 5; stars++)
             {
-                List<string> used = new List<string>();
-                // special case to make it distinguishable
-                for (int stars = 0; stars < 5; stars++)
+                foreach (var entry in entries)
                 {
-                    foreach (var entry in entries)
+                    if (entry.Probabilities[stars] > 0)
                     {
-                        if (entry.Probabilities[stars] > 0)
+                        string gmax = "";
+                        if (entry.IsGigantamax)
                         {
-                            string s = $"{entry.FlawlessIVs}IV {GameStrings.Species[entry.Species]} {stars + 1}\u2605";
-                            if (!used.Contains(s))
-                            {
-                                ComboboxItem item = new ComboboxItem(s, entry);
-                                species.Items.Add(item);
-                                used.Add(s);
-                            }
+                            gmax = "(G-Max) ";
                         }
-                    }
-                }
-            }
-            else
-            {
-                for (int stars = 0; stars < 5; stars++)
-                {
-                    foreach (var entry in entries)
-                    {
-                        if (entry.Probabilities[stars] > 0)
+                        string s = "";
+                        if(entry.MinRank == entry.MaxRank)
                         {
-                            string gmax = "";
-                            if (entry.IsGigantamax)
-                            {
-                                gmax = "(G-Max)";
-                            }
-                            ComboboxItem item = new ComboboxItem($"{GameStrings.Species[entry.Species]} {gmax} {stars + 1}\u2605", entry);
+                            s = $"{GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}\u2605";
+                        } else
+                        {
+                            s = $"{GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}-{entry.MaxRank + 1}\u2605";
+                        }
+                        if (!used.Contains(s))
+                        {
+                            ComboboxItem item = new ComboboxItem(s, entry);
                             species.Items.Add(item);
+                            used.Add(s);
                         }
                     }
                 }
@@ -1594,38 +1584,31 @@ namespace SeedSearcherGui
                 cb.Items.Clear();
             }
             RaidTemplateTable toUse = GetTableToUse();
-            if (toUse.Entries[0].Species == (int)PKHeX.Core.Species.Ditto)
+            List<string> used = new List<string>();
+            for (int stars = 0; stars < 5; stars++)
             {
-                // special case to make it not so stuffed
-                for (int spidx = 0; spidx < CB_Species.Length; spidx++)
+                foreach (var entry in toUse.Entries)
                 {
-                    CB_Species[spidx].Items.Add(new ComboboxItem($"1IV {GameStrings.Species[toUse.Entries[0].Species]}1\u2605", toUse.Entries[0]));
-                    CB_Species[spidx].Items.Add(new ComboboxItem($"2IV {GameStrings.Species[toUse.Entries[0].Species]}1\u2605", toUse.Entries[2]));
-                    CB_Species[spidx].Items.Add(new ComboboxItem($"2IV {GameStrings.Species[toUse.Entries[0].Species]}2\u2605", toUse.Entries[2]));
-                    CB_Species[spidx].Items.Add(new ComboboxItem($"3IV {GameStrings.Species[toUse.Entries[0].Species]}2\u2605", toUse.Entries[4]));
-                    CB_Species[spidx].Items.Add(new ComboboxItem($"3IV {GameStrings.Species[toUse.Entries[0].Species]}3\u2605", toUse.Entries[6]));
-                    CB_Species[spidx].Items.Add(new ComboboxItem($"3IV {GameStrings.Species[toUse.Entries[0].Species]}4\u2605", toUse.Entries[6]));
-                    if (spidx > 2)
+                    if (entry.Probabilities[stars] > 0)
                     {
-                        CB_Species[spidx].Items.Add(new ComboboxItem($"4IV {GameStrings.Species[toUse.Entries[0].Species]}4\u2605", toUse.Entries[8]));
-                        CB_Species[spidx].Items.Add(new ComboboxItem($"4IV {GameStrings.Species[toUse.Entries[0].Species]}5\u2605", toUse.Entries[10]));
-                    }
-                }
-            }
-            else
-            {
-                for (int stars = 0; stars < 5; stars++)
-                {
-                    foreach (var entry in toUse.Entries)
-                    {
-                        if (entry.Probabilities[stars] > 0)
+                        string gmax = "";
+                        if (entry.IsGigantamax)
                         {
-                            string gmax = "";
-                            if (entry.IsGigantamax)
-                            {
-                                gmax = "(G-Max) ";
-                            }
-                            ComboboxItem item = new ComboboxItem($"{GameStrings.Species[entry.Species]} {gmax}{stars + 1}\u2605 ", entry);
+                            gmax = "(G-Max) ";
+                        }
+                        string s = "";
+                        if (entry.MinRank == entry.MaxRank)
+                        {
+                            s = $"{entry.FlawlessIVs}IV {GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}\u2605";
+                        }
+                        else
+                        {
+                            s = $"{entry.FlawlessIVs}IV {GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}-{entry.MaxRank + 1}\u2605";
+                        }
+                        if (!used.Contains(s))
+                        {
+                            ComboboxItem item = new ComboboxItem(s, entry);
+                            used.Add(s);
                             for (int spidx = 0; spidx < CB_Species.Length; spidx++)
                             {
                                 if (spidx > 2 || spidx == 0 && entry.FlawlessIVs <= 3)
