@@ -642,7 +642,7 @@
             // 
             // BT_IVCalc3
             // 
-            this.BT_IVCalc3.Location = new System.Drawing.Point(306, 175);
+            this.BT_IVCalc3.Location = new System.Drawing.Point(307, 176);
             this.BT_IVCalc3.Name = "BT_IVCalc3";
             this.BT_IVCalc3.Size = new System.Drawing.Size(105, 23);
             this.BT_IVCalc3.TabIndex = 51;
@@ -945,7 +945,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(19, 184);
+            this.button2.Location = new System.Drawing.Point(19, 182);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(277, 23);
             this.button2.TabIndex = 50;
@@ -955,7 +955,7 @@
             // 
             // BT_IVCalc2
             // 
-            this.BT_IVCalc2.Location = new System.Drawing.Point(306, 184);
+            this.BT_IVCalc2.Location = new System.Drawing.Point(307, 180);
             this.BT_IVCalc2.Name = "BT_IVCalc2";
             this.BT_IVCalc2.Size = new System.Drawing.Size(105, 23);
             this.BT_IVCalc2.TabIndex = 50;
@@ -1257,7 +1257,7 @@
             // 
             // BT_IVCalc1
             // 
-            this.BT_IVCalc1.Location = new System.Drawing.Point(306, 181);
+            this.BT_IVCalc1.Location = new System.Drawing.Point(307, 181);
             this.BT_IVCalc1.Name = "BT_IVCalc1";
             this.BT_IVCalc1.Size = new System.Drawing.Size(105, 23);
             this.BT_IVCalc1.TabIndex = 49;
@@ -1841,7 +1841,7 @@
             // 
             this.BT_Table.Location = new System.Drawing.Point(5, 136);
             this.BT_Table.Name = "BT_Table";
-            this.BT_Table.Size = new System.Drawing.Size(373, 29);
+            this.BT_Table.Size = new System.Drawing.Size(403, 29);
             this.BT_Table.TabIndex = 7;
             this.BT_Table.Text = "Seed Checker";
             this.BT_Table.UseVisualStyleBackColor = true;
@@ -1850,7 +1850,7 @@
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(243, 179);
+            this.label55.Location = new System.Drawing.Point(271, 179);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(13, 17);
             this.label55.TabIndex = 6;
@@ -1858,7 +1858,7 @@
             // 
             // NUD_IVMax
             // 
-            this.NUD_IVMax.Location = new System.Drawing.Point(260, 176);
+            this.NUD_IVMax.Location = new System.Drawing.Point(288, 176);
             this.NUD_IVMax.Name = "NUD_IVMax";
             this.NUD_IVMax.Size = new System.Drawing.Size(120, 22);
             this.NUD_IVMax.TabIndex = 5;
@@ -1871,7 +1871,7 @@
             // 
             // NUD_IVMin
             // 
-            this.NUD_IVMin.Location = new System.Drawing.Point(115, 176);
+            this.NUD_IVMin.Location = new System.Drawing.Point(143, 176);
             this.NUD_IVMin.Name = "NUD_IVMin";
             this.NUD_IVMin.Size = new System.Drawing.Size(120, 22);
             this.NUD_IVMin.TabIndex = 4;
@@ -1890,7 +1890,7 @@
             // 
             this.BT_newsearch.Location = new System.Drawing.Point(5, 97);
             this.BT_newsearch.Name = "BT_newsearch";
-            this.BT_newsearch.Size = new System.Drawing.Size(373, 29);
+            this.BT_newsearch.Size = new System.Drawing.Size(403, 29);
             this.BT_newsearch.TabIndex = 2;
             this.BT_newsearch.Text = "New Search";
             this.BT_newsearch.UseVisualStyleBackColor = true;
@@ -1902,14 +1902,14 @@
             this.SeedResult.Location = new System.Drawing.Point(5, 23);
             this.SeedResult.Name = "SeedResult";
             this.SeedResult.ReadOnly = true;
-            this.SeedResult.Size = new System.Drawing.Size(375, 23);
+            this.SeedResult.Size = new System.Drawing.Size(405, 23);
             this.SeedResult.TabIndex = 1;
             // 
             // BT_Search
             // 
             this.BT_Search.Location = new System.Drawing.Point(5, 59);
             this.BT_Search.Name = "BT_Search";
-            this.BT_Search.Size = new System.Drawing.Size(373, 29);
+            this.BT_Search.Size = new System.Drawing.Size(403, 29);
             this.BT_Search.TabIndex = 0;
             this.BT_Search.Text = "Start Search";
             this.BT_Search.UseVisualStyleBackColor = true;
@@ -1970,7 +1970,7 @@
             // 
             // BT_IVCalc5
             // 
-            this.BT_IVCalc5.Location = new System.Drawing.Point(306, 184);
+            this.BT_IVCalc5.Location = new System.Drawing.Point(306, 182);
             this.BT_IVCalc5.Name = "BT_IVCalc5";
             this.BT_IVCalc5.Size = new System.Drawing.Size(105, 23);
             this.BT_IVCalc5.TabIndex = 50;
@@ -2287,14 +2287,14 @@
             // exportDataToolStripMenuItem
             // 
             this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exportDataToolStripMenuItem.Text = "Export Data";
             this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.exportDataToolStripMenuItem_Click);
             // 
             // importDataToolStripMenuItem
             // 
             this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
-            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
+            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.importDataToolStripMenuItem.Text = "Import Data";
             this.importDataToolStripMenuItem.Click += new System.EventHandler(this.importDataToolStripMenuItem_Click);
             // 
@@ -2377,7 +2377,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1182, 850);
             this.Name = "SeedSearcherGui";
-            this.Text = "Seed Searcher 1.2 pre";
+            this.Text = "Seed Searcher 1.2 pre - b";
             this.GB_Left.ResumeLayout(false);
             this.GB_Left.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).EndInit();
