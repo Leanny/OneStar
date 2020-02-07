@@ -1863,7 +1863,7 @@ namespace SeedSearcherGui
             var toCompare = GetFullList();
             for (int i=0; i < toCompare.Count; i++)
             {
-                if(selectedItem.Value == toCompare[i])
+                if (RaidEquals((RaidTemplate)selectedItem.Value, toCompare[i]))
                 {
                     return i;
                 }
@@ -1874,14 +1874,21 @@ namespace SeedSearcherGui
         private int GetSpeciesForIndex(int idx, ComboBox SpeciesBox)
         {
             var toCompare = GetFullList();
-            for (int i = 0; i < toCompare.Count; i++)
+            for (int i = 0; i < SpeciesBox.Items.Count; i++)
             {
-                if (((ComboboxItem) SpeciesBox.Items[i]).Value == toCompare[idx])
+                if (RaidEquals((RaidTemplate)((ComboboxItem) SpeciesBox.Items[i]).Value, toCompare[idx]))
                 {
                     return i;
                 }
             }
             return -1;
+        }
+
+        private bool RaidEquals(RaidTemplate entry1, RaidTemplate entry2)
+        {
+            return entry1.Species == entry2.Species && entry1.FlawlessIVs == entry2.FlawlessIVs && entry1.IsGigantamax == entry2.IsGigantamax && 
+                entry1.MinRank == entry2.MinRank && entry1.MaxRank == entry2.MaxRank && entry1.Ability == entry2.Ability && entry1.AltForm == entry2.AltForm
+                && entry1.Gender == entry2.Gender && entry1.ShinyType == entry2.ShinyType;
         }
 
         private int GetIVs(int[] vals)
