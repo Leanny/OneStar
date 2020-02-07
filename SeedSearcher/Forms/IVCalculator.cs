@@ -17,13 +17,35 @@ namespace SeedSearcherGui
         private ComboBox[] ratings;
         private NumericUpDown[] original;
         private ComboBox nature;
+        public static readonly int[] ToxtricityAmplifiedNatures = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
+        public static readonly int[] ToxtricityLowKeyNatures = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
         public IVCalculator(PKHeX.Core.GameStrings gameStrings, RaidTemplate raidInfo, NumericUpDown hP1, NumericUpDown aTK1, NumericUpDown dEF1, NumericUpDown sPA1, NumericUpDown sPD1, NumericUpDown sPE1, ComboBox cB_Nature)
         {
             InitializeComponent();
             CB_Nature.Items.Clear();
             for (int i = 0; i < gameStrings.natures.Length; i++)
             {
-                CB_Nature.Items.Add(new ComboboxItem(gameStrings.natures[i], i));
+                if (raidInfo.Species == (int)PKHeX.Core.Species.Toxtricity)
+                {
+                    if (raidInfo.AltForm == 0)
+                    {
+                        if(ToxtricityAmplifiedNatures.Contains(i))
+                        {
+                            CB_Nature.Items.Add(new ComboboxItem(gameStrings.natures[i], i));
+                        }
+                    }
+                    else
+                    {
+                        if (ToxtricityLowKeyNatures.Contains(i))
+                        {
+                            CB_Nature.Items.Add(new ComboboxItem(gameStrings.natures[i], i));
+                        }
+                    }
+                }
+                else
+                {
+                    CB_Nature.Items.Add(new ComboboxItem(gameStrings.natures[i], i));
+                }
             }
             CB_Nature.SelectedIndex = cB_Nature.SelectedIndex;
             nature = cB_Nature;
