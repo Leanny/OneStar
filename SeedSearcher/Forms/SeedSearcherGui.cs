@@ -32,7 +32,7 @@ namespace SeedSearcherGui
         public static readonly int[] ToxtricityAmplifiedNatures = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
         public static readonly int[] ToxtricityLowKeyNatures = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
         public const int ToxtricityID = 849;
-        private string loadedEvent = "200131.json";
+        private string loadedEvent = "200207.json";
 
         public SeedSearcherGui()
         {
@@ -1744,6 +1744,7 @@ namespace SeedSearcherGui
             var AppPath = Application.StartupPath.Trim() + "/";
             ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
             var EventData = $"{AppPath}{EventPath}{tsmi.Text}.json";
+            loadedEvent = $"{tsmi.Text}.json";
             LoadEventData(EventData);
         }
 
