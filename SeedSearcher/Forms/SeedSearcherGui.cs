@@ -1599,11 +1599,11 @@ namespace SeedSearcherGui
                         string s = "";
                         if (entry.MinRank == entry.MaxRank)
                         {
-                            s = $"{entry.FlawlessIVs}IV {GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}\u2605";
+                            s = $"{GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}\u2605 ({entry.FlawlessIVs}IV)";
                         }
                         else
                         {
-                            s = $"{entry.FlawlessIVs}IV {GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}-{entry.MaxRank + 1}\u2605";
+                            s = $"{GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}-{entry.MaxRank + 1}\u2605 ({entry.FlawlessIVs}IV)";
                         }
                         if (!used.Contains(s))
                         {
