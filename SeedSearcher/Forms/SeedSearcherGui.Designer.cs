@@ -2327,6 +2327,7 @@
             this.简体中文ToolStripMenuItem1.Name = "简体中文ToolStripMenuItem1";
             this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.简体中文ToolStripMenuItem1.Text = "简体中文";
+            this.简体中文ToolStripMenuItem1.Click += new System.EventHandler(this.ChineseToolStripMenuItem_Click);
             // 
             // checkSeedToolStripMenuItem
             // 
