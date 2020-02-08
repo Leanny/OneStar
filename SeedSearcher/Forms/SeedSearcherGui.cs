@@ -1831,7 +1831,7 @@ namespace SeedSearcherGui
 
             if(GB_51.Enabled)
             {
-                pkmn3.Index = CB_Species4.SelectedIndex;
+                pkmn3.Index = GetIndexForSpecies((ComboboxItem)CB_Species4.SelectedItem);
                 pkmn3.IVs = GetIVs(new int[] { (int)HP4.Value, (int)ATK4.Value, (int)DEF4.Value, (int)SPA4.Value, (int)SPD4.Value, (int)SPE4.Value });
                 pkmn3.Nature = (int)((ComboboxItem)CB_Nature4.SelectedItem).Value;
                 pkmn3.Characteristic = CB_Characteristic4.SelectedIndex;
@@ -1840,7 +1840,7 @@ namespace SeedSearcherGui
 
             if (GB_61.Enabled)
             {
-                pkmn4.Index = CB_Species5.SelectedIndex;
+                pkmn4.Index = GetIndexForSpecies((ComboboxItem)CB_Species5.SelectedItem);
                 pkmn4.IVs = GetIVs(new int[] { (int)HP5.Value, (int)ATK5.Value, (int)DEF5.Value, (int)SPA5.Value, (int)SPD5.Value, (int)SPE5.Value });
                 pkmn4.Nature = (int)((ComboboxItem)CB_Nature5.SelectedItem).Value;
                 pkmn4.Characteristic = CB_Characteristic5.SelectedIndex;
