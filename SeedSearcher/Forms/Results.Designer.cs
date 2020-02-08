@@ -92,6 +92,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DetailsBox = new System.Windows.Forms.GroupBox();
+            this.BTN_Clear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxSpe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxSpd)).BeginInit();
@@ -112,10 +113,10 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(581, 181);
+            this.searchButton.Location = new System.Drawing.Point(641, 181);
             this.searchButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(121, 30);
+            this.searchButton.Size = new System.Drawing.Size(92, 30);
             this.searchButton.TabIndex = 35;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -123,10 +124,10 @@
             // 
             // resetFilter
             // 
-            this.resetFilter.Location = new System.Drawing.Point(421, 181);
+            this.resetFilter.Location = new System.Drawing.Point(388, 181);
             this.resetFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resetFilter.Name = "resetFilter";
-            this.resetFilter.Size = new System.Drawing.Size(121, 30);
+            this.resetFilter.Size = new System.Drawing.Size(92, 30);
             this.resetFilter.TabIndex = 34;
             this.resetFilter.Text = "Reset Filter";
             this.resetFilter.UseVisualStyleBackColor = true;
@@ -137,7 +138,7 @@
             this.applyFilter.Location = new System.Drawing.Point(261, 181);
             this.applyFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.applyFilter.Name = "applyFilter";
-            this.applyFilter.Size = new System.Drawing.Size(121, 30);
+            this.applyFilter.Size = new System.Drawing.Size(92, 30);
             this.applyFilter.TabIndex = 33;
             this.applyFilter.Text = "Apply Filter";
             this.applyFilter.UseVisualStyleBackColor = true;
@@ -818,6 +819,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.BTN_Clear);
             this.groupBox2.Controls.Add(this.searchButton);
             this.groupBox2.Controls.Add(this.resetFilter);
             this.groupBox2.Controls.Add(this.applyFilter);
@@ -876,6 +878,16 @@
             this.DetailsBox.TabIndex = 3;
             this.DetailsBox.TabStop = false;
             this.DetailsBox.Text = "Details";
+            // 
+            // BTN_Clear
+            // 
+            this.BTN_Clear.Location = new System.Drawing.Point(511, 181);
+            this.BTN_Clear.Name = "BTN_Clear";
+            this.BTN_Clear.Size = new System.Drawing.Size(92, 30);
+            this.BTN_Clear.TabIndex = 36;
+            this.BTN_Clear.Text = "Clear Filter";
+            this.BTN_Clear.UseVisualStyleBackColor = true;
+            this.BTN_Clear.Click += new System.EventHandler(this.BTN_Clear_Click);
             // 
             // Results
             // 
@@ -975,5 +987,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox denBox;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button BTN_Clear;
     }
 }

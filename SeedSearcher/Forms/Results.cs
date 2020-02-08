@@ -256,5 +256,25 @@ namespace SeedSearcherGui
             NumericUpDown numbox = (NumericUpDown)sender;
             numbox.Select(0, numbox.Text.Length);
         }
+
+        private void BTN_Clear_Click(object sender, EventArgs e)
+        {
+            minHP.Value = 0;
+            minAtk.Value = 0;
+            minDef.Value = 0;
+            minSpa.Value = 0;
+            minSpd.Value = 0;
+            MinSpe.Value = 0;
+            maxHP.Value = 31;
+            maxAtk.Value = 31;
+            maxDef.Value = 31;
+            maxSpa.Value = 31;
+            maxSpd.Value = 31;
+            maxSpe.Value = 31;
+            natureBox.SelectedIndex = 0;
+            abilityBox.SelectedIndex = 0;
+            shinyBox.SelectedIndex = 0;
+            genderBox.SelectedIndex = 0;
+        }
     }
 }
