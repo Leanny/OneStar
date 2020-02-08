@@ -21,7 +21,7 @@ namespace SeedSearcherGui
 		}
 
 		// 結果
-		static public List<ulong> Result { get; } = new List<ulong>();
+		public List<ulong> Result { get; } = new List<ulong>();
 
 		// ★1～2検索
 		[DllImport("SeedSearcherLib.dll")]
