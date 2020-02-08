@@ -466,7 +466,7 @@
             0});
             this.maxSpd.Name = "maxSpd";
             this.maxSpd.Size = new System.Drawing.Size(43, 22);
-            this.maxSpd.TabIndex = 18;
+            this.maxSpd.TabIndex = 17;
             this.maxSpd.Value = new decimal(new int[] {
             31,
             0,
@@ -485,7 +485,7 @@
             0});
             this.maxSpa.Name = "maxSpa";
             this.maxSpa.Size = new System.Drawing.Size(43, 22);
-            this.maxSpa.TabIndex = 17;
+            this.maxSpa.TabIndex = 15;
             this.maxSpa.Value = new decimal(new int[] {
             31,
             0,
@@ -504,7 +504,7 @@
             0});
             this.maxDef.Name = "maxDef";
             this.maxDef.Size = new System.Drawing.Size(43, 22);
-            this.maxDef.TabIndex = 16;
+            this.maxDef.TabIndex = 13;
             this.maxDef.Value = new decimal(new int[] {
             31,
             0,
@@ -523,7 +523,7 @@
             0});
             this.maxAtk.Name = "maxAtk";
             this.maxAtk.Size = new System.Drawing.Size(43, 22);
-            this.maxAtk.TabIndex = 15;
+            this.maxAtk.TabIndex = 11;
             this.maxAtk.Value = new decimal(new int[] {
             31,
             0,
@@ -542,7 +542,7 @@
             0});
             this.maxHP.Name = "maxHP";
             this.maxHP.Size = new System.Drawing.Size(43, 22);
-            this.maxHP.TabIndex = 14;
+            this.maxHP.TabIndex = 9;
             this.maxHP.Value = new decimal(new int[] {
             31,
             0,
@@ -561,7 +561,7 @@
             0});
             this.MinSpe.Name = "MinSpe";
             this.MinSpe.Size = new System.Drawing.Size(43, 22);
-            this.MinSpe.TabIndex = 13;
+            this.MinSpe.TabIndex = 18;
             this.MinSpe.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // minSpd
@@ -575,7 +575,7 @@
             0});
             this.minSpd.Name = "minSpd";
             this.minSpd.Size = new System.Drawing.Size(43, 22);
-            this.minSpd.TabIndex = 12;
+            this.minSpd.TabIndex = 16;
             this.minSpd.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // SpaCell
@@ -616,7 +616,7 @@
             0});
             this.minSpa.Name = "minSpa";
             this.minSpa.Size = new System.Drawing.Size(43, 22);
-            this.minSpa.TabIndex = 11;
+            this.minSpa.TabIndex = 14;
             this.minSpa.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // minDef
@@ -630,7 +630,7 @@
             0});
             this.minDef.Name = "minDef";
             this.minDef.Size = new System.Drawing.Size(43, 22);
-            this.minDef.TabIndex = 10;
+            this.minDef.TabIndex = 12;
             this.minDef.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // minAtk
@@ -644,7 +644,7 @@
             0});
             this.minAtk.Name = "minAtk";
             this.minAtk.Size = new System.Drawing.Size(43, 22);
-            this.minAtk.TabIndex = 9;
+            this.minAtk.TabIndex = 10;
             this.minAtk.Enter += new System.EventHandler(this.minHP_Enter);
             // 
             // label13
