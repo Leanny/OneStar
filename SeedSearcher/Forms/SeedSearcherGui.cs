@@ -529,7 +529,7 @@ namespace SeedSearcherGui
                             }
                             else
                             {
-                                NUD_Stats[i + 6].BackColor = Color.Red;
+                                NUD_Stats[i + 6].BackColor = Color.Yellow;
                             }
                             unsetIV++;
                         }
@@ -626,7 +626,7 @@ namespace SeedSearcherGui
                     }
                     else
                     {
-                        NUD_Stats[i + 6 * 2].BackColor = Color.Red;
+                        NUD_Stats[i + 6 * 2].BackColor = Color.Yellow;
                     }
                     unsetIV2++;
                 }
@@ -1697,6 +1697,7 @@ namespace SeedSearcherGui
             string localJson = File.ReadAllText(AppPath + EventFilePath);
             if (localJson == versionJson)
             {
+                MessageBox.Show("No update available.");
                 return;
             }
             if (versionJson != null)
