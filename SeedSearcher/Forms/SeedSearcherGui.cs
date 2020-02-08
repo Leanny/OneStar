@@ -1239,9 +1239,9 @@ namespace SeedSearcherGui
             GB_Controls.Enabled = true;
 
             SystemSounds.Asterisk.Play();
-            if (SeedSearcher.Result.Count == 0)
+            if (searcher.Result.Count == 0)
             {
-                MessageBox.Show("No Seed found. Please increase IV Deviation and run the tool again.");
+                MessageBox.Show("No Seed found. Please increase Calculation Range and run the tool again.");
                 //unlock for editing
                 GB_41.Enabled = true;
                 GB_42.Enabled = enabled[1];
@@ -1253,10 +1253,10 @@ namespace SeedSearcherGui
             }
             else
             {
-                File.WriteAllText("results.txt", $"{SeedSearcher.Result[0]:X}\n");
-                for (int i = 0; i < SeedSearcher.Result.Count; ++i)
+                File.WriteAllText("results.txt", $"{searcher.Result[0]:X}\n");
+                for (int i = 0; i < searcher.Result.Count; ++i)
                 {
-                    SeedResult.Text += $"{SeedSearcher.Result[i]:X}\n";
+                    SeedResult.Text += $"{searcher.Result[i]:X}\n";
                 }
             }
             BT_newsearch.Enabled = true;

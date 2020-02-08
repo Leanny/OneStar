@@ -1882,9 +1882,9 @@
             this.LBL_IVDeviation.AutoSize = true;
             this.LBL_IVDeviation.Location = new System.Drawing.Point(7, 179);
             this.LBL_IVDeviation.Name = "LBL_IVDeviation";
-            this.LBL_IVDeviation.Size = new System.Drawing.Size(87, 17);
+            this.LBL_IVDeviation.Size = new System.Drawing.Size(127, 17);
             this.LBL_IVDeviation.TabIndex = 3;
-            this.LBL_IVDeviation.Text = "IV Deviation:";
+            this.LBL_IVDeviation.Text = "Calculation Range:";
             // 
             // BT_newsearch
             // 

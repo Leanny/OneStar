@@ -655,7 +655,7 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die IV Deviation ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Calculation Range ähnelt.
         /// </summary>
         internal static string IVDeviation {
             get {

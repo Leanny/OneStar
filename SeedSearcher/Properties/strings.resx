@@ -316,7 +316,7 @@
     <value>HP</value>
   </data>
   <data name="IVDeviation" xml:space="preserve">
-    <value>IV Deviation</value>
+    <value>Calculation Range</value>
   </data>
   <data name="Lake1" xml:space="preserve">
     <value>Lake of Outrage 1</value>
