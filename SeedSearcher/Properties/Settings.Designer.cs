@@ -34,5 +34,17 @@ namespace SeedSearcherGui.Properties {
                 this["Language"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200207")]
+        public string CurrentEvent {
+            get {
+                return ((string)(this["CurrentEvent"]));
+            }
+            set {
+                this["CurrentEvent"] = value;
+            }
+        }
     }
 }

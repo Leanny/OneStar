@@ -1728,13 +1728,25 @@ namespace SeedSearcherGui
             string localJson = File.ReadAllText(AppPath + EventFilePath);
             var EventEntries = JsonConvert.DeserializeObject<List<string>>(localJson);
             this.eventsToolStripMenuItem.DropDownItems.Clear();
+            string EventData = null;
             foreach (string EventName in EventEntries)
             {
                 ToolStripMenuItem item = new ToolStripMenuItem();
                 item.Name = EventName;
                 item.Text = EventName.Substring(0, EventName.Length - 5); // - ".json"
                 item.Click += new System.EventHandler(LoadEvent);
+                item.CheckOnClick = true;
                 this.eventsToolStripMenuItem.DropDownItems.Add(item);
+                if(Properties.Settings.Default.CurrentEvent == item.Text)
+                {
+                    item.Checked = true;
+                    EventData = $"{AppPath}{EventPath}{item.Text}.json";
+                }
+                
+            }
+            if (EventData != null)
+            {
+                LoadEventData(EventData);
             }
             this.eventsToolStripMenuItem.DropDownItems.Add(this.updateEventDatabaseToolStripMenuItem);
         }
@@ -1745,6 +1757,8 @@ namespace SeedSearcherGui
             ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
             var EventData = $"{AppPath}{EventPath}{tsmi.Text}.json";
             loadedEvent = $"{tsmi.Text}.json";
+            Properties.Settings.Default.CurrentEvent = tsmi.Text;
+            Properties.Settings.Default.Save();
             LoadEventData(EventData);
         }
 

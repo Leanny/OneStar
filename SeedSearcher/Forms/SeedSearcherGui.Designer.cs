@@ -2287,14 +2287,14 @@
             // exportDataToolStripMenuItem
             // 
             this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.exportDataToolStripMenuItem.Text = "Export Data";
             this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.exportDataToolStripMenuItem_Click);
             // 
             // importDataToolStripMenuItem
             // 
             this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
-            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.importDataToolStripMenuItem.Text = "Import Data";
             this.importDataToolStripMenuItem.Click += new System.EventHandler(this.importDataToolStripMenuItem_Click);
             // 
@@ -2311,21 +2311,21 @@
             // englishToolStripMenuItem1
             // 
             this.englishToolStripMenuItem1.Name = "englishToolStripMenuItem1";
-            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
             this.englishToolStripMenuItem1.Text = "English";
             this.englishToolStripMenuItem1.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
             // 
             // 日本語ToolStripMenuItem1
             // 
             this.日本語ToolStripMenuItem1.Name = "日本語ToolStripMenuItem1";
-            this.日本語ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.日本語ToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
             this.日本語ToolStripMenuItem1.Text = "日本語";
             this.日本語ToolStripMenuItem1.Click += new System.EventHandler(this.NihongoToolStripMenuItem_Click);
             // 
             // 简体中文ToolStripMenuItem1
             // 
             this.简体中文ToolStripMenuItem1.Name = "简体中文ToolStripMenuItem1";
-            this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
             this.简体中文ToolStripMenuItem1.Text = "简体中文";
             this.简体中文ToolStripMenuItem1.Click += new System.EventHandler(this.ChineseToolStripMenuItem_Click);
             // 
@@ -2351,6 +2351,7 @@
             this.eventsToolStripMenuItem.Name = "eventsToolStripMenuItem";
             this.eventsToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.eventsToolStripMenuItem.Text = "Set Event";
+            this.eventsToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.UncheckToolStripMenuItem_Click);
             // 
             // updateEventDatabaseToolStripMenuItem
             // 
