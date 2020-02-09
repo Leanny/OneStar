@@ -9,7 +9,7 @@ namespace SeedSearcherGui
 {
     public partial class Results : Form
     {
-        private GameStrings GameStrings;
+        private readonly GameStrings GameStrings;
         private static readonly ComboboxItem genderless = new ComboboxItem("Genderless", 2);
         private static readonly ComboboxItem female = new ComboboxItem("Female", 1);
         private static readonly ComboboxItem male = new ComboboxItem("Male", 0);
@@ -42,7 +42,7 @@ namespace SeedSearcherGui
             return start + (frames * XOROSHIRO.XOROSHIRO_CONST);
         }
 
-        private void generateData_Click(object sender, EventArgs e)
+        private void GenerateData_Click(object sender, EventArgs e)
         {
             if (seedBox.Text.Length == 0) return;
             ulong start_seed = ulong.Parse(seedBox.Text, System.Globalization.NumberStyles.HexNumber);
@@ -86,7 +86,7 @@ namespace SeedSearcherGui
             return row;
         }
 
-        private void speciesList_SelectedIndexChanged(object sender, EventArgs e)
+        private void SpeciesList_SelectedIndexChanged(object sender, EventArgs e)
         {
             var pkm = (RaidTemplate)((ComboboxItem)speciesList.SelectedItem).Value;
             var abilities = PersonalTable.SWSH.GetAbilities(pkm.Species, pkm.AltForm);
@@ -138,7 +138,7 @@ namespace SeedSearcherGui
             }
         }
 
-        private void applyFilter_Click(object sender, EventArgs e)
+        private void ApplyFilter_Click(object sender, EventArgs e)
         {
             var rows = new DataGridViewRow[raidContent.Rows.Count];
             raidContent.Rows.CopyTo(rows, 0);
@@ -212,7 +212,7 @@ namespace SeedSearcherGui
         }
 
 
-        private void resetFilter_Click(object sender, EventArgs e)
+        private void ResetFilter_Click(object sender, EventArgs e)
         {
             var rows = new DataGridViewRow[raidContent.Rows.Count];
             raidContent.Rows.CopyTo(rows, 0);
@@ -222,7 +222,7 @@ namespace SeedSearcherGui
             raidContent.Rows.AddRange(rows);
         }
 
-        private void searchButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
             var result = Util.Prompt(MessageBoxButtons.YesNo, "This might take a long time. Are you sure you want to start the search?");
             if (result != DialogResult.Yes)
@@ -249,9 +249,9 @@ namespace SeedSearcherGui
             ((ISupportInitialize)raidContent).EndInit();
         }
 
-        private void seedBox_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = !PKHeX_Raid_Plugin.Util.IsHexOrControl(e.KeyChar);
+        private void SeedBox_KeyPress(object sender, KeyPressEventArgs e) => e.Handled = !PKHeX_Raid_Plugin.Util.IsHexOrControl(e.KeyChar);
 
-        private void minHP_Enter(object sender, EventArgs e)
+        private void MinHP_Enter(object sender, EventArgs e)
         {
             NumericUpDown numbox = (NumericUpDown)sender;
             numbox.Select(0, numbox.Text.Length);

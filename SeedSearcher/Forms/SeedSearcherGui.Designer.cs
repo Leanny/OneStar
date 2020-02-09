@@ -2289,14 +2289,14 @@
             this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
             this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.exportDataToolStripMenuItem.Text = "Export Data";
-            this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.exportDataToolStripMenuItem_Click);
+            this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.ExportDataToolStripMenuItem_Click);
             // 
             // importDataToolStripMenuItem
             // 
             this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
             this.importDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.importDataToolStripMenuItem.Text = "Import Data";
-            this.importDataToolStripMenuItem.Click += new System.EventHandler(this.importDataToolStripMenuItem_Click);
+            this.importDataToolStripMenuItem.Click += new System.EventHandler(this.ImportDataToolStripMenuItem_Click);
             // 
             // languagesToolStripMenuItem
             // 
@@ -2313,7 +2313,7 @@
             this.englishToolStripMenuItem1.Name = "englishToolStripMenuItem1";
             this.englishToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
             this.englishToolStripMenuItem1.Text = "English";
-            this.englishToolStripMenuItem1.Click += new System.EventHandler(this.englishToolStripMenuItem_Click);
+            this.englishToolStripMenuItem1.Click += new System.EventHandler(this.EnglishToolStripMenuItem_Click);
             // 
             // 日本語ToolStripMenuItem1
             // 
@@ -2335,7 +2335,7 @@
             this.checkSeedToolStripMenuItem.Name = "checkSeedToolStripMenuItem";
             this.checkSeedToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
             this.checkSeedToolStripMenuItem.Text = "Check Seed";
-            this.checkSeedToolStripMenuItem.Click += new System.EventHandler(this.checkSeedToolStripMenuItem_Click);
+            this.checkSeedToolStripMenuItem.Click += new System.EventHandler(this.CheckSeedToolStripMenuItem_Click);
             // 
             // acceleratorToolStripMenuItem
             // 
@@ -2358,7 +2358,7 @@
             this.updateEventDatabaseToolStripMenuItem.Name = "updateEventDatabaseToolStripMenuItem";
             this.updateEventDatabaseToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
             this.updateEventDatabaseToolStripMenuItem.Text = "Update Event Database";
-            this.updateEventDatabaseToolStripMenuItem.Click += new System.EventHandler(this.updateEventDatabaseToolStripMenuItem_Click);
+            this.updateEventDatabaseToolStripMenuItem.Click += new System.EventHandler(this.UpdateEventDatabaseToolStripMenuItem_Click);
             // 
             // SeedSearcherGui
             // 

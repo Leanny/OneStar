@@ -13,7 +13,7 @@ namespace SeedSearcherGui
 			Star35
 		};
 
-		Mode m_Mode;
+		private readonly Mode m_Mode;
 
 		public SeedSearcher(Mode mode)
 		{

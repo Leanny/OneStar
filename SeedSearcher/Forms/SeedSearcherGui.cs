@@ -83,7 +83,7 @@ namespace SeedSearcherGui
             }
             else
             {
-                englishToolStripMenuItem_Click(null, null);
+                EnglishToolStripMenuItem_Click(null, null);
             }
             dontChange = false;
 
@@ -355,7 +355,7 @@ namespace SeedSearcherGui
             }
         }
 
-        static Color[] colors = new Color[] { Color.White, Color.White, Color.White, Color.White, Color.Orange, Color.Blue, Color.Green, Color.White, Color.White, Color.White };
+        static readonly Color[] colors = new Color[] { Color.White, Color.White, Color.White, Color.White, Color.Orange, Color.Blue, Color.Green, Color.White, Color.White, Color.White };
 
         private int[] CheckIVs(ref int[] fixedIVs)
         {
@@ -369,7 +369,7 @@ namespace SeedSearcherGui
             LB_Response.Text = "";
             LBLAO.Text = "";
             int set2 = 0;
-            int set3 = 0;
+            int set3;
             bool firstTime = !RB_2nd.Checked && !RB_3rd.Checked;
             // ensure good color
             foreach (var nud in NUD_Stats)
@@ -757,7 +757,7 @@ namespace SeedSearcherGui
             numbox.Select(0, numbox.Text.Length);
         }
 
-        private void removeCandidates(int characteristic, int[] ivs, ref List<int> candidates)
+        private void RemoveCandidates(int characteristic, int[] ivs, ref List<int> candidates)
         {
             int idx = (characteristic + 5) % 6;
             // get possible characteristics
@@ -772,7 +772,7 @@ namespace SeedSearcherGui
             }
         }
 
-        private void shiftCandidates(ref List<int> candidates, int days)
+        private void ShiftCandidates(ref List<int> candidates, int days)
         {
             for (int i = 0; i < candidates.Count; i++)
             {
@@ -823,25 +823,25 @@ namespace SeedSearcherGui
             candidates.AddRange(new int[] { 0, 1, 2, 3, 4, 5 });
             if (characteristics1 >= 0 && flawless1 > 1)
             {
-                removeCandidates(characteristics1, iv1, ref candidates);
+                RemoveCandidates(characteristics1, iv1, ref candidates);
             }
             else
             {
                 characteristics1 = -1; // ensure its -1
             }
-            shiftCandidates(ref candidates, day2 - day1);
+            ShiftCandidates(ref candidates, day2 - day1);
             if (characteristics2 >= 0 && flawless2 > 1)
             {
-                removeCandidates(characteristics2, iv2, ref candidates);
+                RemoveCandidates(characteristics2, iv2, ref candidates);
             }
             else
             {
                 characteristics2 = -1; // ensure its -1
             }
-            shiftCandidates(ref candidates, day3 - day2);
+            ShiftCandidates(ref candidates, day3 - day2);
             if (characteristics3 >= 0 && flawless3 > 1)
             {
-                removeCandidates(characteristics3, iv3, ref candidates);
+                RemoveCandidates(characteristics3, iv3, ref candidates);
             }
             else
             {
@@ -919,44 +919,44 @@ namespace SeedSearcherGui
             RaidTemplate pkmn1 = null;
             RaidTemplate pkmn2 = null;
             RaidTemplate pkmn3 = null;
-            RaidTemplate pkmn4 = null;
-            RaidTemplate pkmn5 = null;
+            RaidTemplate pkmn4;
+            RaidTemplate pkmn5;
 
             int ability1 = -1;
             int ability2 = -1;
             int ability3 = -1;
-            int ability4 = -1;
-            int ability5 = -1;
+            int ability4;
+            int ability5;
 
             int nature1 = -1;
             int nature2 = -1;
             int nature3 = -1;
-            int nature4 = -1;
-            int nature5 = -1;
+            int nature4;
+            int nature5;
 
             int characteristics1 = -1;
             int characteristics2 = -1;
             int characteristics3 = -1;
-            int characteristics4 = -1;
-            int characteristics5 = -1;
+            int characteristics4;
+            int characteristics5;
 
             int fixedIV1 = -1;
             int fixedIV2 = -1;
             int fixedIV3 = -1;
-            int fixedIV4 = -1;
-            int fixedIV5 = -1;
+            int fixedIV4;
+            int fixedIV5;
 
             bool noGender1 = false;
             bool noGender2 = false;
             bool noGender3 = false;
-            bool noGender4 = false;
-            bool noGender5 = false;
+            bool noGender4;
+            bool noGender5;
 
             bool HA1 = false;
             bool HA2 = false;
             bool HA3 = false;
-            bool HA4 = false;
-            bool HA5 = false;
+            bool HA4;
+            bool HA5;
             GB_PKMN1.Enabled = true;
 
             if (GB_41.Enabled)
@@ -1144,7 +1144,7 @@ namespace SeedSearcherGui
             candidates.AddRange(new int[] { 0, 1, 2, 3, 4, 5 });
             if (characteristics1 >= 0 && flawless1 > 1)
             {
-                removeCandidates(characteristics1, iv1, ref candidates);
+                RemoveCandidates(characteristics1, iv1, ref candidates);
             }
             else
             {
@@ -1152,7 +1152,7 @@ namespace SeedSearcherGui
             }
             if (GB_42.Enabled && characteristics2 >= 0 && flawless2 > 1)
             {
-                removeCandidates(characteristics2, iv2, ref candidates);
+                RemoveCandidates(characteristics2, iv2, ref candidates);
             }
             else
             {
@@ -1160,25 +1160,25 @@ namespace SeedSearcherGui
             }
             if (GB_43.Enabled && characteristics3 >= 0 && flawless3 > 1)
             {
-                removeCandidates(characteristics3, iv3, ref candidates);
+                RemoveCandidates(characteristics3, iv3, ref candidates);
             }
             else
             {
                 characteristics3 = -1; // ensure its -1
             }
-            shiftCandidates(ref candidates, day2 - day1);
+            ShiftCandidates(ref candidates, day2 - day1);
             if (characteristics4 >= 0 && flawless4 > 1)
             {
-                removeCandidates(characteristics4, iv4, ref candidates);
+                RemoveCandidates(characteristics4, iv4, ref candidates);
             }
             else
             {
                 characteristics4 = -1; // ensure its -1
             }
-            shiftCandidates(ref candidates, day3 - day2);
+            ShiftCandidates(ref candidates, day3 - day2);
             if (characteristics5 >= 0 && flawless5 > 1)
             {
-                removeCandidates(characteristics5, iv5, ref candidates);
+                RemoveCandidates(characteristics5, iv5, ref candidates);
             }
             else
             {
@@ -1426,7 +1426,7 @@ namespace SeedSearcherGui
             NUD_IVMin.Maximum = NUD_IVMax.Value;
         }
 
-        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EnglishToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Language = 1;
             Properties.Settings.Default.Save();
@@ -1501,18 +1501,18 @@ namespace SeedSearcherGui
             f.Show();
         }
 
-        private void checkSeedToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CheckSeedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SeedSearcher searcher = CheckInput();
             if (searcher != null)
             {
                 string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Seed you want to check.", "Enter Seed", "0");
-                ulong seed = 0;
+                ulong seed;
                 try
                 {
                     seed = ulong.Parse(UserAnswer, System.Globalization.NumberStyles.HexNumber);
                 }
-                catch (System.FormatException ex)
+                catch (System.FormatException)
                 {
                     Util.Prompt(MessageBoxButtons.OK, "Invalid Seed Number");
                     return;
@@ -1546,9 +1546,8 @@ namespace SeedSearcherGui
         {
             if (!dontChange)
             {
-                if (sender is NumericUpDown)
+                if (sender is NumericUpDown s)
                 {
-                    var s = (NumericUpDown)sender;
                     s.BackColor = Color.White;
                 }
                 RB_3rd.Checked = true;
@@ -1559,9 +1558,8 @@ namespace SeedSearcherGui
         {
             if (!dontChange)
             {
-                if (sender is NumericUpDown)
+                if (sender is NumericUpDown s)
                 {
-                    var s = (NumericUpDown)sender;
                     s.BackColor = Color.White;
                 }
                 RB_2nd.Checked = true;
@@ -1632,8 +1630,7 @@ namespace SeedSearcherGui
 
         private void UncheckToolStripMenuItem_Click(object sender, ToolStripItemClickedEventArgs e)
         {
-            ToolStripMenuItem ownerItem = e.ClickedItem.OwnerItem as ToolStripMenuItem;
-            if (ownerItem != null)
+            if (e.ClickedItem.OwnerItem is ToolStripMenuItem ownerItem)
             {
                 //uncheck all item
                 foreach (ToolStripMenuItem item in ownerItem.DropDownItems)
@@ -1685,7 +1682,7 @@ namespace SeedSearcherGui
         readonly string EventFilePath = $"{EventPath}files.json";
         const string BASEURL = "https://raw.githubusercontent.com/Leanny/SeedSearcher/master/Events/";
         readonly string VersionURL = $"{BASEURL}files.json";
-        private void updateEventDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UpdateEventDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var AppPath = Application.StartupPath.Trim() + "/";
             if (!File.Exists(AppPath + EventFilePath))
@@ -1723,7 +1720,7 @@ namespace SeedSearcherGui
             var AppPath = Application.StartupPath.Trim() + "/";
             if (!File.Exists(AppPath + EventFilePath))
             {
-                updateEventDatabaseToolStripMenuItem_Click(null, null);
+                UpdateEventDatabaseToolStripMenuItem_Click(null, null);
             }
 
             string localJson = File.ReadAllText(AppPath + EventFilePath);
@@ -1732,9 +1729,11 @@ namespace SeedSearcherGui
             string EventData = null;
             foreach (string EventName in EventEntries)
             {
-                ToolStripMenuItem item = new ToolStripMenuItem();
-                item.Name = EventName;
-                item.Text = EventName.Substring(0, EventName.Length - 5); // - ".json"
+                ToolStripMenuItem item = new ToolStripMenuItem
+                {
+                    Name = EventName,
+                    Text = EventName.Substring(0, EventName.Length - 5) // - ".json"
+                };
                 item.Click += new System.EventHandler(LoadEvent);
                 item.CheckOnClick = true;
                 this.eventsToolStripMenuItem.DropDownItems.Add(item);
@@ -1767,7 +1766,7 @@ namespace SeedSearcherGui
         {
             if (!File.Exists(EventData))
             {
-                updateEventDatabaseToolStripMenuItem_Click(null, null);
+                UpdateEventDatabaseToolStripMenuItem_Click(null, null);
             }
             var content = File.ReadAllText(EventData);
             PKHeX_Raid_Plugin.EventTableConverter.LoadFromJson(content, _raidTables);
@@ -1777,13 +1776,15 @@ namespace SeedSearcherGui
             }
         }
 
-        private void exportDataToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExportDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var input = new SerializedInput();
 
             // setup
-            var setup = new Setup();
-            setup.NestID = CB_Nest.SelectedIndex - 1;
+            var setup = new Setup
+            {
+                NestID = CB_Nest.SelectedIndex - 1
+            };
             if (setup.NestID == -1)
             {
                 setup.EventID = loadedEvent;
@@ -1929,16 +1930,16 @@ namespace SeedSearcherGui
             return res;
         }
 
-        private void importDataToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ImportDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Enter Input you want to import.", "Enter Input", "");
             if (UserAnswer.Length < 100) return;
             if (!UserAnswer.StartsWith("eyJTZX")) return;
-            var JsonStr = "";
+            string JsonStr;
             try
             {
                 JsonStr = Util.Base64Decode(UserAnswer);
-            } catch(System.FormatException ex)
+            } catch(System.FormatException)
             {
                 MessageBox.Show("Invalid Character in Input", "Invalid Input");
                 return;
@@ -1948,7 +1949,7 @@ namespace SeedSearcherGui
             {
                 si = JsonConvert.DeserializeObject<SerializedInput>(JsonStr);
             }
-            catch (System.FormatException ex)
+            catch (System.FormatException)
             {
                 MessageBox.Show("Invalid Character in Input. Maybe your input is cut-off?", "Invalid Input");
                 return;

@@ -120,7 +120,7 @@
             this.searchButton.TabIndex = 35;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // resetFilter
             // 
@@ -131,7 +131,7 @@
             this.resetFilter.TabIndex = 34;
             this.resetFilter.Text = "Reset Filter";
             this.resetFilter.UseVisualStyleBackColor = true;
-            this.resetFilter.Click += new System.EventHandler(this.resetFilter_Click);
+            this.resetFilter.Click += new System.EventHandler(this.ResetFilter_Click);
             // 
             // applyFilter
             // 
@@ -142,7 +142,7 @@
             this.applyFilter.TabIndex = 33;
             this.applyFilter.Text = "Apply Filter";
             this.applyFilter.UseVisualStyleBackColor = true;
-            this.applyFilter.Click += new System.EventHandler(this.applyFilter_Click);
+            this.applyFilter.Click += new System.EventHandler(this.ApplyFilter_Click);
             // 
             // shinyBox
             // 
@@ -321,7 +321,7 @@
             this.speciesList.Name = "speciesList";
             this.speciesList.Size = new System.Drawing.Size(187, 24);
             this.speciesList.TabIndex = 8;
-            this.speciesList.SelectedIndexChanged += new System.EventHandler(this.speciesList_SelectedIndexChanged);
+            this.speciesList.SelectedIndexChanged += new System.EventHandler(this.SpeciesList_SelectedIndexChanged);
             // 
             // denBox
             // 
@@ -343,7 +343,7 @@
             this.seedBox.Name = "seedBox";
             this.seedBox.Size = new System.Drawing.Size(187, 23);
             this.seedBox.TabIndex = 6;
-            this.seedBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.seedBox_KeyPress);
+            this.seedBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SeedBox_KeyPress);
             // 
             // generateData
             // 
@@ -354,7 +354,7 @@
             this.generateData.TabIndex = 5;
             this.generateData.Text = "Show";
             this.generateData.UseVisualStyleBackColor = true;
-            this.generateData.Click += new System.EventHandler(this.generateData_Click);
+            this.generateData.Click += new System.EventHandler(this.GenerateData_Click);
             // 
             // label4
             // 
@@ -454,7 +454,7 @@
             0,
             0,
             0});
-            this.maxSpe.Enter += new System.EventHandler(this.minHP_Enter);
+            this.maxSpe.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // maxSpd
             // 
@@ -473,7 +473,7 @@
             0,
             0,
             0});
-            this.maxSpd.Enter += new System.EventHandler(this.minHP_Enter);
+            this.maxSpd.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // maxSpa
             // 
@@ -492,7 +492,7 @@
             0,
             0,
             0});
-            this.maxSpa.Enter += new System.EventHandler(this.minHP_Enter);
+            this.maxSpa.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // maxDef
             // 
@@ -511,7 +511,7 @@
             0,
             0,
             0});
-            this.maxDef.Enter += new System.EventHandler(this.minHP_Enter);
+            this.maxDef.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // maxAtk
             // 
@@ -530,7 +530,7 @@
             0,
             0,
             0});
-            this.maxAtk.Enter += new System.EventHandler(this.minHP_Enter);
+            this.maxAtk.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // maxHP
             // 
@@ -549,7 +549,7 @@
             0,
             0,
             0});
-            this.maxHP.Enter += new System.EventHandler(this.minHP_Enter);
+            this.maxHP.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // MinSpe
             // 
@@ -563,7 +563,7 @@
             this.MinSpe.Name = "MinSpe";
             this.MinSpe.Size = new System.Drawing.Size(43, 22);
             this.MinSpe.TabIndex = 18;
-            this.MinSpe.Enter += new System.EventHandler(this.minHP_Enter);
+            this.MinSpe.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // minSpd
             // 
@@ -577,7 +577,7 @@
             this.minSpd.Name = "minSpd";
             this.minSpd.Size = new System.Drawing.Size(43, 22);
             this.minSpd.TabIndex = 16;
-            this.minSpd.Enter += new System.EventHandler(this.minHP_Enter);
+            this.minSpd.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // SpaCell
             // 
@@ -618,7 +618,7 @@
             this.minSpa.Name = "minSpa";
             this.minSpa.Size = new System.Drawing.Size(43, 22);
             this.minSpa.TabIndex = 14;
-            this.minSpa.Enter += new System.EventHandler(this.minHP_Enter);
+            this.minSpa.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // minDef
             // 
@@ -632,7 +632,7 @@
             this.minDef.Name = "minDef";
             this.minDef.Size = new System.Drawing.Size(43, 22);
             this.minDef.TabIndex = 12;
-            this.minDef.Enter += new System.EventHandler(this.minHP_Enter);
+            this.minDef.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // minAtk
             // 
@@ -646,7 +646,7 @@
             this.minAtk.Name = "minAtk";
             this.minAtk.Size = new System.Drawing.Size(43, 22);
             this.minAtk.TabIndex = 10;
-            this.minAtk.Enter += new System.EventHandler(this.minHP_Enter);
+            this.minAtk.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // label13
             // 
@@ -705,7 +705,7 @@
             this.minHP.Name = "minHP";
             this.minHP.Size = new System.Drawing.Size(43, 22);
             this.minHP.TabIndex = 8;
-            this.minHP.Enter += new System.EventHandler(this.minHP_Enter);
+            this.minHP.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
             // raidContent
             // 
