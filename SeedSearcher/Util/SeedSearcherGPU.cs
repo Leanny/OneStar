@@ -8,9 +8,9 @@ namespace SeedSearcherGui
     class SeedSearcherGPU
     {
 		[GpuParam]
-		private int[] ToxtricityAmplifiedNatures = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
+		private readonly int[] ToxtricityAmplifiedNatures = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
 		[GpuParam]
-		private int[] ToxtricityLowKeyNatures = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
+		private readonly int[] ToxtricityLowKeyNatures = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
 		[GpuParam]
 		private const int ToxtricityID = 849;
 
@@ -18,7 +18,7 @@ namespace SeedSearcherGui
 		private PkmnStruct pkmn2;
 		private PkmnStruct pkmn3;
 		private PkmnStruct pkmn4;
-		private int[] g_Ivs = { -1, -1, -1, -1, -1, -1 };
+		private readonly int[] g_Ivs = { -1, -1, -1, -1, -1, -1 };
 		private int g_setIVs;
 		private int LSB;
 
@@ -173,7 +173,6 @@ namespace SeedSearcherGui
 						s1 = RotateLeft(s1, 37);
 					}
 				}
-				tmp = 0;
 				// special case
 				if (abilitys[val] == -2)
 				{
@@ -191,7 +190,6 @@ namespace SeedSearcherGui
 					}
 					else
 					{
-						tmp = (int)((s0 + s1) & 1);
 						s1 = s0 ^ s1;
 						s0 = RotateLeft(s0, 24) ^ s1 ^ (s1 << 16);
 						s1 = RotateLeft(s1, 37);
@@ -206,7 +204,6 @@ namespace SeedSearcherGui
 							s1 = RotateLeft(s1, 37);
 						} while (tmp >= 253);
 					}
-					tmp = 0;
 					if (species[val] == ToxtricityID)
 					{
 						if (alt[val] == 0)
@@ -256,7 +253,6 @@ namespace SeedSearcherGui
 								s1 = RotateLeft(s1, 37);
 							} while (tmp >= 253);
 						}
-						tmp = 0;
 						if (species[val] == ToxtricityID)
 						{
 							if (alt[val] == 0)
@@ -332,7 +328,6 @@ namespace SeedSearcherGui
 						} while (tmp >= 253);
 					}
 
-					tmp = 0;
 					if (species[val] == ToxtricityID)
 					{
 						if (alt[val] == 0)
@@ -385,7 +380,7 @@ namespace SeedSearcherGui
 			try
 			{
 				return Device.Devices;
-			} catch(Exception e)
+			} catch(Exception)
 			{
 				return new Device[] { };
 			}
@@ -482,7 +477,7 @@ namespace SeedSearcherGui
 						MatrixStruct.g_InputMatrix[bit] = MatrixStruct.GetMatrixMultiplier(index);
 						if (MatrixStruct.GetMatrixConst(index) != 0)
 						{
-							g_ConstantTermVector |= (1ul << (length - 1 - bit));
+							g_ConstantTermVector |= 1ul << (length - 1 - bit);
 						}
 					}
 				}
@@ -869,20 +864,10 @@ namespace SeedSearcherGui
 			List<ulong> res = new List<ulong>();
 			if(pkmn4.characteristicPos == null)
 			{
-				if (!pkmn1.isEnableDream)
+				if (!pkmn1.isEnableDream && pkmn1.ability >= 0)
 				{
-					if (pkmn1.ability >= 0)
-					{
-						res.Add((ulong)pkmn1.ability);
-						res.Add((ulong)pkmn1.ability | 2);
-					}
-					else
-					{
-						res.Add(0ul);
-						res.Add(1ul);
-						res.Add(2ul);
-						res.Add(3ul);
-					}
+					res.Add((ulong)pkmn1.ability);
+					res.Add((ulong)pkmn1.ability | 2);
 				}
 				else
 				{
@@ -893,20 +878,10 @@ namespace SeedSearcherGui
 				}
 			} else
 			{
-				if (!pkmn2.isEnableDream)
+				if (!pkmn2.isEnableDream && pkmn2.ability >= 0)
 				{
-					if (pkmn2.ability >= 0)
-					{
-						res.Add((ulong)pkmn2.ability);
-						res.Add((ulong)pkmn2.ability | 2);
-					}
-					else
-					{
-						res.Add(0ul);
-						res.Add(1ul);
-						res.Add(2ul);
-						res.Add(3ul);
-					}
+					res.Add((ulong)pkmn2.ability);
+					res.Add((ulong)pkmn2.ability | 2);
 				}
 				else
 				{
@@ -992,6 +967,7 @@ namespace SeedSearcherGui
 					MatrixStruct.ProceedTransformationMatrix();
 				}
 				MatrixStruct.ProceedTransformationMatrix();
+				MatrixStruct.g_InputMatrix[60] = MatrixStruct.GetMatrixMultiplier(63) ^ MatrixStruct.GetMatrixMultiplier(127);
 				int l = MatrixStruct.CalculateInverseMatrix(length);
 				MatrixStruct.CalculateCoefficientData(l);
 				int numElems = 1 << (64 - l);
@@ -2695,7 +2671,7 @@ namespace SeedSearcherGui
 				{
 					g_FreeBit[i] = false;
 				}
-				int rank = 0;
+				int rank;
 				for (rank = 0; rank + skip < 64;)
 				{
 					ulong top = (1ul << (63 - (rank + skip)));
