@@ -1632,6 +1632,7 @@ namespace SeedSearcherGui
         {
             if (e.ClickedItem.OwnerItem is ToolStripMenuItem ownerItem)
             {
+                if (e.ClickedItem == updateEventDatabaseToolStripMenuItem) return;
                 //uncheck all item
                 foreach (ToolStripMenuItem item in ownerItem.DropDownItems)
                 {
@@ -1684,6 +1685,7 @@ namespace SeedSearcherGui
         readonly string VersionURL = $"{BASEURL}files.json";
         private void UpdateEventDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            updateEventDatabaseToolStripMenuItem.Checked = false;
             var AppPath = Application.StartupPath.Trim() + "/";
             if (!File.Exists(AppPath + EventFilePath))
             {
