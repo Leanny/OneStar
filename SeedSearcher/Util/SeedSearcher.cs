@@ -300,6 +300,11 @@ namespace SeedSearcherGui
 					pkmn4.ability, pkmn4.nature, pkmn4.characteristic, pkmn4.day, pkmn4.ID, pkmn4.altForm, pkmn4.isNoGender, pkmn4.isEnableDream);
 				if (TestSixSeed(0) != 5)
 				{
+					var result = Util.Prompt(MessageBoxButtons.YesNo, "Warning: This search can take multiple hours. Only do this at your own risk. Do you want to continue?");
+					if (result == DialogResult.No)
+					{
+						return;
+					}
 					List<ulong> fixedPosition = new List<ulong>();
 					if (pkmn1.ivs0 == 31)
 					{
