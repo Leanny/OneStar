@@ -1743,6 +1743,7 @@ namespace SeedSearcherGui
                 {
                     item.Checked = true;
                     EventData = $"{AppPath}{EventPath}{item.Text}.json";
+                    loadedEvent = $"{item.Text}.json";
                 }
                 
             }
