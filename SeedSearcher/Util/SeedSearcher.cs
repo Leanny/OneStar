@@ -88,9 +88,6 @@ namespace SeedSearcherGui
 		private PkmnStruct pkmn4;
 		private int LSB;
 
-		static readonly ulong shift = 0x7817eba09827c0eful;
-		static readonly ulong frontshift = 0xFFFFFFFFFFFFFFFFul - shift + 1;
-
 		public static void ResetSearcher()
 		{
 			Reset();
@@ -274,7 +271,7 @@ namespace SeedSearcherGui
 								ulong result = SearchFour((ulong)ivs);
 								if (result != 0)
 								{
-									Result.Add(result + shift);
+									Result.Add(result);
 									state.Stop();
 								}
 							});
@@ -298,7 +295,7 @@ namespace SeedSearcherGui
 								ulong result = SearchFive((ulong)ivs);
 								if (result != 0)
 								{
-									Result.Add(result + shift);
+									Result.Add(result);
 									state.Stop();
 								}
 							});
@@ -322,7 +319,7 @@ namespace SeedSearcherGui
 								ulong result = SearchSix((ulong)ivs);
 								if (result != 0)
 								{
-									Result.Add(result + shift);
+									Result.Add(result);
 									state.Stop();
 								}
 							});
@@ -335,7 +332,7 @@ namespace SeedSearcherGui
 				}
 				else
 				{
-					Result.Add(shift);
+					Result.Add(0);
 				}
 			}
 		}
