@@ -145,13 +145,26 @@ void Reset() {
 	g_IvOffset = 0;
 }
 
+_u64 add_const[4];
+_u64 add_last_val;
+
 void PrepareSix(int ivOffset)
 {
-	const int length = 10 * g_setIVs;
+	add_const[0] = (l_First.day - 1) * Const::c_XoroshiroConst;
+	add_const[1] = (l_Second.day - 1)* Const::c_XoroshiroConst;
+	add_const[2] = (l_Third.day - 1)* Const::c_XoroshiroConst;
+	add_const[3] = (l_Fourth.day - 1)* Const::c_XoroshiroConst;
+	
+	add_last_val = add_const[0];
+	for (int i = 0; i < 4; i++) {
+		add_const[i] -= add_last_val;
+	}
+
+	const int length = 62;
 
 	g_IvOffset = ivOffset;
 
-	g_ConstantTermVector = 0;
+	g_ConstantTermVector = 3;
 
 	InitializeTransformationMatrix();
 	for (int i = 0; i <= 1 + l_First.fixedIV + ivOffset; ++i)
@@ -173,6 +186,62 @@ void PrepareSix(int ivOffset)
 		}
 		ProceedTransformationMatrix();
 	}
+
+	g_InputMatrix[60] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
+	RoundLength = CalculateInverseMatrix(length);
+
+	CalculateCoefficientData(RoundLength);
+}
+
+void PrepareFive(int ivOffset)
+{
+	add_const[0] = (l_First.day - 1) * Const::c_XoroshiroConst;
+	add_const[1] = (l_Second.day - 1) * Const::c_XoroshiroConst;
+	add_const[2] = (l_Third.day - 1) * Const::c_XoroshiroConst;
+	add_const[3] = (l_Fourth.day - 1) * Const::c_XoroshiroConst;
+
+	add_last_val = add_const[0];
+	for (int i = 0; i < 4; i++) {
+		add_const[i] -= add_last_val;
+	}
+
+	const int length = 10 * g_setIVs + 8;
+
+	g_IvOffset = ivOffset;
+
+	g_ConstantTermVector = 3;
+
+	InitializeTransformationMatrix();
+	for (int i = 0; i <= l_First.fixedIV + ivOffset; ++i)
+	{
+		ProceedTransformationMatrix();
+	}
+
+	int bit = 0;
+	for (int i = 0; i < 6; ++i, ++bit)
+	{
+		int index = 61 + (i / 3) * 64 + (i % 3);
+		g_InputMatrix[bit] = GetMatrixMultiplier(index);
+		if (GetMatrixConst(index) != 0)
+		{
+			g_ConstantTermVector |= (1ull << (length - 1 - bit));
+		}
+	}
+	for (int a = 0; a < g_setIVs; ++a)
+	{
+		ProceedTransformationMatrix();
+		for (int i = 0; i < 10; ++i, ++bit)
+		{
+			int index = 59 + (i / 5) * 64 + (i % 5);
+			g_InputMatrix[bit] = GetMatrixMultiplier(index);
+			if (GetMatrixConst(index) != 0)
+			{
+				g_ConstantTermVector |= (1ull << (length - 1 - bit));
+			}
+		}
+	}
+
+	g_InputMatrix[length - 2] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
 
 	RoundLength = CalculateInverseMatrix(length);
 
@@ -403,33 +472,28 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	return 5;
 }
 
-_u64 SearchSix(_u64 ivs)
+_u64 SearchSix(_u64 ivs, _u64 passed_ability)
 {
-	_u64 add_val[] = { (l_First.day - 1) * Const::c_XoroshiroConst, (l_Second.day - 1) * Const::c_XoroshiroConst, (l_Third.day - 1) * Const::c_XoroshiroConst, (l_Fourth.day - 1) * Const::c_XoroshiroConst };
-	_u64 add_last = add_val[0];
-	for (int i = 0; i < 4; i++) {
-		add_val[i] -= add_last;
-	}
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
 
-	_u64 target = 0;
+	_u64 target = passed_ability;
 
 	// 下位30bit = 個体値
-	target |= (ivs & 0x3E000000ul) << 30;
-	target |= (ivs & 0x1F00000ul) << 25;
-	target |= (ivs & 0xF8000ul) << 20; 
-	target |= (ivs & 0x7C00ul) << 15;
-	target |= (ivs & 0x3E0ul) << 10;
-	target |= (ivs & 0x1Ful) << 5; 
+	target |= (ivs & 0x3E000000ul) << 32;
+	target |= (ivs & 0x1F00000ul) << 27;
+	target |= (ivs & 0xF8000ul) << 22;
+	target |= (ivs & 0x7C00ul) << 17;
+	target |= (ivs & 0x3E0ul) << 12;
+	target |= (ivs & 0x1Ful) << 7; 
 
 
-	target |= ((32ul + g_Ivs[0] - ((ivs & 0x3E000000ul) >> 25)) & 0x1F) << 50;
-	target |= ((32ul + g_Ivs[1] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 40;
-	target |= ((32ul + g_Ivs[2] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
-	target |= ((32ul + g_Ivs[3] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
-	target |= ((32ul + g_Ivs[4] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
-	target |= ((32ul + g_Ivs[5] - (ivs & 0x1Ful)) & 0x1F);
+	target |= ((32ul + g_Ivs[0] - ((ivs & 0x3E000000ul) >> 25)) & 0x1F) << 52;
+	target |= ((32ul + g_Ivs[1] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 42;
+	target |= ((32ul + g_Ivs[2] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 32;
+	target |= ((32ul + g_Ivs[3] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 22;
+	target |= ((32ul + g_Ivs[4] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 12;
+	target |= ((32ul + g_Ivs[5] - (ivs & 0x1Ful)) & 0x1F) << 2;
 
 	target ^= g_ConstantTermVector;
 
@@ -464,8 +528,7 @@ _u64 SearchSix(_u64 ivs)
 				continue;
 			}
 		}
-		if(ec == 0x79508ABA)
-		return seed;
+
 		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
 		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
 		{
@@ -659,44 +722,42 @@ _u64 SearchSix(_u64 ivs)
 			continue;
 		}
 
-		xoroshiro.SetSeed(seed + add_val[2]);
+		xoroshiro.SetSeed(seed + add_const[2]);
 		if (!TestPkmn(xoroshiro, l_Third)) {
 			continue;
 		}
 
-		xoroshiro.SetSeed(seed + add_val[3]);
+		xoroshiro.SetSeed(seed + add_const[3]);
 		if (!TestPkmn(xoroshiro, l_Fourth)) {
 			continue;
 		}
 
-		return seed - add_last;
+		return seed - add_last_val;
 	}
 	return 0;
 }
 
-_u64 SearchFive(_u64 ivs)
+_u64 SearchFive(_u64 ivs, _u64 passed_ability, _u64 last_idx)
 {
-	_u64 add_val[] = { (l_First.day - 1) * Const::c_XoroshiroConst, (l_Second.day - 1) * Const::c_XoroshiroConst, (l_Third.day - 1) * Const::c_XoroshiroConst, (l_Fourth.day - 1) * Const::c_XoroshiroConst };
-	_u64 add_last = add_val[0];
-	for (int i = 0; i < 4; i++) {
-		add_val[i] -= add_last;
-	}
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
 
 	_u64 target = 0;
 
-	target |= (ivs & 0x1F00000ul) << 25;
-	target |= (ivs & 0xF8000ul) << 20;
-	target |= (ivs & 0x7C00ul) << 15; 
-	target |= (ivs & 0x3E0ul) << 10; 
-	target |= (ivs & 0x1Ful) << 5; 
+	target |= (ivs & 0x1F00000ul) << 27;
+	target |= (ivs & 0xF8000ul) << 22;
+	target |= (ivs & 0x7C00ul) << 17; 
+	target |= (ivs & 0x3E0ul) << 12; 
+	target |= (ivs & 0x1Ful) << 7;
 
-	target |= ((32ul + g_Ivs[0] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 40;
-	target |= ((32ul + g_Ivs[1] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
-	target |= ((32ul + g_Ivs[2] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
-	target |= ((32ul + g_Ivs[3] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
-	target |= ((32ul + g_Ivs[4] - (ivs & 0x1Ful)) & 0x1F);
+	target |= ((32ul + g_Ivs[0] - ((ivs & 0x1F00000ul) >> 20)) & 0x1F) << 42;
+	target |= ((32ul + g_Ivs[1] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 32;
+	target |= ((32ul + g_Ivs[2] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 22;
+	target |= ((32ul + g_Ivs[3] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 12;
+	target |= ((32ul + g_Ivs[4] - (ivs & 0x1Ful)) & 0x1F) << 2;
+
+	target |= (ivs & 0xE000000ul) << 30;
+	target |= ((8ul + last_idx - ((ivs & 0xE000000ul) >> 25)) & 7) << 52;
 
 	target ^= g_ConstantTermVector;
 
@@ -928,42 +989,40 @@ _u64 SearchFive(_u64 ivs)
 			continue;
 		}
 
-		xoroshiro.SetSeed(seed + add_val[2]);
+		xoroshiro.SetSeed(seed + add_const[2]);
 		if (!TestPkmn(xoroshiro, l_Third)) {
 			continue;
 		}
 
-		xoroshiro.SetSeed(seed + add_val[3]);
+		xoroshiro.SetSeed(seed + add_const[3]);
 		if (!TestPkmn(xoroshiro, l_Fourth)) {
 			continue;
 		}
 
-		return seed - add_last;
+		return seed - add_last_val;
 	}
 	return 0;
 }
 
-_u64 SearchFour(_u64 ivs)
+_u64 SearchFour(_u64 ivs, _u64 passed_ability, _u64 last_idx)
 {
-	_u64 add_val[] = { (l_First.day - 1) * Const::c_XoroshiroConst, (l_Second.day - 1) * Const::c_XoroshiroConst, (l_Third.day - 1) * Const::c_XoroshiroConst, (l_Fourth.day - 1) * Const::c_XoroshiroConst };
-	_u64 add_last = add_val[0];
-	for (int i = 0; i < 4; i++) {
-		add_val[i] -= add_last;
-	}
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
 
-	_u64 target = 0;
+	_u64 target = passed_ability;
 
-	target |= (ivs & 0xF8000ul) << 20;
-	target |= (ivs & 0x7C00ul) << 15;
-	target |= (ivs & 0x3E0ul) << 10;
-	target |= (ivs & 0x1Ful) << 5;
+	target |= (ivs & 0xF8000ul) << 22;
+	target |= (ivs & 0x7C00ul) << 17;
+	target |= (ivs & 0x3E0ul) << 12;
+	target |= (ivs & 0x1Ful) << 7;
 
-	target |= ((32ul + g_Ivs[0] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 30;
-	target |= ((32ul + g_Ivs[1] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 20;
-	target |= ((32ul + g_Ivs[2] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 10;
-	target |= ((32ul + g_Ivs[3] - (ivs & 0x1Ful)) & 0x1F);
+	target |= ((32ul + g_Ivs[0] - ((ivs & 0xF8000ul) >> 15)) & 0x1F) << 32;
+	target |= ((32ul + g_Ivs[1] - ((ivs & 0x7C00ul) >> 10)) & 0x1F) << 22;
+	target |= ((32ul + g_Ivs[2] - ((ivs & 0x3E0ul) >> 5)) & 0x1F) << 12;
+	target |= ((32ul + g_Ivs[3] - (ivs & 0x1Ful)) & 0x1F) << 2;
+
+	target |= (ivs & 0x700000ul) << 25;
+	target |= ((8ul + last_idx - ((ivs & 0x700000ul) >> 20)) & 7) << 42;
 
 	target ^= g_ConstantTermVector;
 
@@ -1192,17 +1251,17 @@ _u64 SearchFour(_u64 ivs)
 			continue;
 		}
 
-		xoroshiro.SetSeed(seed + add_val[2]);
+		xoroshiro.SetSeed(seed + add_const[2]);
 		if (!TestPkmn(xoroshiro, l_Third)) {
 			continue;
 		}
 
-		xoroshiro.SetSeed(seed + add_val[3]);
+		xoroshiro.SetSeed(seed + add_const[3]);
 		if (!TestPkmn(xoroshiro, l_Fourth)) {
 			continue;
 		}
 
-		return seed - add_last;
+		return seed - add_last_val;
 	}
 	return 0;
 }

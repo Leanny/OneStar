@@ -2,9 +2,8 @@
 #include "Util.h"
 #include "Const.h"
 
-// 計算用データ
 _u64 g_TempMatrix[256];
-_u64 g_InputMatrix[64]; // CalculateInverseMatrixの前にセットする
+_u64 g_InputMatrix[64]; 
 _u64 g_ConstantTermVector;
 _u64 g_Coefficient[64];
 _u64 g_AnswerFlag[64];
@@ -16,16 +15,24 @@ _u64 g_SearchPattern[0x1000000];
 
 _u64 l_Temp[256];
 
-// 変換行列計算
 void InitializeTransformationMatrix()
 {
-	// r[0] は (C1, seed)
-	// r[1] は c_N * (C1, seed)
-
-	// c_N^1をセット
 	for (int i = 0; i < 256; ++i)
 	{
 		g_TempMatrix[i] = Const::c_N[i];
+		l_Temp[i] = 0;
+	}
+	for (int i = 0; i < 64; i++) {
+		g_InputMatrix[i] = 0;
+		g_Coefficient[i] = 0;
+		g_AnswerFlag[i] = 0;
+		g_FreeBit[i] = 0;
+		g_FreeId[i] = 0;
+	}
+
+	for (int i = 0; i < 0x1000000; i++) {
+		g_CoefficientData[i] = 0;
+		g_SearchPattern[i] = 0;
 	}
 }
 void ProceedTransformationMatrix()
@@ -35,7 +42,6 @@ void ProceedTransformationMatrix()
 		l_Temp[i] = g_TempMatrix[i];
 	}
 
-	// 変換行列にもう一つc_Nを左からかける
 	for (int y = 0; y < 128; ++y)
 	{
 		g_TempMatrix[y * 2] = 0;
@@ -95,9 +101,8 @@ int CalculateInverseMatrix(int length)
 	{
 		g_FreeBit[i] = 0;
 	}
-
-	int rank = 0;
-	for (rank = 0; rank + skip < 64; )
+	int rank;
+	for (rank = 0; rank + skip < 64;)
 	{
 		_u64 top = (1ull << (63 - (rank + skip)));
 		bool rankUpFlag = false;
@@ -108,7 +113,6 @@ int CalculateInverseMatrix(int length)
 				for (int a = 0; a < length; ++a)
 				{
 					if (a == i) continue;
-
 					if ((g_InputMatrix[a] & top) != 0)
 					{
 						g_InputMatrix[a] ^= g_InputMatrix[i];
@@ -140,18 +144,16 @@ int CalculateInverseMatrix(int length)
 		g_Coefficient[i] = 0;
 		for (int a = 0; a < skip; ++a)
 		{
-			g_Coefficient[i] |= (g_InputMatrix[i] & (1ull << (63 - g_FreeId[a]))) >> ((rank + a) - g_FreeId[a]);
+			g_Coefficient[i] |= (g_InputMatrix[i] & (1ull << (63 - g_FreeId[a]))) >> (rank + a - g_FreeId[a]);
 		}
 	}
-
 	return 64 - skip;
 }
 
 void CalculateCoefficientData(int length)
 {
-	// データを作る
-	unsigned int max = ((1 << (64 - length)) - 1);
-	for (unsigned int search = 0; search <= max; ++search)
+	unsigned int max = (1 << (64 - length));
+	for (unsigned int search = 0; search < max; ++search)
 	{
 		g_CoefficientData[search] = 0;
 		g_SearchPattern[search] = 0;
@@ -162,9 +164,9 @@ void CalculateCoefficientData(int length)
 			{
 				++offset;
 			}
-			g_CoefficientData[search] |= (GetSignature(g_Coefficient[i] & search) << (63 - (i + offset)));
+			g_CoefficientData[search] |= GetSignature(g_Coefficient[i] & search) << (63 - (i + offset));
 		}
-		for (int a = 0; a < (64 - length); ++a)
+		for (int a = 0; a < (64 - length) + offset; ++a)
 		{
 			g_SearchPattern[search] |= ((_u64)search & (1ull << (64 - length - 1 - a))) << ((length + a) - g_FreeId[a]);
 		}
