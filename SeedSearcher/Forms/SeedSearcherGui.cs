@@ -1985,7 +1985,7 @@ namespace SeedSearcherGui
                 MessageBox.Show("Corrupted data.", "Invalid Input");
                 return;
             }
-
+            RefreshUI();
             // Reconstruct input
             CB_Nest.SelectedIndex = si.Setup.NestID + 1;
             if (si.Setup.NestID == -1)
