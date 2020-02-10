@@ -14,6 +14,7 @@ namespace SeedSearcherGui
 		[GpuParam]
 		private const int ToxtricityID = 849;
 
+		public static bool StopSearchCommand = false;
 		private PkmnStruct pkmn1;
 		private PkmnStruct pkmn2;
 		private PkmnStruct pkmn3;
@@ -525,6 +526,7 @@ namespace SeedSearcherGui
 				ulong g_ulongIndex = (ulong)g_FixedIndex;
 				foreach (ulong ability in abilities)
 				{
+					if (StopSearchCommand) return 0;
 					gpu.LongFor(searchLower, searchUpper, input => {
 						ulong target = ability;
 						ulong input_ivs = (ulong)input;
@@ -994,6 +996,7 @@ namespace SeedSearcherGui
 
 				foreach (ulong ability in abilities)
 				{
+					if (StopSearchCommand) return 0;
 					gpu.LongFor(searchLower, searchUpper, input => {
 						//for(long input = searchLower; input < searchUpper; input++) {
 						ulong target = ability;
@@ -1501,6 +1504,7 @@ namespace SeedSearcherGui
 				{
 					foreach(ulong fixedPos in fixedPosition)
 					{
+						if (StopSearchCommand) return 0;
 						gpu.LongFor(searchLower, searchUpper, input => {
 							ulong target = ability;
 							ulong input_ivs = (ulong)input;
@@ -2009,6 +2013,7 @@ namespace SeedSearcherGui
 				{
 					foreach (ulong fixedPos in fixedPosition)
 					{
+						if (StopSearchCommand) return 0;
 						gpu.LongFor(searchLower, searchUpper, input => {
 							ulong target = ability;
 							ulong input_ivs = (ulong)input;

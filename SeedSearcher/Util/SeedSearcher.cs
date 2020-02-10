@@ -90,9 +90,17 @@ namespace SeedSearcherGui
 		private PkmnStruct pkmn4;
 		private int LSB;
 
+		private static bool StopSearchCommand = false;
+
 		public static void ResetSearcher()
 		{
 			Reset();
+		}
+
+		public static void StopSearch()
+		{
+			SeedSearcherGPU.StopSearchCommand = true;
+			StopSearchCommand = true;
 		}
 
 		public void RegisterPokemon1(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristics, int day, int species, int altform, bool isNoGender, bool isEnableDream, int fixedIVPos = -1)
@@ -233,6 +241,8 @@ namespace SeedSearcherGui
 		public void Calculate(int searcherIDX, int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl, ToolStripProgressBar calculationProgressBar)
 		{
 			Result.Clear();
+			StopSearchCommand = false;
+			SeedSearcherGPU.StopSearchCommand = false;
 			if (searcherIDX == -1)
 			{
 				CalculateCPU(minRerolls, maxRerolls, target, updateLbl, calculationProgressBar);
@@ -240,6 +250,8 @@ namespace SeedSearcherGui
 			{
 				CalculateGPU(searcherIDX, minRerolls, maxRerolls, target, updateLbl, calculationProgressBar);
 			}
+			StopSearchCommand = false;
+			SeedSearcherGPU.StopSearchCommand = false;
 		}
 
 		private void CalculateCPU(int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl, ToolStripProgressBar calculationProgressBar)
@@ -282,11 +294,13 @@ namespace SeedSearcherGui
 									Result.Add(result);
 									state.Stop();
 								}
+								if (StopSearchCommand) state.Stop();
 							});
 							if (Result.Count > 0)
 							{
 								return;
 							}
+							if (StopSearchCommand) return;
 							if (calculationProgressBar != null)
 							{
 								calculationProgressBar.Value++;
@@ -373,11 +387,13 @@ namespace SeedSearcherGui
 											Result.Add(result);
 											state.Stop();
 										}
+										if (StopSearchCommand) state.Stop();
 									});
 									if (Result.Count > 0)
 									{
 										return;
 									}
+									if (StopSearchCommand) return;
 									if (calculationProgressBar != null)
 									{
 										calculationProgressBar.Value++;
@@ -414,11 +430,13 @@ namespace SeedSearcherGui
 											Result.Add(result);
 											state.Stop();
 										}
+										if (StopSearchCommand) state.Stop();
 									});
 									if (Result.Count > 0)
 									{
 										return;
 									}
+									if (StopSearchCommand) return;
 									if (calculationProgressBar != null)
 									{
 										calculationProgressBar.Value++;
@@ -453,11 +471,13 @@ namespace SeedSearcherGui
 										Result.Add(result);
 										state.Stop();
 									}
+									if (StopSearchCommand) state.Stop();
 								});
 								if (Result.Count > 0)
 								{
 									return;
 								}
+								if (StopSearchCommand) return;
 								if (calculationProgressBar != null)
 								{
 									calculationProgressBar.Value++;

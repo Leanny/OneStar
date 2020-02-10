@@ -891,6 +891,12 @@ namespace SeedSearcherGui
 
         }
 
+        private void BT_Stop_Search(object sender, EventArgs e)
+        {
+            SeedSearcher.StopSearch();
+            BT_Search.Enabled = false;
+        }
+
         private void BT_Search_Click(object sender, EventArgs e)
         {
             SeedSearcher searcher = CheckInput();
@@ -1221,24 +1227,31 @@ namespace SeedSearcherGui
             SeedResult.Text = "";
             int minRerolls = (int)NUD_IVMin.Value;
             int maxRerolls = (int)NUD_IVMax.Value;
-            BT_Search.Text = "Searching...";
-            GB_Controls.Enabled = false;
-            // 時間計測
+            BT_Search.Text = "Stop Search";
+            //GB_Controls.Enabled = false;
+            BT_newsearch.Enabled = false;
+            NUD_IVMin.Enabled = false;
+            NUD_IVMax.Enabled = false;
+            this.BT_Search.Click -= new System.EventHandler(this.BT_Search_Click);
+            this.BT_Search.Click += new System.EventHandler(this.BT_Stop_Search);
             System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
             stopWatch.Start();
 
             await Task.Run(() =>
             {
-                searcher.Calculate(GetAcceleratorIdx(), minRerolls, maxRerolls, target, LBL_IVDev, calculationProgressBar);
+                searcher.Calculate(GetAcceleratorIdx(), minRerolls, maxRerolls, target, LBL_IVDev, null);//calculationProgressBar);
             });
 
             stopWatch.Stop();
             LBL_Time.Text = $"{stopWatch.ElapsedMilliseconds} ms";
-
+            this.BT_Search.Click += new System.EventHandler(this.BT_Search_Click);
+            this.BT_Search.Click -= new System.EventHandler(this.BT_Stop_Search);
             BT_Search.Text = "Search";
-            GB_Controls.Enabled = true;
-
+            BT_newsearch.Enabled = true;
+            NUD_IVMin.Enabled = true;
+            NUD_IVMax.Enabled = true;
             SystemSounds.Asterisk.Play();
+            BT_Search.Enabled = searcher.Result.Count == 0;
             if (searcher.Result.Count == 0)
             {
                 MessageBox.Show("No Seed found. Please increase Calculation Range and run the tool again.");
@@ -1459,6 +1472,7 @@ namespace SeedSearcherGui
             RB_2nd.Visible = false;
             RB_3rd.Visible = false;
             RB_3rd.Checked = false;
+            BT_Search.Enabled = true;
             foreach (var nud in NUD_Stats)
             {
                 nud.Value = 0;
