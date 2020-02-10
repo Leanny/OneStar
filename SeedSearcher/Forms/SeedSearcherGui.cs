@@ -1245,7 +1245,7 @@ namespace SeedSearcherGui
 
             await Task.Run(() =>
             {
-                searcher.Calculate(GetAcceleratorIdx(), minRerolls, maxRerolls, target, LBL_IVDev, null);//calculationProgressBar);
+                searcher.Calculate(GetAcceleratorIdx(), minRerolls, maxRerolls, target, LBL_IVDev, calculationProgressBar);
             });
 
             stopWatch.Stop();
