@@ -16,7 +16,9 @@ namespace SeedSearcherGui
         private static readonly ComboboxItem any = new ComboboxItem("Any", -1);
         private static readonly string[] genders = { "Male", "Female", "Genderless" };
         private static readonly string[] shinytype = { "No", "Star", "Square" };
+        private static readonly int[] iv_order = { 0, 1, 2, 5, 3, 4 };
 
+        private string[] characteristics;
         public Results(string text, ComboBox cB_Den, ComboBox.ObjectCollection items, GameStrings gameStrings)
         {
             InitializeComponent();
@@ -35,6 +37,23 @@ namespace SeedSearcherGui
             speciesList.SelectedIndex = 0;
             natureBox.SelectedIndex = 0;
             shinyBox.SelectedIndex = 0;
+            characteristics = new string[6];
+            for (int counter = 0, i = 1; i < GameStrings.characteristics.Length; i += 5, counter++)
+            {
+                characteristics[counter] = GameStrings.characteristics[i];
+            }
+        }
+
+        private string GetCharacteristic(RaidPKM pkmn)
+        {
+            int charac = (int) (pkmn.EC % 6);
+            for(int i=0; i < 6; i++)
+            {
+                int k = (charac + i + 6) % 6;
+                if (pkmn.IVs[iv_order[k]] == 31) 
+                    return characteristics[k];
+            }
+            return "";
         }
 
         private static ulong Advance(ulong start, uint frames)
@@ -82,7 +101,8 @@ namespace SeedSearcherGui
             row.Cells[8].Value = s.Ability[res.Ability];
             row.Cells[9].Value = genders[res.Gender];
             row.Cells[10].Value = shinytype[res.ShinyType];
-            row.Cells[11].Value = $"{current_seed:X16}";
+            row.Cells[11].Value = GetCharacteristic(res);
+            row.Cells[12].Value = $"{current_seed:X16}";
             return row;
         }
 

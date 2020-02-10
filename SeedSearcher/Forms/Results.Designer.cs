@@ -57,9 +57,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.AbilityCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpeCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpdCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxSpe = new System.Windows.Forms.NumericUpDown();
             this.maxSpd = new System.Windows.Forms.NumericUpDown();
             this.maxSpa = new System.Windows.Forms.NumericUpDown();
@@ -68,22 +65,13 @@
             this.maxHP = new System.Windows.Forms.NumericUpDown();
             this.MinSpe = new System.Windows.Forms.NumericUpDown();
             this.minSpd = new System.Windows.Forms.NumericUpDown();
-            this.SpaCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DefCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AtkCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minSpa = new System.Windows.Forms.NumericUpDown();
             this.minDef = new System.Windows.Forms.NumericUpDown();
             this.minAtk = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.NatureCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HPCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FrameCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minHP = new System.Windows.Forms.NumericUpDown();
             this.raidContent = new System.Windows.Forms.DataGridView();
-            this.GenderCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShinyCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SeedCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -91,8 +79,21 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.DetailsBox = new System.Windows.Forms.GroupBox();
             this.BTN_Clear = new System.Windows.Forms.Button();
+            this.DetailsBox = new System.Windows.Forms.GroupBox();
+            this.FrameCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HPCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AtkCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DefCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpaCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpdCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpeCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NatureCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AbilityCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenderCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShinyCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Characteristic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SeedCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxSpe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxSpd)).BeginInit();
@@ -410,33 +411,6 @@
             this.label14.TabIndex = 12;
             this.label14.Text = "~";
             // 
-            // AbilityCell
-            // 
-            this.AbilityCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.AbilityCell.HeaderText = "Ability";
-            this.AbilityCell.MinimumWidth = 6;
-            this.AbilityCell.Name = "AbilityCell";
-            this.AbilityCell.ReadOnly = true;
-            this.AbilityCell.Width = 74;
-            // 
-            // SpeCell
-            // 
-            this.SpeCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.SpeCell.HeaderText = "SPE";
-            this.SpeCell.MinimumWidth = 6;
-            this.SpeCell.Name = "SpeCell";
-            this.SpeCell.ReadOnly = true;
-            this.SpeCell.Width = 64;
-            // 
-            // SpdCell
-            // 
-            this.SpdCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.SpdCell.HeaderText = "SPD";
-            this.SpdCell.MinimumWidth = 6;
-            this.SpdCell.Name = "SpdCell";
-            this.SpdCell.ReadOnly = true;
-            this.SpdCell.Width = 65;
-            // 
             // maxSpe
             // 
             this.maxSpe.Location = new System.Drawing.Point(152, 175);
@@ -579,33 +553,6 @@
             this.minSpd.TabIndex = 16;
             this.minSpd.Enter += new System.EventHandler(this.MinHP_Enter);
             // 
-            // SpaCell
-            // 
-            this.SpaCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.SpaCell.HeaderText = "SPA";
-            this.SpaCell.MinimumWidth = 6;
-            this.SpaCell.Name = "SpaCell";
-            this.SpaCell.ReadOnly = true;
-            this.SpaCell.Width = 64;
-            // 
-            // DefCell
-            // 
-            this.DefCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DefCell.HeaderText = "DEF";
-            this.DefCell.MinimumWidth = 6;
-            this.DefCell.Name = "DefCell";
-            this.DefCell.ReadOnly = true;
-            this.DefCell.Width = 64;
-            // 
-            // AtkCell
-            // 
-            this.AtkCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.AtkCell.HeaderText = "ATK";
-            this.AtkCell.MinimumWidth = 6;
-            this.AtkCell.Name = "AtkCell";
-            this.AtkCell.ReadOnly = true;
-            this.AtkCell.Width = 64;
-            // 
             // minSpa
             // 
             this.minSpa.Location = new System.Drawing.Point(85, 126);
@@ -666,33 +613,6 @@
             this.label12.TabIndex = 6;
             this.label12.Text = "SPD";
             // 
-            // NatureCell
-            // 
-            this.NatureCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.NatureCell.HeaderText = "Nature";
-            this.NatureCell.MinimumWidth = 6;
-            this.NatureCell.Name = "NatureCell";
-            this.NatureCell.ReadOnly = true;
-            this.NatureCell.Width = 80;
-            // 
-            // HPCell
-            // 
-            this.HPCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.HPCell.HeaderText = "HP";
-            this.HPCell.MinimumWidth = 6;
-            this.HPCell.Name = "HPCell";
-            this.HPCell.ReadOnly = true;
-            this.HPCell.Width = 56;
-            // 
-            // FrameCell
-            // 
-            this.FrameCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.FrameCell.HeaderText = "Frame Advances";
-            this.FrameCell.MinimumWidth = 6;
-            this.FrameCell.Name = "FrameCell";
-            this.FrameCell.ReadOnly = true;
-            this.FrameCell.Width = 77;
-            // 
             // minHP
             // 
             this.minHP.Location = new System.Drawing.Point(85, 50);
@@ -724,6 +644,7 @@
             this.AbilityCell,
             this.GenderCell,
             this.ShinyCell,
+            this.Characteristic,
             this.SeedCell});
             this.raidContent.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.raidContent.Location = new System.Drawing.Point(0, 303);
@@ -734,34 +655,6 @@
             this.raidContent.RowTemplate.Height = 24;
             this.raidContent.Size = new System.Drawing.Size(1252, 588);
             this.raidContent.TabIndex = 2;
-            // 
-            // GenderCell
-            // 
-            this.GenderCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.GenderCell.HeaderText = "Gender";
-            this.GenderCell.MinimumWidth = 6;
-            this.GenderCell.Name = "GenderCell";
-            this.GenderCell.ReadOnly = true;
-            this.GenderCell.Width = 85;
-            // 
-            // ShinyCell
-            // 
-            this.ShinyCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ShinyCell.HeaderText = "Shiny";
-            this.ShinyCell.MinimumWidth = 6;
-            this.ShinyCell.Name = "ShinyCell";
-            this.ShinyCell.ReadOnly = true;
-            this.ShinyCell.Width = 72;
-            // 
-            // SeedCell
-            // 
-            this.SeedCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.SeedCell.HeaderText = "Seed";
-            this.SeedCell.MaxInputLength = 16;
-            this.SeedCell.MinimumWidth = 6;
-            this.SeedCell.Name = "SeedCell";
-            this.SeedCell.ReadOnly = true;
-            this.SeedCell.Width = 140;
             // 
             // label11
             // 
@@ -866,6 +759,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filters";
             // 
+            // BTN_Clear
+            // 
+            this.BTN_Clear.Location = new System.Drawing.Point(511, 181);
+            this.BTN_Clear.Name = "BTN_Clear";
+            this.BTN_Clear.Size = new System.Drawing.Size(92, 30);
+            this.BTN_Clear.TabIndex = 36;
+            this.BTN_Clear.Text = "Clear Filter";
+            this.BTN_Clear.UseVisualStyleBackColor = true;
+            this.BTN_Clear.Click += new System.EventHandler(this.BTN_Clear_Click);
+            // 
             // DetailsBox
             // 
             this.DetailsBox.Controls.Add(this.groupBox2);
@@ -879,15 +782,122 @@
             this.DetailsBox.TabStop = false;
             this.DetailsBox.Text = "Details";
             // 
-            // BTN_Clear
+            // FrameCell
             // 
-            this.BTN_Clear.Location = new System.Drawing.Point(511, 181);
-            this.BTN_Clear.Name = "BTN_Clear";
-            this.BTN_Clear.Size = new System.Drawing.Size(92, 30);
-            this.BTN_Clear.TabIndex = 36;
-            this.BTN_Clear.Text = "Clear Filter";
-            this.BTN_Clear.UseVisualStyleBackColor = true;
-            this.BTN_Clear.Click += new System.EventHandler(this.BTN_Clear_Click);
+            this.FrameCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.FrameCell.HeaderText = "Frame Advances";
+            this.FrameCell.MinimumWidth = 6;
+            this.FrameCell.Name = "FrameCell";
+            this.FrameCell.ReadOnly = true;
+            this.FrameCell.Width = 77;
+            // 
+            // HPCell
+            // 
+            this.HPCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HPCell.HeaderText = "HP";
+            this.HPCell.MinimumWidth = 6;
+            this.HPCell.Name = "HPCell";
+            this.HPCell.ReadOnly = true;
+            this.HPCell.Width = 56;
+            // 
+            // AtkCell
+            // 
+            this.AtkCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.AtkCell.HeaderText = "ATK";
+            this.AtkCell.MinimumWidth = 6;
+            this.AtkCell.Name = "AtkCell";
+            this.AtkCell.ReadOnly = true;
+            this.AtkCell.Width = 64;
+            // 
+            // DefCell
+            // 
+            this.DefCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DefCell.HeaderText = "DEF";
+            this.DefCell.MinimumWidth = 6;
+            this.DefCell.Name = "DefCell";
+            this.DefCell.ReadOnly = true;
+            this.DefCell.Width = 64;
+            // 
+            // SpaCell
+            // 
+            this.SpaCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.SpaCell.HeaderText = "SPA";
+            this.SpaCell.MinimumWidth = 6;
+            this.SpaCell.Name = "SpaCell";
+            this.SpaCell.ReadOnly = true;
+            this.SpaCell.Width = 64;
+            // 
+            // SpdCell
+            // 
+            this.SpdCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.SpdCell.HeaderText = "SPD";
+            this.SpdCell.MinimumWidth = 6;
+            this.SpdCell.Name = "SpdCell";
+            this.SpdCell.ReadOnly = true;
+            this.SpdCell.Width = 65;
+            // 
+            // SpeCell
+            // 
+            this.SpeCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.SpeCell.HeaderText = "SPE";
+            this.SpeCell.MinimumWidth = 6;
+            this.SpeCell.Name = "SpeCell";
+            this.SpeCell.ReadOnly = true;
+            this.SpeCell.Width = 64;
+            // 
+            // NatureCell
+            // 
+            this.NatureCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NatureCell.HeaderText = "Nature";
+            this.NatureCell.MinimumWidth = 6;
+            this.NatureCell.Name = "NatureCell";
+            this.NatureCell.ReadOnly = true;
+            this.NatureCell.Width = 80;
+            // 
+            // AbilityCell
+            // 
+            this.AbilityCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.AbilityCell.HeaderText = "Ability";
+            this.AbilityCell.MinimumWidth = 6;
+            this.AbilityCell.Name = "AbilityCell";
+            this.AbilityCell.ReadOnly = true;
+            this.AbilityCell.Width = 74;
+            // 
+            // GenderCell
+            // 
+            this.GenderCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.GenderCell.HeaderText = "Gender";
+            this.GenderCell.MinimumWidth = 6;
+            this.GenderCell.Name = "GenderCell";
+            this.GenderCell.ReadOnly = true;
+            this.GenderCell.Width = 85;
+            // 
+            // ShinyCell
+            // 
+            this.ShinyCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ShinyCell.HeaderText = "Shiny";
+            this.ShinyCell.MinimumWidth = 6;
+            this.ShinyCell.Name = "ShinyCell";
+            this.ShinyCell.ReadOnly = true;
+            this.ShinyCell.Width = 72;
+            // 
+            // Characteristic
+            // 
+            this.Characteristic.HeaderText = "Characteristic";
+            this.Characteristic.MinimumWidth = 6;
+            this.Characteristic.Name = "Characteristic";
+            this.Characteristic.ReadOnly = true;
+            this.Characteristic.Width = 125;
+            // 
+            // SeedCell
+            // 
+            this.SeedCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.SeedCell.HeaderText = "Seed";
+            this.SeedCell.MaxInputLength = 16;
+            this.SeedCell.MinimumWidth = 6;
+            this.SeedCell.Name = "SeedCell";
+            this.SeedCell.ReadOnly = true;
+            this.SeedCell.Width = 140;
             // 
             // Results
             // 
@@ -948,9 +958,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AbilityCell;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SpeCell;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SpdCell;
         private System.Windows.Forms.NumericUpDown maxSpe;
         private System.Windows.Forms.NumericUpDown maxSpd;
         private System.Windows.Forms.NumericUpDown maxSpa;
@@ -959,22 +966,13 @@
         private System.Windows.Forms.NumericUpDown maxHP;
         private System.Windows.Forms.NumericUpDown MinSpe;
         private System.Windows.Forms.NumericUpDown minSpd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SpaCell;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DefCell;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AtkCell;
         private System.Windows.Forms.NumericUpDown minSpa;
         private System.Windows.Forms.NumericUpDown minDef;
         private System.Windows.Forms.NumericUpDown minAtk;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NatureCell;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HPCell;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FrameCell;
         private System.Windows.Forms.NumericUpDown minHP;
         private System.Windows.Forms.DataGridView raidContent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GenderCell;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ShinyCell;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SeedCell;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -988,5 +986,18 @@
         private System.Windows.Forms.ComboBox denBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BTN_Clear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FrameCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HPCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AtkCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DefCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SpaCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SpdCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SpeCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NatureCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AbilityCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GenderCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShinyCell;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Characteristic;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SeedCell;
     }
 }
