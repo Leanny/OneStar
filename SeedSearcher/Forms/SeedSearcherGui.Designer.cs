@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeedSearcherGui));
             this.GB_Left = new System.Windows.Forms.GroupBox();
             this.CB_Nest = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LBL_Nest = new System.Windows.Forms.Label();
             this.CB_Rarity = new System.Windows.Forms.ComboBox();
             this.LBL_Rarity = new System.Windows.Forms.Label();
             this.CB_Game = new System.Windows.Forms.ComboBox();
@@ -44,7 +44,7 @@
             this.LB_Response = new System.Windows.Forms.Label();
             this.LBLAO = new System.Windows.Forms.Label();
             this.GB_43 = new System.Windows.Forms.GroupBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.BT_Confirm2 = new System.Windows.Forms.Button();
             this.BT_IVCalc3 = new System.Windows.Forms.Button();
             this.RB_3rd = new System.Windows.Forms.RadioButton();
             this.CB_Characteristic3 = new System.Windows.Forms.ComboBox();
@@ -68,7 +68,7 @@
             this.CB_Species3 = new System.Windows.Forms.ComboBox();
             this.LBL_PKMN3 = new System.Windows.Forms.Label();
             this.GB_42 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BT_Confirm1 = new System.Windows.Forms.Button();
             this.BT_IVCalc2 = new System.Windows.Forms.Button();
             this.RB_2nd = new System.Windows.Forms.RadioButton();
             this.CB_Characteristic2 = new System.Windows.Forms.ComboBox();
@@ -93,7 +93,7 @@
             this.LBL_PKMN2 = new System.Windows.Forms.Label();
             this.GB_41 = new System.Windows.Forms.GroupBox();
             this.BT_IVCalc1 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BT_CheckIVs = new System.Windows.Forms.Button();
             this.CB_Characteristic1 = new System.Windows.Forms.ComboBox();
             this.LBL_Characteristic1 = new System.Windows.Forms.Label();
             this.SPE1 = new System.Windows.Forms.NumericUpDown();
@@ -174,6 +174,8 @@
             this.LBL_IVDev = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.LBL_Time = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.calculationProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.MenuBar = new System.Windows.Forms.MenuStrip();
             this.importExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -186,8 +188,6 @@
             this.acceleratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateEventDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.calculationProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -239,7 +239,7 @@
             // GB_Left
             // 
             this.GB_Left.Controls.Add(this.CB_Nest);
-            this.GB_Left.Controls.Add(this.label1);
+            this.GB_Left.Controls.Add(this.LBL_Nest);
             this.GB_Left.Controls.Add(this.CB_Rarity);
             this.GB_Left.Controls.Add(this.LBL_Rarity);
             this.GB_Left.Controls.Add(this.CB_Game);
@@ -259,117 +259,117 @@
             this.CB_Nest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB_Nest.FormattingEnabled = true;
             this.CB_Nest.Items.AddRange(new object[] {
-            "Event Nest",
-            "Nest 1",
-            "Nest 2",
-            "Nest 3",
-            "Nest 4",
-            "Nest 5",
-            "Nest 6",
-            "Nest 7",
-            "Nest 8",
-            "Nest 9",
-            "Nest 10",
-            "Nest 11",
-            "Nest 12",
-            "Nest 13",
-            "Nest 14",
-            "Nest 15",
-            "Nest 16",
-            "Nest 17",
-            "Nest 18",
-            "Nest 19",
-            "Nest 20",
-            "Nest 21",
-            "Nest 22",
-            "Nest 23",
-            "Nest 24",
-            "Nest 25",
-            "Nest 26",
-            "Nest 27",
-            "Nest 28",
-            "Nest 29",
-            "Nest 30",
-            "Nest 31",
-            "Nest 32",
-            "Nest 33",
-            "Nest 34",
-            "Nest 35",
-            "Nest 36",
-            "Nest 37",
-            "Nest 38",
-            "Nest 39",
-            "Nest 40",
-            "Nest 41",
-            "Nest 42",
-            "Nest 43",
-            "Nest 44",
-            "Nest 45",
-            "Nest 46",
-            "Nest 47",
-            "Nest 48",
-            "Nest 49",
-            "Nest 50",
-            "Nest 51",
-            "Nest 52",
-            "Nest 53",
-            "Nest 54",
-            "Nest 55",
-            "Nest 56",
-            "Nest 57",
-            "Nest 58",
-            "Nest 59",
-            "Nest 60",
-            "Nest 61",
-            "Nest 62",
-            "Nest 63",
-            "Nest 64",
-            "Nest 65",
-            "Nest 66",
-            "Nest 67",
-            "Nest 68",
-            "Nest 69",
-            "Nest 70",
-            "Nest 71",
-            "Nest 72",
-            "Nest 73",
-            "Nest 74",
-            "Nest 75",
-            "Nest 76",
-            "Nest 77",
-            "Nest 78",
-            "Nest 79",
-            "Nest 80",
-            "Nest 81",
-            "Nest 82",
-            "Nest 83",
-            "Nest 84",
-            "Nest 85",
-            "Nest 86",
-            "Nest 87",
-            "Nest 88",
-            "Nest 89",
-            "Nest 90",
-            "Nest 91",
-            "Nest 92",
-            "Nest 93",
-            "Nest 94",
-            "Nest 95",
-            "Nest 96"});
+            "Event",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59",
+            "60",
+            "61",
+            "62",
+            "63",
+            "64",
+            "65",
+            "66",
+            "67",
+            "68",
+            "69",
+            "70",
+            "71",
+            "72",
+            "73",
+            "74",
+            "75",
+            "76",
+            "77",
+            "78",
+            "79",
+            "80",
+            "81",
+            "82",
+            "83",
+            "84",
+            "85",
+            "86",
+            "87",
+            "88",
+            "89",
+            "90",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "96"});
             this.CB_Nest.Location = new System.Drawing.Point(75, 89);
             this.CB_Nest.Name = "CB_Nest";
             this.CB_Nest.Size = new System.Drawing.Size(183, 24);
             this.CB_Nest.TabIndex = 3;
             this.CB_Nest.SelectedIndexChanged += new System.EventHandler(this.CB_Nest_SelectedIndexChanged);
             // 
-            // label1
+            // LBL_Nest
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 92);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 17);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Nest";
+            this.LBL_Nest.AutoSize = true;
+            this.LBL_Nest.Location = new System.Drawing.Point(5, 92);
+            this.LBL_Nest.Name = "LBL_Nest";
+            this.LBL_Nest.Size = new System.Drawing.Size(37, 17);
+            this.LBL_Nest.TabIndex = 27;
+            this.LBL_Nest.Text = "Nest";
             // 
             // CB_Rarity
             // 
@@ -602,7 +602,7 @@
             // 
             // GB_43
             // 
-            this.GB_43.Controls.Add(this.button8);
+            this.GB_43.Controls.Add(this.BT_Confirm2);
             this.GB_43.Controls.Add(this.BT_IVCalc3);
             this.GB_43.Controls.Add(this.RB_3rd);
             this.GB_43.Controls.Add(this.CB_Characteristic3);
@@ -632,15 +632,15 @@
             this.GB_43.TabStop = false;
             this.GB_43.Text = "3rd";
             // 
-            // button8
+            // BT_Confirm2
             // 
-            this.button8.Location = new System.Drawing.Point(19, 176);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(277, 23);
-            this.button8.TabIndex = 51;
-            this.button8.Text = "Confirm IVs";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.BT_IVCheck);
+            this.BT_Confirm2.Location = new System.Drawing.Point(19, 176);
+            this.BT_Confirm2.Name = "BT_Confirm2";
+            this.BT_Confirm2.Size = new System.Drawing.Size(277, 23);
+            this.BT_Confirm2.TabIndex = 51;
+            this.BT_Confirm2.Text = "Confirm IVs";
+            this.BT_Confirm2.UseVisualStyleBackColor = true;
+            this.BT_Confirm2.Click += new System.EventHandler(this.BT_IVCheck);
             // 
             // BT_IVCalc3
             // 
@@ -915,7 +915,7 @@
             // 
             // GB_42
             // 
-            this.GB_42.Controls.Add(this.button2);
+            this.GB_42.Controls.Add(this.BT_Confirm1);
             this.GB_42.Controls.Add(this.BT_IVCalc2);
             this.GB_42.Controls.Add(this.RB_2nd);
             this.GB_42.Controls.Add(this.CB_Characteristic2);
@@ -945,15 +945,15 @@
             this.GB_42.TabStop = false;
             this.GB_42.Text = "2nd";
             // 
-            // button2
+            // BT_Confirm1
             // 
-            this.button2.Location = new System.Drawing.Point(19, 182);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(277, 23);
-            this.button2.TabIndex = 50;
-            this.button2.Text = "Confirm IVs";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.BT_IVCheck);
+            this.BT_Confirm1.Location = new System.Drawing.Point(19, 182);
+            this.BT_Confirm1.Name = "BT_Confirm1";
+            this.BT_Confirm1.Size = new System.Drawing.Size(277, 23);
+            this.BT_Confirm1.TabIndex = 50;
+            this.BT_Confirm1.Text = "Confirm IVs";
+            this.BT_Confirm1.UseVisualStyleBackColor = true;
+            this.BT_Confirm1.Click += new System.EventHandler(this.BT_IVCheck);
             // 
             // BT_IVCalc2
             // 
@@ -1229,7 +1229,7 @@
             // GB_41
             // 
             this.GB_41.Controls.Add(this.BT_IVCalc1);
-            this.GB_41.Controls.Add(this.button1);
+            this.GB_41.Controls.Add(this.BT_CheckIVs);
             this.GB_41.Controls.Add(this.CB_Characteristic1);
             this.GB_41.Controls.Add(this.LBL_Characteristic1);
             this.GB_41.Controls.Add(this.SPE1);
@@ -1267,15 +1267,15 @@
             this.BT_IVCalc1.UseVisualStyleBackColor = true;
             this.BT_IVCalc1.Click += new System.EventHandler(this.StartIVCalc);
             // 
-            // button1
+            // BT_CheckIVs
             // 
-            this.button1.Location = new System.Drawing.Point(19, 181);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(277, 23);
-            this.button1.TabIndex = 48;
-            this.button1.Text = "Check IVs";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.BT_IVCheck);
+            this.BT_CheckIVs.Location = new System.Drawing.Point(19, 181);
+            this.BT_CheckIVs.Name = "BT_CheckIVs";
+            this.BT_CheckIVs.Size = new System.Drawing.Size(277, 23);
+            this.BT_CheckIVs.TabIndex = 48;
+            this.BT_CheckIVs.Text = "Check IVs";
+            this.BT_CheckIVs.UseVisualStyleBackColor = true;
+            this.BT_CheckIVs.Click += new System.EventHandler(this.BT_IVCheck);
             // 
             // CB_Characteristic1
             // 
@@ -2263,6 +2263,17 @@
             this.LBL_Time.Size = new System.Drawing.Size(40, 20);
             this.LBL_Time.Text = "0 ms";
             // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(146, 20);
+            this.toolStripStatusLabel3.Text = "Calculation Progress:";
+            // 
+            // calculationProgressBar
+            // 
+            this.calculationProgressBar.Name = "calculationProgressBar";
+            this.calculationProgressBar.Size = new System.Drawing.Size(100, 18);
+            // 
             // MenuBar
             // 
             this.MenuBar.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -2291,14 +2302,14 @@
             // exportDataToolStripMenuItem
             // 
             this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exportDataToolStripMenuItem.Text = "Export Data";
             this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.ExportDataToolStripMenuItem_Click);
             // 
             // importDataToolStripMenuItem
             // 
             this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
-            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
+            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.importDataToolStripMenuItem.Text = "Import Data";
             this.importDataToolStripMenuItem.Click += new System.EventHandler(this.ImportDataToolStripMenuItem_Click);
             // 
@@ -2315,21 +2326,21 @@
             // englishToolStripMenuItem1
             // 
             this.englishToolStripMenuItem1.Name = "englishToolStripMenuItem1";
-            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
+            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.englishToolStripMenuItem1.Text = "English";
             this.englishToolStripMenuItem1.Click += new System.EventHandler(this.EnglishToolStripMenuItem_Click);
             // 
             // 日本語ToolStripMenuItem1
             // 
             this.日本語ToolStripMenuItem1.Name = "日本語ToolStripMenuItem1";
-            this.日本語ToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
+            this.日本語ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.日本語ToolStripMenuItem1.Text = "日本語";
             this.日本語ToolStripMenuItem1.Click += new System.EventHandler(this.NihongoToolStripMenuItem_Click);
             // 
             // 简体中文ToolStripMenuItem1
             // 
             this.简体中文ToolStripMenuItem1.Name = "简体中文ToolStripMenuItem1";
-            this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
+            this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.简体中文ToolStripMenuItem1.Text = "简体中文";
             this.简体中文ToolStripMenuItem1.Click += new System.EventHandler(this.ChineseToolStripMenuItem_Click);
             // 
@@ -2363,17 +2374,6 @@
             this.updateEventDatabaseToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
             this.updateEventDatabaseToolStripMenuItem.Text = "Update Event Database";
             this.updateEventDatabaseToolStripMenuItem.Click += new System.EventHandler(this.UpdateEventDatabaseToolStripMenuItem_Click);
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(146, 20);
-            this.toolStripStatusLabel3.Text = "Calculation Progress:";
-            // 
-            // calculationProgressBar
-            // 
-            this.calculationProgressBar.Name = "calculationProgressBar";
-            this.calculationProgressBar.Size = new System.Drawing.Size(100, 18);
             // 
             // SeedSearcherGui
             // 
@@ -2527,7 +2527,7 @@
         private System.Windows.Forms.Label LBL_Nature2;
         private System.Windows.Forms.ComboBox CB_Species2;
         private System.Windows.Forms.Label LBL_PKMN2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BT_CheckIVs;
         private System.Windows.Forms.Label LB_Response;
         private System.Windows.Forms.GroupBox GB_51;
         private System.Windows.Forms.ComboBox CB_Characteristic4;
@@ -2592,7 +2592,7 @@
         private System.Windows.Forms.ToolStripStatusLabel LBL_IVDev;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel LBL_Time;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LBL_Nest;
         private System.Windows.Forms.ComboBox CB_Nest;
         private System.Windows.Forms.ToolStripMenuItem acceleratorToolStripMenuItem;
         private System.Windows.Forms.Button BT_IVCalc3;
@@ -2600,8 +2600,8 @@
         private System.Windows.Forms.Button BT_IVCalc1;
         private System.Windows.Forms.Button BT_IVCalc4;
         private System.Windows.Forms.Button BT_IVCalc5;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BT_Confirm2;
+        private System.Windows.Forms.Button BT_Confirm1;
         private System.Windows.Forms.ToolStripMenuItem eventsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateEventDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languagesToolStripMenuItem;

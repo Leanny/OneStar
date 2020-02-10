@@ -126,6 +126,9 @@
   <data name="AbilityNormal" xml:space="preserve">
     <value>Normal</value>
   </data>
+  <data name="Accelerator" xml:space="preserve">
+    <value>Accelerator</value>
+  </data>
   <data name="ATK" xml:space="preserve">
     <value>ATK</value>
   </data>
@@ -159,8 +162,17 @@
   <data name="Bridge9" xml:space="preserve">
     <value>Bridge Field 9</value>
   </data>
+  <data name="BTStartSearch" xml:space="preserve">
+    <value>Start Search</value>
+  </data>
   <data name="Characteristic" xml:space="preserve">
     <value>Characteristic</value>
+  </data>
+  <data name="CheckIVs" xml:space="preserve">
+    <value>Check Ivs</value>
+  </data>
+  <data name="ConfirmIVs" xml:space="preserve">
+    <value>Confirm Ivs</value>
   </data>
   <data name="Dappled1" xml:space="preserve">
     <value>Dappled Grove 1</value>
@@ -243,6 +255,12 @@
   <data name="Event" xml:space="preserve">
     <value>Event Den</value>
   </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="ExportImport" xml:space="preserve">
+    <value>Export/Import</value>
+  </data>
   <data name="Game" xml:space="preserve">
     <value>Game</value>
   </data>
@@ -315,6 +333,9 @@
   <data name="HP" xml:space="preserve">
     <value>HP</value>
   </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
   <data name="IVDeviation" xml:space="preserve">
     <value>Calculation Range</value>
   </data>
@@ -330,6 +351,9 @@
   <data name="Lake4" xml:space="preserve">
     <value>Lake of Outrage 4</value>
   </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Languages</value>
+  </data>
   <data name="Motostoke1" xml:space="preserve">
     <value>Motostoke Riverbank 1</value>
   </data>
@@ -344,6 +368,15 @@
   </data>
   <data name="Nature" xml:space="preserve">
     <value>Nature</value>
+  </data>
+  <data name="Nest" xml:space="preserve">
+    <value>Nest</value>
+  </data>
+  <data name="NewSearch" xml:space="preserve">
+    <value>New Search</value>
+  </data>
+  <data name="NOK" xml:space="preserve">
+    <value>NOK! No follow up possible.</value>
   </data>
   <data name="Normal" xml:space="preserve">
     <value>Normal</value>
@@ -365,6 +398,12 @@
   </data>
   <data name="North6" xml:space="preserve">
     <value>North Lake Miloch 6</value>
+  </data>
+  <data name="NoSeed" xml:space="preserve">
+    <value>No Seed found. Please increase Calculation Range and run the tool again.</value>
+  </data>
+  <data name="NotEnough" xml:space="preserve">
+    <value>Not enough 31 IVs set for this Pokémon.</value>
   </data>
   <data name="Pokemon" xml:space="preserve">
     <value>Pokémon</value>
@@ -402,6 +441,12 @@
   <data name="Rolling9" xml:space="preserve">
     <value>Rolling Fields 9</value>
   </data>
+  <data name="SeedChecker" xml:space="preserve">
+    <value>Seed Checker</value>
+  </data>
+  <data name="SetEvent" xml:space="preserve">
+    <value>Set Event</value>
+  </data>
   <data name="Shield" xml:space="preserve">
     <value>Shield</value>
   </data>
@@ -428,6 +473,9 @@
   </data>
   <data name="SPE" xml:space="preserve">
     <value>SPE</value>
+  </data>
+  <data name="StartSearch" xml:space="preserve">
+    <value>Search</value>
   </data>
   <data name="Stony0" xml:space="preserve">
     <value>Stony Wilderness 10</value>
@@ -465,11 +513,20 @@
   <data name="Stony9" xml:space="preserve">
     <value>Stony Wilderness 9</value>
   </data>
+  <data name="StopSearch" xml:space="preserve">
+    <value>Stop Search</value>
+  </data>
   <data name="Sword" xml:space="preserve">
     <value>Sword</value>
   </data>
+  <data name="TooMany" xml:space="preserve">
+    <value>Too many IVs are at 31. Please use a different Pokémon.</value>
+  </data>
   <data name="Unknown" xml:space="preserve">
     <value>Unknown</value>
+  </data>
+  <data name="UpdateEvent" xml:space="preserve">
+    <value>Update Event Database</value>
   </data>
   <data name="Watchtower1" xml:space="preserve">
     <value>Watchtower Ruins 1</value>

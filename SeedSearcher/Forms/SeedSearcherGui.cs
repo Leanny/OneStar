@@ -243,6 +243,23 @@ namespace SeedSearcherGui
             GB_PKMN1.Text = Properties.strings.Day4;
             GB_51.Text = Properties.strings.Day5;
             GB_61.Text = Properties.strings.Day6;
+
+            BT_newsearch.Text = Properties.strings.NewSearch;
+            BT_Search.Text = Properties.strings.BTStartSearch;
+            BT_Table.Text = Properties.strings.SeedChecker;
+
+            LBL_Nest.Text = Properties.strings.Nest;
+            exportDataToolStripMenuItem.Text = Properties.strings.Export;
+            importDataToolStripMenuItem.Text = Properties.strings.Import;
+            importExportToolStripMenuItem.Text = Properties.strings.ExportImport;
+            languagesToolStripMenuItem.Text = Properties.strings.Languages;
+            acceleratorToolStripMenuItem.Text = Properties.strings.Accelerator;
+            eventsToolStripMenuItem.Text = Properties.strings.SetEvent;
+            updateEventDatabaseToolStripMenuItem.Text = Properties.strings.UpdateEvent;
+            BT_CheckIVs.Text = Properties.strings.CheckIVs;
+            BT_Confirm1.Text = Properties.strings.ConfirmIVs;
+            BT_Confirm2.Text = Properties.strings.ConfirmIVs;
+
             dontChange = false;
         }
 
@@ -388,19 +405,8 @@ namespace SeedSearcherGui
             }
             if (!GB_42.Enabled && flawless > fixedIV[0])
             {
-                if (flawless == 1)
-                {
-                    LB_Response.Text = "Not enough info.";
-                    GB_42.Enabled = true;
-                    PopulateSpeciesCB(CB_Species[1], GetEntriesWithIV(fixedIV[1]));
-                    return null;
-                }
-                else
-                {
-                    LB_Response.Text = "Too many IVs are at 31. Please use a different Pokémon.";
-                    return null;
-
-                }
+                LB_Response.Text = Properties.strings.TooMany;
+                return null;
             }
             if (flawless < fixedIV[0])
             {
@@ -410,7 +416,7 @@ namespace SeedSearcherGui
                 GB_43.Enabled = false;
                 GB_51.Enabled = false;
                 GB_61.Enabled = false;
-                LB_Response.Text = "Not enough 31 IVs set for this Pokémon.";
+                LB_Response.Text = Properties.strings.NotEnough;
                 return null;
             }
             if (GB_42.Enabled && flawless > fixedIV[0])
@@ -457,7 +463,7 @@ namespace SeedSearcherGui
                     GB_43.Enabled = false;
                     GB_51.Enabled = false;
                     GB_61.Enabled = false;
-                    LB_Response.Text = "NOK!";
+                    LB_Response.Text = Properties.strings.NOK;
                     return setIVs; // we have more than enough information
                 }
             }
@@ -504,7 +510,7 @@ namespace SeedSearcherGui
                     GB_43.Enabled = false;
                     GB_51.Enabled = false;
                     GB_61.Enabled = false;
-                    LB_Response.Text = "NOK!";
+                    LB_Response.Text = Properties.strings.NOK;
                     return setIVs; // we cannot get more information
                 }
 
@@ -579,7 +585,7 @@ namespace SeedSearcherGui
                                 GB_43.Enabled = false;
                                 GB_51.Enabled = false;
                                 GB_61.Enabled = false;
-                                LB_Response.Text = "NOK!";
+                                LB_Response.Text = Properties.strings.NOK;
                                 return null; // we have more than enough information
                             }
                         }
@@ -600,7 +606,7 @@ namespace SeedSearcherGui
                     GB_43.Enabled = false;
                     GB_51.Enabled = false;
                     GB_61.Enabled = false;
-                    LB_Response.Text = "NOK!";
+                    LB_Response.Text = Properties.strings.NOK;
                 }
                 return setIVs;
             }
@@ -643,7 +649,7 @@ namespace SeedSearcherGui
                     GB_43.Enabled = false;
                     GB_51.Enabled = false;
                     GB_61.Enabled = false;
-                    LB_Response.Text = "NOK!";
+                    LB_Response.Text = Properties.strings.NOK;
                     return null;
                 }
                 return setIVs;
@@ -669,7 +675,7 @@ namespace SeedSearcherGui
                     GB_43.Enabled = false;
                     GB_51.Enabled = false;
                     GB_61.Enabled = false;
-                    LB_Response.Text = "NOK!";
+                    LB_Response.Text = Properties.strings.NOK;
                     return null;
                 }
                 LBLAO.Text = "OR";
@@ -1227,7 +1233,7 @@ namespace SeedSearcherGui
             SeedResult.Text = "";
             int minRerolls = (int)NUD_IVMin.Value;
             int maxRerolls = (int)NUD_IVMax.Value;
-            BT_Search.Text = "Stop Search";
+            BT_Search.Text = Properties.strings.StopSearch;
             //GB_Controls.Enabled = false;
             BT_newsearch.Enabled = false;
             NUD_IVMin.Enabled = false;
@@ -1246,7 +1252,7 @@ namespace SeedSearcherGui
             LBL_Time.Text = $"{stopWatch.ElapsedMilliseconds} ms";
             this.BT_Search.Click += new System.EventHandler(this.BT_Search_Click);
             this.BT_Search.Click -= new System.EventHandler(this.BT_Stop_Search);
-            BT_Search.Text = "Search";
+            BT_Search.Text = Properties.strings.StartSearch;
             BT_newsearch.Enabled = true;
             NUD_IVMin.Enabled = true;
             NUD_IVMax.Enabled = true;
@@ -1254,7 +1260,7 @@ namespace SeedSearcherGui
             BT_Search.Enabled = searcher.Result.Count == 0;
             if (searcher.Result.Count == 0)
             {
-                MessageBox.Show("No Seed found. Please increase Calculation Range and run the tool again.");
+                MessageBox.Show(Properties.strings.NoSeed);
                 //unlock for editing
                 GB_41.Enabled = true;
                 GB_42.Enabled = enabled[1];

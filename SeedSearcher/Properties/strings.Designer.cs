@@ -88,6 +88,15 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Accelerator ähnelt.
+        /// </summary>
+        internal static string Accelerator {
+            get {
+                return ResourceManager.GetString("Accelerator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die ATK ähnelt.
         /// </summary>
         internal static string ATK {
@@ -187,11 +196,38 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Start Search ähnelt.
+        /// </summary>
+        internal static string BTStartSearch {
+            get {
+                return ResourceManager.GetString("BTStartSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Characteristic ähnelt.
         /// </summary>
         internal static string Characteristic {
             get {
                 return ResourceManager.GetString("Characteristic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Check Ivs ähnelt.
+        /// </summary>
+        internal static string CheckIVs {
+            get {
+                return ResourceManager.GetString("CheckIVs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Confirm Ivs ähnelt.
+        /// </summary>
+        internal static string ConfirmIVs {
+            get {
+                return ResourceManager.GetString("ConfirmIVs", resourceCulture);
             }
         }
         
@@ -439,6 +475,24 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export ähnelt.
+        /// </summary>
+        internal static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Export/Import ähnelt.
+        /// </summary>
+        internal static string ExportImport {
+            get {
+                return ResourceManager.GetString("ExportImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Game ähnelt.
         /// </summary>
         internal static string Game {
@@ -655,6 +709,15 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Import ähnelt.
+        /// </summary>
+        internal static string Import {
+            get {
+                return ResourceManager.GetString("Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Calculation Range ähnelt.
         /// </summary>
         internal static string IVDeviation {
@@ -700,6 +763,15 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Languages ähnelt.
+        /// </summary>
+        internal static string Languages {
+            get {
+                return ResourceManager.GetString("Languages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Motostoke Riverbank 1 ähnelt.
         /// </summary>
         internal static string Motostoke1 {
@@ -741,6 +813,33 @@ namespace SeedSearcherGui.Properties {
         internal static string Nature {
             get {
                 return ResourceManager.GetString("Nature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Nest ähnelt.
+        /// </summary>
+        internal static string Nest {
+            get {
+                return ResourceManager.GetString("Nest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die New Search ähnelt.
+        /// </summary>
+        internal static string NewSearch {
+            get {
+                return ResourceManager.GetString("NewSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die NOK! No follow up possible. ähnelt.
+        /// </summary>
+        internal static string NOK {
+            get {
+                return ResourceManager.GetString("NOK", resourceCulture);
             }
         }
         
@@ -804,6 +903,24 @@ namespace SeedSearcherGui.Properties {
         internal static string North6 {
             get {
                 return ResourceManager.GetString("North6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No Seed found. Please increase Calculation Range and run the tool again. ähnelt.
+        /// </summary>
+        internal static string NoSeed {
+            get {
+                return ResourceManager.GetString("NoSeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Not enough 31 IVs set for this Pokémon. ähnelt.
+        /// </summary>
+        internal static string NotEnough {
+            get {
+                return ResourceManager.GetString("NotEnough", resourceCulture);
             }
         }
         
@@ -916,6 +1033,24 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Seed Checker ähnelt.
+        /// </summary>
+        internal static string SeedChecker {
+            get {
+                return ResourceManager.GetString("SeedChecker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Set Event ähnelt.
+        /// </summary>
+        internal static string SetEvent {
+            get {
+                return ResourceManager.GetString("SetEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Shield ähnelt.
         /// </summary>
         internal static string Shield {
@@ -993,6 +1128,15 @@ namespace SeedSearcherGui.Properties {
         internal static string SPE {
             get {
                 return ResourceManager.GetString("SPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Search ähnelt.
+        /// </summary>
+        internal static string StartSearch {
+            get {
+                return ResourceManager.GetString("StartSearch", resourceCulture);
             }
         }
         
@@ -1105,6 +1249,15 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stop Search ähnelt.
+        /// </summary>
+        internal static string StopSearch {
+            get {
+                return ResourceManager.GetString("StopSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Sword ähnelt.
         /// </summary>
         internal static string Sword {
@@ -1114,11 +1267,29 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Too many IVs are at 31. Please use a different Pokémon. ähnelt.
+        /// </summary>
+        internal static string TooMany {
+            get {
+                return ResourceManager.GetString("TooMany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Unknown ähnelt.
         /// </summary>
         internal static string Unknown {
             get {
                 return ResourceManager.GetString("Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Update Event Database ähnelt.
+        /// </summary>
+        internal static string UpdateEvent {
+            get {
+                return ResourceManager.GetString("UpdateEvent", resourceCulture);
             }
         }
         
