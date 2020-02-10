@@ -159,7 +159,7 @@ namespace SeedSearcherGui
                 Properties.strings.Bridge1, Properties.strings.Bridge2, Properties.strings.Bridge3, Properties.strings.Bridge4, Properties.strings.Bridge5, Properties.strings.Bridge6,
                 Properties.strings.Bridge7, Properties.strings.Bridge8, Properties.strings.Bridge9, Properties.strings.Stony1, Properties.strings.Stony2, Properties.strings.Stony3,
                 Properties.strings.Stony4, Properties.strings.Stony5, Properties.strings.Stony6, Properties.strings.Stony7, Properties.strings.Stony8, Properties.strings.Stony9,
-                Properties.strings.Stony0, Properties.strings.Stony1, Properties.strings.Stony2, Properties.strings.Dusty1, Properties.strings.Dusty2, Properties.strings.Dusty3,
+                Properties.strings.Stony0, Properties.strings.Stony11, Properties.strings.Stony21, Properties.strings.Dusty1, Properties.strings.Dusty2, Properties.strings.Dusty3,
                 Properties.strings.Dusty4, Properties.strings.Dusty5, Properties.strings.Dusty6, Properties.strings.Dusty7, Properties.strings.Dusty8, Properties.strings.Giant11,
                 Properties.strings.Dusty9, Properties.strings.Giant21, Properties.strings.Giant31, Properties.strings.Giant41, Properties.strings.Giant51, Properties.strings.Hammerlocke1,
                 Properties.strings.Hammerlocke2, Properties.strings.Hammerlocke3, Properties.strings.Hammerlocke4, Properties.strings.Hammerlocke5, Properties.strings.Hammerlocke6,

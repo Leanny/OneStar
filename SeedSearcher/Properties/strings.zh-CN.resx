@@ -286,43 +286,43 @@
     <comment>こもれび林B</comment>
   </data>
   <data name="Giant22" xml:space="preserve">
-    <value>巨人镜池C</value>
+    <value>巨人帽岩C</value>
     <comment>巨人の鏡子C</comment>
   </data>
   <data name="Giant21" xml:space="preserve">
-    <value>巨人帽岩D</value>
+    <value>巨人镜池D</value>
     <comment>巨人の帽池D</comment>
   </data>
   <data name="Giant11" xml:space="preserve">
-    <value>巨人帽岩E</value>
+    <value>巨人镜池E</value>
     <comment>巨人の帽池E</comment>
   </data>
   <data name="Giant12" xml:space="preserve">
-    <value>巨人镜池E</value>
+    <value>巨人帽岩E</value>
     <comment>巨人の鏡子E</comment>
   </data>
   <data name="Giant41" xml:space="preserve">
-    <value>巨人帽岩A</value>
+    <value>巨人镜池A</value>
     <comment>巨人の帽池A</comment>
   </data>
   <data name="Giant42" xml:space="preserve">
-    <value>巨人镜池A</value>
+    <value>巨人帽岩A</value>
     <comment>巨人の鏡子A</comment>
   </data>
   <data name="Giant32" xml:space="preserve">
-    <value>巨人镜池D</value>
+    <value>巨人帽岩D</value>
     <comment>巨人の鏡子D</comment>
   </data>
   <data name="Giant31" xml:space="preserve">
-    <value>巨人帽岩B</value>
+    <value>巨人镜池B</value>
     <comment>巨人の帽池B</comment>
   </data>
   <data name="Giant51" xml:space="preserve">
-    <value>巨人帽岩C</value>
+    <value>巨人镜池C</value>
     <comment>巨人の帽池C</comment>
   </data>
   <data name="Giant52" xml:space="preserve">
-    <value>巨人镜池B</value>
+    <value>巨人帽岩B</value>
     <comment>巨人の鏡子B</comment>
   </data>
   <data name="Day4Base" xml:space="preserve">
@@ -354,7 +354,7 @@
     <comment>ストーンズ原野J</comment>
   </data>
   <data name="Stony1" xml:space="preserve">
-    <value>巨石原野野L</value>
+    <value>巨石原野L</value>
     <comment>ストーンズ原野L</comment>
   </data>
   <data name="Stony6" xml:space="preserve">
