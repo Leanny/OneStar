@@ -186,6 +186,8 @@
             this.acceleratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateEventDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.calculationProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.GB_Left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
@@ -2226,7 +2228,9 @@
             this.toolStripStatusLabel1,
             this.LBL_IVDev,
             this.toolStripStatusLabel2,
-            this.LBL_Time});
+            this.LBL_Time,
+            this.toolStripStatusLabel3,
+            this.calculationProgressBar});
             this.statusStrip1.Location = new System.Drawing.Point(0, 777);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
@@ -2287,14 +2291,14 @@
             // exportDataToolStripMenuItem
             // 
             this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.exportDataToolStripMenuItem.Text = "Export Data";
             this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.ExportDataToolStripMenuItem_Click);
             // 
             // importDataToolStripMenuItem
             // 
             this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
-            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.importDataToolStripMenuItem.Text = "Import Data";
             this.importDataToolStripMenuItem.Click += new System.EventHandler(this.ImportDataToolStripMenuItem_Click);
             // 
@@ -2359,6 +2363,17 @@
             this.updateEventDatabaseToolStripMenuItem.Size = new System.Drawing.Size(248, 26);
             this.updateEventDatabaseToolStripMenuItem.Text = "Update Event Database";
             this.updateEventDatabaseToolStripMenuItem.Click += new System.EventHandler(this.UpdateEventDatabaseToolStripMenuItem_Click);
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(146, 20);
+            this.toolStripStatusLabel3.Text = "Calculation Progress:";
+            // 
+            // calculationProgressBar
+            // 
+            this.calculationProgressBar.Name = "calculationProgressBar";
+            this.calculationProgressBar.Size = new System.Drawing.Size(100, 18);
             // 
             // SeedSearcherGui
             // 
@@ -2599,6 +2614,8 @@
         private System.Windows.Forms.NumericUpDown NUD_Frame1;
         private System.Windows.Forms.NumericUpDown NUD_Frame2;
         private System.Windows.Forms.NumericUpDown NUD_Frame3;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripProgressBar calculationProgressBar;
     }
 }
 

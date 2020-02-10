@@ -172,7 +172,7 @@ namespace SeedSearcherGui
 		}
 
 
-		private void CalculateGPU(int searcherIDX, int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl)
+		private void CalculateGPU(int searcherIDX, int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl, ToolStripProgressBar calculationProgressBar)
 		{
 			var devices = SeedSearcherGPU.UseableGPU();
 			var ssg = new SeedSearcherGPU();
@@ -181,11 +181,12 @@ namespace SeedSearcherGui
 			ssg.SetSixThirdCondition(pkmn3);
 			ssg.SetTargetCondition(target);
 			ssg.SetSixLSB(LSB);
-			if(m_Mode == Mode.Star12)
+			List<ulong> abilities = GetAbilityBits();
+			if (m_Mode == Mode.Star12)
 			{
 				if (ssg.TestSeed(0) != 5)
 				{
-					var result = ssg.SearchOne(devices[searcherIDX], minRerolls, maxRerolls, updateLbl);
+					var result = ssg.SearchOne(devices[searcherIDX], minRerolls, maxRerolls, abilities, updateLbl, calculationProgressBar);
 					if (result != 0)
 					{
 						Result.Add(result);
@@ -203,13 +204,13 @@ namespace SeedSearcherGui
 					ulong result;
 					if(target[4] == -1)
 					{
-						result = ssg.SearchFour(devices[searcherIDX], minRerolls, maxRerolls, updateLbl);
+						result = ssg.SearchFour(devices[searcherIDX], minRerolls, maxRerolls, abilities, updateLbl, calculationProgressBar);
 					} else if(target[5] == -1)
 					{
-						result = ssg.SearchFive(devices[searcherIDX], minRerolls, maxRerolls, updateLbl);
+						result = ssg.SearchFive(devices[searcherIDX], minRerolls, maxRerolls, abilities, updateLbl, calculationProgressBar);
 					} else
 					{
-						result = ssg.SearchSix(devices[searcherIDX], minRerolls, maxRerolls, updateLbl);
+						result = ssg.SearchSix(devices[searcherIDX], minRerolls, maxRerolls, abilities, updateLbl, calculationProgressBar);
 					}
 					if (result != 0)
 					{
@@ -225,23 +226,23 @@ namespace SeedSearcherGui
 
 		public List<ulong> Calculate(int rolls, int[] target)
 		{
-			Calculate(0, rolls, rolls, target, null);
+			Calculate(0, rolls, rolls, target, null, null);
 			return Result;
 		}
 
-		public void Calculate(int searcherIDX, int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl)
+		public void Calculate(int searcherIDX, int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl, ToolStripProgressBar calculationProgressBar)
 		{
 			Result.Clear();
 			if (searcherIDX == -1)
 			{
-				CalculateCPU(minRerolls, maxRerolls, target, updateLbl);
+				CalculateCPU(minRerolls, maxRerolls, target, updateLbl, calculationProgressBar);
 			} else
 			{
-				CalculateGPU(searcherIDX, minRerolls, maxRerolls, target, updateLbl);
+				CalculateGPU(searcherIDX, minRerolls, maxRerolls, target, updateLbl, calculationProgressBar);
 			}
 		}
 
-		private void CalculateCPU(int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl)
+		private void CalculateCPU(int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl, ToolStripProgressBar calculationProgressBar)
 		{
 			SetLSB(LSB);
 			List<ulong> abilities = GetAbilityBits();
@@ -255,6 +256,10 @@ namespace SeedSearcherGui
 					pkmn3.ability, pkmn3.nature, pkmn3.characteristic, pkmn3.day, pkmn3.ID, pkmn3.altForm, pkmn3.isNoGender, pkmn3.isEnableDream);
 				if (TestSeed(0) != 5)
 				{
+					if (calculationProgressBar != null)
+					{
+						calculationProgressBar.Maximum = abilities.Count;
+					}
 					int searchLower = 0;
 					int searchUpper = 0x10000000;
 
@@ -263,8 +268,11 @@ namespace SeedSearcherGui
 						if(updateLbl != null)
 							updateLbl.Text = i.ToString();
 						Prepare(i);
-
-						foreach(ulong ability in abilities) 
+						if (calculationProgressBar != null)
+						{
+							calculationProgressBar.Value = 0;
+						}
+						foreach (ulong ability in abilities) 
 						{
 							Parallel.For(searchLower, searchUpper, (ivs, state) =>
 							{
@@ -278,6 +286,10 @@ namespace SeedSearcherGui
 							if (Result.Count > 0)
 							{
 								return;
+							}
+							if (calculationProgressBar != null)
+							{
+								calculationProgressBar.Value++;
 							}
 						}
 					}
@@ -300,11 +312,6 @@ namespace SeedSearcherGui
 					pkmn4.ability, pkmn4.nature, pkmn4.characteristic, pkmn4.day, pkmn4.ID, pkmn4.altForm, pkmn4.isNoGender, pkmn4.isEnableDream);
 				if (TestSixSeed(0) != 5)
 				{
-					var result = Util.Prompt(MessageBoxButtons.YesNo, "Warning: This search can take multiple hours. Only do this at your own risk. Do you want to continue?");
-					if (result == DialogResult.No)
-					{
-						return;
-					}
 					List<ulong> fixedPosition = new List<ulong>();
 					if (pkmn1.ivs0 == 31)
 					{
@@ -330,16 +337,29 @@ namespace SeedSearcherGui
 					{
 						fixedPosition.Add(5);
 					}
-
 					SetTargetCondition6(target[0], target[1], target[2], target[3], target[4], target[5]);
 					int searchLower = 0;
 					if (target[4] == -1)
 					{
+						var result = Util.Prompt(MessageBoxButtons.YesNo, "Warning: This search can take multiple hours. Only do this at your own risk. Do you want to continue?");
+						if (result == DialogResult.No)
+						{
+							return;
+						}
+						if (calculationProgressBar != null)
+						{
+							calculationProgressBar.Maximum = fixedPosition.Count * abilities.Count;
+						}
 						int searchUpper = 0x800000;
 						for (int i = minRerolls; i <= maxRerolls; ++i)
 						{
-							if (updateLbl != null)
+							if (updateLbl != null) { 
 								updateLbl.Text = i.ToString();
+							}
+							if (calculationProgressBar != null)
+							{
+								calculationProgressBar.Value = 0;
+							}
 							PrepareFive(i);
 							foreach (ulong fidx in fixedPosition)
 							{
@@ -358,17 +378,29 @@ namespace SeedSearcherGui
 									{
 										return;
 									}
+									if (calculationProgressBar != null)
+									{
+										calculationProgressBar.Value++;
+									}
 								}
 							}
 						}
 					}
 					else if (target[5] == -1)
 					{
+						if (calculationProgressBar != null)
+						{
+							calculationProgressBar.Maximum = fixedPosition.Count * abilities.Count;
+						}
 						int searchUpper = 0x10000000;
 						for (int i = minRerolls; i <= maxRerolls; ++i)
 						{
 							if (updateLbl != null)
 								updateLbl.Text = i.ToString();
+							if (calculationProgressBar != null)
+							{
+								calculationProgressBar.Value = 0;
+							}
 							PrepareFive(i);
 							foreach (ulong fidx in fixedPosition)
 							{
@@ -387,17 +419,29 @@ namespace SeedSearcherGui
 									{
 										return;
 									}
+									if (calculationProgressBar != null)
+									{
+										calculationProgressBar.Value++;
+									}
 								}
 							}
 						}
 					}
 					else
 					{
+						if (calculationProgressBar != null)
+						{
+							calculationProgressBar.Maximum = abilities.Count;
+						}
 						int searchUpper = 0x40000000;
 						for (int i = minRerolls; i <= maxRerolls; ++i)
 						{
 							if (updateLbl != null)
 								updateLbl.Text = i.ToString();
+							if (calculationProgressBar != null)
+							{
+								calculationProgressBar.Value = 0;
+							}
 							PrepareSix(i);
 							foreach (ulong ability in abilities)
 							{
@@ -413,6 +457,10 @@ namespace SeedSearcherGui
 								if (Result.Count > 0)
 								{
 									return;
+								}
+								if (calculationProgressBar != null)
+								{
+									calculationProgressBar.Value++;
 								}
 							}
 						}

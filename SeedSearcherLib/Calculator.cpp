@@ -115,7 +115,7 @@ void Prepare(int rerolls)
 
 	g_Rerolls = rerolls;
 
-	g_ConstantTermVector = 3;
+	g_ConstantTermVector = 0;
 
 	InitializeTransformationMatrix(); 
 	for (int i = 0; i <= rerolls + l_First.fixedIV; ++i)
@@ -149,7 +149,17 @@ void Prepare(int rerolls)
 
 	ProceedTransformationMatrix();
 
-	g_InputMatrix[56] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
+	g_InputMatrix[bit++] = GetMatrixMultiplier(62) ^ GetMatrixMultiplier(126);
+	if (GetMatrixConst(62) != GetMatrixConst(126))
+	{
+		g_ConstantTermVector |= 2;
+	}
+
+	g_InputMatrix[bit++] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
+	if (GetMatrixConst(63) != GetMatrixConst(127))
+	{
+		g_ConstantTermVector |= 1;
+	}
 
 	length = CalculateInverseMatrix(l);
 

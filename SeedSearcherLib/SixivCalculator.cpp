@@ -164,7 +164,7 @@ void PrepareSix(int ivOffset)
 
 	g_IvOffset = ivOffset;
 
-	g_ConstantTermVector = 3;
+	g_ConstantTermVector = 0;
 
 	InitializeTransformationMatrix();
 	for (int i = 0; i <= 1 + l_First.fixedIV + ivOffset; ++i)
@@ -172,22 +172,32 @@ void PrepareSix(int ivOffset)
 		ProceedTransformationMatrix();
 	}
 
+	int bit = 0;
 	for (int a = 0; a < g_setIVs; ++a)
 	{
 		for (int i = 0; i < 10; ++i)
 		{
 			int index = 59 + (i / 5) * 64 + (i % 5);
-			int bit = a * 10 + i;
-			g_InputMatrix[bit] = GetMatrixMultiplier(index);
+			g_InputMatrix[bit++] = GetMatrixMultiplier(index);
 			if (GetMatrixConst(index) != 0)
 			{
-				g_ConstantTermVector |= (1ull << (length - 1 - bit));
+				g_ConstantTermVector |= (1ull << (length - bit));
 			}
 		}
 		ProceedTransformationMatrix();
 	}
 
-	g_InputMatrix[60] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
+	g_InputMatrix[bit++] = GetMatrixMultiplier(62) ^ GetMatrixMultiplier(126);
+	if (GetMatrixConst(62) != GetMatrixConst(126))
+	{
+		g_ConstantTermVector |= 2;
+	}
+
+	g_InputMatrix[bit++] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
+	if (GetMatrixConst(63) != GetMatrixConst(127))
+	{
+		g_ConstantTermVector |= 1;
+	}
 	RoundLength = CalculateInverseMatrix(length);
 
 	CalculateCoefficientData(RoundLength);
@@ -209,7 +219,7 @@ void PrepareFive(int ivOffset)
 
 	g_IvOffset = ivOffset;
 
-	g_ConstantTermVector = 3;
+	g_ConstantTermVector = 0;
 
 	InitializeTransformationMatrix();
 	for (int i = 0; i <= l_First.fixedIV + ivOffset; ++i)
@@ -218,30 +228,40 @@ void PrepareFive(int ivOffset)
 	}
 
 	int bit = 0;
-	for (int i = 0; i < 6; ++i, ++bit)
+	for (int i = 0; i < 6; ++i)
 	{
 		int index = 61 + (i / 3) * 64 + (i % 3);
-		g_InputMatrix[bit] = GetMatrixMultiplier(index);
+		g_InputMatrix[bit++] = GetMatrixMultiplier(index);
 		if (GetMatrixConst(index) != 0)
 		{
-			g_ConstantTermVector |= (1ull << (length - 1 - bit));
+			g_ConstantTermVector |= (1ull << (length - bit));
 		}
 	}
 	for (int a = 0; a < g_setIVs; ++a)
 	{
 		ProceedTransformationMatrix();
-		for (int i = 0; i < 10; ++i, ++bit)
+		for (int i = 0; i < 10; ++i)
 		{
 			int index = 59 + (i / 5) * 64 + (i % 5);
-			g_InputMatrix[bit] = GetMatrixMultiplier(index);
+			g_InputMatrix[bit++] = GetMatrixMultiplier(index);
 			if (GetMatrixConst(index) != 0)
 			{
-				g_ConstantTermVector |= (1ull << (length - 1 - bit));
+				g_ConstantTermVector |= (1ull << (length - bit));
 			}
 		}
 	}
 
-	g_InputMatrix[length - 2] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
+	g_InputMatrix[bit++] = GetMatrixMultiplier(62) ^ GetMatrixMultiplier(126);
+	if (GetMatrixConst(62) != GetMatrixConst(126))
+	{
+		g_ConstantTermVector |= 2;
+	}
+
+	g_InputMatrix[bit++] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
+	if (GetMatrixConst(63) != GetMatrixConst(127))
+	{
+		g_ConstantTermVector |= 1;
+	}
 
 	RoundLength = CalculateInverseMatrix(length);
 

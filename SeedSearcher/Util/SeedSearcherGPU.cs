@@ -392,7 +392,7 @@ namespace SeedSearcherGui
 		}
 
 		[GpuManaged]
-		public ulong SearchOne(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl)
+		public ulong SearchOne(Device device, int start, int end, List<ulong> abilities, System.Windows.Forms.ToolStripStatusLabel updateLbl, System.Windows.Forms.ToolStripProgressBar calculationProgressBar)
 		{
 			var gpu = Gpu.Get(device);
 			const int searchLower = 0;
@@ -403,6 +403,11 @@ namespace SeedSearcherGui
 			ulong iv2 = (ulong)g_Ivs[2];
 			ulong iv3 = (ulong)g_Ivs[3];
 			ulong iv4 = (ulong)g_Ivs[4];
+
+			if (calculationProgressBar != null)
+			{
+				calculationProgressBar.Maximum = abilities.Count;
+			}
 
 			ulong[] g_IvsRef = {
 				(ulong) pkmn1.ivs1, (ulong) pkmn1.ivs2, (ulong) pkmn1.ivs3, (ulong) pkmn1.ivs4, (ulong) pkmn1.ivs5,
@@ -447,10 +452,18 @@ namespace SeedSearcherGui
 
 			for (int ivOffset = start; ivOffset <= end; ivOffset++)
 			{
+				if (calculationProgressBar != null)
+				{
+					calculationProgressBar.Value = 0;
+				}
+				if (calculationProgressBar != null)
+				{
+					calculationProgressBar.Value = 0;
+				}
 				if (updateLbl != null)
 					updateLbl.Text = ivOffset.ToString();
 
-				ulong g_ConstantTermVector = 3;
+				ulong g_ConstantTermVector = 0;
 
 				MatrixStruct.InitializeTransformationMatrix();
 				for (int i = 0; i <= pkmn1.fixedIV + ivOffset; ++i)
@@ -459,31 +472,41 @@ namespace SeedSearcherGui
 				}
 
 				int bit = 0;
-				for (int i = 0; i < 6; ++i, ++bit)
+				for (int i = 0; i < 6; ++i)
 				{
 					int index = 61 + (i / 3) * 64 + (i % 3);
-					MatrixStruct.g_InputMatrix[bit] = MatrixStruct.GetMatrixMultiplier(index);
+					MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(index);
 					if (MatrixStruct.GetMatrixConst(index) != 0)
 					{
-						g_ConstantTermVector |= (1ul << (length - 1 - bit));
+						g_ConstantTermVector |= (1ul << (length - bit));
 					}
 				}
 				for (int a = 0; a < 5; ++a)
 				{
 					MatrixStruct.ProceedTransformationMatrix();
-					for (int i = 0; i < 10; ++i, ++bit)
+					for (int i = 0; i < 10; ++i)
 					{
 						int index = 59 + (i / 5) * 64 + (i % 5);
-						MatrixStruct.g_InputMatrix[bit] = MatrixStruct.GetMatrixMultiplier(index);
+						MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(index);
 						if (MatrixStruct.GetMatrixConst(index) != 0)
 						{
-							g_ConstantTermVector |= 1ul << (length - 1 - bit);
+							g_ConstantTermVector |= 1ul << (length - bit);
 						}
 					}
 				}
 
 				MatrixStruct.ProceedTransformationMatrix();
-				MatrixStruct.g_InputMatrix[56] = MatrixStruct.GetMatrixMultiplier(63) ^ MatrixStruct.GetMatrixMultiplier(127);
+				MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(62) ^ MatrixStruct.GetMatrixMultiplier(126);
+				if (MatrixStruct.GetMatrixConst(62) != MatrixStruct.GetMatrixConst(126))
+				{
+					g_ConstantTermVector |= 2;
+				}
+
+				MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(63) ^ MatrixStruct.GetMatrixMultiplier(127);
+				if (MatrixStruct.GetMatrixConst(63) != MatrixStruct.GetMatrixConst(127))
+				{
+					g_ConstantTermVector |= 1;
+				}
 
 				int l = MatrixStruct.CalculateInverseMatrix(length);
 				MatrixStruct.CalculateCoefficientData(l);
@@ -500,7 +523,7 @@ namespace SeedSearcherGui
 
 				int g_FixedIndex = pkmn1.fixedIVPos;
 				ulong g_ulongIndex = (ulong)g_FixedIndex;
-				foreach (ulong ability in GetAbilityBits())
+				foreach (ulong ability in abilities)
 				{
 					gpu.LongFor(searchLower, searchUpper, input => {
 						ulong target = ability;
@@ -854,48 +877,17 @@ namespace SeedSearcherGui
 					{
 						return entry[0] - add_value_end;
 					}
+					if (calculationProgressBar != null)
+					{
+						calculationProgressBar.Value++;
+					}
 				}
 			}
 			return 0;
 		}
 
-		private List<ulong> GetAbilityBits()
-		{
-			List<ulong> res = new List<ulong>();
-			if(pkmn4.characteristicPos == null)
-			{
-				if (!pkmn1.isEnableDream && pkmn1.ability >= 0)
-				{
-					res.Add((ulong)pkmn1.ability);
-					res.Add((ulong)pkmn1.ability | 2);
-				}
-				else
-				{
-					res.Add(0ul);
-					res.Add(1ul);
-					res.Add(2ul);
-					res.Add(3ul);
-				}
-			} else
-			{
-				if (!pkmn2.isEnableDream && pkmn2.ability >= 0)
-				{
-					res.Add((ulong)pkmn2.ability);
-					res.Add((ulong)pkmn2.ability | 2);
-				}
-				else
-				{
-					res.Add(0ul);
-					res.Add(1ul);
-					res.Add(2ul);
-					res.Add(3ul);
-				}
-			}
-			return res;
-		}
-
 		[GpuManaged]
-		public ulong SearchSix(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl) {
+		public ulong SearchSix(Device device, int start, int end, List<ulong> abilities, System.Windows.Forms.ToolStripStatusLabel updateLbl, System.Windows.Forms.ToolStripProgressBar calculationProgressBar) {
 			var gpu = Gpu.Get(device);
 			const int searchLower = 0;
 			const int searchUpper = 0x40000000;
@@ -906,6 +898,12 @@ namespace SeedSearcherGui
 			ulong iv3 = (ulong)g_Ivs[3];
 			ulong iv4 = (ulong)g_Ivs[4];
 			ulong iv5 = (ulong)g_Ivs[5];
+
+			if (calculationProgressBar != null)
+			{
+				calculationProgressBar.Maximum = abilities.Count;
+			}
+
 			int[] allIVs = { pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn2.ivs0, pkmn2.ivs1, pkmn2.ivs2, pkmn2.ivs3, pkmn2.ivs4, pkmn2.ivs5,
 							 pkmn3.ivs0, pkmn3.ivs1, pkmn3.ivs2, pkmn3.ivs3, pkmn3.ivs4, pkmn3.ivs5, pkmn4.ivs0, pkmn4.ivs1, pkmn4.ivs2, pkmn4.ivs3, pkmn4.ivs4, pkmn4.ivs5,};
 			int[] fixedIVs = { pkmn1.fixedIV, pkmn2.fixedIV, pkmn3.fixedIV, pkmn4.fixedIV };
@@ -942,6 +940,10 @@ namespace SeedSearcherGui
 			ulong[] entry = { 0 };
 			for (int ivOffset=start; ivOffset <= end; ivOffset++)
 			{
+				if (calculationProgressBar != null)
+				{
+					calculationProgressBar.Value = 0;
+				}
 				if (updateLbl != null)
 					updateLbl.Text = ivOffset.ToString();
 
@@ -952,22 +954,32 @@ namespace SeedSearcherGui
 					MatrixStruct.ProceedTransformationMatrix();
 				}
 
+				int bit = 0;
 				for (int a = 0; a < g_setIVs; ++a)
 				{
 					for (int i = 0; i < 10; ++i)
 					{
 						int index = 59 + (i / 5) * 64 + (i % 5);
-						int bit = a * 10 + i;
-						MatrixStruct.g_InputMatrix[bit] = MatrixStruct.GetMatrixMultiplier(index);
+						MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(index);
 						if (MatrixStruct.GetMatrixConst(index) != 0)
 						{
-							g_ConstantTermVector |= (1ul << (length - 1 - bit));
+							g_ConstantTermVector |= (1ul << (length - bit));
 						}
 					}
 					MatrixStruct.ProceedTransformationMatrix();
 				}
 				MatrixStruct.ProceedTransformationMatrix();
-				MatrixStruct.g_InputMatrix[60] = MatrixStruct.GetMatrixMultiplier(63) ^ MatrixStruct.GetMatrixMultiplier(127);
+				MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(62) ^ MatrixStruct.GetMatrixMultiplier(126);
+				if (MatrixStruct.GetMatrixConst(62) != MatrixStruct.GetMatrixConst(126))
+				{
+					g_ConstantTermVector |= 2;
+				}
+
+				MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(63) ^ MatrixStruct.GetMatrixMultiplier(127);
+				if (MatrixStruct.GetMatrixConst(63) != MatrixStruct.GetMatrixConst(127))
+				{
+					g_ConstantTermVector |= 1;
+				}
 				int l = MatrixStruct.CalculateInverseMatrix(length);
 				MatrixStruct.CalculateCoefficientData(l);
 				int numElems = 1 << (64 - l);
@@ -980,7 +992,7 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
 				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
 
-				foreach (ulong ability in GetAbilityBits())
+				foreach (ulong ability in abilities)
 				{
 					gpu.LongFor(searchLower, searchUpper, input => {
 						//for(long input = searchLower; input < searchUpper; input++) {
@@ -1335,13 +1347,17 @@ namespace SeedSearcherGui
 					{
 						return entry[0] - add_value_end;
 					}
+					if (calculationProgressBar != null)
+					{
+						calculationProgressBar.Value++;
+					}
 				}
 			}
 			return 0;
 		}
 
 		[GpuManaged]
-		public ulong SearchFive(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl)
+		public ulong SearchFive(Device device, int start, int end, List<ulong> abilities, System.Windows.Forms.ToolStripStatusLabel updateLbl, System.Windows.Forms.ToolStripProgressBar calculationProgressBar)
 		{
 			const int length = 58;
 			var gpu = Gpu.Get(device);
@@ -1379,7 +1395,10 @@ namespace SeedSearcherGui
 			{
 				fixedPosition.Add(5);
 			}
-
+			if (calculationProgressBar != null)
+			{
+				calculationProgressBar.Maximum = fixedPosition.Count * abilities.Count;
+			}
 			int[] allIVs = { pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn2.ivs0, pkmn2.ivs1, pkmn2.ivs2, pkmn2.ivs3, pkmn2.ivs4, pkmn2.ivs5,
 							 pkmn3.ivs0, pkmn3.ivs1, pkmn3.ivs2, pkmn3.ivs3, pkmn3.ivs4, pkmn3.ivs5, pkmn4.ivs0, pkmn4.ivs1, pkmn4.ivs2, pkmn4.ivs3, pkmn4.ivs4, pkmn4.ivs5,};
 			int[] fixedIVs = { pkmn1.fixedIV, pkmn2.fixedIV, pkmn3.fixedIV, pkmn4.fixedIV };
@@ -1415,6 +1434,10 @@ namespace SeedSearcherGui
 			ulong[] entry = { 0 };
 			for (int ivOffset = start; ivOffset <= end; ivOffset++)
 			{
+				if (calculationProgressBar != null)
+				{
+					calculationProgressBar.Value = 0;
+				}
 				if (updateLbl != null)
 					updateLbl.Text = ivOffset.ToString();
 
@@ -1450,7 +1473,17 @@ namespace SeedSearcherGui
 				}
 
 				MatrixStruct.ProceedTransformationMatrix();
-				MatrixStruct.g_InputMatrix[56] = MatrixStruct.GetMatrixMultiplier(63) ^ MatrixStruct.GetMatrixMultiplier(127);
+				MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(62) ^ MatrixStruct.GetMatrixMultiplier(126);
+				if (MatrixStruct.GetMatrixConst(62) != MatrixStruct.GetMatrixConst(126))
+				{
+					g_ConstantTermVector |= 2;
+				}
+
+				MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(63) ^ MatrixStruct.GetMatrixMultiplier(127);
+				if (MatrixStruct.GetMatrixConst(63) != MatrixStruct.GetMatrixConst(127))
+				{
+					g_ConstantTermVector |= 1;
+				}
 
 				int l = MatrixStruct.CalculateInverseMatrix(length);
 				MatrixStruct.CalculateCoefficientData(l);
@@ -1464,7 +1497,7 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_SearchPattern, 0, g_SearchPattern, 0, numElems);
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
 				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
-				foreach (ulong ability in GetAbilityBits())
+				foreach (ulong ability in abilities)
 				{
 					foreach(ulong fixedPos in fixedPosition)
 					{
@@ -1822,6 +1855,10 @@ namespace SeedSearcherGui
 						{
 							return entry[0] - add_value_end;
 						}
+						if (calculationProgressBar != null)
+						{
+							calculationProgressBar.Value++;
+						}
 					}
 				}
 			}
@@ -1829,7 +1866,7 @@ namespace SeedSearcherGui
 		}
 
 		[GpuManaged]
-		public ulong SearchFour(Device device, int start, int end, System.Windows.Forms.ToolStripStatusLabel updateLbl)
+		public ulong SearchFour(Device device, int start, int end, List<ulong> abilities, System.Windows.Forms.ToolStripStatusLabel updateLbl, System.Windows.Forms.ToolStripProgressBar calculationProgressBar)
 		{
 			const int length = 48;
 			var gpu = Gpu.Get(device);
@@ -1866,7 +1903,10 @@ namespace SeedSearcherGui
 			{
 				fixedPosition.Add(5);
 			}
-
+			if (calculationProgressBar != null)
+			{
+				calculationProgressBar.Maximum = fixedPosition.Count * abilities.Count;
+			}
 			int[] allIVs = { pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn2.ivs0, pkmn2.ivs1, pkmn2.ivs2, pkmn2.ivs3, pkmn2.ivs4, pkmn2.ivs5,
 							 pkmn3.ivs0, pkmn3.ivs1, pkmn3.ivs2, pkmn3.ivs3, pkmn3.ivs4, pkmn3.ivs5, pkmn4.ivs0, pkmn4.ivs1, pkmn4.ivs2, pkmn4.ivs3, pkmn4.ivs4, pkmn4.ivs5,};
 			int[] fixedIVs = { pkmn1.fixedIV, pkmn2.fixedIV, pkmn3.fixedIV, pkmn4.fixedIV };
@@ -1902,6 +1942,10 @@ namespace SeedSearcherGui
 			ulong[] entry = { 0 };
 			for (int ivOffset = start; ivOffset <= end; ivOffset++)
 			{
+				if (calculationProgressBar != null)
+				{
+					calculationProgressBar.Value = 0;
+				}
 				if (updateLbl != null)
 					updateLbl.Text = ivOffset.ToString();
 
@@ -1913,31 +1957,41 @@ namespace SeedSearcherGui
 				}
 
 				int bit = 0;
-				for (int i = 0; i < 6; ++i, ++bit)
+				for (int i = 0; i < 6; ++i)
 				{
 					int index = 61 + (i / 3) * 64 + (i % 3);
-					MatrixStruct.g_InputMatrix[bit] = MatrixStruct.GetMatrixMultiplier(index);
+					MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(index);
 					if (MatrixStruct.GetMatrixConst(index) != 0)
 					{
-						g_ConstantTermVector |= (1ul << (length - 1 - bit));
+						g_ConstantTermVector |= (1ul << (length - bit));
 					}
 				}
 				for (int a = 0; a < g_setIVs; ++a)
 				{
 					MatrixStruct.ProceedTransformationMatrix();
-					for (int i = 0; i < 10; ++i, ++bit)
+					for (int i = 0; i < 10; ++i)
 					{
 						int index = 59 + (i / 5) * 64 + (i % 5);
-						MatrixStruct.g_InputMatrix[bit] = MatrixStruct.GetMatrixMultiplier(index);
+						MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(index);
 						if (MatrixStruct.GetMatrixConst(index) != 0)
 						{
-							g_ConstantTermVector |= (1ul << (length - 1 - bit));
+							g_ConstantTermVector |= (1ul << (length - bit));
 						}
 					}
 				}
 
 				MatrixStruct.ProceedTransformationMatrix();
-				MatrixStruct.g_InputMatrix[46] = MatrixStruct.GetMatrixMultiplier(63) ^ MatrixStruct.GetMatrixMultiplier(127);
+				MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(62) ^ MatrixStruct.GetMatrixMultiplier(126);
+				if (MatrixStruct.GetMatrixConst(62) != MatrixStruct.GetMatrixConst(126))
+				{
+					g_ConstantTermVector |= 2;
+				}
+
+				MatrixStruct.g_InputMatrix[bit++] = MatrixStruct.GetMatrixMultiplier(63) ^ MatrixStruct.GetMatrixMultiplier(127);
+				if (MatrixStruct.GetMatrixConst(63) != MatrixStruct.GetMatrixConst(127))
+				{
+					g_ConstantTermVector |= 1;
+				}
 
 				int l = MatrixStruct.CalculateInverseMatrix(length);
 				MatrixStruct.CalculateCoefficientData(l);
@@ -1951,7 +2005,7 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_SearchPattern, 0, g_SearchPattern, 0, numElems);
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
 				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
-				foreach (ulong ability in GetAbilityBits())
+				foreach (ulong ability in abilities)
 				{
 					foreach (ulong fixedPos in fixedPosition)
 					{
@@ -2305,6 +2359,10 @@ namespace SeedSearcherGui
 						if (entry[0] != 0)
 						{
 							return entry[0] - add_value_end;
+						}
+						if (calculationProgressBar != null)
+						{
+							calculationProgressBar.Value++;
 						}
 					}
 				}
