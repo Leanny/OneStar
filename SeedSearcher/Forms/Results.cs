@@ -296,5 +296,11 @@ namespace SeedSearcherGui
             shinyBox.SelectedIndex = 0;
             genderBox.SelectedIndex = 0;
         }
+
+        private void BTN_IVCalc_Click(object sender, EventArgs e)
+        {
+            var calc = new IVCalculator(GameStrings, (RaidTemplate)((ComboboxItem)speciesList.SelectedItem).Value, minHP, minAtk, minDef, minSpa, minSpd, MinSpe, natureBox, maxHP, maxAtk, maxDef, maxSpa, maxSpd, maxSpe);
+            calc.Show();
+        }
     }
 }

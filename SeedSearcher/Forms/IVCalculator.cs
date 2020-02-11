@@ -19,7 +19,8 @@ namespace SeedSearcherGui
         private ComboBox nature;
         public static readonly int[] ToxtricityAmplifiedNatures = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
         public static readonly int[] ToxtricityLowKeyNatures = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
-        public IVCalculator(PKHeX.Core.GameStrings gameStrings, RaidTemplate raidInfo, NumericUpDown hP1, NumericUpDown aTK1, NumericUpDown dEF1, NumericUpDown sPA1, NumericUpDown sPD1, NumericUpDown sPE1, ComboBox cB_Nature)
+        public IVCalculator(PKHeX.Core.GameStrings gameStrings, RaidTemplate raidInfo, NumericUpDown hP1, NumericUpDown aTK1, NumericUpDown dEF1, NumericUpDown sPA1, NumericUpDown sPD1, NumericUpDown sPE1, ComboBox cB_Nature
+            , NumericUpDown hP2 = null, NumericUpDown aTK2 = null, NumericUpDown dEF2 = null, NumericUpDown sPA2 = null, NumericUpDown sPD2 = null, NumericUpDown sPE2 = null)
         {
             InitializeComponent();
             CB_Nature.Items.Clear();
@@ -47,7 +48,17 @@ namespace SeedSearcherGui
                     CB_Nature.Items.Add(new ComboboxItem(gameStrings.natures[i], i));
                 }
             }
-            CB_Nature.SelectedIndex = cB_Nature.SelectedIndex;
+
+            CB_Nature.SelectedIndex = 0;
+            for (int i = 0; i < CB_Nature.Items.Count; i++)
+            {
+                if (cB_Nature.Text == CB_Nature.Items[i].ToString())
+                {
+                    CB_Nature.SelectedIndex = i;
+                    break;
+                }
+            }
+
             nature = cB_Nature;
             this.RaidInfo = raidInfo;
             TB_Species.Text = gameStrings.Species[raidInfo.Species];
@@ -65,7 +76,14 @@ namespace SeedSearcherGui
             minVals = new TextBox[] { ResHP1, ResAtk1, ResDef1, ResSpa1, ResSpd1, ResSpe1 };
             maxVals = new TextBox[] { ResHP2, ResAtk2, ResDef2, ResSpa2, ResSpd2, ResSpe2 };
             ratings = new ComboBox[] { CB_Rating1, CB_Rating2, CB_Rating3, CB_Rating4, CB_Rating5, CB_Rating6 };
-            original = new NumericUpDown[] { hP1, aTK1, dEF1, sPA1, sPD1, sPE1 };
+            if(hP2 == null)
+            {
+                original = new NumericUpDown[] { hP1, aTK1, dEF1, sPA1, sPD1, sPE1 };
+            } else
+            {
+                original = new NumericUpDown[] { hP1, aTK1, dEF1, sPA1, sPD1, sPE1, hP2, aTK2, dEF2, sPA2, sPD2, sPE2 };
+            }
+            
 
             LBL_Level.Text = Properties.strings.Level;
             LBL_Nature.Text = Properties.strings.Nature;
@@ -83,6 +101,8 @@ namespace SeedSearcherGui
             LBL_SPA2.Text = Properties.strings.SPA;
             LBL_SPD2.Text = Properties.strings.SPD;
             LBL_SPE2.Text = Properties.strings.SPE;
+
+            ButtonApply.Enabled = hP2 == null;
         }
 
         private void HP1_Enter(object sender, EventArgs e)
@@ -273,7 +293,24 @@ namespace SeedSearcherGui
             {
                 original[stat].Value = int.Parse(minVals[stat].Text);
             }
-            nature.SelectedIndex = CB_Nature.SelectedIndex;
+
+            for(int i=0; i < nature.Items.Count; i++)
+            {
+                if(CB_Nature.Text == nature.Items[i].ToString())
+                {
+                    nature.SelectedIndex = i;
+                    break;
+                }
+            }
+
+            if(original.Length > 6)
+            {
+                for (int stat = 0; stat < 6; stat++)
+                {
+                    original[stat+6].Value = int.Parse(maxVals[stat].Text);
+                }
+            }
+
             this.Close();
         }
     }

@@ -72,15 +72,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.minHP = new System.Windows.Forms.NumericUpDown();
             this.raidContent = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BTN_Clear = new System.Windows.Forms.Button();
-            this.DetailsBox = new System.Windows.Forms.GroupBox();
             this.FrameCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HPCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtkCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,6 +85,16 @@
             this.ShinyCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Characteristic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SeedCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BTN_Clear = new System.Windows.Forms.Button();
+            this.DetailsBox = new System.Windows.Forms.GroupBox();
+            this.BTN_IVCalc = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxSpe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxSpd)).BeginInit();
@@ -114,10 +115,10 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(641, 181);
+            this.searchButton.Location = new System.Drawing.Point(641, 193);
             this.searchButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(92, 30);
+            this.searchButton.Size = new System.Drawing.Size(92, 28);
             this.searchButton.TabIndex = 35;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -125,10 +126,10 @@
             // 
             // resetFilter
             // 
-            this.resetFilter.Location = new System.Drawing.Point(388, 181);
+            this.resetFilter.Location = new System.Drawing.Point(388, 193);
             this.resetFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resetFilter.Name = "resetFilter";
-            this.resetFilter.Size = new System.Drawing.Size(92, 30);
+            this.resetFilter.Size = new System.Drawing.Size(92, 28);
             this.resetFilter.TabIndex = 34;
             this.resetFilter.Text = "Reset Filter";
             this.resetFilter.UseVisualStyleBackColor = true;
@@ -136,10 +137,10 @@
             // 
             // applyFilter
             // 
-            this.applyFilter.Location = new System.Drawing.Point(261, 181);
+            this.applyFilter.Location = new System.Drawing.Point(261, 193);
             this.applyFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.applyFilter.Name = "applyFilter";
-            this.applyFilter.Size = new System.Drawing.Size(92, 30);
+            this.applyFilter.Size = new System.Drawing.Size(92, 28);
             this.applyFilter.TabIndex = 33;
             this.applyFilter.Text = "Apply Filter";
             this.applyFilter.UseVisualStyleBackColor = true;
@@ -231,7 +232,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(133, 180);
+            this.label19.Location = new System.Drawing.Point(133, 171);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(16, 17);
             this.label19.TabIndex = 24;
@@ -240,7 +241,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(133, 155);
+            this.label18.Location = new System.Drawing.Point(133, 147);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(16, 17);
             this.label18.TabIndex = 23;
@@ -249,7 +250,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(133, 130);
+            this.label17.Location = new System.Drawing.Point(133, 123);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(16, 17);
             this.label17.TabIndex = 22;
@@ -258,7 +259,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(133, 105);
+            this.label16.Location = new System.Drawing.Point(133, 99);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(16, 17);
             this.label16.TabIndex = 21;
@@ -396,7 +397,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(133, 80);
+            this.label15.Location = new System.Drawing.Point(133, 75);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(16, 17);
             this.label15.TabIndex = 20;
@@ -405,7 +406,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(133, 55);
+            this.label14.Location = new System.Drawing.Point(133, 51);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(16, 17);
             this.label14.TabIndex = 12;
@@ -413,7 +414,7 @@
             // 
             // maxSpe
             // 
-            this.maxSpe.Location = new System.Drawing.Point(152, 175);
+            this.maxSpe.Location = new System.Drawing.Point(152, 166);
             this.maxSpe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maxSpe.Maximum = new decimal(new int[] {
             31,
@@ -432,7 +433,7 @@
             // 
             // maxSpd
             // 
-            this.maxSpd.Location = new System.Drawing.Point(152, 150);
+            this.maxSpd.Location = new System.Drawing.Point(152, 142);
             this.maxSpd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maxSpd.Maximum = new decimal(new int[] {
             31,
@@ -451,7 +452,7 @@
             // 
             // maxSpa
             // 
-            this.maxSpa.Location = new System.Drawing.Point(152, 126);
+            this.maxSpa.Location = new System.Drawing.Point(152, 119);
             this.maxSpa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maxSpa.Maximum = new decimal(new int[] {
             31,
@@ -470,7 +471,7 @@
             // 
             // maxDef
             // 
-            this.maxDef.Location = new System.Drawing.Point(152, 100);
+            this.maxDef.Location = new System.Drawing.Point(152, 94);
             this.maxDef.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maxDef.Maximum = new decimal(new int[] {
             31,
@@ -489,7 +490,7 @@
             // 
             // maxAtk
             // 
-            this.maxAtk.Location = new System.Drawing.Point(152, 75);
+            this.maxAtk.Location = new System.Drawing.Point(152, 70);
             this.maxAtk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maxAtk.Maximum = new decimal(new int[] {
             31,
@@ -508,7 +509,7 @@
             // 
             // maxHP
             // 
-            this.maxHP.Location = new System.Drawing.Point(152, 50);
+            this.maxHP.Location = new System.Drawing.Point(152, 46);
             this.maxHP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maxHP.Maximum = new decimal(new int[] {
             31,
@@ -527,7 +528,7 @@
             // 
             // MinSpe
             // 
-            this.MinSpe.Location = new System.Drawing.Point(85, 175);
+            this.MinSpe.Location = new System.Drawing.Point(85, 166);
             this.MinSpe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinSpe.Maximum = new decimal(new int[] {
             31,
@@ -541,7 +542,7 @@
             // 
             // minSpd
             // 
-            this.minSpd.Location = new System.Drawing.Point(85, 150);
+            this.minSpd.Location = new System.Drawing.Point(85, 142);
             this.minSpd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.minSpd.Maximum = new decimal(new int[] {
             31,
@@ -555,7 +556,7 @@
             // 
             // minSpa
             // 
-            this.minSpa.Location = new System.Drawing.Point(85, 126);
+            this.minSpa.Location = new System.Drawing.Point(85, 119);
             this.minSpa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.minSpa.Maximum = new decimal(new int[] {
             31,
@@ -569,7 +570,7 @@
             // 
             // minDef
             // 
-            this.minDef.Location = new System.Drawing.Point(85, 100);
+            this.minDef.Location = new System.Drawing.Point(85, 94);
             this.minDef.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.minDef.Maximum = new decimal(new int[] {
             31,
@@ -583,7 +584,7 @@
             // 
             // minAtk
             // 
-            this.minAtk.Location = new System.Drawing.Point(85, 75);
+            this.minAtk.Location = new System.Drawing.Point(85, 70);
             this.minAtk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.minAtk.Maximum = new decimal(new int[] {
             31,
@@ -598,7 +599,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(27, 180);
+            this.label13.Location = new System.Drawing.Point(27, 171);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(35, 17);
             this.label13.TabIndex = 7;
@@ -607,7 +608,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(27, 155);
+            this.label12.Location = new System.Drawing.Point(27, 147);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(36, 17);
             this.label12.TabIndex = 6;
@@ -615,7 +616,7 @@
             // 
             // minHP
             // 
-            this.minHP.Location = new System.Drawing.Point(85, 50);
+            this.minHP.Location = new System.Drawing.Point(85, 46);
             this.minHP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.minHP.Maximum = new decimal(new int[] {
             31,
@@ -655,132 +656,6 @@
             this.raidContent.RowTemplate.Height = 24;
             this.raidContent.Size = new System.Drawing.Size(1252, 588);
             this.raidContent.TabIndex = 2;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(27, 130);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 17);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "SPA";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(27, 105);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 17);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "DEF";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 80);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 17);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "ATK";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 55);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 17);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "HP";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(151, 26);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 17);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Max IV";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(83, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 17);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Min IV";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.BTN_Clear);
-            this.groupBox2.Controls.Add(this.searchButton);
-            this.groupBox2.Controls.Add(this.resetFilter);
-            this.groupBox2.Controls.Add(this.applyFilter);
-            this.groupBox2.Controls.Add(this.shinyBox);
-            this.groupBox2.Controls.Add(this.label23);
-            this.groupBox2.Controls.Add(this.genderBox);
-            this.groupBox2.Controls.Add(this.abilityBox);
-            this.groupBox2.Controls.Add(this.natureBox);
-            this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.maxSpe);
-            this.groupBox2.Controls.Add(this.maxSpd);
-            this.groupBox2.Controls.Add(this.maxSpa);
-            this.groupBox2.Controls.Add(this.maxDef);
-            this.groupBox2.Controls.Add(this.maxAtk);
-            this.groupBox2.Controls.Add(this.maxHP);
-            this.groupBox2.Controls.Add(this.MinSpe);
-            this.groupBox2.Controls.Add(this.minSpd);
-            this.groupBox2.Controls.Add(this.minSpa);
-            this.groupBox2.Controls.Add(this.minDef);
-            this.groupBox2.Controls.Add(this.minAtk);
-            this.groupBox2.Controls.Add(this.minHP);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(395, 21);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(817, 231);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filters";
-            // 
-            // BTN_Clear
-            // 
-            this.BTN_Clear.Location = new System.Drawing.Point(511, 181);
-            this.BTN_Clear.Name = "BTN_Clear";
-            this.BTN_Clear.Size = new System.Drawing.Size(92, 30);
-            this.BTN_Clear.TabIndex = 36;
-            this.BTN_Clear.Text = "Clear Filter";
-            this.BTN_Clear.UseVisualStyleBackColor = true;
-            this.BTN_Clear.Click += new System.EventHandler(this.BTN_Clear_Click);
-            // 
-            // DetailsBox
-            // 
-            this.DetailsBox.Controls.Add(this.groupBox2);
-            this.DetailsBox.Controls.Add(this.groupBox1);
-            this.DetailsBox.Location = new System.Drawing.Point(4, 11);
-            this.DetailsBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DetailsBox.Name = "DetailsBox";
-            this.DetailsBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DetailsBox.Size = new System.Drawing.Size(1236, 267);
-            this.DetailsBox.TabIndex = 3;
-            this.DetailsBox.TabStop = false;
-            this.DetailsBox.Text = "Details";
             // 
             // FrameCell
             // 
@@ -899,6 +774,143 @@
             this.SeedCell.ReadOnly = true;
             this.SeedCell.Width = 140;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(27, 123);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 17);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "SPA";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(27, 99);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 17);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "DEF";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(27, 75);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 17);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "ATK";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(27, 51);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 17);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "HP";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(151, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(49, 17);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Max IV";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(83, 26);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 17);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Min IV";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.BTN_IVCalc);
+            this.groupBox2.Controls.Add(this.BTN_Clear);
+            this.groupBox2.Controls.Add(this.searchButton);
+            this.groupBox2.Controls.Add(this.resetFilter);
+            this.groupBox2.Controls.Add(this.applyFilter);
+            this.groupBox2.Controls.Add(this.shinyBox);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.genderBox);
+            this.groupBox2.Controls.Add(this.abilityBox);
+            this.groupBox2.Controls.Add(this.natureBox);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.maxSpe);
+            this.groupBox2.Controls.Add(this.maxSpd);
+            this.groupBox2.Controls.Add(this.maxSpa);
+            this.groupBox2.Controls.Add(this.maxDef);
+            this.groupBox2.Controls.Add(this.maxAtk);
+            this.groupBox2.Controls.Add(this.maxHP);
+            this.groupBox2.Controls.Add(this.MinSpe);
+            this.groupBox2.Controls.Add(this.minSpd);
+            this.groupBox2.Controls.Add(this.minSpa);
+            this.groupBox2.Controls.Add(this.minDef);
+            this.groupBox2.Controls.Add(this.minAtk);
+            this.groupBox2.Controls.Add(this.minHP);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Location = new System.Drawing.Point(395, 21);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(817, 231);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filters";
+            // 
+            // BTN_Clear
+            // 
+            this.BTN_Clear.Location = new System.Drawing.Point(511, 193);
+            this.BTN_Clear.Name = "BTN_Clear";
+            this.BTN_Clear.Size = new System.Drawing.Size(92, 28);
+            this.BTN_Clear.TabIndex = 36;
+            this.BTN_Clear.Text = "Clear Filter";
+            this.BTN_Clear.UseVisualStyleBackColor = true;
+            this.BTN_Clear.Click += new System.EventHandler(this.BTN_Clear_Click);
+            // 
+            // DetailsBox
+            // 
+            this.DetailsBox.Controls.Add(this.groupBox2);
+            this.DetailsBox.Controls.Add(this.groupBox1);
+            this.DetailsBox.Location = new System.Drawing.Point(4, 11);
+            this.DetailsBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DetailsBox.Name = "DetailsBox";
+            this.DetailsBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.DetailsBox.Size = new System.Drawing.Size(1236, 267);
+            this.DetailsBox.TabIndex = 3;
+            this.DetailsBox.TabStop = false;
+            this.DetailsBox.Text = "Details";
+            // 
+            // BTN_IVCalc
+            // 
+            this.BTN_IVCalc.Location = new System.Drawing.Point(85, 193);
+            this.BTN_IVCalc.Name = "BTN_IVCalc";
+            this.BTN_IVCalc.Size = new System.Drawing.Size(110, 28);
+            this.BTN_IVCalc.TabIndex = 37;
+            this.BTN_IVCalc.Text = "IV Calc";
+            this.BTN_IVCalc.UseVisualStyleBackColor = true;
+            this.BTN_IVCalc.Click += new System.EventHandler(this.BTN_IVCalc_Click);
+            // 
             // Results
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -999,5 +1011,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ShinyCell;
         private System.Windows.Forms.DataGridViewTextBoxColumn Characteristic;
         private System.Windows.Forms.DataGridViewTextBoxColumn SeedCell;
+        private System.Windows.Forms.Button BTN_IVCalc;
     }
 }
