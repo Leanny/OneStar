@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -133,36 +134,24 @@ namespace SeedSearcherGui
 			List<ulong> res = new List<ulong>();
 			if (pkmn4.characteristicPos == null)
 			{
-				if (!pkmn1.isEnableDream && pkmn1.ability >= 0)
-				{
-					res.Add((ulong)pkmn1.ability);
-					res.Add((ulong)pkmn1.ability | 2);
-				}
-				else
+				if (pkmn1.isEnableDream || pkmn1.ability < 0)
 				{
 					res.Add(0ul);
 					res.Add(1ul);
-					res.Add(2ul);
-					res.Add(3ul);
+				}
+				else
+				{
+					res.Add((ulong) pkmn1.ability);
 				}
 			}
 			else
 			{
-				if (!pkmn2.isEnableDream && pkmn2.ability >= 0)
-				{
-					res.Add((ulong)pkmn2.ability);
-					res.Add((ulong)pkmn2.ability | 2);
-				}
-				else
-				{
-					res.Add(0ul);
-					res.Add(1ul);
-					res.Add(2ul);
-					res.Add(3ul);
-				}
+				res.Add(0ul);
+				res.Add(1ul);
 			}
 			return res;
 		}
+
 
 
 		public uint TestInputSeed(ulong seed)
@@ -234,7 +223,7 @@ namespace SeedSearcherGui
 
 		public List<ulong> Calculate(int rolls, int[] target)
 		{
-			Calculate(0, rolls, rolls, target, null, null);
+			Calculate(-2, rolls, rolls, target, null, null);
 			return Result;
 		}
 
@@ -243,9 +232,9 @@ namespace SeedSearcherGui
 			Result.Clear();
 			StopSearchCommand = false;
 			SeedSearcherGPU.StopSearchCommand = false;
-			if (searcherIDX == -1)
+			if (searcherIDX < 0)
 			{
-				CalculateCPU(minRerolls, maxRerolls, target, updateLbl, calculationProgressBar);
+				CalculateCPU(searcherIDX + 3, minRerolls, maxRerolls, target, updateLbl, calculationProgressBar);
 			} else
 			{
 				CalculateGPU(searcherIDX, minRerolls, maxRerolls, target, updateLbl, calculationProgressBar);
@@ -254,9 +243,22 @@ namespace SeedSearcherGui
 			SeedSearcherGPU.StopSearchCommand = false;
 		}
 
-		private void CalculateCPU(int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl, ToolStripProgressBar calculationProgressBar)
+		private void CalculateCPU(int searcherIDX, int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl, ToolStripProgressBar calculationProgressBar)
 		{
-			SetLSB(LSB);
+			ParallelOptions opts;
+			if(searcherIDX == 0)
+			{
+				opts = new ParallelOptions { MaxDegreeOfParallelism = Convert.ToInt32(Math.Ceiling(Environment.ProcessorCount * 0.5)) };
+			} 
+			else if(searcherIDX == 1) 
+			{
+				opts = new ParallelOptions { MaxDegreeOfParallelism = Convert.ToInt32(Math.Ceiling(Environment.ProcessorCount * 0.75)) };
+			} 
+			else
+			{
+				opts = new ParallelOptions { MaxDegreeOfParallelism = -1 };
+			}
+			
 			List<ulong> abilities = GetAbilityBits();
 			if (m_Mode == Mode.Star12)
 			{
@@ -286,7 +288,7 @@ namespace SeedSearcherGui
 						}
 						foreach (ulong ability in abilities) 
 						{
-							Parallel.For(searchLower, searchUpper, (ivs, state) =>
+							Parallel.For(searchLower, searchUpper, opts, (ivs, state) =>
 							{
 								ulong result = Search((ulong)ivs, ability);
 								if (result != 0)

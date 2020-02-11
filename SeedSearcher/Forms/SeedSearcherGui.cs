@@ -87,14 +87,30 @@ namespace SeedSearcherGui
             }
             dontChange = false;
 
-            ToolStripMenuItem cpu = new ToolStripMenuItem();
-            this.acceleratorToolStripMenuItem.DropDownItems.Add(cpu);
-            cpu.CheckOnClick = true;
-            cpu.Name = "cPUToolStripMenuItem";
-            cpu.Size = new System.Drawing.Size(224, 26);
-            cpu.Text = "CPU";
+
+            ToolStripMenuItem cpu1 = new ToolStripMenuItem();
+            this.acceleratorToolStripMenuItem.DropDownItems.Add(cpu1);
+            cpu1.CheckOnClick = true;
+            cpu1.Name = "cPUToolStripMenuItem1";
+            cpu1.Size = new System.Drawing.Size(224, 26);
+            cpu1.Text = "CPU (50%)";
+
+            ToolStripMenuItem cpu2 = new ToolStripMenuItem();
+            this.acceleratorToolStripMenuItem.DropDownItems.Add(cpu2);
+            cpu2.CheckOnClick = true;
+            cpu2.Name = "cPUToolStripMenuItem2";
+            cpu2.Size = new System.Drawing.Size(224, 26);
+            cpu2.Text = "CPU (75%)";
+
+            ToolStripMenuItem cpu3 = new ToolStripMenuItem();
+            this.acceleratorToolStripMenuItem.DropDownItems.Add(cpu3);
+            cpu3.CheckOnClick = true;
+            cpu3.Name = "cPUToolStripMenuItem3";
+            cpu3.Size = new System.Drawing.Size(224, 26);
+            cpu3.Text = "CPU (100%)";
+
             var devices = SeedSearcherGPU.UseableGPU();
-            int num = 0;
+            int num = 2;
             foreach (var device in devices)
             {
                 ToolStripMenuItem gpu = new ToolStripMenuItem();
@@ -106,7 +122,7 @@ namespace SeedSearcherGui
                 num++;
             }
             ((ToolStripMenuItem)this.acceleratorToolStripMenuItem.DropDownItems[num]).Checked = true;
-            if (num > 0)
+            if (num > 2)
             {
                 NUD_IVMax.Value = 10;
             }
@@ -893,7 +909,7 @@ namespace SeedSearcherGui
                 }
                 idx++;
             }
-            return res - 1;
+            return res - 3;
 
         }
 
