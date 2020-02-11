@@ -223,7 +223,7 @@ namespace SeedSearcherGui
 
 		public List<ulong> Calculate(int rolls, int[] target)
 		{
-			Calculate(-2, rolls, rolls, target, null, null);
+			Calculate(0, rolls, rolls, target, null, null);
 			return Result;
 		}
 
@@ -381,7 +381,7 @@ namespace SeedSearcherGui
 							{
 								foreach (ulong ability in abilities)
 								{
-									Parallel.For(searchLower, searchUpper, (ivs, state) =>
+									Parallel.For(searchLower, searchUpper, opts, (ivs, state) =>
 									{
 										ulong result = SearchFour((ulong)ivs, ability, fidx);
 										if (result != 0)
@@ -424,7 +424,7 @@ namespace SeedSearcherGui
 							{
 								foreach (ulong ability in abilities)
 								{
-									Parallel.For(searchLower, searchUpper, (ivs, state) =>
+									Parallel.For(searchLower, searchUpper, opts, (ivs, state) =>
 									{
 										ulong result = SearchFive((ulong)ivs, ability, fidx);
 										if (result != 0)
@@ -465,7 +465,7 @@ namespace SeedSearcherGui
 							PrepareSix(i);
 							foreach (ulong ability in abilities)
 							{
-								Parallel.For(searchLower, searchUpper, (ivs, state) =>
+								Parallel.For(searchLower, searchUpper, opts, (ivs, state) =>
 								{
 									ulong result = SearchSix((ulong)ivs, ability);
 									if (result != 0)
