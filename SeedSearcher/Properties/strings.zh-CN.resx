@@ -678,4 +678,10 @@
   <data name="UpdateEvent" xml:space="preserve">
     <value>Update Event Database</value>
   </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="RecommendedNextLevel" xml:space="preserve">
+    <value>Reccomended Next Level</value>
+  </data>
 </root>

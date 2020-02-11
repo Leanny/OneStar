@@ -66,7 +66,23 @@ namespace SeedSearcherGui
             maxVals = new TextBox[] { ResHP2, ResAtk2, ResDef2, ResSpa2, ResSpd2, ResSpe2 };
             ratings = new ComboBox[] { CB_Rating1, CB_Rating2, CB_Rating3, CB_Rating4, CB_Rating5, CB_Rating6 };
             original = new NumericUpDown[] { hP1, aTK1, dEF1, sPA1, sPD1, sPE1 };
-            
+
+            LBL_Level.Text = Properties.strings.Level;
+            LBL_Nature.Text = Properties.strings.Nature;
+            LBL_Species.Text = Properties.strings.Pokemon;
+            LBL_REC.Text = Properties.strings.RecommendedNextLevel;
+            LBL_HP1.Text = Properties.strings.HP;
+            LBL_ATK1.Text = Properties.strings.ATK;
+            LBL_DEF1.Text = Properties.strings.DEF;
+            LBL_SPA1.Text = Properties.strings.SPA;
+            LBL_SPD1.Text = Properties.strings.SPD;
+            LBL_SPE1.Text = Properties.strings.SPE;
+            LBL_HP2.Text = Properties.strings.HP;
+            LBL_ATK2.Text = Properties.strings.ATK;
+            LBL_DEF2.Text = Properties.strings.DEF;
+            LBL_SPA2.Text = Properties.strings.SPA;
+            LBL_SPD2.Text = Properties.strings.SPD;
+            LBL_SPE2.Text = Properties.strings.SPE;
         }
 
         private void HP1_Enter(object sender, EventArgs e)

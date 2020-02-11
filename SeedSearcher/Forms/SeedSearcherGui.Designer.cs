@@ -2326,21 +2326,21 @@
             // englishToolStripMenuItem1
             // 
             this.englishToolStripMenuItem1.Name = "englishToolStripMenuItem1";
-            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.englishToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
             this.englishToolStripMenuItem1.Text = "English";
             this.englishToolStripMenuItem1.Click += new System.EventHandler(this.EnglishToolStripMenuItem_Click);
             // 
             // 日本語ToolStripMenuItem1
             // 
             this.日本語ToolStripMenuItem1.Name = "日本語ToolStripMenuItem1";
-            this.日本語ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.日本語ToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
             this.日本語ToolStripMenuItem1.Text = "日本語";
             this.日本語ToolStripMenuItem1.Click += new System.EventHandler(this.NihongoToolStripMenuItem_Click);
             // 
             // 简体中文ToolStripMenuItem1
             // 
             this.简体中文ToolStripMenuItem1.Name = "简体中文ToolStripMenuItem1";
-            this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.简体中文ToolStripMenuItem1.Size = new System.Drawing.Size(156, 26);
             this.简体中文ToolStripMenuItem1.Text = "简体中文";
             this.简体中文ToolStripMenuItem1.Click += new System.EventHandler(this.ChineseToolStripMenuItem_Click);
             // 
@@ -2393,7 +2393,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1182, 850);
             this.Name = "SeedSearcherGui";
-            this.Text = "Seed Searcher 1.2 pre - b";
+            this.Text = "Seed Searcher 1.2";
             this.GB_Left.ResumeLayout(false);
             this.GB_Left.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).EndInit();

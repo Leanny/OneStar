@@ -1245,7 +1245,11 @@ namespace SeedSearcherGui
 
             await Task.Run(() =>
             {
+#if DEBUG
+                searcher.Calculate(GetAcceleratorIdx(), minRerolls, maxRerolls, target, LBL_IVDev, null);
+#else
                 searcher.Calculate(GetAcceleratorIdx(), minRerolls, maxRerolls, target, LBL_IVDev, calculationProgressBar);
+#endif
             });
 
             stopWatch.Stop();
@@ -1457,7 +1461,7 @@ namespace SeedSearcherGui
         {
             Properties.Settings.Default.Language = 0;
             Properties.Settings.Default.Save();
-            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ja-JA");
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ja-JP");
             PopulateLanguage(0);
         }
 

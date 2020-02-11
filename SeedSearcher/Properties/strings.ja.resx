@@ -354,6 +354,9 @@
   <data name="Languages" xml:space="preserve">
     <value>Languages</value>
   </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
   <data name="Motostoke1" xml:space="preserve">
     <value>エンジンリバーサイドB</value>
   </data>
@@ -413,6 +416,9 @@
   </data>
   <data name="Rarity" xml:space="preserve">
     <value>希少性</value>
+  </data>
+  <data name="RecommendedNextLevel" xml:space="preserve">
+    <value>Reccomended Next Level</value>
   </data>
   <data name="Rolling1" xml:space="preserve">
     <value>うららか草原D</value>

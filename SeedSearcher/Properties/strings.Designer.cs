@@ -772,6 +772,15 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Level ähnelt.
+        /// </summary>
+        internal static string Level {
+            get {
+                return ResourceManager.GetString("Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Motostoke Riverbank 1 ähnelt.
         /// </summary>
         internal static string Motostoke1 {
@@ -948,6 +957,15 @@ namespace SeedSearcherGui.Properties {
         internal static string Rarity {
             get {
                 return ResourceManager.GetString("Rarity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Reccomended Next Level ähnelt.
+        /// </summary>
+        internal static string RecommendedNextLevel {
+            get {
+                return ResourceManager.GetString("RecommendedNextLevel", resourceCulture);
             }
         }
         
