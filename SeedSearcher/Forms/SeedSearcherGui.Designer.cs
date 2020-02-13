@@ -2302,14 +2302,14 @@
             // exportDataToolStripMenuItem
             // 
             this.exportDataToolStripMenuItem.Name = "exportDataToolStripMenuItem";
-            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exportDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.exportDataToolStripMenuItem.Text = "Export Data";
             this.exportDataToolStripMenuItem.Click += new System.EventHandler(this.ExportDataToolStripMenuItem_Click);
             // 
             // importDataToolStripMenuItem
             // 
             this.importDataToolStripMenuItem.Name = "importDataToolStripMenuItem";
-            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.importDataToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.importDataToolStripMenuItem.Text = "Import Data";
             this.importDataToolStripMenuItem.Click += new System.EventHandler(this.ImportDataToolStripMenuItem_Click);
             // 
@@ -2393,7 +2393,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1182, 850);
             this.Name = "SeedSearcherGui";
-            this.Text = "Seed Searcher 1.2";
+            this.Text = "Seed Searcher 1.2b";
             this.GB_Left.ResumeLayout(false);
             this.GB_Left.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).EndInit();
