@@ -38,9 +38,6 @@ namespace SeedSearcherGui
 		private static extern void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int fixedIV, int ability, int nature, int characteristic, int day, int species, int altform, bool noGender, bool isDream);
 
 		[DllImport("SeedSearcherLib.dll")]
-		private static extern void SetLSB(int bit);
-
-		[DllImport("SeedSearcherLib.dll")]
 		static extern ulong Search(ulong ivs, ulong ability);
 
 		[DllImport("SeedSearcherLib.dll")]
@@ -66,9 +63,6 @@ namespace SeedSearcherGui
 
 		[DllImport("SeedSearcherLib.dll")]
 		private static extern void SetTargetCondition6(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6);
-
-		[DllImport("SeedSearcherLib.dll")]
-		private static extern void SetSixLSB(int bit);
 
 		[DllImport("SeedSearcherLib.dll")]
 		static extern ulong SearchSix(ulong ivs, ulong ability);
@@ -136,23 +130,63 @@ namespace SeedSearcherGui
 			{
 				if (pkmn1.isEnableDream || pkmn1.ability < 0)
 				{
-					res.Add(0ul);
-					res.Add(1ul);
+					if(LSB == -1) { 
+						res.Add(0ul);
+						res.Add(1ul);
+						res.Add(2ul);
+						res.Add(3ul);
+					} 
+					else
+					{
+						res.Add((ulong) LSB);
+						res.Add((ulong) LSB | 2);
+					}
 				}
 				else
 				{
-					res.Add((ulong) pkmn1.ability);
+					if (LSB == -1)
+					{
+						res.Add((ulong)(pkmn1.ability << 1));
+						res.Add((ulong)(pkmn1.ability << 1) | 1);
+					}
+					else
+					{
+						res.Add((ulong)(pkmn1.ability << 1 | LSB));
+					}
 				}
 			}
 			else
 			{
-				res.Add(0ul);
-				res.Add(1ul);
+				if (pkmn2.isEnableDream || pkmn2.ability < 0)
+				{
+					if (LSB == -1)
+					{
+						res.Add(0ul);
+						res.Add(1ul);
+						res.Add(2ul);
+						res.Add(3ul);
+					}
+					else
+					{
+						res.Add((ulong)LSB);
+						res.Add((ulong)LSB | 2);
+					}
+				}
+				else
+				{
+					if (LSB == -1)
+					{
+						res.Add((ulong)(pkmn2.ability << 1));
+						res.Add((ulong)(pkmn2.ability << 1) | 1);
+					}
+					else
+					{
+						res.Add((ulong)(pkmn2.ability << 1 | LSB));
+					}
+				}
 			}
 			return res;
 		}
-
-
 
 		public uint TestInputSeed(ulong seed)
 		{
@@ -167,7 +201,6 @@ namespace SeedSearcherGui
 			}
 			return ssg.TestSeed(seed);
 		}
-
 
 		private void CalculateGPU(int searcherIDX, int minRerolls, int maxRerolls, int[] target, ToolStripStatusLabel updateLbl, ToolStripProgressBar calculationProgressBar)
 		{
@@ -274,8 +307,6 @@ namespace SeedSearcherGui
 					{
 						calculationProgressBar.Maximum = abilities.Count;
 					}
-					int searchLower = 0;
-					int searchUpper = 0x10000000;
 
 					for (int i = minRerolls; i <= maxRerolls; ++i)
 					{
@@ -288,7 +319,7 @@ namespace SeedSearcherGui
 						}
 						foreach (ulong ability in abilities) 
 						{
-							Parallel.For(searchLower, searchUpper, opts, (ivs, state) =>
+							Parallel.For(0, 0x10000000, opts, (ivs, state) =>
 							{
 								ulong result = Search((ulong)ivs, ability);
 								if (result != 0)
@@ -354,7 +385,6 @@ namespace SeedSearcherGui
 						fixedPosition.Add(5);
 					}
 					SetTargetCondition6(target[0], target[1], target[2], target[3], target[4], target[5]);
-					int searchLower = 0;
 					if (target[4] == -1)
 					{
 						var result = Util.Prompt(MessageBoxButtons.YesNo, "Warning: This search can take multiple hours. Only do this at your own risk. Do you want to continue?");
@@ -366,7 +396,6 @@ namespace SeedSearcherGui
 						{
 							calculationProgressBar.Maximum = fixedPosition.Count * abilities.Count;
 						}
-						int searchUpper = 0x800000;
 						for (int i = minRerolls; i <= maxRerolls; ++i)
 						{
 							if (updateLbl != null) { 
@@ -381,7 +410,7 @@ namespace SeedSearcherGui
 							{
 								foreach (ulong ability in abilities)
 								{
-									Parallel.For(searchLower, searchUpper, opts, (ivs, state) =>
+									Parallel.For(0, 0x800000u, opts, (ivs, state) =>
 									{
 										ulong result = SearchFour((ulong)ivs, ability, fidx);
 										if (result != 0)
@@ -410,7 +439,6 @@ namespace SeedSearcherGui
 						{
 							calculationProgressBar.Maximum = fixedPosition.Count * abilities.Count;
 						}
-						int searchUpper = 0x10000000;
 						for (int i = minRerolls; i <= maxRerolls; ++i)
 						{
 							if (updateLbl != null)
@@ -424,7 +452,7 @@ namespace SeedSearcherGui
 							{
 								foreach (ulong ability in abilities)
 								{
-									Parallel.For(searchLower, searchUpper, opts, (ivs, state) =>
+									Parallel.For(0, 0x10000000, opts, (ivs, state) =>
 									{
 										ulong result = SearchFive((ulong)ivs, ability, fidx);
 										if (result != 0)
@@ -453,7 +481,6 @@ namespace SeedSearcherGui
 						{
 							calculationProgressBar.Maximum = abilities.Count;
 						}
-						int searchUpper = 0x40000000;
 						for (int i = minRerolls; i <= maxRerolls; ++i)
 						{
 							if (updateLbl != null)
@@ -465,7 +492,7 @@ namespace SeedSearcherGui
 							PrepareSix(i);
 							foreach (ulong ability in abilities)
 							{
-								Parallel.For(searchLower, searchUpper, opts, (ivs, state) =>
+								Parallel.For(0, 0x40000000, opts, (ivs, state) =>
 								{
 									ulong result = SearchSix((ulong)ivs, ability);
 									if (result != 0)
