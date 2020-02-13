@@ -12,7 +12,6 @@ static PokemonData l_Third;
 
 static int g_Rerolls;
 static int g_FixedIndex;
-static int g_LSB;
 static int length;
 
 const int* g_IvsRef[30] = {
@@ -95,9 +94,6 @@ void SetThirdCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5, int
 	}
 }
 
-void SetLSB(int lsb) {
-	g_LSB = lsb;
-}
 _u64 add_val[3];
 _u64 add_last;
 
@@ -111,7 +107,6 @@ void Prepare(int rerolls)
 	for (int i = 0; i < 3; i++) {
 		add_val[i] -= add_last;
 	}
-	const int l = 58;
 
 	g_Rerolls = rerolls;
 
@@ -124,44 +119,45 @@ void Prepare(int rerolls)
 	}
 
 	int bit = 0;
-	for (int i = 0; i < 6; ++i, ++bit)
+	for (int i = 0; i < 6; ++i)
 	{
 		int index = 61 + (i / 3) * 64 + (i % 3);
-		g_InputMatrix[bit] = GetMatrixMultiplier(index);
+		g_InputMatrix[bit++] = GetMatrixMultiplier(index);
+		g_ConstantTermVector <<= 1;
 		if (GetMatrixConst(index) != 0)
 		{
-			g_ConstantTermVector |= (1ull << (l - 1 - bit));
+			g_ConstantTermVector |= 1;
 		}
 	}
 	for (int a = 0; a < 5; ++a)
 	{
 		ProceedTransformationMatrix();
-		for (int i = 0; i < 10; ++i, ++bit)
+		for (int i = 0; i < 10; ++i)
 		{
 			int index = 59 + (i / 5) * 64 + (i % 5);
-			g_InputMatrix[bit] = GetMatrixMultiplier(index);
+			g_InputMatrix[bit++] = GetMatrixMultiplier(index);
+			g_ConstantTermVector <<= 1;
 			if (GetMatrixConst(index) != 0)
 			{
-				g_ConstantTermVector |= (1ull << (l - 1 - bit));
+				g_ConstantTermVector |= 1;
 			}
 		}
 	}
 
 	ProceedTransformationMatrix();
 
-	g_InputMatrix[bit++] = GetMatrixMultiplier(62) ^ GetMatrixMultiplier(126);
-	if (GetMatrixConst(62) != GetMatrixConst(126))
-	{
-		g_ConstantTermVector |= 2;
-	}
-
 	g_InputMatrix[bit++] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
+	g_ConstantTermVector <<= 1;
 	if (GetMatrixConst(63) != GetMatrixConst(127))
 	{
 		g_ConstantTermVector |= 1;
 	}
 
-	length = CalculateInverseMatrix(l);
+	g_InputMatrix[bit++] = 1;
+	g_ConstantTermVector <<= 1;
+	g_ConstantTermVector |= 1;
+
+	length = CalculateInverseMatrix(bit);
 
 	CalculateCoefficientData(length);
 }
@@ -174,9 +170,7 @@ inline int TestXoroshiroSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	do {
 		ec = xoroshiro.Next(0xFFFFFFFFu);
 	} while (ec == 0xFFFFFFFFu);
-	if (g_LSB != -1 && (ec & 1) != g_LSB) {
-		return 0;
-	}
+
 	if (l_First.characteristic > -1) {
 		int characteristic = fastmod::fastmod_u32(ec, M, 6);
 		if (l_First.characteristicPos[characteristic] != l_First.characteristic)
@@ -404,16 +398,8 @@ _u64 Search(_u64 ivs, _u64 ability)
 		do {
 			ec = xoroshiro.Next(0xFFFFFFFFu);
 		} while (ec == 0xFFFFFFFFu);
-		if (g_LSB != -1 && (ec & 1) != g_LSB) {
-			continue;
-		}
-		if (l_First.characteristic > -1) {
-			int characteristic = fastmod::fastmod_u32(ec, M, 6);
-			if (l_First.characteristicPos[characteristic] != l_First.characteristic)
-			{
-				continue;
-			}
-		}
+
+
 		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
 		while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
 

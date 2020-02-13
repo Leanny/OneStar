@@ -12,7 +12,6 @@ static PokemonData l_Third;
 static PokemonData l_Fourth;
 
 static int g_Ivs[6];
-static int g_LSB;
 static int g_setIVs;
 
 static int g_IvOffset;
@@ -112,10 +111,6 @@ void SetSixFourthCondition(int iv0, int iv1, int iv2, int iv3, int iv4, int iv5,
 	}
 }
 
-void SetSixLSB(int lsb) {
-	g_LSB = lsb;
-}
-
 void SetTargetCondition6(int iv1, int iv2, int iv3, int iv4, int iv5, int iv6)
 {
 	g_Ivs[0] = iv1;
@@ -140,7 +135,6 @@ void Reset() {
 	for(int i=0; i<6; i++) {
 		g_Ivs[i] = -1;
 	}
-	g_LSB = -1;
 	g_setIVs = 0;
 	g_IvOffset = 0;
 }
@@ -160,8 +154,6 @@ void PrepareSix(int ivOffset)
 		add_const[i] -= add_last_val;
 	}
 
-	const int length = 62;
-
 	g_IvOffset = ivOffset;
 
 	g_ConstantTermVector = 0;
@@ -179,26 +171,27 @@ void PrepareSix(int ivOffset)
 		{
 			int index = 59 + (i / 5) * 64 + (i % 5);
 			g_InputMatrix[bit++] = GetMatrixMultiplier(index);
+			g_ConstantTermVector <<= 1;
 			if (GetMatrixConst(index) != 0)
 			{
-				g_ConstantTermVector |= (1ull << (length - bit));
+				g_ConstantTermVector |= 1;
 			}
 		}
 		ProceedTransformationMatrix();
 	}
 
-	g_InputMatrix[bit++] = GetMatrixMultiplier(62) ^ GetMatrixMultiplier(126);
-	if (GetMatrixConst(62) != GetMatrixConst(126))
-	{
-		g_ConstantTermVector |= 2;
-	}
-
 	g_InputMatrix[bit++] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
+	g_ConstantTermVector <<= 1;
 	if (GetMatrixConst(63) != GetMatrixConst(127))
 	{
 		g_ConstantTermVector |= 1;
 	}
-	RoundLength = CalculateInverseMatrix(length);
+
+	g_InputMatrix[bit++] = 1;
+	g_ConstantTermVector <<= 1;
+	g_ConstantTermVector |= 1;
+
+	RoundLength = CalculateInverseMatrix(bit);
 
 	CalculateCoefficientData(RoundLength);
 }
@@ -215,8 +208,6 @@ void PrepareFive(int ivOffset)
 		add_const[i] -= add_last_val;
 	}
 
-	const int length = 10 * g_setIVs + 8;
-
 	g_IvOffset = ivOffset;
 
 	g_ConstantTermVector = 0;
@@ -232,44 +223,45 @@ void PrepareFive(int ivOffset)
 	{
 		int index = 61 + (i / 3) * 64 + (i % 3);
 		g_InputMatrix[bit++] = GetMatrixMultiplier(index);
+		g_ConstantTermVector <<= 1;
 		if (GetMatrixConst(index) != 0)
 		{
-			g_ConstantTermVector |= (1ull << (length - bit));
+			g_ConstantTermVector |= 1;
 		}
 	}
+	ProceedTransformationMatrix();
 	for (int a = 0; a < g_setIVs; ++a)
 	{
-		ProceedTransformationMatrix();
 		for (int i = 0; i < 10; ++i)
 		{
 			int index = 59 + (i / 5) * 64 + (i % 5);
 			g_InputMatrix[bit++] = GetMatrixMultiplier(index);
+			g_ConstantTermVector <<= 1;
 			if (GetMatrixConst(index) != 0)
 			{
-				g_ConstantTermVector |= (1ull << (length - bit));
+				g_ConstantTermVector |= 1;
 			}
 		}
-	}
-
-	g_InputMatrix[bit++] = GetMatrixMultiplier(62) ^ GetMatrixMultiplier(126);
-	if (GetMatrixConst(62) != GetMatrixConst(126))
-	{
-		g_ConstantTermVector |= 2;
+		ProceedTransformationMatrix();
 	}
 
 	g_InputMatrix[bit++] = GetMatrixMultiplier(63) ^ GetMatrixMultiplier(127);
+	g_ConstantTermVector <<= 1;
 	if (GetMatrixConst(63) != GetMatrixConst(127))
 	{
 		g_ConstantTermVector |= 1;
 	}
 
-	RoundLength = CalculateInverseMatrix(length);
+	g_InputMatrix[bit++] = 1;
+	g_ConstantTermVector <<= 1;
+	g_ConstantTermVector |= 1;
+
+	RoundLength = CalculateInverseMatrix(bit);
 
 	CalculateCoefficientData(RoundLength);
 }
 
 inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
-	// ここから絞り込み
 	XoroshiroState tmp;
 	xoroshiro.SetSeed(seed);
 	// EC
@@ -277,10 +269,7 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 	do {
 		ec = xoroshiro.Next(0xFFFFFFFFu);
 	} while (ec == 0xFFFFFFFFu);
-	if (g_LSB != -1 && (ec & 1) != g_LSB) {
-		return 0;
-	}
-	// 1匹目個性
+
 	if (l_First.characteristic > -1) {
 		int characteristic = fastmod::fastmod_u32(ec, M, 6);
 		if (l_First.characteristicPos[characteristic] != l_First.characteristic)
@@ -291,7 +280,6 @@ inline unsigned int TestXoroshiroSixSeed(_u64 seed, XoroshiroState& xoroshiro) {
 
 	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // OTID
 	while (xoroshiro.Next(0xFFFFFFFFu) == 0xFFFFFFFFu); // PID
-	// 1匹目
 	{
 		int ivs[6] = { -1, -1, -1, -1, -1, -1 };
 		int fixedCount = 0;
@@ -499,13 +487,12 @@ _u64 SearchSix(_u64 ivs, _u64 passed_ability)
 
 	_u64 target = passed_ability;
 
-	// 下位30bit = 個体値
 	target |= (ivs & 0x3E000000ul) << 32;
 	target |= (ivs & 0x1F00000ul) << 27;
 	target |= (ivs & 0xF8000ul) << 22;
 	target |= (ivs & 0x7C00ul) << 17;
 	target |= (ivs & 0x3E0ul) << 12;
-	target |= (ivs & 0x1Ful) << 7; 
+	target |= (ivs & 0x1Ful) << 7;
 
 
 	target |= ((32ul + g_Ivs[0] - ((ivs & 0x3E000000ul) >> 25)) & 0x1F) << 52;
@@ -537,9 +524,6 @@ _u64 SearchSix(_u64 ivs, _u64 passed_ability)
 		do {
 			ec = xoroshiro.Next(0xFFFFFFFFu);
 		} while (ec == 0xFFFFFFFFu);
-		if (g_LSB != -1 && (ec & 1) != g_LSB) {
-			continue;
-		}
 
 		if(l_First.characteristic > -1) {
 			int characteristic = fastmod::fastmod_u32(ec, M, 6);
@@ -568,11 +552,6 @@ _u64 SearchSix(_u64 ivs, _u64 passed_ability)
 					++fixedCount;
 				}
 			} while (fixedCount < l_First.fixedIV);
-
-			if (offset != g_IvOffset)
-			{
-				continue;
-			}
 
 			bool isPassed = true;
 			for (int i = 0; i < 6; ++i)
@@ -762,8 +741,7 @@ _u64 SearchFive(_u64 ivs, _u64 passed_ability, _u64 last_idx)
 	XoroshiroState xoroshiro;
 	XoroshiroState tmp;
 
-	_u64 target = 0;
-
+	_u64 target = passed_ability;
 	target |= (ivs & 0x1F00000ul) << 27;
 	target |= (ivs & 0xF8000ul) << 22;
 	target |= (ivs & 0x7C00ul) << 17; 
@@ -795,15 +773,14 @@ _u64 SearchFive(_u64 ivs, _u64 passed_ability, _u64 last_idx)
 	for (_u64 search = 0; search < searchMax; ++search)
 	{
 		_u64 seed = (processedTarget ^ g_CoefficientData[search]) | g_SearchPattern[search];
+
 		xoroshiro.SetSeed(seed);
 		// EC
 		unsigned int ec = -1;
 		do {
 			ec = xoroshiro.Next(0xFFFFFFFFu);
 		} while (ec == 0xFFFFFFFFu);
-		if (g_LSB != -1 && (ec & 1) != g_LSB) {
-			continue;
-		}
+
 		if (l_First.characteristic > -1) {
 			int characteristic = fastmod::fastmod_u32(ec, M, 6);
 			if (l_First.characteristicPos[characteristic] != l_First.characteristic)
@@ -831,11 +808,6 @@ _u64 SearchFive(_u64 ivs, _u64 passed_ability, _u64 last_idx)
 					++fixedCount;
 				}
 			} while (fixedCount < l_First.fixedIV);
-
-			if (offset != g_IvOffset)
-			{
-				continue;
-			}
 
 			bool isPassed = true;
 			for (int i = 0; i < 6; ++i)
@@ -1066,9 +1038,7 @@ _u64 SearchFour(_u64 ivs, _u64 passed_ability, _u64 last_idx)
 		do {
 			ec = xoroshiro.Next(0xFFFFFFFFu);
 		} while (ec == 0xFFFFFFFFu);
-		if (g_LSB != -1 && (ec & 1) != g_LSB) {
-			continue;
-		}
+
 		if (l_First.characteristic > -1) {
 			int characteristic = fastmod::fastmod_u32(ec, M, 6);
 			if (l_First.characteristicPos[characteristic] != l_First.characteristic)
@@ -1096,11 +1066,6 @@ _u64 SearchFour(_u64 ivs, _u64 passed_ability, _u64 last_idx)
 					++fixedCount;
 				}
 			} while (fixedCount < l_First.fixedIV);
-
-			if (offset != g_IvOffset)
-			{
-				continue;
-			}
 
 			bool isPassed = true;
 			for (int i = 0; i < 6; ++i)
