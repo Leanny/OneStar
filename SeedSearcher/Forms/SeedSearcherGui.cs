@@ -1287,6 +1287,7 @@ namespace SeedSearcherGui
                 GB_43.Enabled = enabled[2];
                 GB_51.Enabled = enabled[3];
                 GB_61.Enabled = enabled[4];
+                GB_Left.Enabled = true;
                 GB_PKMN1.Enabled = true;
                 MenuBar.Enabled = true;
             }
