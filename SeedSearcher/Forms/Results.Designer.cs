@@ -633,6 +633,7 @@
             // 
             this.raidContent.AllowUserToAddRows = false;
             this.raidContent.AllowUserToDeleteRows = false;
+            this.raidContent.AllowUserToOrderColumns = true;
             this.raidContent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.raidContent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FrameCell,
