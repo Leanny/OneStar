@@ -92,9 +92,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BTN_IVCalc = new System.Windows.Forms.Button();
             this.BTN_Clear = new System.Windows.Forms.Button();
             this.DetailsBox = new System.Windows.Forms.GroupBox();
-            this.BTN_IVCalc = new System.Windows.Forms.Button();
+            this.BT_NextShiny = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxSpe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxSpd)).BeginInit();
@@ -115,18 +116,18 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(641, 193);
+            this.searchButton.Location = new System.Drawing.Point(698, 193);
             this.searchButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(92, 28);
-            this.searchButton.TabIndex = 35;
+            this.searchButton.TabIndex = 37;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // resetFilter
             // 
-            this.resetFilter.Location = new System.Drawing.Point(388, 193);
+            this.resetFilter.Location = new System.Drawing.Point(368, 193);
             this.resetFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.resetFilter.Name = "resetFilter";
             this.resetFilter.Size = new System.Drawing.Size(92, 28);
@@ -156,7 +157,7 @@
             "No",
             "Star",
             "Square"});
-            this.shinyBox.Location = new System.Drawing.Point(581, 140);
+            this.shinyBox.Location = new System.Drawing.Point(638, 140);
             this.shinyBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.shinyBox.Name = "shinyBox";
             this.shinyBox.Size = new System.Drawing.Size(152, 24);
@@ -175,7 +176,7 @@
             // 
             this.genderBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderBox.FormattingEnabled = true;
-            this.genderBox.Location = new System.Drawing.Point(581, 110);
+            this.genderBox.Location = new System.Drawing.Point(638, 110);
             this.genderBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.genderBox.Name = "genderBox";
             this.genderBox.Size = new System.Drawing.Size(152, 24);
@@ -186,7 +187,7 @@
             this.abilityBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.abilityBox.DropDownWidth = 135;
             this.abilityBox.FormattingEnabled = true;
-            this.abilityBox.Location = new System.Drawing.Point(581, 80);
+            this.abilityBox.Location = new System.Drawing.Point(638, 80);
             this.abilityBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.abilityBox.Name = "abilityBox";
             this.abilityBox.Size = new System.Drawing.Size(152, 24);
@@ -196,7 +197,7 @@
             // 
             this.natureBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.natureBox.FormattingEnabled = true;
-            this.natureBox.Location = new System.Drawing.Point(581, 50);
+            this.natureBox.Location = new System.Drawing.Point(638, 50);
             this.natureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.natureBox.Name = "natureBox";
             this.natureBox.Size = new System.Drawing.Size(152, 24);
@@ -648,13 +649,13 @@
             this.Characteristic,
             this.SeedCell});
             this.raidContent.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.raidContent.Location = new System.Drawing.Point(0, 303);
+            this.raidContent.Location = new System.Drawing.Point(0, 282);
             this.raidContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.raidContent.Name = "raidContent";
             this.raidContent.ReadOnly = true;
             this.raidContent.RowHeadersWidth = 51;
             this.raidContent.RowTemplate.Height = 24;
-            this.raidContent.Size = new System.Drawing.Size(1252, 588);
+            this.raidContent.Size = new System.Drawing.Size(1252, 609);
             this.raidContent.TabIndex = 2;
             // 
             // FrameCell
@@ -830,6 +831,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.BT_NextShiny);
             this.groupBox2.Controls.Add(this.BTN_IVCalc);
             this.groupBox2.Controls.Add(this.BTN_Clear);
             this.groupBox2.Controls.Add(this.searchButton);
@@ -878,12 +880,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filters";
             // 
+            // BTN_IVCalc
+            // 
+            this.BTN_IVCalc.Location = new System.Drawing.Point(85, 193);
+            this.BTN_IVCalc.Name = "BTN_IVCalc";
+            this.BTN_IVCalc.Size = new System.Drawing.Size(110, 28);
+            this.BTN_IVCalc.TabIndex = 20;
+            this.BTN_IVCalc.Text = "IV Calc";
+            this.BTN_IVCalc.UseVisualStyleBackColor = true;
+            this.BTN_IVCalc.Click += new System.EventHandler(this.BTN_IVCalc_Click);
+            // 
             // BTN_Clear
             // 
-            this.BTN_Clear.Location = new System.Drawing.Point(511, 193);
+            this.BTN_Clear.Location = new System.Drawing.Point(475, 193);
             this.BTN_Clear.Name = "BTN_Clear";
             this.BTN_Clear.Size = new System.Drawing.Size(92, 28);
-            this.BTN_Clear.TabIndex = 36;
+            this.BTN_Clear.TabIndex = 35;
             this.BTN_Clear.Text = "Clear Filter";
             this.BTN_Clear.UseVisualStyleBackColor = true;
             this.BTN_Clear.Click += new System.EventHandler(this.BTN_Clear_Click);
@@ -901,15 +913,15 @@
             this.DetailsBox.TabStop = false;
             this.DetailsBox.Text = "Details";
             // 
-            // BTN_IVCalc
+            // BT_NextShiny
             // 
-            this.BTN_IVCalc.Location = new System.Drawing.Point(85, 193);
-            this.BTN_IVCalc.Name = "BTN_IVCalc";
-            this.BTN_IVCalc.Size = new System.Drawing.Size(110, 28);
-            this.BTN_IVCalc.TabIndex = 37;
-            this.BTN_IVCalc.Text = "IV Calc";
-            this.BTN_IVCalc.UseVisualStyleBackColor = true;
-            this.BTN_IVCalc.Click += new System.EventHandler(this.BTN_IVCalc_Click);
+            this.BT_NextShiny.Location = new System.Drawing.Point(582, 193);
+            this.BT_NextShiny.Name = "BT_NextShiny";
+            this.BT_NextShiny.Size = new System.Drawing.Size(100, 28);
+            this.BT_NextShiny.TabIndex = 36;
+            this.BT_NextShiny.Text = "Next Shinies";
+            this.BT_NextShiny.UseVisualStyleBackColor = true;
+            this.BT_NextShiny.Click += new System.EventHandler(this.BT_NextShiny_Click);
             // 
             // Results
             // 
@@ -1012,5 +1024,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Characteristic;
         private System.Windows.Forms.DataGridViewTextBoxColumn SeedCell;
         private System.Windows.Forms.Button BTN_IVCalc;
+        private System.Windows.Forms.Button BT_NextShiny;
     }
 }

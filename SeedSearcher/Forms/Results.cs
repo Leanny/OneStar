@@ -302,5 +302,32 @@ namespace SeedSearcherGui
             var calc = new IVCalculator(GameStrings, (RaidTemplate)((ComboboxItem)speciesList.SelectedItem).Value, minHP, minAtk, minDef, minSpa, minSpd, MinSpe, natureBox, maxHP, maxAtk, maxDef, maxSpa, maxSpd, maxSpe);
             calc.Show();
         }
+
+        private void BT_NextShiny_Click(object sender, EventArgs e)
+        {
+            ulong start_seed = ulong.Parse(seedBox.Text, System.Globalization.NumberStyles.HexNumber);
+            uint start_frame = uint.Parse(startFrame.Text);
+            ulong current_seed = Advance(start_seed, start_frame);
+            var template = (RaidTemplate)((ComboboxItem)speciesList.SelectedItem).Value;
+            var s = GameInfo.Strings;
+
+            ((ISupportInitialize)raidContent).BeginInit();
+            raidContent.Rows.Clear();
+            bool foundSquare = false;
+            bool foundStar = false;
+            for (uint current_frame = start_frame; !foundSquare || !foundStar; current_frame++, current_seed += XOROSHIRO.XOROSHIRO_CONST)
+            {
+                var pkm = template.ConvertToPKM(current_seed, 0, 0);
+                
+                if(pkm.ShinyType > 0)
+                {
+                    var row = CreateRaidRow(current_frame, pkm, s, current_seed);
+                    raidContent.Rows.Add(row);
+                    foundStar |= pkm.ShinyType == 1;
+                    foundSquare |= pkm.ShinyType == 2;
+                }
+            }
+            ((ISupportInitialize)raidContent).EndInit();
+        }
     }
 }
