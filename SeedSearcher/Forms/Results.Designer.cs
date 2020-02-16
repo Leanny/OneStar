@@ -648,14 +648,14 @@
             this.ShinyCell,
             this.Characteristic,
             this.SeedCell});
-            this.raidContent.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.raidContent.Location = new System.Drawing.Point(0, 282);
+            this.raidContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.raidContent.Location = new System.Drawing.Point(0, 267);
             this.raidContent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.raidContent.Name = "raidContent";
             this.raidContent.ReadOnly = true;
             this.raidContent.RowHeadersWidth = 51;
             this.raidContent.RowTemplate.Height = 24;
-            this.raidContent.Size = new System.Drawing.Size(1252, 609);
+            this.raidContent.Size = new System.Drawing.Size(1252, 624);
             this.raidContent.TabIndex = 2;
             // 
             // FrameCell
@@ -904,11 +904,12 @@
             // 
             this.DetailsBox.Controls.Add(this.groupBox2);
             this.DetailsBox.Controls.Add(this.groupBox1);
-            this.DetailsBox.Location = new System.Drawing.Point(4, 11);
+            this.DetailsBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DetailsBox.Location = new System.Drawing.Point(0, 0);
             this.DetailsBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DetailsBox.Name = "DetailsBox";
             this.DetailsBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DetailsBox.Size = new System.Drawing.Size(1236, 267);
+            this.DetailsBox.Size = new System.Drawing.Size(1252, 267);
             this.DetailsBox.TabIndex = 3;
             this.DetailsBox.TabStop = false;
             this.DetailsBox.Text = "Details";
@@ -930,6 +931,7 @@
             this.ClientSize = new System.Drawing.Size(1252, 891);
             this.Controls.Add(this.raidContent);
             this.Controls.Add(this.DetailsBox);
+            this.MinimumSize = new System.Drawing.Size(1270, 938);
             this.Name = "Results";
             this.ShowIcon = false;
             this.Text = "Results";
