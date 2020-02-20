@@ -123,65 +123,78 @@ namespace SeedSearcherGui
 			LSB = lsb;
 		}
 
-		private List<ulong> GetAbilityBits()
+		private List<ulong> GetAbilityBits(int alternativeSource = -1)
 		{
 			List<ulong> res = new List<ulong>();
-			if (pkmn4.characteristicPos == null)
+			if(alternativeSource != -1)
 			{
-				if (pkmn1.isEnableDream || pkmn1.ability < 0)
+				if (LSB == -1)
 				{
-					if(LSB == -1) { 
-						res.Add(0ul);
-						res.Add(1ul);
-						res.Add(2ul);
-						res.Add(3ul);
-					} 
+					res.Add((ulong)((alternativeSource&1) << 1));
+					res.Add((ulong)((alternativeSource & 1) << 1) | 1);
+				}
+				else
+				{
+					res.Add((ulong)((alternativeSource & 1) << 1 | LSB));
+				}
+			} else { 
+				if (pkmn4.characteristicPos == null)
+				{
+					if (pkmn1.isEnableDream || pkmn1.ability < 0)
+					{
+						if(LSB == -1) { 
+							res.Add(0ul);
+							res.Add(1ul);
+							res.Add(2ul);
+							res.Add(3ul);
+						} 
+						else
+						{
+							res.Add((ulong) LSB);
+							res.Add((ulong) LSB | 2);
+						}
+					}
 					else
 					{
-						res.Add((ulong) LSB);
-						res.Add((ulong) LSB | 2);
+						if (LSB == -1)
+						{
+							res.Add((ulong)(pkmn1.ability << 1));
+							res.Add((ulong)(pkmn1.ability << 1) | 1);
+						}
+						else
+						{
+							res.Add((ulong)(pkmn1.ability << 1 | LSB));
+						}
 					}
 				}
 				else
 				{
-					if (LSB == -1)
+					if (pkmn2.isEnableDream || pkmn2.ability < 0)
 					{
-						res.Add((ulong)(pkmn1.ability << 1));
-						res.Add((ulong)(pkmn1.ability << 1) | 1);
+						if (LSB == -1)
+						{
+							res.Add(0ul);
+							res.Add(1ul);
+							res.Add(2ul);
+							res.Add(3ul);
+						}
+						else
+						{
+							res.Add((ulong)LSB);
+							res.Add((ulong)LSB | 2);
+						}
 					}
 					else
 					{
-						res.Add((ulong)(pkmn1.ability << 1 | LSB));
-					}
-				}
-			}
-			else
-			{
-				if (pkmn2.isEnableDream || pkmn2.ability < 0)
-				{
-					if (LSB == -1)
-					{
-						res.Add(0ul);
-						res.Add(1ul);
-						res.Add(2ul);
-						res.Add(3ul);
-					}
-					else
-					{
-						res.Add((ulong)LSB);
-						res.Add((ulong)LSB | 2);
-					}
-				}
-				else
-				{
-					if (LSB == -1)
-					{
-						res.Add((ulong)(pkmn2.ability << 1));
-						res.Add((ulong)(pkmn2.ability << 1) | 1);
-					}
-					else
-					{
-						res.Add((ulong)(pkmn2.ability << 1 | LSB));
+						if (LSB == -1)
+						{
+							res.Add((ulong)(pkmn2.ability << 1));
+							res.Add((ulong)(pkmn2.ability << 1) | 1);
+						}
+						else
+						{
+							res.Add((ulong)(pkmn2.ability << 1 | LSB));
+						}
 					}
 				}
 			}
@@ -211,7 +224,12 @@ namespace SeedSearcherGui
 			ssg.SetSixThirdCondition(pkmn3);
 			ssg.SetTargetCondition(target);
 			ssg.SetSixLSB(LSB);
-			List<ulong> abilities = GetAbilityBits();
+			int additionalPart = -1;
+			if(target.Length > 6)
+			{
+				additionalPart = target[6];
+			}
+			List<ulong> abilities = GetAbilityBits(additionalPart);
 			if (m_Mode == Mode.Star12)
 			{
 				if (ssg.TestSeed(0) != 5)
@@ -238,7 +256,8 @@ namespace SeedSearcherGui
 					} else if(target[5] == -1)
 					{
 						result = ssg.SearchFive(devices[searcherIDX], minRerolls, maxRerolls, abilities, updateLbl, calculationProgressBar);
-					} else
+					}
+					else 
 					{
 						result = ssg.SearchSix(devices[searcherIDX], minRerolls, maxRerolls, abilities, updateLbl, calculationProgressBar);
 					}
@@ -291,8 +310,13 @@ namespace SeedSearcherGui
 			{
 				opts = new ParallelOptions { MaxDegreeOfParallelism = -1 };
 			}
-			
-			List<ulong> abilities = GetAbilityBits();
+
+			int additionalPart = -1;
+			if (target.Length > 6)
+			{
+				additionalPart = target[6];
+			}
+			List<ulong> abilities = GetAbilityBits(additionalPart);
 			if (m_Mode == Mode.Star12)
 			{
 				SetFirstCondition(pkmn1.ivs0, pkmn1.ivs1, pkmn1.ivs2, pkmn1.ivs3, pkmn1.ivs4, pkmn1.ivs5, pkmn1.fixedIV, pkmn1.fixedIVPos,
