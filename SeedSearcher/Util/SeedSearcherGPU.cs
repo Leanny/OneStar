@@ -964,6 +964,7 @@ namespace SeedSearcherGui
 				MatrixStruct.g_InputMatrix[bit++] = 1;
 				g_ConstantTermVector <<= 1;
 				g_ConstantTermVector |= 1;
+
 				int l = MatrixStruct.CalculateInverseMatrix(bit);
 				MatrixStruct.CalculateCoefficientData(l);
 				int numElems = 1 << (64 - l);
@@ -975,26 +976,26 @@ namespace SeedSearcherGui
 				Array.Copy(MatrixStruct.g_SearchPattern, 0, g_SearchPattern, 0, numElems);
 				Array.Copy(MatrixStruct.g_AnswerFlag, 0, g_AnswerFlag, 0, 64);
 				Array.Copy(MatrixStruct.g_FreeBit, 0, g_FreeBit, 0, 64);
-
+				const int shift = 2;
 				foreach (ulong ability in abilities)
 				{
 					if (StopSearchCommand) return 0;
 					gpu.LongFor(0, 0x40000000u, input => {
 						ulong target = ability;
 						ulong input_ivs = (ulong)input;
-						target |= (input_ivs & 0x3E000000ul) << 32;
-						target |= (input_ivs & 0x1F00000ul) << 27;
-						target |= (input_ivs & 0xF8000ul) << 22;
-						target |= (input_ivs & 0x7C00ul) << 17;
-						target |= (input_ivs & 0x3E0ul) << 12;
-						target |= (input_ivs & 0x1Ful) << 7;
+						target |= (input_ivs & 0x3E000000ul) << (30 + shift);
+						target |= (input_ivs & 0x1F00000ul) << (25 + shift);
+						target |= (input_ivs & 0xF8000ul) << (20 + shift);
+						target |= (input_ivs & 0x7C00ul) << (15 + shift);
+						target |= (input_ivs & 0x3E0ul) << (10 + shift);
+						target |= (input_ivs & 0x1Ful) << (5 + shift);
 
-						target |= ((32ul + iv0 - ((input_ivs & 0x3E000000ul) >> 25)) & 0x1F) << 52;
-						target |= ((32ul + iv1 - ((input_ivs & 0x1F00000ul) >> 20)) & 0x1F) << 42;
-						target |= ((32ul + iv2 - ((input_ivs & 0xF8000ul) >> 15)) & 0x1F) << 32;
-						target |= ((32ul + iv3 - ((input_ivs & 0x7C00ul) >> 10)) & 0x1F) << 22;
-						target |= ((32ul + iv4 - ((input_ivs & 0x3E0ul) >> 5)) & 0x1F) << 12;
-						target |= ((32ul + iv5 - (input_ivs & 0x1Ful)) & 0x1F) << 2;
+						target |= ((32ul + iv0 - ((input_ivs & 0x3E000000ul) >> 25)) & 0x1F) << (50 + shift);
+						target |= ((32ul + iv1 - ((input_ivs & 0x1F00000ul) >> 20)) & 0x1F) << (40 + shift);
+						target |= ((32ul + iv2 - ((input_ivs & 0xF8000ul) >> 15)) & 0x1F) << (30 + shift);
+						target |= ((32ul + iv3 - ((input_ivs & 0x7C00ul) >> 10)) & 0x1F) << (20 + shift);
+						target |= ((32ul + iv4 - ((input_ivs & 0x3E0ul) >> 5)) & 0x1F) << (10 + shift);
+						target |= ((32ul + iv5 - (input_ivs & 0x1Ful)) & 0x1F) << (0 + shift);
 
 						target ^= g_ConstantTermVector;
 

@@ -427,6 +427,7 @@
             0,
             0,
             0});
+            this.NUD_Level.Enter += new System.EventHandler(this.HP1_Enter);
             // 
             // TB_Species
             // 
