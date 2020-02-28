@@ -57,7 +57,7 @@ namespace SeedSearcherGui
             CB_Nature = new ComboBox[] { CB_Nature1, CB_Nature2, CB_Nature3, CB_Nature4, CB_Nature5 };
             CB_Characteristic = new ComboBox[] { CB_Characteristic1, CB_Characteristic2, CB_Characteristic3, CB_Characteristic4, CB_Characteristic5 };
             badges = new ToolStripMenuItem[] { toolStripMenuItem2, toolStripMenuItem3, toolStripMenuItem4, toolStripMenuItem5, toolStripMenuItem6, toolStripMenuItem7,
-                toolStripMenuItem8, toolStripMenuItem9, notPickedToolStripMenuItem};
+                toolStripMenuItem8, toolStripMenuItem9, toolStripMenuItem10, notPickedToolStripMenuItem};
             GB_42.Enabled = false;
             GB_43.Enabled = false;
             GB_51.Enabled = false;
