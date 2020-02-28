@@ -8,15 +8,15 @@ namespace SeedSearcherGui
 {
     public partial class IVCalculator : Form
     {
-        private RaidTemplate RaidInfo;
-        private int[] basestats;
-        private TextBox[] minVals;
-        private TextBox[] maxVals;
-        private int[] ivstarts = { 0, 1, 16, 26, 30, 31, 32 };
-        private int[] statorder = { 0, 1, 2, 5, 3, 4 };
-        private ComboBox[] ratings;
-        private NumericUpDown[] original;
-        private ComboBox nature;
+        private readonly RaidTemplate RaidInfo;
+        private readonly int[] basestats;
+        private readonly TextBox[] minVals;
+        private readonly TextBox[] maxVals;
+        private readonly int[] ivstarts = { 0, 1, 16, 26, 30, 31, 32 };
+        private readonly int[] statorder = { 0, 1, 2, 5, 3, 4 };
+        private readonly ComboBox[] ratings;
+        private readonly NumericUpDown[] original;
+        private readonly ComboBox nature;
         public static readonly int[] ToxtricityAmplifiedNatures = { 0x03, 0x04, 0x02, 0x08, 0x09, 0x13, 0x16, 0x0B, 0x0D, 0x0E, 0x00, 0x06, 0x18 };
         public static readonly int[] ToxtricityLowKeyNatures = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
         public IVCalculator(PKHeX.Core.GameStrings gameStrings, RaidTemplate raidInfo, NumericUpDown hP1, NumericUpDown aTK1, NumericUpDown dEF1, NumericUpDown sPA1, NumericUpDown sPD1, NumericUpDown sPE1, ComboBox cB_Nature
