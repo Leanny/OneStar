@@ -33,6 +33,11 @@ namespace SeedSearcherGui
         public static readonly int[] ToxtricityLowKeyNatures = { 0x01, 0x05, 0x07, 0x0A, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x14, 0x15, 0x17 };
         public const int ToxtricityID = 849;
         private string loadedEvent = "200207.json";
+        private int minStars = 0;
+        private int maxStars = 4;
+        private static readonly int[] STARCOUNT_MIN = { 0, 0, 0, 0, 1, 1, 2, 2, 2, 0 };
+        private static readonly int[] STARCOUNT_MAX = { 0, 1, 1, 2, 2, 2, 3, 3, 4, 4 };
+        private ToolStripMenuItem[] badges;
 
         public SeedSearcherGui()
         {
@@ -51,6 +56,8 @@ namespace SeedSearcherGui
                                               HP5, ATK5, DEF5, SPA5, SPD5, SPE5};
             CB_Nature = new ComboBox[] { CB_Nature1, CB_Nature2, CB_Nature3, CB_Nature4, CB_Nature5 };
             CB_Characteristic = new ComboBox[] { CB_Characteristic1, CB_Characteristic2, CB_Characteristic3, CB_Characteristic4, CB_Characteristic5 };
+            badges = new ToolStripMenuItem[] { toolStripMenuItem2, toolStripMenuItem3, toolStripMenuItem4, toolStripMenuItem5, toolStripMenuItem6, toolStripMenuItem7,
+                toolStripMenuItem8, toolStripMenuItem9, notPickedToolStripMenuItem};
             GB_42.Enabled = false;
             GB_43.Enabled = false;
             GB_51.Enabled = false;
@@ -127,6 +134,8 @@ namespace SeedSearcherGui
                 NUD_IVMax.Value = 10;
             }
             PopulateEvents();
+            badges[Properties.Settings.Default.BadgeSelect].Checked = true;
+            SetBadges(Properties.Settings.Default.BadgeSelect);
         }
 
         private void PopulateNature(ComboBox cb)
@@ -340,7 +349,7 @@ namespace SeedSearcherGui
             species.Items.Clear();
             List<string> used = new List<string>();
             // special case to make it distinguishable
-            for (int stars = 0; stars < 5; stars++)
+            for (int stars = minStars; stars <= maxStars; stars++)
             {
                 foreach (var entry in entries)
                 {
@@ -352,12 +361,12 @@ namespace SeedSearcherGui
                             gmax = "(G-Max) ";
                         }
                         string s = "";
-                        if(entry.MinRank == entry.MaxRank)
+                        if(Math.Max(entry.MinRank, minStars) == Math.Min(entry.MaxRank, maxStars))
                         {
-                            s = $"{GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}\u2605";
+                            s = $"{GameStrings.Species[entry.Species]} {gmax}{Math.Max(entry.MinRank, minStars) + 1}\u2605";
                         } else
                         {
-                            s = $"{GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}-{entry.MaxRank + 1}\u2605";
+                            s = $"{GameStrings.Species[entry.Species]} {gmax}{Math.Max(entry.MinRank, minStars) + 1}-{Math.Min(entry.MaxRank, maxStars) + 1}\u2605";
                         }
                         if (!used.Contains(s))
                         {
@@ -1533,7 +1542,7 @@ namespace SeedSearcherGui
             {
                 return;
             }
-            RefreshUI();
+            CB_Nest_SelectedIndexChanged(null, null);
         }
 
         private void BT_Table_Click(object sender, EventArgs e)
@@ -1624,7 +1633,7 @@ namespace SeedSearcherGui
             }
             RaidTemplateTable toUse = GetTableToUse();
             List<string> used = new List<string>();
-            for (int stars = 0; stars < 5; stars++)
+            for (int stars = minStars; stars <= maxStars; stars++)
             {
                 foreach (var entry in toUse.Entries)
                 {
@@ -1636,13 +1645,13 @@ namespace SeedSearcherGui
                             gmax = "(G-Max) ";
                         }
                         string s = "";
-                        if (entry.MinRank == entry.MaxRank)
+                        if (Math.Max(entry.MinRank, minStars) == Math.Min(entry.MaxRank, maxStars))
                         {
-                            s = $"{GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}\u2605 ({entry.FlawlessIVs}IV)";
+                            s = $"{GameStrings.Species[entry.Species]} {gmax}{Math.Max(entry.MinRank, minStars) + 1}\u2605 ({entry.FlawlessIVs}IV)";
                         }
                         else
                         {
-                            s = $"{GameStrings.Species[entry.Species]} {gmax}{entry.MinRank + 1}-{entry.MaxRank + 1}\u2605 ({entry.FlawlessIVs}IV)";
+                            s = $"{GameStrings.Species[entry.Species]} {gmax}{Math.Max(entry.MinRank, minStars) + 1}-{Math.Min(entry.MaxRank, maxStars) + 1}\u2605 ({entry.FlawlessIVs}IV)";
                         }
                         if (!used.Contains(s))
                         {
@@ -2006,7 +2015,11 @@ namespace SeedSearcherGui
                 MessageBox.Show("Corrupted data.", "Invalid Input");
                 return;
             }
-            RefreshUI();
+            var oldMin = minStars;
+            var oldMax = maxStars;
+            minStars = 0;
+            maxStars = 4;
+            CB_Nest_SelectedIndexChanged(null, null);
             // Reconstruct input
             CB_Nest.SelectedIndex = si.Setup.NestID + 1;
             if (si.Setup.NestID == -1)
@@ -2103,6 +2116,8 @@ namespace SeedSearcherGui
                 SetCBValue(CB_Ability5, si.Pkmn4.Ability);
                 NUD_Frame3.Value = si.Pkmn4.Day;
             }
+            minStars = oldMin;
+            maxStars = oldMax;
         }
 
         private void SetCBValue(ComboBox cb, int value)
@@ -2114,6 +2129,65 @@ namespace SeedSearcherGui
                     cb.SelectedItem = ci;
                 }
             }
+        }
+
+        private void SetBadges(int num)
+        {
+            Properties.Settings.Default.BadgeSelect = num;
+            Properties.Settings.Default.Save();
+            minStars = STARCOUNT_MIN[num];
+            maxStars = STARCOUNT_MAX[num];
+            CB_Nest_SelectedIndexChanged(null, null);
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            SetBadges(0);
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            SetBadges(1);
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            SetBadges(2);
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            SetBadges(3);
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            SetBadges(4);
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            SetBadges(5);
+        }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            SetBadges(6);
+        }
+
+        private void toolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            SetBadges(7);
+        }
+
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+            SetBadges(8);
+        }
+
+        private void notPickedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetBadges(9);
         }
     }
 }

@@ -46,5 +46,17 @@ namespace SeedSearcherGui.Properties {
                 this["CurrentEvent"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int BadgeSelect {
+            get {
+                return ((int)(this["BadgeSelect"]));
+            }
+            set {
+                this["BadgeSelect"] = value;
+            }
+        }
     }
 }
