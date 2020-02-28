@@ -264,6 +264,37 @@ namespace SeedSearcherGui
                     }
                 }
             }
+            // now that we have a range of IV values, we can try to apply some math to get the 31IVs
+            int IVCount = RaidInfo.FlawlessIVs;
+            for (int stat = 0; stat < 6; stat++)
+            {
+                int upper = int.Parse(maxVals[stat].Text);
+                if(upper == 31)
+                {
+                    IVCount--;
+                }
+            }
+            if(IVCount == 0)
+            {
+                bool changed = true;
+                for (int stat = 0; stat < 6; stat++)
+                {
+                    int upper = int.Parse(maxVals[stat].Text);
+                    if (upper == 31)
+                    {
+                        changed &= minVals[stat].Text != "31";
+                        minVals[stat].Text = "31";
+                        ratings[stat].SelectedIndex = ratings.Length - 1;
+                    }
+                }
+                if (changed)
+                {
+                    // just redo everything
+                    ButtonCalc_Click(sender, e);
+                    return;
+                }
+            }
+
             // go through all of them again
             bool foundAll = true;
             for (int stat = 0; stat < 6; stat ++)
