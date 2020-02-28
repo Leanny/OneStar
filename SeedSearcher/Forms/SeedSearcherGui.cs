@@ -79,7 +79,7 @@ namespace SeedSearcherGui
             {
                 field.SelectedIndex = 0;
             }
-            CB_Den.SelectedIndex = 1;
+            CB_Den.SelectedIndex = 0;
             if (Properties.Settings.Default.Language == 0)
             {
                 NihongoToolStripMenuItem_Click(null, null);
