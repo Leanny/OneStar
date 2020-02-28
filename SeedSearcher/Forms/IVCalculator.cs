@@ -284,6 +284,7 @@ namespace SeedSearcherGui
                 LBL_RecLevel.Text = lvl.ToString();
                 NUD_Level.Value = lvl;
                 NUD_Level.Focus();
+                ButtonApply.Enabled = original.Length > 6;
             }
         }
 
