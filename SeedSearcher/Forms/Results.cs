@@ -103,6 +103,7 @@ namespace SeedSearcherGui
             row.Cells[10].Value = shinytype[res.ShinyType];
             row.Cells[11].Value = GetCharacteristic(res);
             row.Cells[12].Value = $"{current_seed:X16}";
+            row.Cells[13].Value = res.Deviation;
             return row;
         }
 
