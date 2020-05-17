@@ -1224,6 +1224,10 @@ namespace SeedSearcherGui
             if (candidates.Count == 1)
             {
                 LSB = candidates[0] & 1;
+                if((day1&1) == 1)
+                {
+                    LSB = 1 - LSB;
+                }
             }
 
             SeedSearcher searcher = new SeedSearcher(SeedSearcher.Mode.Star35);
