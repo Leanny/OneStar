@@ -38,7 +38,6 @@
             this.LBL_Game = new System.Windows.Forms.Label();
             this.CB_Den = new System.Windows.Forms.ComboBox();
             this.LBL_Den = new System.Windows.Forms.Label();
-            this.DenMap = new System.Windows.Forms.PictureBox();
             this.GB_PKMN1 = new System.Windows.Forms.GroupBox();
             this.NUD_Frame1 = new System.Windows.Forms.NumericUpDown();
             this.LB_Response = new System.Windows.Forms.Label();
@@ -199,8 +198,9 @@
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.notPickedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DenMap = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.GB_Left.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.GB_PKMN1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Frame1)).BeginInit();
             this.GB_43.SuspendLayout();
@@ -245,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.HP5)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.MenuBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DenMap)).BeginInit();
             this.SuspendLayout();
             // 
             // GB_Left
@@ -262,7 +263,7 @@
             this.GB_Left.Margin = new System.Windows.Forms.Padding(2);
             this.GB_Left.Name = "GB_Left";
             this.GB_Left.Padding = new System.Windows.Forms.Padding(2);
-            this.GB_Left.Size = new System.Drawing.Size(200, 592);
+            this.GB_Left.Size = new System.Drawing.Size(479, 592);
             this.GB_Left.TabIndex = 0;
             this.GB_Left.TabStop = false;
             this.GB_Left.Text = "Configuration";
@@ -429,10 +430,10 @@
             "154",
             "155",
             "156"});
-            this.CB_Nest.Location = new System.Drawing.Point(56, 72);
+            this.CB_Nest.Location = new System.Drawing.Point(56, 69);
             this.CB_Nest.Margin = new System.Windows.Forms.Padding(2);
             this.CB_Nest.Name = "CB_Nest";
-            this.CB_Nest.Size = new System.Drawing.Size(138, 21);
+            this.CB_Nest.Size = new System.Drawing.Size(415, 21);
             this.CB_Nest.TabIndex = 3;
             this.CB_Nest.SelectedIndexChanged += new System.EventHandler(this.CB_Nest_SelectedIndexChanged);
             // 
@@ -453,10 +454,10 @@
             this.CB_Rarity.Items.AddRange(new object[] {
             "Common",
             "Rare"});
-            this.CB_Rarity.Location = new System.Drawing.Point(56, 48);
+            this.CB_Rarity.Location = new System.Drawing.Point(56, 45);
             this.CB_Rarity.Margin = new System.Windows.Forms.Padding(2);
             this.CB_Rarity.Name = "CB_Rarity";
-            this.CB_Rarity.Size = new System.Drawing.Size(138, 21);
+            this.CB_Rarity.Size = new System.Drawing.Size(415, 21);
             this.CB_Rarity.TabIndex = 2;
             this.CB_Rarity.SelectedIndexChanged += new System.EventHandler(this.CB_Den_SelectedIndexChanged);
             // 
@@ -477,10 +478,10 @@
             this.CB_Game.Items.AddRange(new object[] {
             "Sword",
             "Shield"});
-            this.CB_Game.Location = new System.Drawing.Point(56, 97);
+            this.CB_Game.Location = new System.Drawing.Point(56, 94);
             this.CB_Game.Margin = new System.Windows.Forms.Padding(2);
             this.CB_Game.Name = "CB_Game";
-            this.CB_Game.Size = new System.Drawing.Size(138, 21);
+            this.CB_Game.Size = new System.Drawing.Size(415, 21);
             this.CB_Game.TabIndex = 4;
             this.CB_Game.SelectedIndexChanged += new System.EventHandler(this.CB_Nest_SelectedIndexChanged);
             // 
@@ -599,10 +600,10 @@
             "98: Lake of Outrage 2",
             "99: Lake of Outrage 3",
             "100: Lake of Outrage 4"});
-            this.CB_Den.Location = new System.Drawing.Point(56, 22);
+            this.CB_Den.Location = new System.Drawing.Point(56, 19);
             this.CB_Den.Margin = new System.Windows.Forms.Padding(2);
             this.CB_Den.Name = "CB_Den";
-            this.CB_Den.Size = new System.Drawing.Size(138, 21);
+            this.CB_Den.Size = new System.Drawing.Size(415, 21);
             this.CB_Den.TabIndex = 1;
             this.CB_Den.SelectedIndexChanged += new System.EventHandler(this.CB_Den_SelectedIndexChanged);
             // 
@@ -616,17 +617,6 @@
             this.LBL_Den.TabIndex = 24;
             this.LBL_Den.Text = "Den";
             // 
-            // DenMap
-            // 
-            this.DenMap.BackgroundImage = global::SeedSearcherGui.Properties.Resources.map;
-            this.DenMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.DenMap.Location = new System.Drawing.Point(4, 118);
-            this.DenMap.Margin = new System.Windows.Forms.Padding(2);
-            this.DenMap.Name = "DenMap";
-            this.DenMap.Size = new System.Drawing.Size(188, 467);
-            this.DenMap.TabIndex = 0;
-            this.DenMap.TabStop = false;
-            // 
             // GB_PKMN1
             // 
             this.GB_PKMN1.Controls.Add(this.NUD_Frame1);
@@ -635,7 +625,7 @@
             this.GB_PKMN1.Controls.Add(this.GB_43);
             this.GB_PKMN1.Controls.Add(this.GB_42);
             this.GB_PKMN1.Controls.Add(this.GB_41);
-            this.GB_PKMN1.Location = new System.Drawing.Point(214, 26);
+            this.GB_PKMN1.Location = new System.Drawing.Point(493, 26);
             this.GB_PKMN1.Margin = new System.Windows.Forms.Padding(2);
             this.GB_PKMN1.Name = "GB_PKMN1";
             this.GB_PKMN1.Padding = new System.Windows.Forms.Padding(2);
@@ -1703,7 +1693,7 @@
             this.GB_51.Controls.Add(this.LBL_Nature4);
             this.GB_51.Controls.Add(this.CB_Species4);
             this.GB_51.Controls.Add(this.LBL_PKMN4);
-            this.GB_51.Location = new System.Drawing.Point(548, 26);
+            this.GB_51.Location = new System.Drawing.Point(827, 26);
             this.GB_51.Margin = new System.Windows.Forms.Padding(2);
             this.GB_51.Name = "GB_51";
             this.GB_51.Padding = new System.Windows.Forms.Padding(2);
@@ -2017,7 +2007,7 @@
             this.GB_Controls.Controls.Add(this.BT_newsearch);
             this.GB_Controls.Controls.Add(this.SeedResult);
             this.GB_Controls.Controls.Add(this.BT_Search);
-            this.GB_Controls.Location = new System.Drawing.Point(548, 444);
+            this.GB_Controls.Location = new System.Drawing.Point(827, 444);
             this.GB_Controls.Margin = new System.Windows.Forms.Padding(2);
             this.GB_Controls.Name = "GB_Controls";
             this.GB_Controls.Padding = new System.Windows.Forms.Padding(2);
@@ -2136,7 +2126,7 @@
             this.GB_61.Controls.Add(this.LBL_Nature5);
             this.GB_61.Controls.Add(this.CB_Species5);
             this.GB_61.Controls.Add(this.LBL_PKMN5);
-            this.GB_61.Location = new System.Drawing.Point(548, 254);
+            this.GB_61.Location = new System.Drawing.Point(827, 254);
             this.GB_61.Margin = new System.Windows.Forms.Padding(2);
             this.GB_61.Name = "GB_61";
             this.GB_61.Padding = new System.Windows.Forms.Padding(2);
@@ -2454,7 +2444,7 @@
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(874, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1149, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -2506,7 +2496,7 @@
             this.MenuBar.Location = new System.Drawing.Point(0, 0);
             this.MenuBar.Name = "MenuBar";
             this.MenuBar.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.MenuBar.Size = new System.Drawing.Size(874, 24);
+            this.MenuBar.Size = new System.Drawing.Size(1149, 24);
             this.MenuBar.TabIndex = 11;
             this.MenuBar.Text = "menuStrip1";
             // 
@@ -2693,11 +2683,34 @@
             this.notPickedToolStripMenuItem.Text = "Not Picked";
             this.notPickedToolStripMenuItem.Click += new System.EventHandler(this.notPickedToolStripMenuItem_Click);
             // 
+            // DenMap
+            // 
+            this.DenMap.BackgroundImage = global::SeedSearcherGui.Properties.Resources.map;
+            this.DenMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.DenMap.Location = new System.Drawing.Point(0, 123);
+            this.DenMap.Margin = new System.Windows.Forms.Padding(2);
+            this.DenMap.Name = "DenMap";
+            this.DenMap.Size = new System.Drawing.Size(471, 467);
+            this.DenMap.TabIndex = 0;
+            this.DenMap.TabStop = false;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(490, 641);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(117, 13);
+            this.linkLabel1.TabIndex = 12;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Detailed Den Overview";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // SeedSearcherGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 659);
+            this.ClientSize = new System.Drawing.Size(1149, 659);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.MenuBar);
             this.Controls.Add(this.GB_61);
@@ -2708,14 +2721,13 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(890, 698);
+            this.MaximumSize = new System.Drawing.Size(1165, 698);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(890, 698);
+            this.MinimumSize = new System.Drawing.Size(1165, 698);
             this.Name = "SeedSearcherGui";
             this.Text = "Seed Searcher 1.2c-Beta";
             this.GB_Left.ResumeLayout(false);
             this.GB_Left.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DenMap)).EndInit();
             this.GB_PKMN1.ResumeLayout(false);
             this.GB_PKMN1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUD_Frame1)).EndInit();
@@ -2769,6 +2781,7 @@
             this.statusStrip1.PerformLayout();
             this.MenuBar.ResumeLayout(false);
             this.MenuBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DenMap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2946,6 +2959,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
         private System.Windows.Forms.ToolStripMenuItem notPickedToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

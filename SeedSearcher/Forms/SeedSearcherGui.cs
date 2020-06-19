@@ -380,12 +380,19 @@ namespace SeedSearcherGui
             dontChange = false;
         }
 
-        private static Bitmap GetNestMap(int x, int y)
+        private static Bitmap GetNestMap(int x, int y, int location)
         {
             Pen redPen = new Pen(Color.Red, 10);
             var map = Resources.map;
-            using (var graphics = Graphics.FromImage(map))
+            if (location >= 17)
+            {
+                map = Resources.map_01;
+                x = (int) ((x - 16) * map.Width / 1178.167);
+                y = (int)((y + 5) * map.Height / 1009.56);
+            }
+            using (var graphics = Graphics.FromImage(map)) { 
                 graphics.DrawArc(redPen, x - 5, y - 5, 15, 15, 0, 360);
+            }
             return map;
         }
 
@@ -403,7 +410,7 @@ namespace SeedSearcherGui
                 if (idx >= 16) idx++;
                 RaidTemplateTable[] tables = CB_Game.SelectedIndex == 0 ? _raidTables.SwordNests : _raidTables.ShieldNests;
                 var detail = NestLocations.Nests[idx];
-                DenMap.BackgroundImage = GetNestMap(detail.MapX, detail.MapY);
+                DenMap.BackgroundImage = GetNestMap(detail.MapX, detail.MapY, detail.Location);
 
                 if (CB_Rarity.SelectedIndex == 0)
                 {
@@ -2284,6 +2291,15 @@ namespace SeedSearcherGui
         private void notPickedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SetBadges(9);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Specify that the link was visited.
+            this.linkLabel1.LinkVisited = true;
+
+            // Navigate to a URL.
+            System.Diagnostics.Process.Start("https://leanny.github.io/seedchecker/#/dens/");
         }
     }
 }
