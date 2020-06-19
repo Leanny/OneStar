@@ -210,6 +210,276 @@
   <data name="Den" xml:space="preserve">
     <value>Den</value>
   </data>
+  <data name="DLC_17_1" xml:space="preserve">
+    <value>Fields of Honor 1</value>
+  </data>
+  <data name="DLC_17_10" xml:space="preserve">
+    <value>Fields of Honor 10</value>
+  </data>
+  <data name="DLC_17_2" xml:space="preserve">
+    <value>Fields of Honor 2</value>
+  </data>
+  <data name="DLC_17_3" xml:space="preserve">
+    <value>Fields of Honor 3</value>
+  </data>
+  <data name="DLC_17_4" xml:space="preserve">
+    <value>Fields of Honor 4</value>
+  </data>
+  <data name="DLC_17_5" xml:space="preserve">
+    <value>Fields of Honor 5</value>
+  </data>
+  <data name="DLC_17_6" xml:space="preserve">
+    <value>Fields of Honor 6</value>
+  </data>
+  <data name="DLC_17_7" xml:space="preserve">
+    <value>Fields of Honor 7</value>
+  </data>
+  <data name="DLC_17_8" xml:space="preserve">
+    <value>Fields of Honor 8</value>
+  </data>
+  <data name="DLC_17_9" xml:space="preserve">
+    <value>Fields of Honor 9</value>
+  </data>
+  <data name="DLC_18_1" xml:space="preserve">
+    <value>Soothing Wetlands 1</value>
+  </data>
+  <data name="DLC_18_2" xml:space="preserve">
+    <value>Soothing Wetlands 2</value>
+  </data>
+  <data name="DLC_18_3" xml:space="preserve">
+    <value>Soothing Wetlands 3</value>
+  </data>
+  <data name="DLC_18_4" xml:space="preserve">
+    <value>Soothing Wetlands 4</value>
+  </data>
+  <data name="DLC_18_5" xml:space="preserve">
+    <value>Soothing Wetlands 5</value>
+  </data>
+  <data name="DLC_18_6" xml:space="preserve">
+    <value>Soothing Wetlands 6</value>
+  </data>
+  <data name="DLC_18_7" xml:space="preserve">
+    <value>Soothing Wetlands 7</value>
+  </data>
+  <data name="DLC_18_8" xml:space="preserve">
+    <value>Soothing Wetlands 8</value>
+  </data>
+  <data name="DLC_18_9" xml:space="preserve">
+    <value>Soothing Wetlands 9</value>
+  </data>
+  <data name="DLC_19_1" xml:space="preserve">
+    <value>Forest of Focus 1</value>
+  </data>
+  <data name="DLC_19_2" xml:space="preserve">
+    <value>Forest of Focus 2</value>
+  </data>
+  <data name="DLC_19_3" xml:space="preserve">
+    <value>Forest of Focus 3</value>
+  </data>
+  <data name="DLC_19_4" xml:space="preserve">
+    <value>Forest of Focus 4</value>
+  </data>
+  <data name="DLC_19_5" xml:space="preserve">
+    <value>Forest of Focus 5</value>
+  </data>
+  <data name="DLC_19_6" xml:space="preserve">
+    <value>Forest of Focus 6</value>
+  </data>
+  <data name="DLC_20_1" xml:space="preserve">
+    <value>Challenge Beach 1</value>
+  </data>
+  <data name="DLC_20_2" xml:space="preserve">
+    <value>Challenge Beach 2</value>
+  </data>
+  <data name="DLC_20_3" xml:space="preserve">
+    <value>Challenge Beach 3</value>
+  </data>
+  <data name="DLC_20_4" xml:space="preserve">
+    <value>Challenge Beach 4</value>
+  </data>
+  <data name="DLC_20_5" xml:space="preserve">
+    <value>Challenge Beach 5</value>
+  </data>
+  <data name="DLC_20_6" xml:space="preserve">
+    <value>Challenge Beach 6</value>
+  </data>
+  <data name="DLC_20_7" xml:space="preserve">
+    <value>Challenge Beach 7</value>
+  </data>
+  <data name="DLC_20_8" xml:space="preserve">
+    <value>Challenge Beach 8</value>
+  </data>
+  <data name="DLC_21_1" xml:space="preserve">
+    <value>Brawlers' Cave 1</value>
+  </data>
+  <data name="DLC_22_1" xml:space="preserve">
+    <value>Challenge Road 1</value>
+  </data>
+  <data name="DLC_22_2" xml:space="preserve">
+    <value>Challenge Road 2</value>
+  </data>
+  <data name="DLC_22_3" xml:space="preserve">
+    <value>Challenge Road 3</value>
+  </data>
+  <data name="DLC_22_4" xml:space="preserve">
+    <value>Challenge Road 4</value>
+  </data>
+  <data name="DLC_23_1" xml:space="preserve">
+    <value>Courageous Cavern 1</value>
+  </data>
+  <data name="DLC_23_2" xml:space="preserve">
+    <value>Courageous Cavern 2</value>
+  </data>
+  <data name="DLC_23_3" xml:space="preserve">
+    <value>Courageous Cavern 3</value>
+  </data>
+  <data name="DLC_23_4" xml:space="preserve">
+    <value>Courageous Cavern 4</value>
+  </data>
+  <data name="DLC_23_5" xml:space="preserve">
+    <value>Courageous Cavern 5</value>
+  </data>
+  <data name="DLC_23_6" xml:space="preserve">
+    <value>Courageous Cavern 6</value>
+  </data>
+  <data name="DLC_24_1" xml:space="preserve">
+    <value>Loop Lagoon 1</value>
+  </data>
+  <data name="DLC_24_2" xml:space="preserve">
+    <value>Loop Lagoon 2</value>
+  </data>
+  <data name="DLC_24_3" xml:space="preserve">
+    <value>Loop Lagoon 3</value>
+  </data>
+  <data name="DLC_24_4" xml:space="preserve">
+    <value>Loop Lagoon 4</value>
+  </data>
+  <data name="DLC_25_1" xml:space="preserve">
+    <value>Training Lowlands 1</value>
+  </data>
+  <data name="DLC_25_2" xml:space="preserve">
+    <value>Training Lowlands 2</value>
+  </data>
+  <data name="DLC_25_3" xml:space="preserve">
+    <value>Training Lowlands 3</value>
+  </data>
+  <data name="DLC_25_4" xml:space="preserve">
+    <value>Training Lowlands 4</value>
+  </data>
+  <data name="DLC_25_5" xml:space="preserve">
+    <value>Training Lowlands 5</value>
+  </data>
+  <data name="DLC_25_6" xml:space="preserve">
+    <value>Training Lowlands 6</value>
+  </data>
+  <data name="DLC_25_7" xml:space="preserve">
+    <value>Training Lowlands 7</value>
+  </data>
+  <data name="DLC_26_1" xml:space="preserve">
+    <value>Potbottom Desert 1</value>
+  </data>
+  <data name="DLC_26_2" xml:space="preserve">
+    <value>Potbottom Desert 2</value>
+  </data>
+  <data name="DLC_26_3" xml:space="preserve">
+    <value>Potbottom Desert 3</value>
+  </data>
+  <data name="DLC_27_1" xml:space="preserve">
+    <value>Workout Sea 1</value>
+  </data>
+  <data name="DLC_27_2" xml:space="preserve">
+    <value>Workout Sea 2</value>
+  </data>
+  <data name="DLC_27_3" xml:space="preserve">
+    <value>Workout Sea 3</value>
+  </data>
+  <data name="DLC_27_4" xml:space="preserve">
+    <value>Workout Sea 4</value>
+  </data>
+  <data name="DLC_27_5" xml:space="preserve">
+    <value>Workout Sea 5</value>
+  </data>
+  <data name="DLC_27_6" xml:space="preserve">
+    <value>Workout Sea 6</value>
+  </data>
+  <data name="DLC_27_7" xml:space="preserve">
+    <value>Workout Sea 7</value>
+  </data>
+  <data name="DLC_28_1" xml:space="preserve">
+    <value>Stepping-Stone Sea 1</value>
+  </data>
+  <data name="DLC_28_2" xml:space="preserve">
+    <value>Stepping-Stone Sea 2</value>
+  </data>
+  <data name="DLC_28_3" xml:space="preserve">
+    <value>Stepping-Stone Sea 3</value>
+  </data>
+  <data name="DLC_28_4" xml:space="preserve">
+    <value>Stepping-Stone Sea 4</value>
+  </data>
+  <data name="DLC_28_5" xml:space="preserve">
+    <value>Stepping-Stone Sea 5</value>
+  </data>
+  <data name="DLC_28_6" xml:space="preserve">
+    <value>Stepping-Stone Sea 6</value>
+  </data>
+  <data name="DLC_28_7" xml:space="preserve">
+    <value>Stepping-Stone Sea 7</value>
+  </data>
+  <data name="DLC_28_8" xml:space="preserve">
+    <value>Stepping-Stone Sea 8</value>
+  </data>
+  <data name="DLC_28_9" xml:space="preserve">
+    <value>Stepping-Stone Sea 9</value>
+  </data>
+  <data name="DLC_29_1" xml:space="preserve">
+    <value>Insular Sea 1</value>
+  </data>
+  <data name="DLC_29_2" xml:space="preserve">
+    <value>Insular Sea 2</value>
+  </data>
+  <data name="DLC_29_3" xml:space="preserve">
+    <value>Insular Sea 3</value>
+  </data>
+  <data name="DLC_29_4" xml:space="preserve">
+    <value>Insular Sea 4</value>
+  </data>
+  <data name="DLC_29_5" xml:space="preserve">
+    <value>Insular Sea 5</value>
+  </data>
+  <data name="DLC_30_1" xml:space="preserve">
+    <value>Honeycalm Sea 1</value>
+  </data>
+  <data name="DLC_30_2" xml:space="preserve">
+    <value>Honeycalm Sea 2</value>
+  </data>
+  <data name="DLC_30_3" xml:space="preserve">
+    <value>Honeycalm Sea 3</value>
+  </data>
+  <data name="DLC_30_4" xml:space="preserve">
+    <value>Honeycalm Sea 4</value>
+  </data>
+  <data name="DLC_30_5" xml:space="preserve">
+    <value>Honeycalm Sea 5</value>
+  </data>
+  <data name="DLC_31_1" xml:space="preserve">
+    <value>Honeycalm Island 1</value>
+  </data>
+  <data name="DLC_31_2" xml:space="preserve">
+    <value>Honeycalm Island 2</value>
+  </data>
+  <data name="DLC_31_3" xml:space="preserve">
+    <value>Honeycalm Island 3</value>
+  </data>
+  <data name="DLC_31_4" xml:space="preserve">
+    <value>Honeycalm Island 4</value>
+  </data>
+  <data name="DLC_31_5" xml:space="preserve">
+    <value>Honeycalm Island 5</value>
+  </data>
+  <data name="DLC_31_6" xml:space="preserve">
+    <value>Honeycalm Island 6</value>
+  </data>
   <data name="Dusty1" xml:space="preserve">
     <value>Dusty Bowl 1</value>
   </data>

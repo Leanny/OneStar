@@ -210,6 +210,276 @@
   <data name="Den" xml:space="preserve">
     <value>巣穴</value>
   </data>
+  <data name="DLC_17_1" xml:space="preserve">
+    <value>いちれいのはら 1</value>
+  </data>
+  <data name="DLC_17_10" xml:space="preserve">
+    <value>いちれいのはら 10</value>
+  </data>
+  <data name="DLC_17_2" xml:space="preserve">
+    <value>いちれいのはら 2</value>
+  </data>
+  <data name="DLC_17_3" xml:space="preserve">
+    <value>いちれいのはら 3</value>
+  </data>
+  <data name="DLC_17_4" xml:space="preserve">
+    <value>いちれいのはら 4</value>
+  </data>
+  <data name="DLC_17_5" xml:space="preserve">
+    <value>いちれいのはら 5</value>
+  </data>
+  <data name="DLC_17_6" xml:space="preserve">
+    <value>いちれいのはら 6</value>
+  </data>
+  <data name="DLC_17_7" xml:space="preserve">
+    <value>いちれいのはら 7</value>
+  </data>
+  <data name="DLC_17_8" xml:space="preserve">
+    <value>いちれいのはら 8</value>
+  </data>
+  <data name="DLC_17_9" xml:space="preserve">
+    <value>いちれいのはら 9</value>
+  </data>
+  <data name="DLC_18_1" xml:space="preserve">
+    <value>せいりょうしつげん 1</value>
+  </data>
+  <data name="DLC_18_2" xml:space="preserve">
+    <value>せいりょうしつげん 2</value>
+  </data>
+  <data name="DLC_18_3" xml:space="preserve">
+    <value>せいりょうしつげん 3</value>
+  </data>
+  <data name="DLC_18_4" xml:space="preserve">
+    <value>せいりょうしつげん 4</value>
+  </data>
+  <data name="DLC_18_5" xml:space="preserve">
+    <value>せいりょうしつげん 5</value>
+  </data>
+  <data name="DLC_18_6" xml:space="preserve">
+    <value>せいりょうしつげん 6</value>
+  </data>
+  <data name="DLC_18_7" xml:space="preserve">
+    <value>せいりょうしつげん 7</value>
+  </data>
+  <data name="DLC_18_8" xml:space="preserve">
+    <value>せいりょうしつげん 8</value>
+  </data>
+  <data name="DLC_18_9" xml:space="preserve">
+    <value>せいりょうしつげん 9</value>
+  </data>
+  <data name="DLC_19_1" xml:space="preserve">
+    <value>しゅうちゅうのもり 1</value>
+  </data>
+  <data name="DLC_19_2" xml:space="preserve">
+    <value>しゅうちゅうのもり 2</value>
+  </data>
+  <data name="DLC_19_3" xml:space="preserve">
+    <value>しゅうちゅうのもり 3</value>
+  </data>
+  <data name="DLC_19_4" xml:space="preserve">
+    <value>しゅうちゅうのもり 4</value>
+  </data>
+  <data name="DLC_19_5" xml:space="preserve">
+    <value>しゅうちゅうのもり 5</value>
+  </data>
+  <data name="DLC_19_6" xml:space="preserve">
+    <value>しゅうちゅうのもり 6</value>
+  </data>
+  <data name="DLC_20_1" xml:space="preserve">
+    <value>チャレンジビーチ 1</value>
+  </data>
+  <data name="DLC_20_2" xml:space="preserve">
+    <value>チャレンジビーチ 2</value>
+  </data>
+  <data name="DLC_20_3" xml:space="preserve">
+    <value>チャレンジビーチ 3</value>
+  </data>
+  <data name="DLC_20_4" xml:space="preserve">
+    <value>チャレンジビーチ 4</value>
+  </data>
+  <data name="DLC_20_5" xml:space="preserve">
+    <value>チャレンジビーチ 5</value>
+  </data>
+  <data name="DLC_20_6" xml:space="preserve">
+    <value>チャレンジビーチ 6</value>
+  </data>
+  <data name="DLC_20_7" xml:space="preserve">
+    <value>チャレンジビーチ 7</value>
+  </data>
+  <data name="DLC_20_8" xml:space="preserve">
+    <value>チャレンジビーチ 8</value>
+  </data>
+  <data name="DLC_21_1" xml:space="preserve">
+    <value>ファイトケイブ 1</value>
+  </data>
+  <data name="DLC_22_1" xml:space="preserve">
+    <value>チャレンジロード 1</value>
+  </data>
+  <data name="DLC_22_2" xml:space="preserve">
+    <value>チャレンジロード 2</value>
+  </data>
+  <data name="DLC_22_3" xml:space="preserve">
+    <value>チャレンジロード 3</value>
+  </data>
+  <data name="DLC_22_4" xml:space="preserve">
+    <value>チャレンジロード 4</value>
+  </data>
+  <data name="DLC_23_1" xml:space="preserve">
+    <value>とうしんのどうくつ 1</value>
+  </data>
+  <data name="DLC_23_2" xml:space="preserve">
+    <value>とうしんのどうくつ 2</value>
+  </data>
+  <data name="DLC_23_3" xml:space="preserve">
+    <value>とうしんのどうくつ 3</value>
+  </data>
+  <data name="DLC_23_4" xml:space="preserve">
+    <value>とうしんのどうくつ 4</value>
+  </data>
+  <data name="DLC_23_5" xml:space="preserve">
+    <value>とうしんのどうくつ 5</value>
+  </data>
+  <data name="DLC_23_6" xml:space="preserve">
+    <value>とうしんのどうくつ 6</value>
+  </data>
+  <data name="DLC_24_1" xml:space="preserve">
+    <value>えんかんのいりえ 1</value>
+  </data>
+  <data name="DLC_24_2" xml:space="preserve">
+    <value>えんかんのいりえ 2</value>
+  </data>
+  <data name="DLC_24_3" xml:space="preserve">
+    <value>えんかんのいりえ 3</value>
+  </data>
+  <data name="DLC_24_4" xml:space="preserve">
+    <value>えんかんのいりえ 4</value>
+  </data>
+  <data name="DLC_25_1" xml:space="preserve">
+    <value>たんれんへいげん 1</value>
+  </data>
+  <data name="DLC_25_2" xml:space="preserve">
+    <value>たんれんへいげん 2</value>
+  </data>
+  <data name="DLC_25_3" xml:space="preserve">
+    <value>たんれんへいげん 3</value>
+  </data>
+  <data name="DLC_25_4" xml:space="preserve">
+    <value>たんれんへいげん 4</value>
+  </data>
+  <data name="DLC_25_5" xml:space="preserve">
+    <value>たんれんへいげん 5</value>
+  </data>
+  <data name="DLC_25_6" xml:space="preserve">
+    <value>たんれんへいげん 6</value>
+  </data>
+  <data name="DLC_25_7" xml:space="preserve">
+    <value>たんれんへいげん 7</value>
+  </data>
+  <data name="DLC_26_1" xml:space="preserve">
+    <value>なべぞこさばく 1</value>
+  </data>
+  <data name="DLC_26_2" xml:space="preserve">
+    <value>なべぞこさばく 2</value>
+  </data>
+  <data name="DLC_26_3" xml:space="preserve">
+    <value>なべぞこさばく 3</value>
+  </data>
+  <data name="DLC_27_1" xml:space="preserve">
+    <value>ワークアウトのうみ 1</value>
+  </data>
+  <data name="DLC_27_2" xml:space="preserve">
+    <value>ワークアウトのうみ 2</value>
+  </data>
+  <data name="DLC_27_3" xml:space="preserve">
+    <value>ワークアウトのうみ 3</value>
+  </data>
+  <data name="DLC_27_4" xml:space="preserve">
+    <value>ワークアウトのうみ 4</value>
+  </data>
+  <data name="DLC_27_5" xml:space="preserve">
+    <value>ワークアウトのうみ 5</value>
+  </data>
+  <data name="DLC_27_6" xml:space="preserve">
+    <value>ワークアウトのうみ 6</value>
+  </data>
+  <data name="DLC_27_7" xml:space="preserve">
+    <value>ワークアウトのうみ 7</value>
+  </data>
+  <data name="DLC_28_1" xml:space="preserve">
+    <value>ならぶじまのうみ 1</value>
+  </data>
+  <data name="DLC_28_2" xml:space="preserve">
+    <value>ならぶじまのうみ 2</value>
+  </data>
+  <data name="DLC_28_3" xml:space="preserve">
+    <value>ならぶじまのうみ 3</value>
+  </data>
+  <data name="DLC_28_4" xml:space="preserve">
+    <value>ならぶじまのうみ 4</value>
+  </data>
+  <data name="DLC_28_5" xml:space="preserve">
+    <value>ならぶじまのうみ 5</value>
+  </data>
+  <data name="DLC_28_6" xml:space="preserve">
+    <value>ならぶじまのうみ 6</value>
+  </data>
+  <data name="DLC_28_7" xml:space="preserve">
+    <value>ならぶじまのうみ 7</value>
+  </data>
+  <data name="DLC_28_8" xml:space="preserve">
+    <value>ならぶじまのうみ 8</value>
+  </data>
+  <data name="DLC_28_9" xml:space="preserve">
+    <value>ならぶじまのうみ 9</value>
+  </data>
+  <data name="DLC_29_1" xml:space="preserve">
+    <value>はなれじまかいいき 1</value>
+  </data>
+  <data name="DLC_29_2" xml:space="preserve">
+    <value>はなれじまかいいき 2</value>
+  </data>
+  <data name="DLC_29_3" xml:space="preserve">
+    <value>はなれじまかいいき 3</value>
+  </data>
+  <data name="DLC_29_4" xml:space="preserve">
+    <value>はなれじまかいいき 4</value>
+  </data>
+  <data name="DLC_29_5" xml:space="preserve">
+    <value>はなれじまかいいき 5</value>
+  </data>
+  <data name="DLC_30_1" xml:space="preserve">
+    <value>ハニカームのうみ 1</value>
+  </data>
+  <data name="DLC_30_2" xml:space="preserve">
+    <value>ハニカームのうみ 2</value>
+  </data>
+  <data name="DLC_30_3" xml:space="preserve">
+    <value>ハニカームのうみ 3</value>
+  </data>
+  <data name="DLC_30_4" xml:space="preserve">
+    <value>ハニカームのうみ 4</value>
+  </data>
+  <data name="DLC_30_5" xml:space="preserve">
+    <value>ハニカームのうみ 5</value>
+  </data>
+  <data name="DLC_31_1" xml:space="preserve">
+    <value>ハニカームじま 1</value>
+  </data>
+  <data name="DLC_31_2" xml:space="preserve">
+    <value>ハニカームじま 2</value>
+  </data>
+  <data name="DLC_31_3" xml:space="preserve">
+    <value>ハニカームじま 3</value>
+  </data>
+  <data name="DLC_31_4" xml:space="preserve">
+    <value>ハニカームじま 4</value>
+  </data>
+  <data name="DLC_31_5" xml:space="preserve">
+    <value>ハニカームじま 5</value>
+  </data>
+  <data name="DLC_31_6" xml:space="preserve">
+    <value>ハニカームじま 6</value>
+  </data>
   <data name="Dusty1" xml:space="preserve">
     <value>砂塵の窪地H</value>
   </data>

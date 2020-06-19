@@ -684,4 +684,274 @@
   <data name="RecommendedNextLevel" xml:space="preserve">
     <value>Reccomended Next Level</value>
   </data>
+  <data name="DLC_17_1" xml:space="preserve">
+    <value>揖礼原野 1</value>
+  </data>
+  <data name="DLC_17_10" xml:space="preserve">
+    <value>揖礼原野 10</value>
+  </data>
+  <data name="DLC_17_2" xml:space="preserve">
+    <value>揖礼原野 2</value>
+  </data>
+  <data name="DLC_17_3" xml:space="preserve">
+    <value>揖礼原野 3</value>
+  </data>
+  <data name="DLC_17_4" xml:space="preserve">
+    <value>揖礼原野 4</value>
+  </data>
+  <data name="DLC_17_5" xml:space="preserve">
+    <value>揖礼原野 5</value>
+  </data>
+  <data name="DLC_17_6" xml:space="preserve">
+    <value>揖礼原野 6</value>
+  </data>
+  <data name="DLC_17_7" xml:space="preserve">
+    <value>揖礼原野 7</value>
+  </data>
+  <data name="DLC_17_8" xml:space="preserve">
+    <value>揖礼原野 8</value>
+  </data>
+  <data name="DLC_17_9" xml:space="preserve">
+    <value>揖礼原野 9</value>
+  </data>
+  <data name="DLC_18_1" xml:space="preserve">
+    <value>清凉湿原 1</value>
+  </data>
+  <data name="DLC_18_2" xml:space="preserve">
+    <value>清凉湿原 2</value>
+  </data>
+  <data name="DLC_18_3" xml:space="preserve">
+    <value>清凉湿原 3</value>
+  </data>
+  <data name="DLC_18_4" xml:space="preserve">
+    <value>清凉湿原 4</value>
+  </data>
+  <data name="DLC_18_5" xml:space="preserve">
+    <value>清凉湿原 5</value>
+  </data>
+  <data name="DLC_18_6" xml:space="preserve">
+    <value>清凉湿原 6</value>
+  </data>
+  <data name="DLC_18_7" xml:space="preserve">
+    <value>清凉湿原 7</value>
+  </data>
+  <data name="DLC_18_8" xml:space="preserve">
+    <value>清凉湿原 8</value>
+  </data>
+  <data name="DLC_18_9" xml:space="preserve">
+    <value>清凉湿原 9</value>
+  </data>
+  <data name="DLC_19_1" xml:space="preserve">
+    <value>专注森林 1</value>
+  </data>
+  <data name="DLC_19_2" xml:space="preserve">
+    <value>专注森林 2</value>
+  </data>
+  <data name="DLC_19_3" xml:space="preserve">
+    <value>专注森林 3</value>
+  </data>
+  <data name="DLC_19_4" xml:space="preserve">
+    <value>专注森林 4</value>
+  </data>
+  <data name="DLC_19_5" xml:space="preserve">
+    <value>专注森林 5</value>
+  </data>
+  <data name="DLC_19_6" xml:space="preserve">
+    <value>专注森林 6</value>
+  </data>
+  <data name="DLC_20_1" xml:space="preserve">
+    <value>挑战海滩 1</value>
+  </data>
+  <data name="DLC_20_2" xml:space="preserve">
+    <value>挑战海滩 2</value>
+  </data>
+  <data name="DLC_20_3" xml:space="preserve">
+    <value>挑战海滩 3</value>
+  </data>
+  <data name="DLC_20_4" xml:space="preserve">
+    <value>挑战海滩 4</value>
+  </data>
+  <data name="DLC_20_5" xml:space="preserve">
+    <value>挑战海滩 5</value>
+  </data>
+  <data name="DLC_20_6" xml:space="preserve">
+    <value>挑战海滩 6</value>
+  </data>
+  <data name="DLC_20_7" xml:space="preserve">
+    <value>挑战海滩 7</value>
+  </data>
+  <data name="DLC_20_8" xml:space="preserve">
+    <value>挑战海滩 8</value>
+  </data>
+  <data name="DLC_21_1" xml:space="preserve">
+    <value>战斗洞窟 1</value>
+  </data>
+  <data name="DLC_22_1" xml:space="preserve">
+    <value>挑战之路 1</value>
+  </data>
+  <data name="DLC_22_2" xml:space="preserve">
+    <value>挑战之路 2</value>
+  </data>
+  <data name="DLC_22_3" xml:space="preserve">
+    <value>挑战之路 3</value>
+  </data>
+  <data name="DLC_22_4" xml:space="preserve">
+    <value>挑战之路 4</value>
+  </data>
+  <data name="DLC_23_1" xml:space="preserve">
+    <value>斗志洞窟 1</value>
+  </data>
+  <data name="DLC_23_2" xml:space="preserve">
+    <value>斗志洞窟 2</value>
+  </data>
+  <data name="DLC_23_3" xml:space="preserve">
+    <value>斗志洞窟 3</value>
+  </data>
+  <data name="DLC_23_4" xml:space="preserve">
+    <value>斗志洞窟 4</value>
+  </data>
+  <data name="DLC_23_5" xml:space="preserve">
+    <value>斗志洞窟 5</value>
+  </data>
+  <data name="DLC_23_6" xml:space="preserve">
+    <value>斗志洞窟 6</value>
+  </data>
+  <data name="DLC_24_1" xml:space="preserve">
+    <value>圆环海湾 1</value>
+  </data>
+  <data name="DLC_24_2" xml:space="preserve">
+    <value>圆环海湾 2</value>
+  </data>
+  <data name="DLC_24_3" xml:space="preserve">
+    <value>圆环海湾 3</value>
+  </data>
+  <data name="DLC_24_4" xml:space="preserve">
+    <value>圆环海湾 4</value>
+  </data>
+  <data name="DLC_25_1" xml:space="preserve">
+    <value>锻炼平原 1</value>
+  </data>
+  <data name="DLC_25_2" xml:space="preserve">
+    <value>锻炼平原 2</value>
+  </data>
+  <data name="DLC_25_3" xml:space="preserve">
+    <value>锻炼平原 3</value>
+  </data>
+  <data name="DLC_25_4" xml:space="preserve">
+    <value>锻炼平原 4</value>
+  </data>
+  <data name="DLC_25_5" xml:space="preserve">
+    <value>锻炼平原 5</value>
+  </data>
+  <data name="DLC_25_6" xml:space="preserve">
+    <value>锻炼平原 6</value>
+  </data>
+  <data name="DLC_25_7" xml:space="preserve">
+    <value>锻炼平原 7</value>
+  </data>
+  <data name="DLC_26_1" xml:space="preserve">
+    <value>锅底沙漠 1</value>
+  </data>
+  <data name="DLC_26_2" xml:space="preserve">
+    <value>锅底沙漠 2</value>
+  </data>
+  <data name="DLC_26_3" xml:space="preserve">
+    <value>锅底沙漠 3</value>
+  </data>
+  <data name="DLC_27_1" xml:space="preserve">
+    <value>健身之海 1</value>
+  </data>
+  <data name="DLC_27_2" xml:space="preserve">
+    <value>健身之海 2</value>
+  </data>
+  <data name="DLC_27_3" xml:space="preserve">
+    <value>健身之海 3</value>
+  </data>
+  <data name="DLC_27_4" xml:space="preserve">
+    <value>健身之海 4</value>
+  </data>
+  <data name="DLC_27_5" xml:space="preserve">
+    <value>健身之海 5</value>
+  </data>
+  <data name="DLC_27_6" xml:space="preserve">
+    <value>健身之海 6</value>
+  </data>
+  <data name="DLC_27_7" xml:space="preserve">
+    <value>健身之海 7</value>
+  </data>
+  <data name="DLC_28_1" xml:space="preserve">
+    <value>列岛海域 1</value>
+  </data>
+  <data name="DLC_28_2" xml:space="preserve">
+    <value>列岛海域 2</value>
+  </data>
+  <data name="DLC_28_3" xml:space="preserve">
+    <value>列岛海域 3</value>
+  </data>
+  <data name="DLC_28_4" xml:space="preserve">
+    <value>列岛海域 4</value>
+  </data>
+  <data name="DLC_28_5" xml:space="preserve">
+    <value>列岛海域 5</value>
+  </data>
+  <data name="DLC_28_6" xml:space="preserve">
+    <value>列岛海域 6</value>
+  </data>
+  <data name="DLC_28_7" xml:space="preserve">
+    <value>列岛海域 7</value>
+  </data>
+  <data name="DLC_28_8" xml:space="preserve">
+    <value>列岛海域 8</value>
+  </data>
+  <data name="DLC_28_9" xml:space="preserve">
+    <value>列岛海域 9</value>
+  </data>
+  <data name="DLC_29_1" xml:space="preserve">
+    <value>离岛海域 1</value>
+  </data>
+  <data name="DLC_29_2" xml:space="preserve">
+    <value>离岛海域 2</value>
+  </data>
+  <data name="DLC_29_3" xml:space="preserve">
+    <value>离岛海域 3</value>
+  </data>
+  <data name="DLC_29_4" xml:space="preserve">
+    <value>离岛海域 4</value>
+  </data>
+  <data name="DLC_29_5" xml:space="preserve">
+    <value>离岛海域 5</value>
+  </data>
+  <data name="DLC_30_1" xml:space="preserve">
+    <value>蜂巢海 1</value>
+  </data>
+  <data name="DLC_30_2" xml:space="preserve">
+    <value>蜂巢海 2</value>
+  </data>
+  <data name="DLC_30_3" xml:space="preserve">
+    <value>蜂巢海 3</value>
+  </data>
+  <data name="DLC_30_4" xml:space="preserve">
+    <value>蜂巢海 4</value>
+  </data>
+  <data name="DLC_30_5" xml:space="preserve">
+    <value>蜂巢海 5</value>
+  </data>
+  <data name="DLC_31_1" xml:space="preserve">
+    <value>蜂巢岛 1</value>
+  </data>
+  <data name="DLC_31_2" xml:space="preserve">
+    <value>蜂巢岛 2</value>
+  </data>
+  <data name="DLC_31_3" xml:space="preserve">
+    <value>蜂巢岛 3</value>
+  </data>
+  <data name="DLC_31_4" xml:space="preserve">
+    <value>蜂巢岛 4</value>
+  </data>
+  <data name="DLC_31_5" xml:space="preserve">
+    <value>蜂巢岛 5</value>
+  </data>
+  <data name="DLC_31_6" xml:space="preserve">
+    <value>蜂巢岛 6</value>
+  </data>
 </root>

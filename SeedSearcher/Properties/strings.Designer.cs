@@ -340,6 +340,816 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fields of Honor 1 ähnelt.
+        /// </summary>
+        internal static string DLC_17_1 {
+            get {
+                return ResourceManager.GetString("DLC_17_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fields of Honor 10 ähnelt.
+        /// </summary>
+        internal static string DLC_17_10 {
+            get {
+                return ResourceManager.GetString("DLC_17_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fields of Honor 2 ähnelt.
+        /// </summary>
+        internal static string DLC_17_2 {
+            get {
+                return ResourceManager.GetString("DLC_17_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fields of Honor 3 ähnelt.
+        /// </summary>
+        internal static string DLC_17_3 {
+            get {
+                return ResourceManager.GetString("DLC_17_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fields of Honor 4 ähnelt.
+        /// </summary>
+        internal static string DLC_17_4 {
+            get {
+                return ResourceManager.GetString("DLC_17_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fields of Honor 5 ähnelt.
+        /// </summary>
+        internal static string DLC_17_5 {
+            get {
+                return ResourceManager.GetString("DLC_17_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fields of Honor 6 ähnelt.
+        /// </summary>
+        internal static string DLC_17_6 {
+            get {
+                return ResourceManager.GetString("DLC_17_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fields of Honor 7 ähnelt.
+        /// </summary>
+        internal static string DLC_17_7 {
+            get {
+                return ResourceManager.GetString("DLC_17_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fields of Honor 8 ähnelt.
+        /// </summary>
+        internal static string DLC_17_8 {
+            get {
+                return ResourceManager.GetString("DLC_17_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Fields of Honor 9 ähnelt.
+        /// </summary>
+        internal static string DLC_17_9 {
+            get {
+                return ResourceManager.GetString("DLC_17_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Soothing Wetlands 1 ähnelt.
+        /// </summary>
+        internal static string DLC_18_1 {
+            get {
+                return ResourceManager.GetString("DLC_18_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Soothing Wetlands 2 ähnelt.
+        /// </summary>
+        internal static string DLC_18_2 {
+            get {
+                return ResourceManager.GetString("DLC_18_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Soothing Wetlands 3 ähnelt.
+        /// </summary>
+        internal static string DLC_18_3 {
+            get {
+                return ResourceManager.GetString("DLC_18_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Soothing Wetlands 4 ähnelt.
+        /// </summary>
+        internal static string DLC_18_4 {
+            get {
+                return ResourceManager.GetString("DLC_18_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Soothing Wetlands 5 ähnelt.
+        /// </summary>
+        internal static string DLC_18_5 {
+            get {
+                return ResourceManager.GetString("DLC_18_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Soothing Wetlands 6 ähnelt.
+        /// </summary>
+        internal static string DLC_18_6 {
+            get {
+                return ResourceManager.GetString("DLC_18_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Soothing Wetlands 7 ähnelt.
+        /// </summary>
+        internal static string DLC_18_7 {
+            get {
+                return ResourceManager.GetString("DLC_18_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Soothing Wetlands 8 ähnelt.
+        /// </summary>
+        internal static string DLC_18_8 {
+            get {
+                return ResourceManager.GetString("DLC_18_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Soothing Wetlands 9 ähnelt.
+        /// </summary>
+        internal static string DLC_18_9 {
+            get {
+                return ResourceManager.GetString("DLC_18_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Forest of Focus 1 ähnelt.
+        /// </summary>
+        internal static string DLC_19_1 {
+            get {
+                return ResourceManager.GetString("DLC_19_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Forest of Focus 2 ähnelt.
+        /// </summary>
+        internal static string DLC_19_2 {
+            get {
+                return ResourceManager.GetString("DLC_19_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Forest of Focus 3 ähnelt.
+        /// </summary>
+        internal static string DLC_19_3 {
+            get {
+                return ResourceManager.GetString("DLC_19_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Forest of Focus 4 ähnelt.
+        /// </summary>
+        internal static string DLC_19_4 {
+            get {
+                return ResourceManager.GetString("DLC_19_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Forest of Focus 5 ähnelt.
+        /// </summary>
+        internal static string DLC_19_5 {
+            get {
+                return ResourceManager.GetString("DLC_19_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Forest of Focus 6 ähnelt.
+        /// </summary>
+        internal static string DLC_19_6 {
+            get {
+                return ResourceManager.GetString("DLC_19_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Beach 1 ähnelt.
+        /// </summary>
+        internal static string DLC_20_1 {
+            get {
+                return ResourceManager.GetString("DLC_20_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Beach 2 ähnelt.
+        /// </summary>
+        internal static string DLC_20_2 {
+            get {
+                return ResourceManager.GetString("DLC_20_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Beach 3 ähnelt.
+        /// </summary>
+        internal static string DLC_20_3 {
+            get {
+                return ResourceManager.GetString("DLC_20_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Beach 4 ähnelt.
+        /// </summary>
+        internal static string DLC_20_4 {
+            get {
+                return ResourceManager.GetString("DLC_20_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Beach 5 ähnelt.
+        /// </summary>
+        internal static string DLC_20_5 {
+            get {
+                return ResourceManager.GetString("DLC_20_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Beach 6 ähnelt.
+        /// </summary>
+        internal static string DLC_20_6 {
+            get {
+                return ResourceManager.GetString("DLC_20_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Beach 7 ähnelt.
+        /// </summary>
+        internal static string DLC_20_7 {
+            get {
+                return ResourceManager.GetString("DLC_20_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Beach 8 ähnelt.
+        /// </summary>
+        internal static string DLC_20_8 {
+            get {
+                return ResourceManager.GetString("DLC_20_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Brawlers&apos; Cave 1 ähnelt.
+        /// </summary>
+        internal static string DLC_21_1 {
+            get {
+                return ResourceManager.GetString("DLC_21_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Road 1 ähnelt.
+        /// </summary>
+        internal static string DLC_22_1 {
+            get {
+                return ResourceManager.GetString("DLC_22_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Road 2 ähnelt.
+        /// </summary>
+        internal static string DLC_22_2 {
+            get {
+                return ResourceManager.GetString("DLC_22_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Road 3 ähnelt.
+        /// </summary>
+        internal static string DLC_22_3 {
+            get {
+                return ResourceManager.GetString("DLC_22_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Challenge Road 4 ähnelt.
+        /// </summary>
+        internal static string DLC_22_4 {
+            get {
+                return ResourceManager.GetString("DLC_22_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Courageous Cavern 1 ähnelt.
+        /// </summary>
+        internal static string DLC_23_1 {
+            get {
+                return ResourceManager.GetString("DLC_23_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Courageous Cavern 2 ähnelt.
+        /// </summary>
+        internal static string DLC_23_2 {
+            get {
+                return ResourceManager.GetString("DLC_23_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Courageous Cavern 3 ähnelt.
+        /// </summary>
+        internal static string DLC_23_3 {
+            get {
+                return ResourceManager.GetString("DLC_23_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Courageous Cavern 4 ähnelt.
+        /// </summary>
+        internal static string DLC_23_4 {
+            get {
+                return ResourceManager.GetString("DLC_23_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Courageous Cavern 5 ähnelt.
+        /// </summary>
+        internal static string DLC_23_5 {
+            get {
+                return ResourceManager.GetString("DLC_23_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Courageous Cavern 6 ähnelt.
+        /// </summary>
+        internal static string DLC_23_6 {
+            get {
+                return ResourceManager.GetString("DLC_23_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Loop Lagoon 1 ähnelt.
+        /// </summary>
+        internal static string DLC_24_1 {
+            get {
+                return ResourceManager.GetString("DLC_24_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Loop Lagoon 2 ähnelt.
+        /// </summary>
+        internal static string DLC_24_2 {
+            get {
+                return ResourceManager.GetString("DLC_24_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Loop Lagoon 3 ähnelt.
+        /// </summary>
+        internal static string DLC_24_3 {
+            get {
+                return ResourceManager.GetString("DLC_24_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Loop Lagoon 4 ähnelt.
+        /// </summary>
+        internal static string DLC_24_4 {
+            get {
+                return ResourceManager.GetString("DLC_24_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Training Lowlands 1 ähnelt.
+        /// </summary>
+        internal static string DLC_25_1 {
+            get {
+                return ResourceManager.GetString("DLC_25_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Training Lowlands 2 ähnelt.
+        /// </summary>
+        internal static string DLC_25_2 {
+            get {
+                return ResourceManager.GetString("DLC_25_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Training Lowlands 3 ähnelt.
+        /// </summary>
+        internal static string DLC_25_3 {
+            get {
+                return ResourceManager.GetString("DLC_25_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Training Lowlands 4 ähnelt.
+        /// </summary>
+        internal static string DLC_25_4 {
+            get {
+                return ResourceManager.GetString("DLC_25_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Training Lowlands 5 ähnelt.
+        /// </summary>
+        internal static string DLC_25_5 {
+            get {
+                return ResourceManager.GetString("DLC_25_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Training Lowlands 6 ähnelt.
+        /// </summary>
+        internal static string DLC_25_6 {
+            get {
+                return ResourceManager.GetString("DLC_25_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Training Lowlands 7 ähnelt.
+        /// </summary>
+        internal static string DLC_25_7 {
+            get {
+                return ResourceManager.GetString("DLC_25_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Potbottom Desert 1 ähnelt.
+        /// </summary>
+        internal static string DLC_26_1 {
+            get {
+                return ResourceManager.GetString("DLC_26_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Potbottom Desert 2 ähnelt.
+        /// </summary>
+        internal static string DLC_26_2 {
+            get {
+                return ResourceManager.GetString("DLC_26_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Potbottom Desert 3 ähnelt.
+        /// </summary>
+        internal static string DLC_26_3 {
+            get {
+                return ResourceManager.GetString("DLC_26_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Workout Sea 1 ähnelt.
+        /// </summary>
+        internal static string DLC_27_1 {
+            get {
+                return ResourceManager.GetString("DLC_27_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Workout Sea 2 ähnelt.
+        /// </summary>
+        internal static string DLC_27_2 {
+            get {
+                return ResourceManager.GetString("DLC_27_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Workout Sea 3 ähnelt.
+        /// </summary>
+        internal static string DLC_27_3 {
+            get {
+                return ResourceManager.GetString("DLC_27_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Workout Sea 4 ähnelt.
+        /// </summary>
+        internal static string DLC_27_4 {
+            get {
+                return ResourceManager.GetString("DLC_27_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Workout Sea 5 ähnelt.
+        /// </summary>
+        internal static string DLC_27_5 {
+            get {
+                return ResourceManager.GetString("DLC_27_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Workout Sea 6 ähnelt.
+        /// </summary>
+        internal static string DLC_27_6 {
+            get {
+                return ResourceManager.GetString("DLC_27_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Workout Sea 7 ähnelt.
+        /// </summary>
+        internal static string DLC_27_7 {
+            get {
+                return ResourceManager.GetString("DLC_27_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stepping-Stone Sea 1 ähnelt.
+        /// </summary>
+        internal static string DLC_28_1 {
+            get {
+                return ResourceManager.GetString("DLC_28_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stepping-Stone Sea 2 ähnelt.
+        /// </summary>
+        internal static string DLC_28_2 {
+            get {
+                return ResourceManager.GetString("DLC_28_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stepping-Stone Sea 3 ähnelt.
+        /// </summary>
+        internal static string DLC_28_3 {
+            get {
+                return ResourceManager.GetString("DLC_28_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stepping-Stone Sea 4 ähnelt.
+        /// </summary>
+        internal static string DLC_28_4 {
+            get {
+                return ResourceManager.GetString("DLC_28_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stepping-Stone Sea 5 ähnelt.
+        /// </summary>
+        internal static string DLC_28_5 {
+            get {
+                return ResourceManager.GetString("DLC_28_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stepping-Stone Sea 6 ähnelt.
+        /// </summary>
+        internal static string DLC_28_6 {
+            get {
+                return ResourceManager.GetString("DLC_28_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stepping-Stone Sea 7 ähnelt.
+        /// </summary>
+        internal static string DLC_28_7 {
+            get {
+                return ResourceManager.GetString("DLC_28_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stepping-Stone Sea 8 ähnelt.
+        /// </summary>
+        internal static string DLC_28_8 {
+            get {
+                return ResourceManager.GetString("DLC_28_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Stepping-Stone Sea 9 ähnelt.
+        /// </summary>
+        internal static string DLC_28_9 {
+            get {
+                return ResourceManager.GetString("DLC_28_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Insular Sea 1 ähnelt.
+        /// </summary>
+        internal static string DLC_29_1 {
+            get {
+                return ResourceManager.GetString("DLC_29_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Insular Sea 2 ähnelt.
+        /// </summary>
+        internal static string DLC_29_2 {
+            get {
+                return ResourceManager.GetString("DLC_29_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Insular Sea 3 ähnelt.
+        /// </summary>
+        internal static string DLC_29_3 {
+            get {
+                return ResourceManager.GetString("DLC_29_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Insular Sea 4 ähnelt.
+        /// </summary>
+        internal static string DLC_29_4 {
+            get {
+                return ResourceManager.GetString("DLC_29_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Insular Sea 5 ähnelt.
+        /// </summary>
+        internal static string DLC_29_5 {
+            get {
+                return ResourceManager.GetString("DLC_29_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Sea 1 ähnelt.
+        /// </summary>
+        internal static string DLC_30_1 {
+            get {
+                return ResourceManager.GetString("DLC_30_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Sea 2 ähnelt.
+        /// </summary>
+        internal static string DLC_30_2 {
+            get {
+                return ResourceManager.GetString("DLC_30_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Sea 3 ähnelt.
+        /// </summary>
+        internal static string DLC_30_3 {
+            get {
+                return ResourceManager.GetString("DLC_30_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Sea 4 ähnelt.
+        /// </summary>
+        internal static string DLC_30_4 {
+            get {
+                return ResourceManager.GetString("DLC_30_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Sea 5 ähnelt.
+        /// </summary>
+        internal static string DLC_30_5 {
+            get {
+                return ResourceManager.GetString("DLC_30_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Island 1 ähnelt.
+        /// </summary>
+        internal static string DLC_31_1 {
+            get {
+                return ResourceManager.GetString("DLC_31_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Island 2 ähnelt.
+        /// </summary>
+        internal static string DLC_31_2 {
+            get {
+                return ResourceManager.GetString("DLC_31_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Island 3 ähnelt.
+        /// </summary>
+        internal static string DLC_31_3 {
+            get {
+                return ResourceManager.GetString("DLC_31_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Island 4 ähnelt.
+        /// </summary>
+        internal static string DLC_31_4 {
+            get {
+                return ResourceManager.GetString("DLC_31_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Island 5 ähnelt.
+        /// </summary>
+        internal static string DLC_31_5 {
+            get {
+                return ResourceManager.GetString("DLC_31_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Honeycalm Island 6 ähnelt.
+        /// </summary>
+        internal static string DLC_31_6 {
+            get {
+                return ResourceManager.GetString("DLC_31_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Dusty Bowl 1 ähnelt.
         /// </summary>
         internal static string Dusty1 {
