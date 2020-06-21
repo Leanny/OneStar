@@ -468,6 +468,20 @@ namespace SeedSearcherGui
             return tables[idx];
         }
 
+        private string GetPkmnName(int Species, int Form)
+        {
+            if(FormConverter.HasFormSelection(PersonalTable.SWSH[Species], Species, 8))
+            {
+                var ds = FormConverter.GetFormList(Species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, 8);
+                return $"{GameStrings.Species[Species]} ({ds[Form]})";
+
+            } else
+            {
+                return GameStrings.Species[Species];
+            }
+            
+        }
+
         private void PopulateSpeciesCB(ComboBox species, RaidTemplate[] entries)
         {
             species.Items.Clear();
@@ -487,10 +501,11 @@ namespace SeedSearcherGui
                         string s = "";
                         if(Math.Max(entry.MinRank, minStars) == Math.Min(entry.MaxRank, maxStars))
                         {
-                            s = $"{GameStrings.Species[entry.Species]} {gmax}{Math.Max(entry.MinRank, minStars) + 1}\u2605";
+                            
+                            s = $"{GetPkmnName(entry.Species, entry.AltForm)} {gmax}{Math.Max(entry.MinRank, minStars) + 1}\u2605";
                         } else
                         {
-                            s = $"{GameStrings.Species[entry.Species]} {gmax}{Math.Max(entry.MinRank, minStars) + 1}-{Math.Min(entry.MaxRank, maxStars) + 1}\u2605";
+                            s = $"{GetPkmnName(entry.Species, entry.AltForm)} {gmax}{Math.Max(entry.MinRank, minStars) + 1}-{Math.Min(entry.MaxRank, maxStars) + 1}\u2605";
                         }
                         if (!used.Contains(s))
                         {
@@ -1775,11 +1790,11 @@ namespace SeedSearcherGui
                         string s = "";
                         if (Math.Max(entry.MinRank, minStars) == Math.Min(entry.MaxRank, maxStars))
                         {
-                            s = $"{GameStrings.Species[entry.Species]} {gmax}{Math.Max(entry.MinRank, minStars) + 1}\u2605 ({entry.FlawlessIVs}IV)";
+                            s = $"{GetPkmnName(entry.Species, entry.AltForm)} {gmax}{Math.Max(entry.MinRank, minStars) + 1}\u2605 ({entry.FlawlessIVs}IV)";
                         }
                         else
                         {
-                            s = $"{GameStrings.Species[entry.Species]} {gmax}{Math.Max(entry.MinRank, minStars) + 1}-{Math.Min(entry.MaxRank, maxStars) + 1}\u2605 ({entry.FlawlessIVs}IV)";
+                            s = $"{GetPkmnName(entry.Species, entry.AltForm)} {gmax}{Math.Max(entry.MinRank, minStars) + 1}-{Math.Min(entry.MaxRank, maxStars) + 1}\u2605 ({entry.FlawlessIVs}IV)";
                         }
                         if (!used.Contains(s))
                         {
