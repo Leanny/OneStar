@@ -286,7 +286,10 @@ namespace SeedSearcherGui
             for (int i = 0; i < entries.Length; i++)
             {
                 int idx = i > 16 ? i + 1 : i;
-                CB_Den.Items.Add($"{idx}: {entries[i]}");
+                if(i < 100) 
+                    CB_Den.Items.Add($"{idx}: {entries[i]}");
+                else
+                    CB_Den.Items.Add($"[IoA {idx-100}]: {entries[i]}");
             }
             CB_Den.SelectedIndex = old_den_idx;
 
@@ -387,12 +390,34 @@ namespace SeedSearcherGui
             if (location >= 17)
             {
                 map = Resources.map_01;
-                x = (int) ((x - 16) * map.Width / 1178.167);
-                y = (int)((y + 5) * map.Height / 1009.56);
+                using (var graphics = Graphics.FromImage(map))
+                    graphics.DrawArc(redPen, x - 1, y - 1, 2, 2, 0, 360);
+                int start_point_x = x - 172 / 2;
+                int start_point_y = y - 402 / 2;
+                if (start_point_x < 0) start_point_x = 0;
+                if (start_point_x + 172 > map.Width) start_point_x = map.Width - 172;
+                if (start_point_y < 0) start_point_y = 0;
+                if (start_point_y + 402 > map.Width) start_point_y = map.Height - 402;
+                Rectangle cropRect = new Rectangle(start_point_x, start_point_y, 172, 402);
+                Bitmap src = map as Bitmap;
+                Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+                using (Graphics g = Graphics.FromImage(target))
+                {
+                    g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
+                                     cropRect,
+                                     GraphicsUnit.Pixel);
+                }
+                map = target;
             }
-            using (var graphics = Graphics.FromImage(map)) { 
-                graphics.DrawArc(redPen, x - 5, y - 5, 15, 15, 0, 360);
+            else
+            {
+                using (var graphics = Graphics.FromImage(map))
+                {
+                    graphics.DrawArc(redPen, x - 5, y - 5, 15, 15, 0, 360);
+                }
             }
+
             return map;
         }
 
