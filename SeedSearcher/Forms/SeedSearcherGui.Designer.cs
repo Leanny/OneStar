@@ -429,7 +429,8 @@
             "153",
             "154",
             "155",
-            "156"});
+            "156",
+            "157"});
             this.CB_Nest.Location = new System.Drawing.Point(56, 69);
             this.CB_Nest.Margin = new System.Windows.Forms.Padding(2);
             this.CB_Nest.Name = "CB_Nest";
