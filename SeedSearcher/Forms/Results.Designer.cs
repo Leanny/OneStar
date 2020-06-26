@@ -72,17 +72,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.minHP = new System.Windows.Forms.NumericUpDown();
             this.raidContent = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BT_NextShiny = new System.Windows.Forms.Button();
-            this.BTN_IVCalc = new System.Windows.Forms.Button();
-            this.BTN_Clear = new System.Windows.Forms.Button();
-            this.DetailsBox = new System.Windows.Forms.GroupBox();
             this.FrameCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HPCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtkCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,6 +86,23 @@
             this.Characteristic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SeedCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Deviation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BTN_IVCalc = new System.Windows.Forms.Button();
+            this.BTN_Clear = new System.Windows.Forms.Button();
+            this.DetailsBox = new System.Windows.Forms.GroupBox();
+            this.BT_NextShiny = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxSpe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxSpd)).BeginInit();
@@ -118,7 +124,7 @@
             // searchButton
             // 
             this.searchButton.Location = new System.Drawing.Point(524, 157);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(2);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(69, 23);
             this.searchButton.TabIndex = 37;
@@ -129,7 +135,7 @@
             // resetFilter
             // 
             this.resetFilter.Location = new System.Drawing.Point(276, 157);
-            this.resetFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.resetFilter.Margin = new System.Windows.Forms.Padding(2);
             this.resetFilter.Name = "resetFilter";
             this.resetFilter.Size = new System.Drawing.Size(69, 23);
             this.resetFilter.TabIndex = 34;
@@ -140,7 +146,7 @@
             // applyFilter
             // 
             this.applyFilter.Location = new System.Drawing.Point(196, 157);
-            this.applyFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.applyFilter.Margin = new System.Windows.Forms.Padding(2);
             this.applyFilter.Name = "applyFilter";
             this.applyFilter.Size = new System.Drawing.Size(69, 23);
             this.applyFilter.TabIndex = 33;
@@ -159,7 +165,7 @@
             "Star",
             "Square"});
             this.shinyBox.Location = new System.Drawing.Point(478, 114);
-            this.shinyBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.shinyBox.Margin = new System.Windows.Forms.Padding(2);
             this.shinyBox.Name = "shinyBox";
             this.shinyBox.Size = new System.Drawing.Size(115, 21);
             this.shinyBox.TabIndex = 32;
@@ -167,7 +173,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(196, 114);
+            this.label23.Location = new System.Drawing.Point(274, 114);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(33, 13);
@@ -179,7 +185,7 @@
             this.genderBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderBox.FormattingEnabled = true;
             this.genderBox.Location = new System.Drawing.Point(478, 89);
-            this.genderBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.genderBox.Margin = new System.Windows.Forms.Padding(2);
             this.genderBox.Name = "genderBox";
             this.genderBox.Size = new System.Drawing.Size(115, 21);
             this.genderBox.TabIndex = 30;
@@ -190,7 +196,7 @@
             this.abilityBox.DropDownWidth = 135;
             this.abilityBox.FormattingEnabled = true;
             this.abilityBox.Location = new System.Drawing.Point(478, 65);
-            this.abilityBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.abilityBox.Margin = new System.Windows.Forms.Padding(2);
             this.abilityBox.Name = "abilityBox";
             this.abilityBox.Size = new System.Drawing.Size(115, 21);
             this.abilityBox.TabIndex = 29;
@@ -200,7 +206,7 @@
             this.natureBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.natureBox.FormattingEnabled = true;
             this.natureBox.Location = new System.Drawing.Point(478, 41);
-            this.natureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.natureBox.Margin = new System.Windows.Forms.Padding(2);
             this.natureBox.Name = "natureBox";
             this.natureBox.Size = new System.Drawing.Size(115, 21);
             this.natureBox.TabIndex = 28;
@@ -208,7 +214,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(196, 89);
+            this.label22.Location = new System.Drawing.Point(274, 89);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(42, 13);
@@ -218,7 +224,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(196, 65);
+            this.label21.Location = new System.Drawing.Point(274, 65);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(34, 13);
@@ -228,7 +234,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(196, 41);
+            this.label20.Location = new System.Drawing.Point(274, 41);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(39, 13);
@@ -289,9 +295,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(4, 17);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(280, 188);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -310,7 +316,7 @@
             // endFrame
             // 
             this.endFrame.Location = new System.Drawing.Point(198, 114);
-            this.endFrame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.endFrame.Margin = new System.Windows.Forms.Padding(2);
             this.endFrame.Name = "endFrame";
             this.endFrame.Size = new System.Drawing.Size(61, 20);
             this.endFrame.TabIndex = 10;
@@ -319,7 +325,7 @@
             // startFrame
             // 
             this.startFrame.Location = new System.Drawing.Point(118, 114);
-            this.startFrame.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.startFrame.Margin = new System.Windows.Forms.Padding(2);
             this.startFrame.Name = "startFrame";
             this.startFrame.Size = new System.Drawing.Size(61, 20);
             this.startFrame.TabIndex = 9;
@@ -330,7 +336,7 @@
             this.speciesList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.speciesList.FormattingEnabled = true;
             this.speciesList.Location = new System.Drawing.Point(118, 85);
-            this.speciesList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.speciesList.Margin = new System.Windows.Forms.Padding(2);
             this.speciesList.Name = "speciesList";
             this.speciesList.Size = new System.Drawing.Size(141, 21);
             this.speciesList.TabIndex = 8;
@@ -342,7 +348,7 @@
             this.denBox.Enabled = false;
             this.denBox.FormattingEnabled = true;
             this.denBox.Location = new System.Drawing.Point(118, 57);
-            this.denBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.denBox.Margin = new System.Windows.Forms.Padding(2);
             this.denBox.Name = "denBox";
             this.denBox.Size = new System.Drawing.Size(141, 21);
             this.denBox.TabIndex = 7;
@@ -351,7 +357,7 @@
             // 
             this.seedBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.seedBox.Location = new System.Drawing.Point(118, 28);
-            this.seedBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.seedBox.Margin = new System.Windows.Forms.Padding(2);
             this.seedBox.MaxLength = 16;
             this.seedBox.Name = "seedBox";
             this.seedBox.Size = new System.Drawing.Size(141, 20);
@@ -361,7 +367,7 @@
             // generateData
             // 
             this.generateData.Location = new System.Drawing.Point(14, 147);
-            this.generateData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.generateData.Margin = new System.Windows.Forms.Padding(2);
             this.generateData.Name = "generateData";
             this.generateData.Size = new System.Drawing.Size(244, 24);
             this.generateData.TabIndex = 5;
@@ -432,7 +438,7 @@
             // maxSpe
             // 
             this.maxSpe.Location = new System.Drawing.Point(114, 135);
-            this.maxSpe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maxSpe.Margin = new System.Windows.Forms.Padding(2);
             this.maxSpe.Maximum = new decimal(new int[] {
             31,
             0,
@@ -451,7 +457,7 @@
             // maxSpd
             // 
             this.maxSpd.Location = new System.Drawing.Point(114, 115);
-            this.maxSpd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maxSpd.Margin = new System.Windows.Forms.Padding(2);
             this.maxSpd.Maximum = new decimal(new int[] {
             31,
             0,
@@ -470,7 +476,7 @@
             // maxSpa
             // 
             this.maxSpa.Location = new System.Drawing.Point(114, 97);
-            this.maxSpa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maxSpa.Margin = new System.Windows.Forms.Padding(2);
             this.maxSpa.Maximum = new decimal(new int[] {
             31,
             0,
@@ -489,7 +495,7 @@
             // maxDef
             // 
             this.maxDef.Location = new System.Drawing.Point(114, 76);
-            this.maxDef.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maxDef.Margin = new System.Windows.Forms.Padding(2);
             this.maxDef.Maximum = new decimal(new int[] {
             31,
             0,
@@ -508,7 +514,7 @@
             // maxAtk
             // 
             this.maxAtk.Location = new System.Drawing.Point(114, 57);
-            this.maxAtk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maxAtk.Margin = new System.Windows.Forms.Padding(2);
             this.maxAtk.Maximum = new decimal(new int[] {
             31,
             0,
@@ -527,7 +533,7 @@
             // maxHP
             // 
             this.maxHP.Location = new System.Drawing.Point(114, 37);
-            this.maxHP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maxHP.Margin = new System.Windows.Forms.Padding(2);
             this.maxHP.Maximum = new decimal(new int[] {
             31,
             0,
@@ -546,7 +552,7 @@
             // MinSpe
             // 
             this.MinSpe.Location = new System.Drawing.Point(64, 135);
-            this.MinSpe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinSpe.Margin = new System.Windows.Forms.Padding(2);
             this.MinSpe.Maximum = new decimal(new int[] {
             31,
             0,
@@ -560,7 +566,7 @@
             // minSpd
             // 
             this.minSpd.Location = new System.Drawing.Point(64, 115);
-            this.minSpd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.minSpd.Margin = new System.Windows.Forms.Padding(2);
             this.minSpd.Maximum = new decimal(new int[] {
             31,
             0,
@@ -574,7 +580,7 @@
             // minSpa
             // 
             this.minSpa.Location = new System.Drawing.Point(64, 97);
-            this.minSpa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.minSpa.Margin = new System.Windows.Forms.Padding(2);
             this.minSpa.Maximum = new decimal(new int[] {
             31,
             0,
@@ -588,7 +594,7 @@
             // minDef
             // 
             this.minDef.Location = new System.Drawing.Point(64, 76);
-            this.minDef.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.minDef.Margin = new System.Windows.Forms.Padding(2);
             this.minDef.Maximum = new decimal(new int[] {
             31,
             0,
@@ -602,7 +608,7 @@
             // minAtk
             // 
             this.minAtk.Location = new System.Drawing.Point(64, 57);
-            this.minAtk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.minAtk.Margin = new System.Windows.Forms.Padding(2);
             this.minAtk.Maximum = new decimal(new int[] {
             31,
             0,
@@ -636,7 +642,7 @@
             // minHP
             // 
             this.minHP.Location = new System.Drawing.Point(64, 37);
-            this.minHP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.minHP.Margin = new System.Windows.Forms.Padding(2);
             this.minHP.Maximum = new decimal(new int[] {
             31,
             0,
@@ -670,171 +676,13 @@
             this.Deviation});
             this.raidContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.raidContent.Location = new System.Drawing.Point(0, 217);
-            this.raidContent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.raidContent.Margin = new System.Windows.Forms.Padding(2);
             this.raidContent.Name = "raidContent";
             this.raidContent.ReadOnly = true;
             this.raidContent.RowHeadersWidth = 51;
             this.raidContent.RowTemplate.Height = 24;
             this.raidContent.Size = new System.Drawing.Size(940, 513);
             this.raidContent.TabIndex = 2;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 100);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(28, 13);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "SPA";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(20, 80);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(28, 13);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "DEF";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 61);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(28, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "ATK";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 41);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(22, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "HP";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(113, 21);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 13);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Max IV";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(62, 21);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Min IV";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.BT_NextShiny);
-            this.groupBox2.Controls.Add(this.BTN_IVCalc);
-            this.groupBox2.Controls.Add(this.BTN_Clear);
-            this.groupBox2.Controls.Add(this.searchButton);
-            this.groupBox2.Controls.Add(this.resetFilter);
-            this.groupBox2.Controls.Add(this.applyFilter);
-            this.groupBox2.Controls.Add(this.shinyBox);
-            this.groupBox2.Controls.Add(this.label23);
-            this.groupBox2.Controls.Add(this.genderBox);
-            this.groupBox2.Controls.Add(this.abilityBox);
-            this.groupBox2.Controls.Add(this.natureBox);
-            this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.maxSpe);
-            this.groupBox2.Controls.Add(this.maxSpd);
-            this.groupBox2.Controls.Add(this.maxSpa);
-            this.groupBox2.Controls.Add(this.maxDef);
-            this.groupBox2.Controls.Add(this.maxAtk);
-            this.groupBox2.Controls.Add(this.maxHP);
-            this.groupBox2.Controls.Add(this.MinSpe);
-            this.groupBox2.Controls.Add(this.minSpd);
-            this.groupBox2.Controls.Add(this.minSpa);
-            this.groupBox2.Controls.Add(this.minDef);
-            this.groupBox2.Controls.Add(this.minAtk);
-            this.groupBox2.Controls.Add(this.minHP);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(296, 17);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox2.Size = new System.Drawing.Size(613, 188);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filters";
-            // 
-            // BT_NextShiny
-            // 
-            this.BT_NextShiny.Location = new System.Drawing.Point(436, 157);
-            this.BT_NextShiny.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.BT_NextShiny.Name = "BT_NextShiny";
-            this.BT_NextShiny.Size = new System.Drawing.Size(75, 23);
-            this.BT_NextShiny.TabIndex = 36;
-            this.BT_NextShiny.Text = "Next Shinies";
-            this.BT_NextShiny.UseVisualStyleBackColor = true;
-            this.BT_NextShiny.Click += new System.EventHandler(this.BT_NextShiny_Click);
-            // 
-            // BTN_IVCalc
-            // 
-            this.BTN_IVCalc.Location = new System.Drawing.Point(64, 157);
-            this.BTN_IVCalc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.BTN_IVCalc.Name = "BTN_IVCalc";
-            this.BTN_IVCalc.Size = new System.Drawing.Size(82, 23);
-            this.BTN_IVCalc.TabIndex = 20;
-            this.BTN_IVCalc.Text = "IV Calc";
-            this.BTN_IVCalc.UseVisualStyleBackColor = true;
-            this.BTN_IVCalc.Click += new System.EventHandler(this.BTN_IVCalc_Click);
-            // 
-            // BTN_Clear
-            // 
-            this.BTN_Clear.Location = new System.Drawing.Point(356, 157);
-            this.BTN_Clear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.BTN_Clear.Name = "BTN_Clear";
-            this.BTN_Clear.Size = new System.Drawing.Size(69, 23);
-            this.BTN_Clear.TabIndex = 35;
-            this.BTN_Clear.Text = "Clear Filter";
-            this.BTN_Clear.UseVisualStyleBackColor = true;
-            this.BTN_Clear.Click += new System.EventHandler(this.BTN_Clear_Click);
-            // 
-            // DetailsBox
-            // 
-            this.DetailsBox.Controls.Add(this.groupBox2);
-            this.DetailsBox.Controls.Add(this.groupBox1);
-            this.DetailsBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DetailsBox.Location = new System.Drawing.Point(0, 0);
-            this.DetailsBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.DetailsBox.Name = "DetailsBox";
-            this.DetailsBox.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.DetailsBox.Size = new System.Drawing.Size(940, 217);
-            this.DetailsBox.TabIndex = 3;
-            this.DetailsBox.TabStop = false;
-            this.DetailsBox.Text = "Details";
             // 
             // FrameCell
             // 
@@ -959,6 +807,236 @@
             this.Deviation.Name = "Deviation";
             this.Deviation.ReadOnly = true;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(20, 100);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(28, 13);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "SPA";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(20, 80);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(28, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "DEF";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 61);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "ATK";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(20, 41);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(22, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "HP";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(113, 21);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Max IV";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(62, 21);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Min IV";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkBox6);
+            this.groupBox2.Controls.Add(this.checkBox5);
+            this.groupBox2.Controls.Add(this.checkBox4);
+            this.groupBox2.Controls.Add(this.checkBox3);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.BT_NextShiny);
+            this.groupBox2.Controls.Add(this.BTN_IVCalc);
+            this.groupBox2.Controls.Add(this.BTN_Clear);
+            this.groupBox2.Controls.Add(this.searchButton);
+            this.groupBox2.Controls.Add(this.resetFilter);
+            this.groupBox2.Controls.Add(this.applyFilter);
+            this.groupBox2.Controls.Add(this.shinyBox);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.genderBox);
+            this.groupBox2.Controls.Add(this.abilityBox);
+            this.groupBox2.Controls.Add(this.natureBox);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.maxSpe);
+            this.groupBox2.Controls.Add(this.maxSpd);
+            this.groupBox2.Controls.Add(this.maxSpa);
+            this.groupBox2.Controls.Add(this.maxDef);
+            this.groupBox2.Controls.Add(this.maxAtk);
+            this.groupBox2.Controls.Add(this.maxHP);
+            this.groupBox2.Controls.Add(this.MinSpe);
+            this.groupBox2.Controls.Add(this.minSpd);
+            this.groupBox2.Controls.Add(this.minSpa);
+            this.groupBox2.Controls.Add(this.minDef);
+            this.groupBox2.Controls.Add(this.minAtk);
+            this.groupBox2.Controls.Add(this.minHP);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Location = new System.Drawing.Point(296, 17);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(613, 188);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filters";
+            // 
+            // BTN_IVCalc
+            // 
+            this.BTN_IVCalc.Location = new System.Drawing.Point(64, 157);
+            this.BTN_IVCalc.Margin = new System.Windows.Forms.Padding(2);
+            this.BTN_IVCalc.Name = "BTN_IVCalc";
+            this.BTN_IVCalc.Size = new System.Drawing.Size(82, 23);
+            this.BTN_IVCalc.TabIndex = 20;
+            this.BTN_IVCalc.Text = "IV Calc";
+            this.BTN_IVCalc.UseVisualStyleBackColor = true;
+            this.BTN_IVCalc.Click += new System.EventHandler(this.BTN_IVCalc_Click);
+            // 
+            // BTN_Clear
+            // 
+            this.BTN_Clear.Location = new System.Drawing.Point(356, 157);
+            this.BTN_Clear.Margin = new System.Windows.Forms.Padding(2);
+            this.BTN_Clear.Name = "BTN_Clear";
+            this.BTN_Clear.Size = new System.Drawing.Size(69, 23);
+            this.BTN_Clear.TabIndex = 35;
+            this.BTN_Clear.Text = "Clear Filter";
+            this.BTN_Clear.UseVisualStyleBackColor = true;
+            this.BTN_Clear.Click += new System.EventHandler(this.BTN_Clear_Click);
+            // 
+            // DetailsBox
+            // 
+            this.DetailsBox.Controls.Add(this.groupBox2);
+            this.DetailsBox.Controls.Add(this.groupBox1);
+            this.DetailsBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.DetailsBox.Location = new System.Drawing.Point(0, 0);
+            this.DetailsBox.Margin = new System.Windows.Forms.Padding(2);
+            this.DetailsBox.Name = "DetailsBox";
+            this.DetailsBox.Padding = new System.Windows.Forms.Padding(2);
+            this.DetailsBox.Size = new System.Drawing.Size(940, 217);
+            this.DetailsBox.TabIndex = 3;
+            this.DetailsBox.TabStop = false;
+            this.DetailsBox.Text = "Details";
+            // 
+            // BT_NextShiny
+            // 
+            this.BT_NextShiny.Location = new System.Drawing.Point(436, 157);
+            this.BT_NextShiny.Margin = new System.Windows.Forms.Padding(2);
+            this.BT_NextShiny.Name = "BT_NextShiny";
+            this.BT_NextShiny.Size = new System.Drawing.Size(75, 23);
+            this.BT_NextShiny.TabIndex = 36;
+            this.BT_NextShiny.Text = "Next Shinies";
+            this.BT_NextShiny.UseVisualStyleBackColor = true;
+            this.BT_NextShiny.Click += new System.EventHandler(this.BT_NextShiny_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(161, 37);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(59, 17);
+            this.checkBox1.TabIndex = 38;
+            this.checkBox1.Text = "Max IV";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(161, 57);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(59, 17);
+            this.checkBox2.TabIndex = 39;
+            this.checkBox2.Text = "Max IV";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(161, 77);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(59, 17);
+            this.checkBox3.TabIndex = 40;
+            this.checkBox3.Text = "Max IV";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(161, 97);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(59, 17);
+            this.checkBox4.TabIndex = 41;
+            this.checkBox4.Text = "Max IV";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(161, 117);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(59, 17);
+            this.checkBox5.TabIndex = 42;
+            this.checkBox5.Text = "Max IV";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(161, 137);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(59, 17);
+            this.checkBox6.TabIndex = 43;
+            this.checkBox6.Text = "Max IV";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
             // Results
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -966,7 +1044,7 @@
             this.ClientSize = new System.Drawing.Size(940, 730);
             this.Controls.Add(this.raidContent);
             this.Controls.Add(this.DetailsBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(956, 769);
             this.Name = "Results";
             this.ShowIcon = false;
@@ -1049,7 +1127,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BTN_Clear;
         private System.Windows.Forms.Button BTN_IVCalc;
-        private System.Windows.Forms.Button BT_NextShiny;
         private System.Windows.Forms.DataGridViewTextBoxColumn FrameCell;
         private System.Windows.Forms.DataGridViewTextBoxColumn HPCell;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtkCell;
@@ -1064,5 +1141,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Characteristic;
         private System.Windows.Forms.DataGridViewTextBoxColumn SeedCell;
         private System.Windows.Forms.DataGridViewTextBoxColumn Deviation;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button BT_NextShiny;
     }
 }

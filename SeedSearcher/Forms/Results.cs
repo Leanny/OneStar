@@ -15,7 +15,7 @@ namespace SeedSearcherGui
         private static readonly ComboboxItem male = new ComboboxItem("Male", 0);
         private static readonly ComboboxItem any = new ComboboxItem("Any", -1);
         private static readonly string[] genders = { "Male", "Female", "Genderless" };
-        private static readonly string[] shinytype = { "No", "Star", "Square" };
+        private static readonly string[] shinytype = { "No", "Star", "Square", "Forced Square" };
         private static readonly int[] iv_order = { 0, 1, 2, 5, 3, 4 };
 
         private string[] characteristics;
@@ -30,6 +30,7 @@ namespace SeedSearcherGui
             foreach(var item in items) {
                 speciesList.Items.Add(item);
             }
+            IVBoxes = new[] { minHP, maxHP, minAtk, maxAtk, minDef, maxDef, minSpa, maxSpa, minSpd, maxSpd, MinSpe, maxSpe };
             this.GameStrings = gameStrings;
             natureBox.Items.Clear();
             natureBox.Items.Add("Any");
@@ -98,7 +99,7 @@ namespace SeedSearcherGui
             row.Cells[5].Value = $"{res.IVs[4]:00}";
             row.Cells[6].Value = $"{res.IVs[5]:00}";
             row.Cells[7].Value = s.Natures[res.Nature];
-            row.Cells[8].Value = s.Ability[res.Ability];
+            row.Cells[8].Value = s.Ability[res.Ability] + " " + AbilitySuffix[res.AbilityIdx];
             row.Cells[9].Value = genders[res.Gender];
             row.Cells[10].Value = shinytype[res.ShinyType];
             row.Cells[11].Value = GetCharacteristic(res);
@@ -125,10 +126,11 @@ namespace SeedSearcherGui
         {
             abilityBox.Items.Clear();
             abilityBox.Items.Add("Any");
+            abilityBox.Items.Add("Normal");
             for (var i = 0; i < abilities.Length; i++)
             {
                 int ability = abilities[i];
-                if (a == 3 && abilityBox.Items.Count == 3)
+                if (a == 3 && abilityBox.Items.Count == 4)
                     break;
 
                 var name = GameStrings.Ability[ability] + AbilitySuffix[i];
@@ -185,7 +187,7 @@ namespace SeedSearcherGui
                 return false;
             if (natureBox.SelectedIndex != 0 && natureBox.SelectedIndex - 1 != res.Nature)
                 return false;
-            if (abilityBox.SelectedIndex != 0 && (int)((ComboboxItem)abilityBox.SelectedItem).Value != res.Ability)
+            if (abilityBox.SelectedIndex != 0 && ((abilityBox.SelectedIndex == 1 && (int)((ComboboxItem)abilityBox.SelectedItem).Value == 2) || abilityBox.SelectedIndex > 1 &&  (int)((ComboboxItem)abilityBox.SelectedItem).Value != res.Ability))
                 return false;
             if (genderBox.SelectedIndex != 0 && (int)((ComboboxItem)genderBox.SelectedItem).Value != res.Gender)
                 return false;
@@ -222,7 +224,7 @@ namespace SeedSearcherGui
             if (natureBox.SelectedIndex != 0 && natureBox.Text != (string)row.Cells[7].Value)
                 return false;
 
-            if (abilityBox.SelectedIndex != 0 && !abilityBox.Text.StartsWith((string)row.Cells[8].Value))
+            if (abilityBox.SelectedIndex != 0 && ((abilityBox.SelectedIndex == 1 && ((string)row.Cells[8].Value).EndsWith("(H)")) || abilityBox.SelectedIndex > 1 && abilityBox.Text.Substring(0, abilityBox.Text.Length - 4) != ((string)row.Cells[8].Value).Substring(0, abilityBox.Text.Length - 4)))
                 return false;
 
             if (genderBox.SelectedIndex != 0 && genderBox.Text != (string)row.Cells[9].Value)
@@ -280,18 +282,12 @@ namespace SeedSearcherGui
 
         private void BTN_Clear_Click(object sender, EventArgs e)
         {
-            minHP.Value = 0;
-            minAtk.Value = 0;
-            minDef.Value = 0;
-            minSpa.Value = 0;
-            minSpd.Value = 0;
-            MinSpe.Value = 0;
-            maxHP.Value = 31;
-            maxAtk.Value = 31;
-            maxDef.Value = 31;
-            maxSpa.Value = 31;
-            maxSpd.Value = 31;
-            maxSpe.Value = 31;
+            for(int i = 0; i < IVBoxes.Length; i+=2)
+            {
+                IVBoxes[i].Value = 0;
+                IVBoxes[i + 1].Value = 31;
+            }
+
             natureBox.SelectedIndex = 0;
             abilityBox.SelectedIndex = 0;
             shinyBox.SelectedIndex = 0;
@@ -329,6 +325,47 @@ namespace SeedSearcherGui
                 }
             }
             ((ISupportInitialize)raidContent).EndInit();
+        }
+
+        private NumericUpDown[] IVBoxes;
+
+        private void setMaxIV(int idx, bool checkedBox)
+        {
+            IVBoxes[idx * 2].Value = !checkedBox ? 0 : 31;
+            IVBoxes[idx * 2 + 1].Value = 31;
+            IVBoxes[idx * 2].Enabled = !checkedBox;
+            IVBoxes[idx * 2 + 1].Enabled = !checkedBox;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            setMaxIV(0, ((CheckBox)sender).Checked);
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            setMaxIV(1, ((CheckBox)sender).Checked);
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            setMaxIV(2, ((CheckBox)sender).Checked);
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            setMaxIV(3, ((CheckBox)sender).Checked);
+
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            setMaxIV(4, ((CheckBox)sender).Checked);
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            setMaxIV(5, ((CheckBox)sender).Checked);
         }
     }
 }
