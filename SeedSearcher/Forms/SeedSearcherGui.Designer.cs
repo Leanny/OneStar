@@ -2726,7 +2726,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(935, 698);
             this.Name = "SeedSearcherGui";
-            this.Text = "Seed Searcher 1.2c-Beta";
+            this.Text = "Seed Searcher 1.2c";
             this.GB_Left.ResumeLayout(false);
             this.GB_Left.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DenMap)).EndInit();
