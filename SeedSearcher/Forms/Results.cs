@@ -17,7 +17,7 @@ namespace SeedSearcherGui
         private static readonly string[] genders = { "Male", "Female", "Genderless" };
         private static readonly string[] shinytype = { "No", "Star", "Square", "Forced Square" };
         private static readonly int[] iv_order = { 0, 1, 2, 5, 3, 4 };
-
+        private static readonly Dictionary<string, int> natureIdx = new Dictionary<string, int>();
         private string[] characteristics;
         public Results(string text, ComboBox cB_Den, ComboBox.ObjectCollection items, GameStrings gameStrings)
         {
@@ -35,14 +35,26 @@ namespace SeedSearcherGui
             natureBox.Items.Clear();
             natureBox.Items.Add("Any");
             natureBox.Items.AddRange(GameStrings.natures);
+            for(int i = 0; i < GameStrings.natures.Length; i++)
+            {
+                natureIdx[GameStrings.natures[i]] = i + 1;
+            }
+            natureBox.MaxDropDownItems = 1 + GameStrings.natures.Length;
+            natureBox.ValueSeparator = ", ";
             speciesList.SelectedIndex = 0;
-            natureBox.SelectedIndex = 0;
+            natureBox.SetItemChecked(0, true);
+            natureBox.DisplayMember = "Value";
             shinyBox.SelectedIndex = 0;
             characteristics = new string[6];
             for (int counter = 0, i = 1; i < GameStrings.characteristics.Length; i += 5, counter++)
             {
                 characteristics[counter] = GameStrings.characteristics[i];
             }
+            natureBox.DropDownClosed += new System.EventHandler(this.nature_DropDownClosed);
+        }
+        private void nature_DropDownClosed(object sender, EventArgs e)
+        {
+            this.Focus();
         }
 
         private string GetCharacteristic(RaidPKM pkmn)
@@ -185,7 +197,7 @@ namespace SeedSearcherGui
                 return false;
             if (res.IVs[5] < MinSpe.Value || res.IVs[5] > maxSpe.Value)
                 return false;
-            if (natureBox.SelectedIndex != 0 && natureBox.SelectedIndex - 1 != res.Nature)
+            if (!natureBox.GetItemChecked(0) && !natureBox.GetItemChecked(res.Nature+1))
                 return false;
             if (abilityBox.SelectedIndex != 0 && ((abilityBox.SelectedIndex == 1 && (int)((ComboboxItem)abilityBox.SelectedItem).Value == 2) || abilityBox.SelectedIndex > 1 &&  (int)((ComboboxItem)abilityBox.SelectedItem).Value != res.Ability))
                 return false;
@@ -221,7 +233,7 @@ namespace SeedSearcherGui
             if (spe < MinSpe.Value || spe > maxSpe.Value)
                 return false;
 
-            if (natureBox.SelectedIndex != 0 && natureBox.Text != (string)row.Cells[7].Value)
+            if (!natureBox.GetItemChecked(0) && !natureBox.GetItemChecked(natureIdx[(string)row.Cells[7].Value]))
                 return false;
 
             if (abilityBox.SelectedIndex != 0 && ((abilityBox.SelectedIndex == 1 && ((string)row.Cells[8].Value).EndsWith("(H)")) || abilityBox.SelectedIndex > 1 && abilityBox.Text.Substring(0, abilityBox.Text.Length - 4) != ((string)row.Cells[8].Value).Substring(0, abilityBox.Text.Length - 4)))

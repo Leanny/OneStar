@@ -126,6 +126,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Util\CheckedComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Util\PkmnStruct.cs" />
     <Compile Include="Util\SeedSearcher.cs" />
     <Compile Include="Util\SeedSearcherGPU.cs" />
