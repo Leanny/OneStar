@@ -480,6 +480,264 @@
   <data name="DLC_31_6" xml:space="preserve">
     <value>Honeycalm Island 6</value>
   </data>
+  <data name="DLC_32_1" xml:space="preserve">
+    <value>Slippery Slope 1</value>
+  </data>
+  <data name="DLC_32_2" xml:space="preserve">
+    <value>Slippery Slope 2</value>
+  </data>
+  <data name="DLC_32_3" xml:space="preserve">
+    <value>Slippery Slope 3</value>
+  </data>
+  <data name="DLC_32_4" xml:space="preserve">
+    <value>Slippery Slope 4</value>
+  </data>
+  <data name="DLC_32_5" xml:space="preserve">
+    <value>Slippery Slope 5</value>
+  </data>
+  <data name="DLC_32_6" xml:space="preserve">
+    <value>Slippery Slope 6</value>
+  </data>
+  <data name="DLC_33_1" xml:space="preserve">
+    <value>Frostpoint Field 1</value>
+  </data>
+  <data name="DLC_33_2" xml:space="preserve">
+    <value>Frostpoint Field 2</value>
+  </data>
+  <data name="DLC_33_3" xml:space="preserve">
+    <value>Frostpoint Field 3</value>
+  </data>
+  <data name="DLC_33_4" xml:space="preserve">
+    <value>Frostpoint Field 4</value>
+  </data>
+  <data name="DLC_33_5" xml:space="preserve">
+    <value>Frostpoint Field 5</value>
+  </data>
+  <data name="DLC_34_1" xml:space="preserve">
+    <value>Giant’s Bed 1</value>
+  </data>
+  <data name="DLC_34_10" xml:space="preserve">
+    <value>Giant’s Bed 10</value>
+  </data>
+  <data name="DLC_34_11" xml:space="preserve">
+    <value>Giant’s Bed 11</value>
+  </data>
+  <data name="DLC_34_12" xml:space="preserve">
+    <value>Giant’s Bed 12</value>
+  </data>
+  <data name="DLC_34_13" xml:space="preserve">
+    <value>Giant’s Bed 13</value>
+  </data>
+  <data name="DLC_34_14" xml:space="preserve">
+    <value>Giant’s Bed 14</value>
+  </data>
+  <data name="DLC_34_15" xml:space="preserve">
+    <value>Giant’s Bed 15</value>
+  </data>
+  <data name="DLC_34_16" xml:space="preserve">
+    <value>Giant’s Bed 16</value>
+  </data>
+  <data name="DLC_34_17" xml:space="preserve">
+    <value>Giant’s Bed 17</value>
+  </data>
+  <data name="DLC_34_18" xml:space="preserve">
+    <value>Giant’s Bed 18</value>
+  </data>
+  <data name="DLC_34_19" xml:space="preserve">
+    <value>Giant’s Bed 19</value>
+  </data>
+  <data name="DLC_34_2" xml:space="preserve">
+    <value>Giant’s Bed 2</value>
+  </data>
+  <data name="DLC_34_20" xml:space="preserve">
+    <value>Giant’s Bed 20</value>
+  </data>
+  <data name="DLC_34_21" xml:space="preserve">
+    <value>Giant’s Bed 21</value>
+  </data>
+  <data name="DLC_34_3" xml:space="preserve">
+    <value>Giant’s Bed 3</value>
+  </data>
+  <data name="DLC_34_4" xml:space="preserve">
+    <value>Giant’s Bed 4</value>
+  </data>
+  <data name="DLC_34_5" xml:space="preserve">
+    <value>Giant’s Bed 5</value>
+  </data>
+  <data name="DLC_34_6" xml:space="preserve">
+    <value>Giant’s Bed 6</value>
+  </data>
+  <data name="DLC_34_7" xml:space="preserve">
+    <value>Giant’s Bed 7</value>
+  </data>
+  <data name="DLC_34_8" xml:space="preserve">
+    <value>Giant’s Bed 8</value>
+  </data>
+  <data name="DLC_34_9" xml:space="preserve">
+    <value>Giant’s Bed 9</value>
+  </data>
+  <data name="DLC_35_1" xml:space="preserve">
+    <value>Old Cemetery 1</value>
+  </data>
+  <data name="DLC_35_2" xml:space="preserve">
+    <value>Old Cemetery 2</value>
+  </data>
+  <data name="DLC_36_1" xml:space="preserve">
+    <value>Snowslide Slope 1</value>
+  </data>
+  <data name="DLC_36_2" xml:space="preserve">
+    <value>Snowslide Slope 2</value>
+  </data>
+  <data name="DLC_36_3" xml:space="preserve">
+    <value>Snowslide Slope 3</value>
+  </data>
+  <data name="DLC_36_4" xml:space="preserve">
+    <value>Snowslide Slope 4</value>
+  </data>
+  <data name="DLC_36_5" xml:space="preserve">
+    <value>Snowslide Slope 5</value>
+  </data>
+  <data name="DLC_36_6" xml:space="preserve">
+    <value>Snowslide Slope 6</value>
+  </data>
+  <data name="DLC_36_7" xml:space="preserve">
+    <value>Snowslide Slope 7</value>
+  </data>
+  <data name="DLC_36_8" xml:space="preserve">
+    <value>Snowslide Slope 8</value>
+  </data>
+  <data name="DLC_36_9" xml:space="preserve">
+    <value>Snowslide Slope 9</value>
+  </data>
+  <data name="DLC_37_1" xml:space="preserve">
+    <value>Path to the Peak 1</value>
+  </data>
+  <data name="DLC_37_2" xml:space="preserve">
+    <value>Path to the Peak 2</value>
+  </data>
+  <data name="DLC_37_3" xml:space="preserve">
+    <value>Path to the Peak 3</value>
+  </data>
+  <data name="DLC_38_1" xml:space="preserve">
+    <value>Crown Shrine 1</value>
+  </data>
+  <data name="DLC_39_1" xml:space="preserve">
+    <value>Giant’s Foot 1</value>
+  </data>
+  <data name="DLC_39_2" xml:space="preserve">
+    <value>Giant’s Foot 2</value>
+  </data>
+  <data name="DLC_39_3" xml:space="preserve">
+    <value>Giant’s Foot 3</value>
+  </data>
+  <data name="DLC_39_4" xml:space="preserve">
+    <value>Giant’s Foot 4</value>
+  </data>
+  <data name="DLC_39_5" xml:space="preserve">
+    <value>Giant’s Foot 5</value>
+  </data>
+  <data name="DLC_40_1" xml:space="preserve">
+    <value>Frigid Sea 1</value>
+  </data>
+  <data name="DLC_40_10" xml:space="preserve">
+    <value>Frigid Sea 10</value>
+  </data>
+  <data name="DLC_40_11" xml:space="preserve">
+    <value>Frigid Sea 11</value>
+  </data>
+  <data name="DLC_40_12" xml:space="preserve">
+    <value>Frigid Sea 12</value>
+  </data>
+  <data name="DLC_40_13" xml:space="preserve">
+    <value>Frigid Sea 13</value>
+  </data>
+  <data name="DLC_40_14" xml:space="preserve">
+    <value>Frigid Sea 14</value>
+  </data>
+  <data name="DLC_40_2" xml:space="preserve">
+    <value>Frigid Sea 2</value>
+  </data>
+  <data name="DLC_40_3" xml:space="preserve">
+    <value>Frigid Sea 3</value>
+  </data>
+  <data name="DLC_40_4" xml:space="preserve">
+    <value>Frigid Sea 4</value>
+  </data>
+  <data name="DLC_40_5" xml:space="preserve">
+    <value>Frigid Sea 5</value>
+  </data>
+  <data name="DLC_40_6" xml:space="preserve">
+    <value>Frigid Sea 6</value>
+  </data>
+  <data name="DLC_40_7" xml:space="preserve">
+    <value>Frigid Sea 7</value>
+  </data>
+  <data name="DLC_40_8" xml:space="preserve">
+    <value>Frigid Sea 8</value>
+  </data>
+  <data name="DLC_40_9" xml:space="preserve">
+    <value>Frigid Sea 9</value>
+  </data>
+  <data name="DLC_41_1" xml:space="preserve">
+    <value>Three-Point Pass 1</value>
+  </data>
+  <data name="DLC_41_2" xml:space="preserve">
+    <value>Three-Point Pass 2</value>
+  </data>
+  <data name="DLC_42_1" xml:space="preserve">
+    <value>Ballimere Lake 1</value>
+  </data>
+  <data name="DLC_42_10" xml:space="preserve">
+    <value>Ballimere Lake 10</value>
+  </data>
+  <data name="DLC_42_11" xml:space="preserve">
+    <value>Ballimere Lake 11</value>
+  </data>
+  <data name="DLC_42_12" xml:space="preserve">
+    <value>Ballimere Lake 12</value>
+  </data>
+  <data name="DLC_42_13" xml:space="preserve">
+    <value>Ballimere Lake 13</value>
+  </data>
+  <data name="DLC_42_14" xml:space="preserve">
+    <value>Ballimere Lake 14</value>
+  </data>
+  <data name="DLC_42_15" xml:space="preserve">
+    <value>Ballimere Lake 15</value>
+  </data>
+  <data name="DLC_42_16" xml:space="preserve">
+    <value>Ballimere Lake 16</value>
+  </data>
+  <data name="DLC_42_17" xml:space="preserve">
+    <value>Ballimere Lake 17</value>
+  </data>
+  <data name="DLC_42_2" xml:space="preserve">
+    <value>Ballimere Lake 2</value>
+  </data>
+  <data name="DLC_42_3" xml:space="preserve">
+    <value>Ballimere Lake 3</value>
+  </data>
+  <data name="DLC_42_4" xml:space="preserve">
+    <value>Ballimere Lake 4</value>
+  </data>
+  <data name="DLC_42_5" xml:space="preserve">
+    <value>Ballimere Lake 5</value>
+  </data>
+  <data name="DLC_42_6" xml:space="preserve">
+    <value>Ballimere Lake 6</value>
+  </data>
+  <data name="DLC_42_7" xml:space="preserve">
+    <value>Ballimere Lake 7</value>
+  </data>
+  <data name="DLC_42_8" xml:space="preserve">
+    <value>Ballimere Lake 8</value>
+  </data>
+  <data name="DLC_42_9" xml:space="preserve">
+    <value>Ballimere Lake 9</value>
+  </data>
+  <data name="DLC_43_1" xml:space="preserve">
+    <value>Dyna Tree Hill 1</value>
+  </data>
   <data name="Dusty1" xml:space="preserve">
     <value>Dusty Bowl 1</value>
   </data>

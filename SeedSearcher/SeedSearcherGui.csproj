@@ -183,6 +183,7 @@
     <Content Include="alcremie3.ico" />
     <Content Include="deps\PKHeX_Raid_Plugin.dll" />
     <Content Include="FodyWeavers.xml" />
+    <None Include="Resources\map_02.png" />
     <None Include="Resources\map_01.png" />
     <None Include="Resources\map.png" />
   </ItemGroup>

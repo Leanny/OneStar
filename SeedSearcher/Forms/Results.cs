@@ -123,7 +123,7 @@ namespace SeedSearcherGui
         private void SpeciesList_SelectedIndexChanged(object sender, EventArgs e)
         {
             var pkm = (RaidTemplate)((ComboboxItem)speciesList.SelectedItem).Value;
-            var abilities = PersonalTable.SWSH.GetAbilities(pkm.Species, pkm.AltForm);
+            var abilities = PersonalTable.SWSH.GetFormeEntry(pkm.Species, pkm.AltForm).Abilities;
             PopulateAbilityList(abilities, pkm.Ability);
             PopulateGenderList(PersonalTable.SWSH[pkm.Species].Gender);
 
@@ -134,12 +134,12 @@ namespace SeedSearcherGui
 
         private static readonly string[] AbilitySuffix = { " (1)", " (2)", " (H)" };
 
-        private void PopulateAbilityList(int[] abilities, int a)
+        private void PopulateAbilityList(IReadOnlyList<int> abilities, int a)
         {
             abilityBox.Items.Clear();
             abilityBox.Items.Add("Any");
             abilityBox.Items.Add("Normal");
-            for (var i = 0; i < abilities.Length; i++)
+            for (var i = 0; i < abilities.Count; i++)
             {
                 int ability = abilities[i];
                 if (a == 3 && abilityBox.Items.Count == 4)

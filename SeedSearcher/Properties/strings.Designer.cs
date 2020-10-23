@@ -1150,6 +1150,780 @@ namespace SeedSearcherGui.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Slippery Slope 1 ähnelt.
+        /// </summary>
+        internal static string DLC_32_1 {
+            get {
+                return ResourceManager.GetString("DLC_32_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Slippery Slope 2 ähnelt.
+        /// </summary>
+        internal static string DLC_32_2 {
+            get {
+                return ResourceManager.GetString("DLC_32_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Slippery Slope 3 ähnelt.
+        /// </summary>
+        internal static string DLC_32_3 {
+            get {
+                return ResourceManager.GetString("DLC_32_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Slippery Slope 4 ähnelt.
+        /// </summary>
+        internal static string DLC_32_4 {
+            get {
+                return ResourceManager.GetString("DLC_32_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Slippery Slope 5 ähnelt.
+        /// </summary>
+        internal static string DLC_32_5 {
+            get {
+                return ResourceManager.GetString("DLC_32_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Slippery Slope 6 ähnelt.
+        /// </summary>
+        internal static string DLC_32_6 {
+            get {
+                return ResourceManager.GetString("DLC_32_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frostpoint Field 1 ähnelt.
+        /// </summary>
+        internal static string DLC_33_1 {
+            get {
+                return ResourceManager.GetString("DLC_33_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frostpoint Field 2 ähnelt.
+        /// </summary>
+        internal static string DLC_33_2 {
+            get {
+                return ResourceManager.GetString("DLC_33_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frostpoint Field 3 ähnelt.
+        /// </summary>
+        internal static string DLC_33_3 {
+            get {
+                return ResourceManager.GetString("DLC_33_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frostpoint Field 4 ähnelt.
+        /// </summary>
+        internal static string DLC_33_4 {
+            get {
+                return ResourceManager.GetString("DLC_33_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frostpoint Field 5 ähnelt.
+        /// </summary>
+        internal static string DLC_33_5 {
+            get {
+                return ResourceManager.GetString("DLC_33_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 1 ähnelt.
+        /// </summary>
+        internal static string DLC_34_1 {
+            get {
+                return ResourceManager.GetString("DLC_34_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 10 ähnelt.
+        /// </summary>
+        internal static string DLC_34_10 {
+            get {
+                return ResourceManager.GetString("DLC_34_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 11 ähnelt.
+        /// </summary>
+        internal static string DLC_34_11 {
+            get {
+                return ResourceManager.GetString("DLC_34_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 12 ähnelt.
+        /// </summary>
+        internal static string DLC_34_12 {
+            get {
+                return ResourceManager.GetString("DLC_34_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 13 ähnelt.
+        /// </summary>
+        internal static string DLC_34_13 {
+            get {
+                return ResourceManager.GetString("DLC_34_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 14 ähnelt.
+        /// </summary>
+        internal static string DLC_34_14 {
+            get {
+                return ResourceManager.GetString("DLC_34_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 15 ähnelt.
+        /// </summary>
+        internal static string DLC_34_15 {
+            get {
+                return ResourceManager.GetString("DLC_34_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 16 ähnelt.
+        /// </summary>
+        internal static string DLC_34_16 {
+            get {
+                return ResourceManager.GetString("DLC_34_16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 17 ähnelt.
+        /// </summary>
+        internal static string DLC_34_17 {
+            get {
+                return ResourceManager.GetString("DLC_34_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 18 ähnelt.
+        /// </summary>
+        internal static string DLC_34_18 {
+            get {
+                return ResourceManager.GetString("DLC_34_18", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 19 ähnelt.
+        /// </summary>
+        internal static string DLC_34_19 {
+            get {
+                return ResourceManager.GetString("DLC_34_19", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 2 ähnelt.
+        /// </summary>
+        internal static string DLC_34_2 {
+            get {
+                return ResourceManager.GetString("DLC_34_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 20 ähnelt.
+        /// </summary>
+        internal static string DLC_34_20 {
+            get {
+                return ResourceManager.GetString("DLC_34_20", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 21 ähnelt.
+        /// </summary>
+        internal static string DLC_34_21 {
+            get {
+                return ResourceManager.GetString("DLC_34_21", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 3 ähnelt.
+        /// </summary>
+        internal static string DLC_34_3 {
+            get {
+                return ResourceManager.GetString("DLC_34_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 4 ähnelt.
+        /// </summary>
+        internal static string DLC_34_4 {
+            get {
+                return ResourceManager.GetString("DLC_34_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 5 ähnelt.
+        /// </summary>
+        internal static string DLC_34_5 {
+            get {
+                return ResourceManager.GetString("DLC_34_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 6 ähnelt.
+        /// </summary>
+        internal static string DLC_34_6 {
+            get {
+                return ResourceManager.GetString("DLC_34_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 7 ähnelt.
+        /// </summary>
+        internal static string DLC_34_7 {
+            get {
+                return ResourceManager.GetString("DLC_34_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 8 ähnelt.
+        /// </summary>
+        internal static string DLC_34_8 {
+            get {
+                return ResourceManager.GetString("DLC_34_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Bed 9 ähnelt.
+        /// </summary>
+        internal static string DLC_34_9 {
+            get {
+                return ResourceManager.GetString("DLC_34_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Old Cemetery 1 ähnelt.
+        /// </summary>
+        internal static string DLC_35_1 {
+            get {
+                return ResourceManager.GetString("DLC_35_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Old Cemetery 2 ähnelt.
+        /// </summary>
+        internal static string DLC_35_2 {
+            get {
+                return ResourceManager.GetString("DLC_35_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Snowslide Slope 1 ähnelt.
+        /// </summary>
+        internal static string DLC_36_1 {
+            get {
+                return ResourceManager.GetString("DLC_36_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Snowslide Slope 2 ähnelt.
+        /// </summary>
+        internal static string DLC_36_2 {
+            get {
+                return ResourceManager.GetString("DLC_36_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Snowslide Slope 3 ähnelt.
+        /// </summary>
+        internal static string DLC_36_3 {
+            get {
+                return ResourceManager.GetString("DLC_36_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Snowslide Slope 4 ähnelt.
+        /// </summary>
+        internal static string DLC_36_4 {
+            get {
+                return ResourceManager.GetString("DLC_36_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Snowslide Slope 5 ähnelt.
+        /// </summary>
+        internal static string DLC_36_5 {
+            get {
+                return ResourceManager.GetString("DLC_36_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Snowslide Slope 6 ähnelt.
+        /// </summary>
+        internal static string DLC_36_6 {
+            get {
+                return ResourceManager.GetString("DLC_36_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Snowslide Slope 7 ähnelt.
+        /// </summary>
+        internal static string DLC_36_7 {
+            get {
+                return ResourceManager.GetString("DLC_36_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Snowslide Slope 8 ähnelt.
+        /// </summary>
+        internal static string DLC_36_8 {
+            get {
+                return ResourceManager.GetString("DLC_36_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Snowslide Slope 9 ähnelt.
+        /// </summary>
+        internal static string DLC_36_9 {
+            get {
+                return ResourceManager.GetString("DLC_36_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Path to the Peak 1 ähnelt.
+        /// </summary>
+        internal static string DLC_37_1 {
+            get {
+                return ResourceManager.GetString("DLC_37_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Path to the Peak 2 ähnelt.
+        /// </summary>
+        internal static string DLC_37_2 {
+            get {
+                return ResourceManager.GetString("DLC_37_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Path to the Peak 3 ähnelt.
+        /// </summary>
+        internal static string DLC_37_3 {
+            get {
+                return ResourceManager.GetString("DLC_37_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Crown Shrine 1 ähnelt.
+        /// </summary>
+        internal static string DLC_38_1 {
+            get {
+                return ResourceManager.GetString("DLC_38_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Foot 1 ähnelt.
+        /// </summary>
+        internal static string DLC_39_1 {
+            get {
+                return ResourceManager.GetString("DLC_39_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Foot 2 ähnelt.
+        /// </summary>
+        internal static string DLC_39_2 {
+            get {
+                return ResourceManager.GetString("DLC_39_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Foot 3 ähnelt.
+        /// </summary>
+        internal static string DLC_39_3 {
+            get {
+                return ResourceManager.GetString("DLC_39_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Foot 4 ähnelt.
+        /// </summary>
+        internal static string DLC_39_4 {
+            get {
+                return ResourceManager.GetString("DLC_39_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Giant’s Foot 5 ähnelt.
+        /// </summary>
+        internal static string DLC_39_5 {
+            get {
+                return ResourceManager.GetString("DLC_39_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 1 ähnelt.
+        /// </summary>
+        internal static string DLC_40_1 {
+            get {
+                return ResourceManager.GetString("DLC_40_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 10 ähnelt.
+        /// </summary>
+        internal static string DLC_40_10 {
+            get {
+                return ResourceManager.GetString("DLC_40_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 11 ähnelt.
+        /// </summary>
+        internal static string DLC_40_11 {
+            get {
+                return ResourceManager.GetString("DLC_40_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 12 ähnelt.
+        /// </summary>
+        internal static string DLC_40_12 {
+            get {
+                return ResourceManager.GetString("DLC_40_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 13 ähnelt.
+        /// </summary>
+        internal static string DLC_40_13 {
+            get {
+                return ResourceManager.GetString("DLC_40_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 14 ähnelt.
+        /// </summary>
+        internal static string DLC_40_14 {
+            get {
+                return ResourceManager.GetString("DLC_40_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 2 ähnelt.
+        /// </summary>
+        internal static string DLC_40_2 {
+            get {
+                return ResourceManager.GetString("DLC_40_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 3 ähnelt.
+        /// </summary>
+        internal static string DLC_40_3 {
+            get {
+                return ResourceManager.GetString("DLC_40_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 4 ähnelt.
+        /// </summary>
+        internal static string DLC_40_4 {
+            get {
+                return ResourceManager.GetString("DLC_40_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 5 ähnelt.
+        /// </summary>
+        internal static string DLC_40_5 {
+            get {
+                return ResourceManager.GetString("DLC_40_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 6 ähnelt.
+        /// </summary>
+        internal static string DLC_40_6 {
+            get {
+                return ResourceManager.GetString("DLC_40_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 7 ähnelt.
+        /// </summary>
+        internal static string DLC_40_7 {
+            get {
+                return ResourceManager.GetString("DLC_40_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 8 ähnelt.
+        /// </summary>
+        internal static string DLC_40_8 {
+            get {
+                return ResourceManager.GetString("DLC_40_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Frigid Sea 9 ähnelt.
+        /// </summary>
+        internal static string DLC_40_9 {
+            get {
+                return ResourceManager.GetString("DLC_40_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Three-Point Pass 1 ähnelt.
+        /// </summary>
+        internal static string DLC_41_1 {
+            get {
+                return ResourceManager.GetString("DLC_41_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Three-Point Pass 2 ähnelt.
+        /// </summary>
+        internal static string DLC_41_2 {
+            get {
+                return ResourceManager.GetString("DLC_41_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 1 ähnelt.
+        /// </summary>
+        internal static string DLC_42_1 {
+            get {
+                return ResourceManager.GetString("DLC_42_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 10 ähnelt.
+        /// </summary>
+        internal static string DLC_42_10 {
+            get {
+                return ResourceManager.GetString("DLC_42_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 11 ähnelt.
+        /// </summary>
+        internal static string DLC_42_11 {
+            get {
+                return ResourceManager.GetString("DLC_42_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 12 ähnelt.
+        /// </summary>
+        internal static string DLC_42_12 {
+            get {
+                return ResourceManager.GetString("DLC_42_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 13 ähnelt.
+        /// </summary>
+        internal static string DLC_42_13 {
+            get {
+                return ResourceManager.GetString("DLC_42_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 14 ähnelt.
+        /// </summary>
+        internal static string DLC_42_14 {
+            get {
+                return ResourceManager.GetString("DLC_42_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 15 ähnelt.
+        /// </summary>
+        internal static string DLC_42_15 {
+            get {
+                return ResourceManager.GetString("DLC_42_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 16 ähnelt.
+        /// </summary>
+        internal static string DLC_42_16 {
+            get {
+                return ResourceManager.GetString("DLC_42_16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 17 ähnelt.
+        /// </summary>
+        internal static string DLC_42_17 {
+            get {
+                return ResourceManager.GetString("DLC_42_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 2 ähnelt.
+        /// </summary>
+        internal static string DLC_42_2 {
+            get {
+                return ResourceManager.GetString("DLC_42_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 3 ähnelt.
+        /// </summary>
+        internal static string DLC_42_3 {
+            get {
+                return ResourceManager.GetString("DLC_42_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 4 ähnelt.
+        /// </summary>
+        internal static string DLC_42_4 {
+            get {
+                return ResourceManager.GetString("DLC_42_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 5 ähnelt.
+        /// </summary>
+        internal static string DLC_42_5 {
+            get {
+                return ResourceManager.GetString("DLC_42_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 6 ähnelt.
+        /// </summary>
+        internal static string DLC_42_6 {
+            get {
+                return ResourceManager.GetString("DLC_42_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 7 ähnelt.
+        /// </summary>
+        internal static string DLC_42_7 {
+            get {
+                return ResourceManager.GetString("DLC_42_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 8 ähnelt.
+        /// </summary>
+        internal static string DLC_42_8 {
+            get {
+                return ResourceManager.GetString("DLC_42_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Ballimere Lake 9 ähnelt.
+        /// </summary>
+        internal static string DLC_42_9 {
+            get {
+                return ResourceManager.GetString("DLC_42_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Dyna Tree Hill 1 ähnelt.
+        /// </summary>
+        internal static string DLC_43_1 {
+            get {
+                return ResourceManager.GetString("DLC_43_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Dusty Bowl 1 ähnelt.
         /// </summary>
         internal static string Dusty1 {

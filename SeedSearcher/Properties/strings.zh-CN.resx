@@ -954,4 +954,263 @@
   <data name="DLC_31_6" xml:space="preserve">
     <value>蜂巢岛 6</value>
   </data>
+  <data name="DLC_32_1" xml:space="preserve">
+    <value>起橇雪原 A</value>
+  </data>
+  <data name="DLC_32_2" xml:space="preserve">
+    <value>起橇雪原 B</value>
+  </data>
+  <data name="DLC_32_3" xml:space="preserve">
+    <value>起橇雪原 C</value>
+  </data>
+  <data name="DLC_32_4" xml:space="preserve">
+    <value>起橇雪原 D</value>
+  </data>
+  <data name="DLC_32_5" xml:space="preserve">
+    <value>起橇雪原 E</value>
+  </data>
+  <data name="DLC_32_6" xml:space="preserve">
+    <value>起橇雪原 F</value>
+  </data>
+  <data name="DLC_33_1" xml:space="preserve">
+    <value>冰点雪原 A</value>
+  </data>
+  <data name="DLC_33_2" xml:space="preserve">
+    <value>冰点雪原 B</value>
+  </data>
+  <data name="DLC_33_3" xml:space="preserve">
+    <value>冰点雪原 C</value>
+  </data>
+  <data name="DLC_33_4" xml:space="preserve">
+    <value>冰点雪原 D</value>
+  </data>
+  <data name="DLC_33_5" xml:space="preserve">
+    <value>冰点雪原 E</value>
+  </data>
+  <data name="DLC_34_1" xml:space="preserve">
+    <value>巨人睡榻 A</value>
+  </data>
+  <data name="DLC_34_10" xml:space="preserve">
+    <value>巨人睡榻 J</value>
+  </data>
+  <data name="DLC_34_11" xml:space="preserve">
+    <value>巨人睡榻 K</value>
+  </data>
+  <data name="DLC_34_12" xml:space="preserve">
+    <value>巨人睡榻 L</value>
+  </data>
+  <data name="DLC_34_13" xml:space="preserve">
+    <value>巨人睡榻 M</value>
+  </data>
+  <data name="DLC_34_14" xml:space="preserve">
+    <value>巨人睡榻 N</value>
+  </data>
+  <data name="DLC_34_15" xml:space="preserve">
+    <value>巨人睡榻 O</value>
+  </data>
+  <data name="DLC_34_16" xml:space="preserve">
+    <value>巨人睡榻 P</value>
+  </data>
+  <data name="DLC_34_17" xml:space="preserve">
+    <value>巨人睡榻 Q</value>
+  </data>
+  <data name="DLC_34_18" xml:space="preserve">
+    <value>巨人睡榻 R</value>
+  </data>
+  <data name="DLC_34_19" xml:space="preserve">
+    <value>巨人睡榻 S</value>
+  </data>
+  <data name="DLC_34_2" xml:space="preserve">
+    <value>巨人睡榻 B</value>
+  </data>
+  <data name="DLC_34_20" xml:space="preserve">
+    <value>巨人睡榻 T</value>
+  </data>
+  <data name="DLC_34_21" xml:space="preserve">
+    <value>巨人睡榻 U</value>
+  </data>
+  <data name="DLC_34_3" xml:space="preserve">
+    <value>巨人睡榻 C</value>
+  </data>
+  <data name="DLC_34_4" xml:space="preserve">
+    <value>巨人睡榻 D</value>
+  </data>
+  <data name="DLC_34_5" xml:space="preserve">
+    <value>巨人睡榻 E</value>
+  </data>
+  <data name="DLC_34_6" xml:space="preserve">
+    <value>巨人睡榻 F</value>
+  </data>
+  <data name="DLC_34_7" xml:space="preserve">
+    <value>巨人睡榻 G</value>
+  </data>
+  <data name="DLC_34_8" xml:space="preserve">
+    <value>巨人睡榻 H</value>
+  </data>
+  <data name="DLC_34_9" xml:space="preserve">
+    <value>巨人睡榻 I</value>
+  </data>
+  <data name="DLC_35_1" xml:space="preserve">
+    <value>远古墓地 A</value>
+  </data>
+  <data name="DLC_35_2" xml:space="preserve">
+    <value>远古墓地 B</value>
+  </data>
+  <data name="DLC_36_1" xml:space="preserve">
+    <value>雪中溪谷 A</value>
+  </data>
+  <data name="DLC_36_2" xml:space="preserve">
+    <value>雪中溪谷 B</value>
+  </data>
+  <data name="DLC_36_3" xml:space="preserve">
+    <value>雪中溪谷 C</value>
+  </data>
+  <data name="DLC_36_4" xml:space="preserve">
+    <value>雪中溪谷 D</value>
+  </data>
+  <data name="DLC_36_5" xml:space="preserve">
+    <value>雪中溪谷 E</value>
+  </data>
+  <data name="DLC_36_6" xml:space="preserve">
+    <value>雪中溪谷 F</value>
+  </data>
+  <data name="DLC_36_7" xml:space="preserve">
+    <value>雪中溪谷 G</value>
+  </data>
+  <data name="DLC_36_8" xml:space="preserve">
+    <value>雪中溪谷 H</value>
+  </data>
+  <data name="DLC_36_9" xml:space="preserve">
+    <value>雪中溪谷 I</value>
+  </data>
+  <data name="DLC_37_1" xml:space="preserve">
+    <value>通顶雪道 A</value>
+  </data>
+  <data name="DLC_37_2" xml:space="preserve">
+    <value>通顶雪道 B</value>
+  </data>
+  <data name="DLC_37_3" xml:space="preserve">
+    <value>通顶雪道 C</value>
+  </data>
+  <data name="DLC_38_1" xml:space="preserve">
+    <value>王冠神殿 A</value>
+  </data>
+  <data name="DLC_39_1" xml:space="preserve">
+    <value>巨人鞋底 A</value>
+  </data>
+  <data name="DLC_39_2" xml:space="preserve">
+    <value>巨人鞋底 B</value>
+  </data>
+  <data name="DLC_39_3" xml:space="preserve">
+    <value>巨人鞋底 C</value>
+  </data>
+  <data name="DLC_39_4" xml:space="preserve">
+    <value>巨人鞋底 D</value>
+  </data>
+  <data name="DLC_39_5" xml:space="preserve">
+    <value>巨人鞋底 E</value>
+  </data>
+  <data name="DLC_40_1" xml:space="preserve">
+    <value>冻海 A</value>
+    <comment>a</comment>
+  </data>
+  <data name="DLC_40_10" xml:space="preserve">
+    <value>冻海 J</value>
+  </data>
+  <data name="DLC_40_11" xml:space="preserve">
+    <value>冻海 K</value>
+  </data>
+  <data name="DLC_40_12" xml:space="preserve">
+    <value>冻海 L</value>
+  </data>
+  <data name="DLC_40_13" xml:space="preserve">
+    <value>冻海 M</value>
+  </data>
+  <data name="DLC_40_14" xml:space="preserve">
+    <value>冻海 N</value>
+  </data>
+  <data name="DLC_40_2" xml:space="preserve">
+    <value>冻海 B</value>
+  </data>
+  <data name="DLC_40_3" xml:space="preserve">
+    <value>冻海 C</value>
+  </data>
+  <data name="DLC_40_4" xml:space="preserve">
+    <value>冻海 D</value>
+  </data>
+  <data name="DLC_40_5" xml:space="preserve">
+    <value>冻海 E</value>
+  </data>
+  <data name="DLC_40_6" xml:space="preserve">
+    <value>冻海 F</value>
+  </data>
+  <data name="DLC_40_7" xml:space="preserve">
+    <value>冻海 G</value>
+  </data>
+  <data name="DLC_40_8" xml:space="preserve">
+    <value>冻海 H</value>
+  </data>
+  <data name="DLC_40_9" xml:space="preserve">
+    <value>冻海 I</value>
+  </data>
+  <data name="DLC_41_1" xml:space="preserve">
+    <value>三岔平原 A</value>
+  </data>
+  <data name="DLC_41_2" xml:space="preserve">
+    <value>三岔平原 B</value>
+  </data>
+  <data name="DLC_42_1" xml:space="preserve">
+    <value>球湖湖畔 A</value>
+  </data>
+  <data name="DLC_42_10" xml:space="preserve">
+    <value>球湖湖畔 J</value>
+  </data>
+  <data name="DLC_42_11" xml:space="preserve">
+    <value>球湖湖畔 K</value>
+  </data>
+  <data name="DLC_42_12" xml:space="preserve">
+    <value>球湖湖畔 L</value>
+  </data>
+  <data name="DLC_42_13" xml:space="preserve">
+    <value>球湖湖畔 M</value>
+  </data>
+  <data name="DLC_42_14" xml:space="preserve">
+    <value>球湖湖畔 N</value>
+  </data>
+  <data name="DLC_42_15" xml:space="preserve">
+    <value>球湖湖畔 O</value>
+  </data>
+  <data name="DLC_42_16" xml:space="preserve">
+    <value>球湖湖畔 P</value>
+  </data>
+  <data name="DLC_42_17" xml:space="preserve">
+    <value>球湖湖畔 Q</value>
+  </data>
+  <data name="DLC_42_2" xml:space="preserve">
+    <value>球湖湖畔 B</value>
+  </data>
+  <data name="DLC_42_3" xml:space="preserve">
+    <value>球湖湖畔 C</value>
+  </data>
+  <data name="DLC_42_4" xml:space="preserve">
+    <value>球湖湖畔 D</value>
+  </data>
+  <data name="DLC_42_5" xml:space="preserve">
+    <value>球湖湖畔 E</value>
+  </data>
+  <data name="DLC_42_6" xml:space="preserve">
+    <value>球湖湖畔 F</value>
+  </data>
+  <data name="DLC_42_7" xml:space="preserve">
+    <value>球湖湖畔 G</value>
+  </data>
+  <data name="DLC_42_8" xml:space="preserve">
+    <value>球湖湖畔 H</value>
+  </data>
+  <data name="DLC_42_9" xml:space="preserve">
+    <value>球湖湖畔 I</value>
+  </data>
+  <data name="DLC_43_1" xml:space="preserve">
+    <value>巨树丘陵 A</value>
+  </data>
 </root>

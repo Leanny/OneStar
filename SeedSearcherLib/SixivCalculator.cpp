@@ -159,12 +159,25 @@ void PrepareSix(int ivOffset)
 	g_ConstantTermVector = 0;
 
 	InitializeTransformationMatrix();
-	for (int i = 0; i <= 1 + l_First.fixedIV + ivOffset; ++i)
+	for (int i = 0; i <= l_First.fixedIV + ivOffset; ++i)
 	{
 		ProceedTransformationMatrix();
 	}
 
 	int bit = 0;
+	g_InputMatrix[bit++] = GetMatrixMultiplier(63);
+	g_ConstantTermVector <<= 1;
+	if (GetMatrixConst(63) != 0)
+	{
+		g_ConstantTermVector |= 1;
+	}
+	g_InputMatrix[bit++] = GetMatrixMultiplier(127);
+	g_ConstantTermVector <<= 1;
+	if (GetMatrixConst(127) != 0)
+	{
+		g_ConstantTermVector |= 1;
+	}
+	ProceedTransformationMatrix();
 	for (int a = 0; a < g_setIVs; ++a)
 	{
 		for (int i = 0; i < 10; ++i)

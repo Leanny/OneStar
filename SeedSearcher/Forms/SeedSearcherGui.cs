@@ -280,6 +280,86 @@ namespace SeedSearcherGui
                 Properties.strings.DLC_31_4,
                 Properties.strings.DLC_31_5,
                 Properties.strings.DLC_31_6,
+                Properties.strings.DLC_33_1,
+                Properties.strings.DLC_33_2,
+                Properties.strings.DLC_33_3,
+                Properties.strings.DLC_33_4,
+                Properties.strings.DLC_33_5,
+                Properties.strings.DLC_34_1,
+                Properties.strings.DLC_34_2,
+                Properties.strings.DLC_34_3,
+                Properties.strings.DLC_34_4,
+                Properties.strings.DLC_34_5,
+                Properties.strings.DLC_34_6,
+                Properties.strings.DLC_34_7,
+                Properties.strings.DLC_34_8,
+                Properties.strings.DLC_34_9,
+                Properties.strings.DLC_34_10,
+                Properties.strings.DLC_34_11,
+                Properties.strings.DLC_34_12,
+                Properties.strings.DLC_34_13,
+                Properties.strings.DLC_34_14,
+                Properties.strings.DLC_34_15,
+                Properties.strings.DLC_34_16,
+                Properties.strings.DLC_34_17,
+                Properties.strings.DLC_34_18,
+                Properties.strings.DLC_34_19,
+                Properties.strings.DLC_34_20,
+                Properties.strings.DLC_34_21,
+                Properties.strings.DLC_35_1,
+                Properties.strings.DLC_35_2,
+                Properties.strings.DLC_36_1,
+                Properties.strings.DLC_36_2,
+                Properties.strings.DLC_36_3,
+                Properties.strings.DLC_36_4,
+                Properties.strings.DLC_36_5,
+                Properties.strings.DLC_36_6,
+                Properties.strings.DLC_36_7,
+                Properties.strings.DLC_36_8,
+                Properties.strings.DLC_36_9,
+                Properties.strings.DLC_37_1,
+                Properties.strings.DLC_37_2,
+                Properties.strings.DLC_37_3,
+                Properties.strings.DLC_38_1,
+                Properties.strings.DLC_39_1,
+                Properties.strings.DLC_39_2,
+                Properties.strings.DLC_39_3,
+                Properties.strings.DLC_39_4,
+                Properties.strings.DLC_39_5,
+                Properties.strings.DLC_40_1,
+                Properties.strings.DLC_40_2,
+                Properties.strings.DLC_40_3,
+                Properties.strings.DLC_40_4,
+                Properties.strings.DLC_40_5,
+                Properties.strings.DLC_40_6,
+                Properties.strings.DLC_40_7,
+                Properties.strings.DLC_40_8,
+                Properties.strings.DLC_40_9,
+                Properties.strings.DLC_40_10,
+                Properties.strings.DLC_40_11,
+                Properties.strings.DLC_40_12,
+                Properties.strings.DLC_40_13,
+                Properties.strings.DLC_40_14,
+                Properties.strings.DLC_41_1,
+                Properties.strings.DLC_41_2,
+                Properties.strings.DLC_42_1,
+                Properties.strings.DLC_42_2,
+                Properties.strings.DLC_42_3,
+                Properties.strings.DLC_42_4,
+                Properties.strings.DLC_42_5,
+                Properties.strings.DLC_42_6,
+                Properties.strings.DLC_42_7,
+                Properties.strings.DLC_42_8,
+                Properties.strings.DLC_42_9,
+                Properties.strings.DLC_42_10,
+                Properties.strings.DLC_42_11,
+                Properties.strings.DLC_42_12,
+                Properties.strings.DLC_42_13,
+                Properties.strings.DLC_42_14,
+                Properties.strings.DLC_42_15,
+                Properties.strings.DLC_42_16,
+                Properties.strings.DLC_42_17,
+                Properties.strings.DLC_43_1
 
             };
 
@@ -288,8 +368,10 @@ namespace SeedSearcherGui
                 int idx = i > 16 ? i + 1 : i;
                 if(i < 100) 
                     CB_Den.Items.Add($"{idx}: {entries[i]}");
+                else if(i < 190)
+                    CB_Den.Items.Add($"[IoA {idx - 100}]: {entries[i]}");
                 else
-                    CB_Den.Items.Add($"[IoA {idx-100}]: {entries[i]}");
+                    CB_Den.Items.Add($"[TC {idx - 190}]: {entries[i]}");
             }
             CB_Den.SelectedIndex = old_den_idx;
 
@@ -387,7 +469,11 @@ namespace SeedSearcherGui
         {
             Pen redPen = new Pen(Color.Red, 10);
             var map = Resources.map;
-            if (location >= 17)
+            if (location >= 32)
+            {
+                map = Resources.map_02;
+            }
+            else if (location >= 17)
             {
                 map = Resources.map_01;
                 using (var graphics = Graphics.FromImage(map))
@@ -1520,14 +1606,14 @@ namespace SeedSearcherGui
         private void Adjust_Ability(ComboBox species, ComboBox abilityBox)
         {
             var pkm = (RaidTemplate)((ComboboxItem)species.SelectedItem).Value;
-            var abilities = PersonalTable.SWSH.GetAbilities(pkm.Species, pkm.AltForm);
+            var abilities = PersonalTable.SWSH.GetFormeEntry(pkm.Species, pkm.AltForm).Abilities;
             PopulateAbilityList(abilities, pkm.Ability, abilityBox);
             abilityBox.SelectedIndex = 0;
         }
 
         private static readonly string[] AbilitySuffix = { " (1)", " (2)", " (H)" };
 
-        private void PopulateAbilityList(int[] abilities, int a, ComboBox abilityBox)
+        private void PopulateAbilityList(IReadOnlyList<int> abilities, int a, ComboBox abilityBox)
         {
             abilityBox.Items.Clear();
 

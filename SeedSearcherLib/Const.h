@@ -5,11 +5,6 @@ namespace Const
 {
 	const _u64 c_XoroshiroConst = 0x82a2b175229d6a5bull;
 
-	// メモ：V箇所 3bit index 61~63, 125~127
-	//       個体値 5bit index 59~63, 123~127
-	//       特性 1bit index 63, 127
-
-	// xoroshiro1回分の変換行列(128x128なので64bit×256個)
 	const _u64 c_N[] = {
 		67108864ull,
 		67108864ull,
