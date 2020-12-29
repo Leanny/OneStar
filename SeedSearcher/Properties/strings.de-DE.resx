@@ -1,0 +1,1089 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="1ivok" xml:space="preserve">
+    <value>1IV. OK!</value>
+  </data>
+  <data name="Ability" xml:space="preserve">
+    <value>Fähigkeit</value>
+  </data>
+  <data name="AbilityNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Accelerator" xml:space="preserve">
+    <value>Auslastung</value>
+  </data>
+  <data name="ATK" xml:space="preserve">
+    <value>ANG</value>
+  </data>
+  <data name="Axew1" xml:space="preserve">
+    <value>Milza-See (Auge) 1</value>
+  </data>
+  <data name="Bridge1" xml:space="preserve">
+    <value>Brückental 1</value>
+  </data>
+  <data name="Bridge2" xml:space="preserve">
+    <value>Brückental 2</value>
+  </data>
+  <data name="Bridge3" xml:space="preserve">
+    <value>Brückental 3</value>
+  </data>
+  <data name="Bridge4" xml:space="preserve">
+    <value>Brückental 4</value>
+  </data>
+  <data name="Bridge5" xml:space="preserve">
+    <value>Brückental 5</value>
+  </data>
+  <data name="Bridge6" xml:space="preserve">
+    <value>Brückental 6</value>
+  </data>
+  <data name="Bridge7" xml:space="preserve">
+    <value>Brückental 7</value>
+  </data>
+  <data name="Bridge8" xml:space="preserve">
+    <value>Brückental 8</value>
+  </data>
+  <data name="Bridge9" xml:space="preserve">
+    <value>Brückental 9</value>
+  </data>
+  <data name="BTStartSearch" xml:space="preserve">
+    <value>Suche Starten</value>
+  </data>
+  <data name="Characteristic" xml:space="preserve">
+    <value>Persönlichkeit</value>
+  </data>
+  <data name="CheckIVs" xml:space="preserve">
+    <value>IVs Überprüfen</value>
+  </data>
+  <data name="ConfirmIVs" xml:space="preserve">
+    <value>IVs Bestätigen</value>
+  </data>
+  <data name="Dappled1" xml:space="preserve">
+    <value>Wipfelscheinwald 1</value>
+  </data>
+  <data name="Dappled2" xml:space="preserve">
+    <value>Wipfelscheinwald 2</value>
+  </data>
+  <data name="Dappled3" xml:space="preserve">
+    <value>Wipfelscheinwald 3</value>
+  </data>
+  <data name="Dappled4" xml:space="preserve">
+    <value>Wipfelscheinwald 4</value>
+  </data>
+  <data name="Dappled5" xml:space="preserve">
+    <value>Wipfelscheinwald 5</value>
+  </data>
+  <data name="Day4" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="Day4Base" xml:space="preserve">
+    <value>1-3IV</value>
+  </data>
+  <data name="Day4Follow" xml:space="preserve">
+    <value>{0}IV {1}/6</value>
+  </data>
+  <data name="Day5" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="Day6" xml:space="preserve">
+    <value>Tag</value>
+  </data>
+  <data name="DEF" xml:space="preserve">
+    <value>VERT</value>
+  </data>
+  <data name="Den" xml:space="preserve">
+    <value>Den</value>
+  </data>
+  <data name="DLC_17_1" xml:space="preserve">
+    <value>Grußgefilde 1</value>
+  </data>
+  <data name="DLC_17_10" xml:space="preserve">
+    <value>Grußgefilde 10</value>
+  </data>
+  <data name="DLC_17_2" xml:space="preserve">
+    <value>Grußgefilde 2</value>
+  </data>
+  <data name="DLC_17_3" xml:space="preserve">
+    <value>Grußgefilde 3</value>
+  </data>
+  <data name="DLC_17_4" xml:space="preserve">
+    <value>Grußgefilde 4</value>
+  </data>
+  <data name="DLC_17_5" xml:space="preserve">
+    <value>Grußgefilde 5</value>
+  </data>
+  <data name="DLC_17_6" xml:space="preserve">
+    <value>Grußgefilde 6</value>
+  </data>
+  <data name="DLC_17_7" xml:space="preserve">
+    <value>Grußgefilde 7</value>
+  </data>
+  <data name="DLC_17_8" xml:space="preserve">
+    <value>Grußgefilde 8</value>
+  </data>
+  <data name="DLC_17_9" xml:space="preserve">
+    <value>Grußgefilde 9</value>
+  </data>
+  <data name="DLC_18_1" xml:space="preserve">
+    <value>Balsamsumpf 1</value>
+  </data>
+  <data name="DLC_18_2" xml:space="preserve">
+    <value>Balsamsumpf 2</value>
+  </data>
+  <data name="DLC_18_3" xml:space="preserve">
+    <value>Balsamsumpf 3</value>
+  </data>
+  <data name="DLC_18_4" xml:space="preserve">
+    <value>Balsamsumpf 4</value>
+  </data>
+  <data name="DLC_18_5" xml:space="preserve">
+    <value>Balsamsumpf 5</value>
+  </data>
+  <data name="DLC_18_6" xml:space="preserve">
+    <value>Balsamsumpf 6</value>
+  </data>
+  <data name="DLC_18_7" xml:space="preserve">
+    <value>Balsamsumpf 7</value>
+  </data>
+  <data name="DLC_18_8" xml:space="preserve">
+    <value>Balsamsumpf 8</value>
+  </data>
+  <data name="DLC_18_9" xml:space="preserve">
+    <value>Balsamsumpf 9</value>
+  </data>
+  <data name="DLC_19_1" xml:space="preserve">
+    <value>Fokusforst 1</value>
+  </data>
+  <data name="DLC_19_2" xml:space="preserve">
+    <value>Fokusforst 2</value>
+  </data>
+  <data name="DLC_19_3" xml:space="preserve">
+    <value>Fokusforst 3</value>
+  </data>
+  <data name="DLC_19_4" xml:space="preserve">
+    <value>Fokusforst 4</value>
+  </data>
+  <data name="DLC_19_5" xml:space="preserve">
+    <value>Fokusforst 5</value>
+  </data>
+  <data name="DLC_19_6" xml:space="preserve">
+    <value>Fokusforst 6</value>
+  </data>
+  <data name="DLC_20_1" xml:space="preserve">
+    <value>Strand der Prüfung 1</value>
+  </data>
+  <data name="DLC_20_2" xml:space="preserve">
+    <value>Strand der Prüfung 2</value>
+  </data>
+  <data name="DLC_20_3" xml:space="preserve">
+    <value>Strand der Prüfung 3</value>
+  </data>
+  <data name="DLC_20_4" xml:space="preserve">
+    <value>Strand der Prüfung 4</value>
+  </data>
+  <data name="DLC_20_5" xml:space="preserve">
+    <value>Strand der Prüfung 5</value>
+  </data>
+  <data name="DLC_20_6" xml:space="preserve">
+    <value>Strand der Prüfung 6</value>
+  </data>
+  <data name="DLC_20_7" xml:space="preserve">
+    <value>Strand der Prüfung 7</value>
+  </data>
+  <data name="DLC_20_8" xml:space="preserve">
+    <value>Strand der Prüfung 8</value>
+  </data>
+  <data name="DLC_21_1" xml:space="preserve">
+    <value>Kämpfergrotte 1</value>
+  </data>
+  <data name="DLC_22_1" xml:space="preserve">
+    <value>Pfad der Prüfung 1</value>
+  </data>
+  <data name="DLC_22_2" xml:space="preserve">
+    <value>Pfad der Prüfung 2</value>
+  </data>
+  <data name="DLC_22_3" xml:space="preserve">
+    <value>Pfad der Prüfung 3</value>
+  </data>
+  <data name="DLC_22_4" xml:space="preserve">
+    <value>Pfad der Prüfung 4</value>
+  </data>
+  <data name="DLC_23_1" xml:space="preserve">
+    <value>Tapferkeitshöhle 1</value>
+  </data>
+  <data name="DLC_23_2" xml:space="preserve">
+    <value>Tapferkeitshöhle 2</value>
+  </data>
+  <data name="DLC_23_3" xml:space="preserve">
+    <value>Tapferkeitshöhle 3</value>
+  </data>
+  <data name="DLC_23_4" xml:space="preserve">
+    <value>Tapferkeitshöhle 4</value>
+  </data>
+  <data name="DLC_23_5" xml:space="preserve">
+    <value>Tapferkeitshöhle 5</value>
+  </data>
+  <data name="DLC_23_6" xml:space="preserve">
+    <value>Tapferkeitshöhle 6</value>
+  </data>
+  <data name="DLC_24_1" xml:space="preserve">
+    <value>Ringbucht 1</value>
+  </data>
+  <data name="DLC_24_2" xml:space="preserve">
+    <value>Ringbucht 2</value>
+  </data>
+  <data name="DLC_24_3" xml:space="preserve">
+    <value>Ringbucht 3</value>
+  </data>
+  <data name="DLC_24_4" xml:space="preserve">
+    <value>Ringbucht 4</value>
+  </data>
+  <data name="DLC_25_1" xml:space="preserve">
+    <value>Fleißebene 1</value>
+  </data>
+  <data name="DLC_25_2" xml:space="preserve">
+    <value>Fleißebene 2</value>
+  </data>
+  <data name="DLC_25_3" xml:space="preserve">
+    <value>Fleißebene 3</value>
+  </data>
+  <data name="DLC_25_4" xml:space="preserve">
+    <value>Fleißebene 4</value>
+  </data>
+  <data name="DLC_25_5" xml:space="preserve">
+    <value>Fleißebene 5</value>
+  </data>
+  <data name="DLC_25_6" xml:space="preserve">
+    <value>Fleißebene 6</value>
+  </data>
+  <data name="DLC_25_7" xml:space="preserve">
+    <value>Fleißebene 7</value>
+  </data>
+  <data name="DLC_26_1" xml:space="preserve">
+    <value>Wüstensenke 1</value>
+  </data>
+  <data name="DLC_26_2" xml:space="preserve">
+    <value>Wüstensenke 2</value>
+  </data>
+  <data name="DLC_26_3" xml:space="preserve">
+    <value>Wüstensenke 3</value>
+  </data>
+  <data name="DLC_27_1" xml:space="preserve">
+    <value>Fitnessmeer 1</value>
+  </data>
+  <data name="DLC_27_2" xml:space="preserve">
+    <value>Fitnessmeer 2</value>
+  </data>
+  <data name="DLC_27_3" xml:space="preserve">
+    <value>Fitnessmeer 3</value>
+  </data>
+  <data name="DLC_27_4" xml:space="preserve">
+    <value>Fitnessmeer 4</value>
+  </data>
+  <data name="DLC_27_5" xml:space="preserve">
+    <value>Fitnessmeer 5</value>
+  </data>
+  <data name="DLC_27_6" xml:space="preserve">
+    <value>Fitnessmeer 6</value>
+  </data>
+  <data name="DLC_27_7" xml:space="preserve">
+    <value>Fitnessmeer 7</value>
+  </data>
+  <data name="DLC_28_1" xml:space="preserve">
+    <value>Inselkettenmeer 1</value>
+  </data>
+  <data name="DLC_28_2" xml:space="preserve">
+    <value>Inselkettenmeer 2</value>
+  </data>
+  <data name="DLC_28_3" xml:space="preserve">
+    <value>Inselkettenmeer 3</value>
+  </data>
+  <data name="DLC_28_4" xml:space="preserve">
+    <value>Inselkettenmeer 4</value>
+  </data>
+  <data name="DLC_28_5" xml:space="preserve">
+    <value>Inselkettenmeer 5</value>
+  </data>
+  <data name="DLC_28_6" xml:space="preserve">
+    <value>Inselkettenmeer 6</value>
+  </data>
+  <data name="DLC_28_7" xml:space="preserve">
+    <value>Inselkettenmeer 7</value>
+  </data>
+  <data name="DLC_28_8" xml:space="preserve">
+    <value>Inselkettenmeer 8</value>
+  </data>
+  <data name="DLC_28_9" xml:space="preserve">
+    <value>Inselkettenmeer 9</value>
+  </data>
+  <data name="DLC_29_1" xml:space="preserve">
+    <value>Fernarchipel 1</value>
+  </data>
+  <data name="DLC_29_2" xml:space="preserve">
+    <value>Fernarchipel 2</value>
+  </data>
+  <data name="DLC_29_3" xml:space="preserve">
+    <value>Fernarchipel 3</value>
+  </data>
+  <data name="DLC_29_4" xml:space="preserve">
+    <value>Fernarchipel 4</value>
+  </data>
+  <data name="DLC_29_5" xml:space="preserve">
+    <value>Fernarchipel 5</value>
+  </data>
+  <data name="DLC_30_1" xml:space="preserve">
+    <value>Wabenmeer 1</value>
+  </data>
+  <data name="DLC_30_2" xml:space="preserve">
+    <value>Wabenmeer 2</value>
+  </data>
+  <data name="DLC_30_3" xml:space="preserve">
+    <value>Wabenmeer 3</value>
+  </data>
+  <data name="DLC_30_4" xml:space="preserve">
+    <value>Wabenmeer 4</value>
+  </data>
+  <data name="DLC_30_5" xml:space="preserve">
+    <value>Wabenmeer 5</value>
+  </data>
+  <data name="DLC_31_1" xml:space="preserve">
+    <value>Wabeninsel 1</value>
+  </data>
+  <data name="DLC_31_2" xml:space="preserve">
+    <value>Wabeninsel 2</value>
+  </data>
+  <data name="DLC_31_3" xml:space="preserve">
+    <value>Wabeninsel 3</value>
+  </data>
+  <data name="DLC_31_4" xml:space="preserve">
+    <value>Wabeninsel 4</value>
+  </data>
+  <data name="DLC_31_5" xml:space="preserve">
+    <value>Wabeninsel 5</value>
+  </data>
+  <data name="DLC_31_6" xml:space="preserve">
+    <value>Wabeninsel 6</value>
+  </data>
+  <data name="DLC_32_1" xml:space="preserve">
+    <value>Schlitterfeld 1</value>
+  </data>
+  <data name="DLC_32_2" xml:space="preserve">
+    <value>Schlitterfeld 2</value>
+  </data>
+  <data name="DLC_32_3" xml:space="preserve">
+    <value>Schlitterfeld 3</value>
+  </data>
+  <data name="DLC_32_4" xml:space="preserve">
+    <value>Schlitterfeld 4</value>
+  </data>
+  <data name="DLC_32_5" xml:space="preserve">
+    <value>Schlitterfeld 5</value>
+  </data>
+  <data name="DLC_32_6" xml:space="preserve">
+    <value>Schlitterfeld 6</value>
+  </data>
+  <data name="DLC_33_1" xml:space="preserve">
+    <value>Frostfeld 1</value>
+  </data>
+  <data name="DLC_33_2" xml:space="preserve">
+    <value>Frostfeld 2</value>
+  </data>
+  <data name="DLC_33_3" xml:space="preserve">
+    <value>Frostfeld 3</value>
+  </data>
+  <data name="DLC_33_4" xml:space="preserve">
+    <value>Frostfeld 4</value>
+  </data>
+  <data name="DLC_33_5" xml:space="preserve">
+    <value>Frostfeld 5</value>
+  </data>
+  <data name="DLC_34_1" xml:space="preserve">
+    <value>Bett des Giganten 1</value>
+  </data>
+  <data name="DLC_34_10" xml:space="preserve">
+    <value>Bett des Giganten 10</value>
+  </data>
+  <data name="DLC_34_11" xml:space="preserve">
+    <value>Bett des Giganten 11</value>
+  </data>
+  <data name="DLC_34_12" xml:space="preserve">
+    <value>Bett des Giganten 12</value>
+  </data>
+  <data name="DLC_34_13" xml:space="preserve">
+    <value>Bett des Giganten 13</value>
+  </data>
+  <data name="DLC_34_14" xml:space="preserve">
+    <value>Bett des Giganten 14</value>
+  </data>
+  <data name="DLC_34_15" xml:space="preserve">
+    <value>Bett des Giganten 15</value>
+  </data>
+  <data name="DLC_34_16" xml:space="preserve">
+    <value>Bett des Giganten 16</value>
+  </data>
+  <data name="DLC_34_17" xml:space="preserve">
+    <value>Bett des Giganten 17</value>
+  </data>
+  <data name="DLC_34_18" xml:space="preserve">
+    <value>Bett des Giganten 18</value>
+  </data>
+  <data name="DLC_34_19" xml:space="preserve">
+    <value>Bett des Giganten 19</value>
+  </data>
+  <data name="DLC_34_2" xml:space="preserve">
+    <value>Bett des Giganten 2</value>
+  </data>
+  <data name="DLC_34_20" xml:space="preserve">
+    <value>Bett des Giganten 20</value>
+  </data>
+  <data name="DLC_34_21" xml:space="preserve">
+    <value>Bett des Giganten 21</value>
+  </data>
+  <data name="DLC_34_3" xml:space="preserve">
+    <value>Bett des Giganten 3</value>
+  </data>
+  <data name="DLC_34_4" xml:space="preserve">
+    <value>Bett des Giganten 4</value>
+  </data>
+  <data name="DLC_34_5" xml:space="preserve">
+    <value>Bett des Giganten 5</value>
+  </data>
+  <data name="DLC_34_6" xml:space="preserve">
+    <value>Bett des Giganten 6</value>
+  </data>
+  <data name="DLC_34_7" xml:space="preserve">
+    <value>Bett des Giganten 7</value>
+  </data>
+  <data name="DLC_34_8" xml:space="preserve">
+    <value>Bett des Giganten 8</value>
+  </data>
+  <data name="DLC_34_9" xml:space="preserve">
+    <value>Bett des Giganten 9</value>
+  </data>
+  <data name="DLC_35_1" xml:space="preserve">
+    <value>Uralter Friedhof 1</value>
+  </data>
+  <data name="DLC_35_2" xml:space="preserve">
+    <value>Uralter Friedhof 2</value>
+  </data>
+  <data name="DLC_36_1" xml:space="preserve">
+    <value>Schneeschlucht 1</value>
+  </data>
+  <data name="DLC_36_2" xml:space="preserve">
+    <value>Schneeschlucht 2</value>
+  </data>
+  <data name="DLC_36_3" xml:space="preserve">
+    <value>Schneeschlucht 3</value>
+  </data>
+  <data name="DLC_36_4" xml:space="preserve">
+    <value>Schneeschlucht 4</value>
+  </data>
+  <data name="DLC_36_5" xml:space="preserve">
+    <value>Schneeschlucht 5</value>
+  </data>
+  <data name="DLC_36_6" xml:space="preserve">
+    <value>Schneeschlucht 6</value>
+  </data>
+  <data name="DLC_36_7" xml:space="preserve">
+    <value>Schneeschlucht 7</value>
+  </data>
+  <data name="DLC_36_8" xml:space="preserve">
+    <value>Schneeschlucht 8</value>
+  </data>
+  <data name="DLC_36_9" xml:space="preserve">
+    <value>Schneeschlucht 9</value>
+  </data>
+  <data name="DLC_37_1" xml:space="preserve">
+    <value>Schneegipfelpfad 1</value>
+  </data>
+  <data name="DLC_37_2" xml:space="preserve">
+    <value>Schneegipfelpfad 2</value>
+  </data>
+  <data name="DLC_37_3" xml:space="preserve">
+    <value>Schneegipfelpfad 3</value>
+  </data>
+  <data name="DLC_38_1" xml:space="preserve">
+    <value>Kronentempel 1</value>
+  </data>
+  <data name="DLC_39_1" xml:space="preserve">
+    <value>Sohle des Giganten 1</value>
+  </data>
+  <data name="DLC_39_2" xml:space="preserve">
+    <value>Sohle des Giganten 2</value>
+  </data>
+  <data name="DLC_39_3" xml:space="preserve">
+    <value>Sohle des Giganten 3</value>
+  </data>
+  <data name="DLC_39_4" xml:space="preserve">
+    <value>Sohle des Giganten 4</value>
+  </data>
+  <data name="DLC_39_5" xml:space="preserve">
+    <value>Sohle des Giganten 5</value>
+  </data>
+  <data name="DLC_40_1" xml:space="preserve">
+    <value>Schollenmeer 1</value>
+  </data>
+  <data name="DLC_40_10" xml:space="preserve">
+    <value>Schollenmeer 10</value>
+  </data>
+  <data name="DLC_40_11" xml:space="preserve">
+    <value>Schollenmeer 11</value>
+  </data>
+  <data name="DLC_40_12" xml:space="preserve">
+    <value>Schollenmeer 12</value>
+  </data>
+  <data name="DLC_40_13" xml:space="preserve">
+    <value>Schollenmeer 13</value>
+  </data>
+  <data name="DLC_40_14" xml:space="preserve">
+    <value>Schollenmeer 14</value>
+  </data>
+  <data name="DLC_40_2" xml:space="preserve">
+    <value>Schollenmeer 2</value>
+  </data>
+  <data name="DLC_40_3" xml:space="preserve">
+    <value>Schollenmeer 3</value>
+  </data>
+  <data name="DLC_40_4" xml:space="preserve">
+    <value>Schollenmeer 4</value>
+  </data>
+  <data name="DLC_40_5" xml:space="preserve">
+    <value>Schollenmeer 5</value>
+  </data>
+  <data name="DLC_40_6" xml:space="preserve">
+    <value>Schollenmeer 6</value>
+  </data>
+  <data name="DLC_40_7" xml:space="preserve">
+    <value>Schollenmeer 7</value>
+  </data>
+  <data name="DLC_40_8" xml:space="preserve">
+    <value>Schollenmeer 8</value>
+  </data>
+  <data name="DLC_40_9" xml:space="preserve">
+    <value>Schollenmeer 9</value>
+  </data>
+  <data name="DLC_41_1" xml:space="preserve">
+    <value>Dreiwegpass 1</value>
+  </data>
+  <data name="DLC_41_2" xml:space="preserve">
+    <value>Dreiwegpass 2</value>
+  </data>
+  <data name="DLC_42_1" xml:space="preserve">
+    <value>Ballsee-Ufer 1</value>
+  </data>
+  <data name="DLC_42_10" xml:space="preserve">
+    <value>Ballsee-Ufer 10</value>
+  </data>
+  <data name="DLC_42_11" xml:space="preserve">
+    <value>Ballsee-Ufer 11</value>
+  </data>
+  <data name="DLC_42_12" xml:space="preserve">
+    <value>Ballsee-Ufer 12</value>
+  </data>
+  <data name="DLC_42_13" xml:space="preserve">
+    <value>Ballsee-Ufer 13</value>
+  </data>
+  <data name="DLC_42_14" xml:space="preserve">
+    <value>Ballsee-Ufer 14</value>
+  </data>
+  <data name="DLC_42_15" xml:space="preserve">
+    <value>Ballsee-Ufer 15</value>
+  </data>
+  <data name="DLC_42_16" xml:space="preserve">
+    <value>Ballsee-Ufer 16</value>
+  </data>
+  <data name="DLC_42_17" xml:space="preserve">
+    <value>Ballsee-Ufer 17</value>
+  </data>
+  <data name="DLC_42_2" xml:space="preserve">
+    <value>Ballsee-Ufer 2</value>
+  </data>
+  <data name="DLC_42_3" xml:space="preserve">
+    <value>Ballsee-Ufer 3</value>
+  </data>
+  <data name="DLC_42_4" xml:space="preserve">
+    <value>Ballsee-Ufer 4</value>
+  </data>
+  <data name="DLC_42_5" xml:space="preserve">
+    <value>Ballsee-Ufer 5</value>
+  </data>
+  <data name="DLC_42_6" xml:space="preserve">
+    <value>Ballsee-Ufer 6</value>
+  </data>
+  <data name="DLC_42_7" xml:space="preserve">
+    <value>Ballsee-Ufer 7</value>
+  </data>
+  <data name="DLC_42_8" xml:space="preserve">
+    <value>Ballsee-Ufer 8</value>
+  </data>
+  <data name="DLC_42_9" xml:space="preserve">
+    <value>Ballsee-Ufer 9</value>
+  </data>
+  <data name="DLC_43_1" xml:space="preserve">
+    <value>Hügel des Dyna-Baums 1</value>
+  </data>
+  <data name="Dusty1" xml:space="preserve">
+    <value>Sandsturmkessel 1</value>
+  </data>
+  <data name="Dusty2" xml:space="preserve">
+    <value>Sandsturmkessel 2</value>
+  </data>
+  <data name="Dusty3" xml:space="preserve">
+    <value>Sandsturmkessel 3</value>
+  </data>
+  <data name="Dusty4" xml:space="preserve">
+    <value>Sandsturmkessel 4</value>
+  </data>
+  <data name="Dusty5" xml:space="preserve">
+    <value>Sandsturmkessel 5</value>
+  </data>
+  <data name="Dusty6" xml:space="preserve">
+    <value>Sandsturmkessel 6</value>
+  </data>
+  <data name="Dusty7" xml:space="preserve">
+    <value>Sandsturmkessel 7</value>
+  </data>
+  <data name="Dusty8" xml:space="preserve">
+    <value>Sandsturmkessel 8</value>
+  </data>
+  <data name="Dusty9" xml:space="preserve">
+    <value>Sandsturmkessel 9</value>
+  </data>
+  <data name="East1" xml:space="preserve">
+    <value>Milza-See (Osten) 1</value>
+  </data>
+  <data name="East2" xml:space="preserve">
+    <value>Milza-See (Osten) 2</value>
+  </data>
+  <data name="East3" xml:space="preserve">
+    <value>Milza-See (Osten) 3</value>
+  </data>
+  <data name="East4" xml:space="preserve">
+    <value>Milza-See (Osten) 4</value>
+  </data>
+  <data name="East5" xml:space="preserve">
+    <value>Milza-See (Osten) 5</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Event Den</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Exportieren</value>
+  </data>
+  <data name="ExportImport" xml:space="preserve">
+    <value>Exportieren/Importieren</value>
+  </data>
+  <data name="Game" xml:space="preserve">
+    <value>Spiel</value>
+  </data>
+  <data name="Giant1" xml:space="preserve">
+    <value>Sitz des Giganten 1</value>
+  </data>
+  <data name="Giant11" xml:space="preserve">
+    <value>Spiegel des Giganten 1</value>
+  </data>
+  <data name="Giant12" xml:space="preserve">
+    <value>Hut des Giganten 1</value>
+  </data>
+  <data name="Giant2" xml:space="preserve">
+    <value>Sitz des Giganten 2</value>
+  </data>
+  <data name="Giant21" xml:space="preserve">
+    <value>Spiegel des Giganten 2</value>
+  </data>
+  <data name="Giant22" xml:space="preserve">
+    <value>Hut des Giganten 2</value>
+  </data>
+  <data name="Giant3" xml:space="preserve">
+    <value>Sitz des Giganten 3</value>
+  </data>
+  <data name="Giant31" xml:space="preserve">
+    <value>Spiegel des Giganten 3</value>
+  </data>
+  <data name="Giant32" xml:space="preserve">
+    <value>Hut des Giganten 3</value>
+  </data>
+  <data name="Giant4" xml:space="preserve">
+    <value>Sitz des Giganten 4</value>
+  </data>
+  <data name="Giant41" xml:space="preserve">
+    <value>Spiegel des Giganten 4</value>
+  </data>
+  <data name="Giant42" xml:space="preserve">
+    <value>Hut des Giganten 4</value>
+  </data>
+  <data name="Giant5" xml:space="preserve">
+    <value>Sitz des Giganten 5</value>
+  </data>
+  <data name="Giant51" xml:space="preserve">
+    <value>Spiegel des Giganten 5</value>
+  </data>
+  <data name="Giant52" xml:space="preserve">
+    <value>Hut des Giganten 5</value>
+  </data>
+  <data name="Hammerlocke1" xml:space="preserve">
+    <value>Claw-Plateau 1</value>
+  </data>
+  <data name="Hammerlocke2" xml:space="preserve">
+    <value>Claw-Plateau 2</value>
+  </data>
+  <data name="Hammerlocke3" xml:space="preserve">
+    <value>Claw-Plateau 3</value>
+  </data>
+  <data name="Hammerlocke4" xml:space="preserve">
+    <value>Claw-Plateau 4</value>
+  </data>
+  <data name="Hammerlocke5" xml:space="preserve">
+    <value>Claw-Plateau 5</value>
+  </data>
+  <data name="Hammerlocke6" xml:space="preserve">
+    <value>Claw-Plateau 6</value>
+  </data>
+  <data name="Hammerlocke7" xml:space="preserve">
+    <value>Claw-Plateau 7</value>
+  </data>
+  <data name="HP" xml:space="preserve">
+    <value>KP</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Importieren</value>
+  </data>
+  <data name="IVDeviation" xml:space="preserve">
+    <value>Berechnungsumfang</value>
+  </data>
+  <data name="Lake1" xml:space="preserve">
+    <value>Wutanfall-See 1</value>
+  </data>
+  <data name="Lake2" xml:space="preserve">
+    <value>Wutanfall-See 2</value>
+  </data>
+  <data name="Lake3" xml:space="preserve">
+    <value>Wutanfall-See 3</value>
+  </data>
+  <data name="Lake4" xml:space="preserve">
+    <value>Wutanfall-See 4</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Sprachen</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="Motostoke1" xml:space="preserve">
+    <value>Engine-Flussufer 1</value>
+  </data>
+  <data name="Motostoke2" xml:space="preserve">
+    <value>Engine-Flussufer 2</value>
+  </data>
+  <data name="Motostoke3" xml:space="preserve">
+    <value>Engine-Flussufer 3</value>
+  </data>
+  <data name="Motostoke4" xml:space="preserve">
+    <value>Engine-Flussufer 4</value>
+  </data>
+  <data name="Nature" xml:space="preserve">
+    <value>Wesen</value>
+  </data>
+  <data name="Nest" xml:space="preserve">
+    <value>Nest</value>
+  </data>
+  <data name="NewSearch" xml:space="preserve">
+    <value>Neue Suche</value>
+  </data>
+  <data name="NOK" xml:space="preserve">
+    <value>Nicht OK! Weiterrechnen nicht möglich.</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="North1" xml:space="preserve">
+    <value>Milotic-See (Norden) 1</value>
+  </data>
+  <data name="North2" xml:space="preserve">
+    <value>Milotic-See (Norden) 2</value>
+  </data>
+  <data name="North3" xml:space="preserve">
+    <value>Milotic-See (Norden) 3</value>
+  </data>
+  <data name="North4" xml:space="preserve">
+    <value>Milotic-See (Norden) 4</value>
+  </data>
+  <data name="North5" xml:space="preserve">
+    <value>Milotic-See (Norden) 5</value>
+  </data>
+  <data name="North6" xml:space="preserve">
+    <value>Milotic-See (Norden) 6</value>
+  </data>
+  <data name="NoSeed" xml:space="preserve">
+    <value>Es wurde kein Seed gefunden. Bitte erhöhe den Berechnungsumfang und führe die Suche erneut durch.</value>
+  </data>
+  <data name="NotEnough" xml:space="preserve">
+    <value>Nicht genug 31 IVs für dieses Pokemon gesetzt.</value>
+  </data>
+  <data name="Pokemon" xml:space="preserve">
+    <value>Pokémon</value>
+  </data>
+  <data name="Rare" xml:space="preserve">
+    <value>Selten</value>
+  </data>
+  <data name="Rarity" xml:space="preserve">
+    <value>Seltenheit</value>
+  </data>
+  <data name="RecommendedNextLevel" xml:space="preserve">
+    <value>Empfohlenes nächstes Level</value>
+  </data>
+  <data name="Rolling1" xml:space="preserve">
+    <value>Wonnewiesen 1</value>
+  </data>
+  <data name="Rolling2" xml:space="preserve">
+    <value>Wonnewiesen 2</value>
+  </data>
+  <data name="Rolling3" xml:space="preserve">
+    <value>Wonnewiesen 3</value>
+  </data>
+  <data name="Rolling4" xml:space="preserve">
+    <value>Wonnewiesen 4</value>
+  </data>
+  <data name="Rolling5" xml:space="preserve">
+    <value>Wonnewiesen 5</value>
+  </data>
+  <data name="Rolling6" xml:space="preserve">
+    <value>Wonnewiesen 6</value>
+  </data>
+  <data name="Rolling7" xml:space="preserve">
+    <value>Wonnewiesen 7</value>
+  </data>
+  <data name="Rolling8" xml:space="preserve">
+    <value>Wonnewiesen 8</value>
+  </data>
+  <data name="Rolling9" xml:space="preserve">
+    <value>Wonnewiesen 9</value>
+  </data>
+  <data name="SeedChecker" xml:space="preserve">
+    <value>Seed Checker</value>
+  </data>
+  <data name="SetEvent" xml:space="preserve">
+    <value>Setze Event</value>
+  </data>
+  <data name="Shield" xml:space="preserve">
+    <value>Schild</value>
+  </data>
+  <data name="South1" xml:space="preserve">
+    <value>Milotic-See (Süden) 1</value>
+  </data>
+  <data name="South2" xml:space="preserve">
+    <value>Milotic-See (Süden) 2</value>
+  </data>
+  <data name="South3" xml:space="preserve">
+    <value>Milotic-See (Süden) 3</value>
+  </data>
+  <data name="South4" xml:space="preserve">
+    <value>Milotic-See (Süden) 4</value>
+  </data>
+  <data name="South5" xml:space="preserve">
+    <value>Milotic-See (Süden) 5</value>
+  </data>
+  <data name="SPA" xml:space="preserve">
+    <value>SPA</value>
+  </data>
+  <data name="SPD" xml:space="preserve">
+    <value>SPD</value>
+  </data>
+  <data name="SPE" xml:space="preserve">
+    <value>INIT</value>
+  </data>
+  <data name="StartSearch" xml:space="preserve">
+    <value>Seed Suchen</value>
+  </data>
+  <data name="Stony0" xml:space="preserve">
+    <value>Megalithen-Ebene 10</value>
+  </data>
+  <data name="Stony1" xml:space="preserve">
+    <value>Megalithen-Ebene 1</value>
+  </data>
+  <data name="Stony11" xml:space="preserve">
+    <value>Megalithen-Ebene 11</value>
+  </data>
+  <data name="Stony2" xml:space="preserve">
+    <value>Megalithen-Ebene 2</value>
+  </data>
+  <data name="Stony21" xml:space="preserve">
+    <value>Megalithen-Ebene 12</value>
+  </data>
+  <data name="Stony3" xml:space="preserve">
+    <value>Megalithen-Ebene 3</value>
+  </data>
+  <data name="Stony4" xml:space="preserve">
+    <value>Megalithen-Ebene 4</value>
+  </data>
+  <data name="Stony5" xml:space="preserve">
+    <value>Megalithen-Ebene 5</value>
+  </data>
+  <data name="Stony6" xml:space="preserve">
+    <value>Megalithen-Ebene 6</value>
+  </data>
+  <data name="Stony7" xml:space="preserve">
+    <value>Megalithen-Ebene 7</value>
+  </data>
+  <data name="Stony8" xml:space="preserve">
+    <value>Megalithen-Ebene 8</value>
+  </data>
+  <data name="Stony9" xml:space="preserve">
+    <value>Megalithen-Ebene 9</value>
+  </data>
+  <data name="StopSearch" xml:space="preserve">
+    <value>Stoppe Suche</value>
+  </data>
+  <data name="Sword" xml:space="preserve">
+    <value>Schwert</value>
+  </data>
+  <data name="TooMany" xml:space="preserve">
+    <value>Zu viele IVs haben den Wert 31. Bitte verwende ein anderes Pokémon.</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="UpdateEvent" xml:space="preserve">
+    <value>Aktualisiere Event Datenbank</value>
+  </data>
+  <data name="Watchtower1" xml:space="preserve">
+    <value>Wachturmruine 1</value>
+  </data>
+  <data name="Watchtower2" xml:space="preserve">
+    <value>Wachturmruine 2</value>
+  </data>
+  <data name="West1" xml:space="preserve">
+    <value>Milza-See (Westen) 1</value>
+  </data>
+  <data name="West2" xml:space="preserve">
+    <value>Milza-See (Westen) 2</value>
+  </data>
+  <data name="West3" xml:space="preserve">
+    <value>Milza-See (Westen) 3</value>
+  </data>
+  <data name="West4" xml:space="preserve">
+    <value>Milza-See (Westen) 4</value>
+  </data>
+  <data name="West5" xml:space="preserve">
+    <value>Milza-See (Westen) 5</value>
+  </data>
+  <data name="West6" xml:space="preserve">
+    <value>Milza-See (Westen) 6</value>
+  </data>
+</root>

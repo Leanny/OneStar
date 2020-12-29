@@ -88,6 +88,10 @@ namespace SeedSearcherGui
             {
                 ChineseToolStripMenuItem_Click(null, null);
             }
+            else if (Properties.Settings.Default.Language == 2)
+            {
+                GermanToolStripMenuItem_Click(null, null);
+            }
             else
             {
                 EnglishToolStripMenuItem_Click(null, null);
@@ -1710,6 +1714,14 @@ namespace SeedSearcherGui
             Properties.Settings.Default.Save();
             Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US");
             PopulateLanguage(1);
+        }
+
+        private void GermanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Language = 2;
+            Properties.Settings.Default.Save();
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("de-DE");
+            PopulateLanguage(2);
         }
 
         private void NihongoToolStripMenuItem_Click(object sender, EventArgs e)

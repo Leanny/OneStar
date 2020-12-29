@@ -157,6 +157,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Properties\strings.ja.resx" />
+    <EmbeddedResource Include="Properties\strings.de-DE.resx" />
     <EmbeddedResource Include="Properties\strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>strings.Designer.cs</LastGenOutput>
